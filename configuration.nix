@@ -16,6 +16,8 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
+
+
     git
     neovim
     wget
@@ -46,25 +48,25 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-      #flake = {
-      #  enable = true;
-      #  compiler = "ghc924";
-      #};
-    };
     displayManager = {
       sddm = {
         enable = true;
-	      theme = "sddm-sugar-dark";
+        theme = "sddm-sugar-dark";
       };
-      defaultSession = "none+xmonad";
-    };
-    xkb = {
-      layout = "de";
     };
   };
+  #services.xserver = {
+  #  displayManager = {
+  #    sddm = {
+  #      enable = true;
+	#      theme = "sddm-sugar-dark";
+  #    };
+  #    defaultSession = "none+xmonad";
+  #  };
+   # xkb = {
+  #    layout = "de";
+  #  };
+  #};
 
 
   # Configure keymap in X11
