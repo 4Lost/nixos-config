@@ -22,7 +22,6 @@
     curl
     alacritty
     dmenu
-    zsh
   ];
 
   networking.hostName = "eliasLaptop"; # Define your hostname.
@@ -67,15 +66,6 @@
     };
   };
 
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-    settings.PermitRootLogin = "prohibit-password";
-  };
-
-
-
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
