@@ -16,7 +16,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
-
+    #(callPackage ./pkgs/sddm-sugar-dark-theme.nix { })
 
     git
     neovim
@@ -46,27 +46,32 @@
   };
 
   # Enable the X11 windowing system.
+  #services.xserver = {
+  #  enable = true;
+    #displayManager = {
+    #  sddm = {
+    #    enable = true;
+    #    theme = "sddm-sugar-dark";
+    #  };
+    #  defaultSession = "none+xmonad";
+    #};
+  #};
   services.xserver = {
     enable = true;
     displayManager = {
       sddm = {
         enable = true;
-        theme = "sddm-sugar-dark";
+	      theme = "sddm-sugar-dark";
       };
+      defaultSession = "none+xmonad";
+    };
+    windowManager.xmonad = {
+      enable = true;
+    };
+    xkb = {
+      layout = "de";
     };
   };
-  #services.xserver = {
-  #  displayManager = {
-  #    sddm = {
-  #      enable = true;
-	#      theme = "sddm-sugar-dark";
-  #    };
-  #    defaultSession = "none+xmonad";
-  #  };
-   # xkb = {
-  #    layout = "de";
-  #  };
-  #};
 
 
   # Configure keymap in X11
