@@ -27,6 +27,8 @@
     initExtra = ''
       PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
       RPROMPT='[%F{yellow}%?%f]'
+      bindkey "^[[A" history-beginning-search-backward
+      bindkey "^[[B" history-beginning-search-forward
     '';
   };
 }
