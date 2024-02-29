@@ -58,7 +58,7 @@
     displayManager = {
       sddm = {
         enable = true;
-	theme = "sddm-sugar-dark";
+	      theme = "sddm-sugar-dark";
       };
       defaultSession = "none+xmonad";
     };
@@ -66,6 +66,13 @@
       layout = "de";
     };
   };
+
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.PermitRootLogin = "prohibit-password";
+  };
+
 
 
   
@@ -91,6 +98,9 @@
       isNormalUser = true;
       home = "/home/elias";
       shell = pkgs.zsh;
+      #openssh.authorizedKeys.keys = [
+      #  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCTbgre6iWZWDtUJFgVPdzUvs1yTE1IkncPWgXz/5AQGT5ymlTxKQ7dqgjsjuioAM3ok1/Jg8oKX+5HPR3HGdrCwGi6iTVx8I6ojGZXPcqbus8G7UWIDwRJhH/Cx/qNkSFRdd1CK7BEUMTl1Ehgyl9kTbRgr2q1LaX/60qYUUfLi+h1YaC1jkNajN2d+tQnXUUBrauzd4LqDh9Lzh5GG1EARh0PAArzyL/URgFwUUu5RJapjo4yIKWaaG6Z2uUi2sQjtMbZRTYdWVdBHnzRnVJaS/Bc4nxIihtNcwJ/yeSEeRlpyXeX0UnsPK18Uif9jFdM6W4Ww90rinQjZkFIscFyRroflf11d1G4nTMLJIQU7LG0xqd6R50b68sX5qu9t8TI4j/E8PUqBFQ7YRI9y+tWZ36xgbqVcxyZt7IHI8UwzvC9PWxyMlzLBXCit95BQEwzMcQpgRe7BELPlOhnBErnaOXnXPUm5fWiNuNDSIP83VvaXBrTK4D8Fr/YMDxGlWIw3O0ZMwNMMDO4C56OraiWvNhPlxqtQfTkxbKaT613nPjgQWxoIeBK7ld4r8vqpY09Etao2vgP71twfHZMnc1rFK3oeAeWnd63SYOlMVJ3VfHjCo+BUl+rtitUfFfq54XDOxUDEnri7y0G7PwlyVzL9CEF/f3mRke7m21mxpT5/Q== elias.schroeter@e.email"
+      #];
       extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     };
   };
@@ -109,35 +119,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
 

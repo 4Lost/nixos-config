@@ -3,6 +3,7 @@
 {
   imports = [
     ./programs
+    ./services
   ];
   home = {
     username = "elias";
@@ -20,6 +21,7 @@
       lm_sensors
 
       # extras
+      openssh
       betterbird
       bitwarden
       # dropbox
