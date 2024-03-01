@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     zsh
+    fzf
     python3
     zsh-nix-shell
     nix-zsh-completions
@@ -69,13 +70,4 @@
       ];
     };
   };
-
-  #xdg.configFile = {
-  #  "zsh/zsh-syntax-highlighting" = {
-  #    source = ./zsh-syntax-highlighting.zsh;
-  #  };
-  #  "zsh/zsh-history-substring-search" = {
-  #    source = ./zsh-history-substring-search.zsh;
-  #  };
-  #};
 }
