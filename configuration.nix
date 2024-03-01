@@ -14,18 +14,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  environment.systemPackages = with pkgs; [
-    #(callPackage ./pkgs/sddm-sugar-dark-theme.nix { })
-
-    git
-    neovim
-    wget
-    curl
-    alacritty
-    dmenu
-  ];
-
   networking.hostName = "eliasLaptop"; # Define your hostname.
   # Pick only one of the below networking options.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -34,10 +22,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -45,23 +29,12 @@
     useXkbConfig = true; # use xkb.options in tty.
   };
 
-  # Enable the X11 windowing system.
-  #services.xserver = {
-  #  enable = true;
-    #displayManager = {
-    #  sddm = {
-    #    enable = true;
-    #    theme = "sddm-sugar-dark";
-    #  };
-    #  defaultSession = "none+xmonad";
-    #};
-  #};
   services.xserver = {
     enable = true;
     displayManager = {
       sddm = {
         enable = true;
-	      theme = "sddm-sugar-dark";
+        theme = "catppuccin-mocha";
       };
       defaultSession = "none+xmonad";
     };
@@ -73,6 +46,7 @@
     };
   };
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -95,25 +69,23 @@
       isNormalUser = true;
       home = "/home/elias";
       shell = pkgs.zsh;
-      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" "networkmanager" ];
       hashedPassword = "$6$pdAJt1f0v7Zb13Ri$1WpKrErAp5JCb7eXs7EeeWYRMBLu5/WKDdMyGzJyYQDijG2NiywUXpAkl/8p1noxOOqYbb.MTw7JmTzhWGsT21";
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    #(libsForQt5.callPackage home/programs/catppuccin-sddm.nix { })
+
+    git
+    neovim
+    wget
+    curl
+    alacritty
+    dmenu
+  ];
+
   programs.zsh.enable = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Do not change!!!!
 }
 

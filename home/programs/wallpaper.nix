@@ -6,6 +6,6 @@
   };
 
   xsession.initExtra = ''
-    ${pkgs.feh}/bin/feh --bg-fill --no-fehbg "background_temp.jpeg"
+    ${pkgs.feh}/bin/feh --bg-fill --no-fehbg "/etc/nixos/home/programs/background_temp.jpeg"
     '';
 }
