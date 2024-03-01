@@ -27,9 +27,6 @@
       enable = true;
     };
     initExtra = ''
-      source ~/.config/zsh/zsh-history-substring-search.zsh
-      source ~/.config/zsh/zsh-syntax-highlighting.zsh
-
       PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
       RPROMPT='[%F{yellow}%?%f]'
       bindkey "^[[A" history-beginning-search-backward
@@ -61,9 +58,6 @@
         "gitignore"
         "last-working-dir"
         "sudo"
-        "tmux"
-        "tmux-cssh"
-        "tmuxinator"
         "vi-mode"
         "web-search"
         "zsh-interactive-cd"

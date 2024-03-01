@@ -29,7 +29,7 @@
   networking.hostName = "eliasLaptop"; # Define your hostname.
   # Pick only one of the below networking options.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -90,15 +90,13 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
-    mutableUsers = true;
+    mutableUsers = false;
     users.elias = {
       isNormalUser = true;
       home = "/home/elias";
       shell = pkgs.zsh;
-      #openssh.authorizedKeys.keys = [
-      #  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCTbgre6iWZWDtUJFgVPdzUvs1yTE1IkncPWgXz/5AQGT5ymlTxKQ7dqgjsjuioAM3ok1/Jg8oKX+5HPR3HGdrCwGi6iTVx8I6ojGZXPcqbus8G7UWIDwRJhH/Cx/qNkSFRdd1CK7BEUMTl1Ehgyl9kTbRgr2q1LaX/60qYUUfLi+h1YaC1jkNajN2d+tQnXUUBrauzd4LqDh9Lzh5GG1EARh0PAArzyL/URgFwUUu5RJapjo4yIKWaaG6Z2uUi2sQjtMbZRTYdWVdBHnzRnVJaS/Bc4nxIihtNcwJ/yeSEeRlpyXeX0UnsPK18Uif9jFdM6W4Ww90rinQjZkFIscFyRroflf11d1G4nTMLJIQU7LG0xqd6R50b68sX5qu9t8TI4j/E8PUqBFQ7YRI9y+tWZ36xgbqVcxyZt7IHI8UwzvC9PWxyMlzLBXCit95BQEwzMcQpgRe7BELPlOhnBErnaOXnXPUm5fWiNuNDSIP83VvaXBrTK4D8Fr/YMDxGlWIw3O0ZMwNMMDO4C56OraiWvNhPlxqtQfTkxbKaT613nPjgQWxoIeBK7ld4r8vqpY09Etao2vgP71twfHZMnc1rFK3oeAeWnd63SYOlMVJ3VfHjCo+BUl+rtitUfFfq54XDOxUDEnri7y0G7PwlyVzL9CEF/f3mRke7m21mxpT5/Q== elias.schroeter@e.email"
-      #];
       extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      hashedPassword = "$6$pdAJt1f0v7Zb13Ri$1WpKrErAp5JCb7eXs7EeeWYRMBLu5/WKDdMyGzJyYQDijG2NiywUXpAkl/8p1noxOOqYbb.MTw7JmTzhWGsT21";
     };
   };
 
