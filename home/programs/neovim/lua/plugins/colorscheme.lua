@@ -8,6 +8,7 @@ return {
       vim.cmd.colorscheme("catppuccin")
     end,
     opts = {
+      flavor = "mocha",
       integrations = {
         nvimtree = true,
         dashboard = true,
