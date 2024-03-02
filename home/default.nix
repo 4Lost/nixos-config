@@ -22,12 +22,12 @@
 
       # extras
       openssh
-      betterbird
-      bitwarden
+      #betterbird
+      #bitwarden
       # dropbox
       firefox
-      signal-desktop
-      telegram-desktop
+      #signal-desktop
+      #telegram-desktop
       xfce.thunar
       # zathura
       xfce.xfconf

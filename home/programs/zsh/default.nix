@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    zsh
+    #zsh
     fzf
     python3
     zsh-nix-shell
