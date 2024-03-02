@@ -11,4 +11,3 @@ opt.shiftwidth = 2 -- Size of an indent
 opt.smartindent = true -- Insert indents automatically
 opt.spelllang = { "en" }
 opt.tabstop = 2 -- Number of spaces tabs count for
-
