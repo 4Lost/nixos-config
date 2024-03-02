@@ -1,10 +1,11 @@
 {
   imports = [
-    ./git.nix
-    ./zathura.nix
-    ./wallpaper.nix
-    ./zsh
     ./alacritty
+    ./neovim
+    ./git.nix
+    ./wallpaper.nix
     ./xmonad
+    ./zathura.nix
+    ./zsh
   ];
 }

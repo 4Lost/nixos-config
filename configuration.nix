@@ -75,10 +75,10 @@
   };
 
   environment.systemPackages = with pkgs; [
-    #(libsForQt5.callPackage home/programs/catppuccin-sddm.nix { })
+    (libsForQt5.callPackage ./home/programs/catppuccin-sddm.nix { })
 
     git
-    neovim
+    #neovim
     wget
     curl
     alacritty
