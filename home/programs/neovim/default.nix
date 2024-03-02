@@ -17,6 +17,7 @@ in {
 
   programs.neovim = {
     enable = true;
+    package = pkgs.neovim-nightly;
     withNodeJs = true;
     withPython3 = true;
 
@@ -26,6 +27,7 @@ in {
       cmp-buffer
       cmp-conjure
       cmp-nvim-lua
+      cmp-nvim-lsp
       cmp-path
       cmp_luasnip
       comment-nvim

@@ -16,16 +16,20 @@
 
   };
 
+  inputs.neovim-nightly-overlay.url =
+    "github:nix-community/neovim-nightly-overlay";
   outputs = { self, nixpkgs, xmonad-contrib, home-manager, ... }@inputs: {
     nixosConfigurations = {
       eliasLaptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-          home-manager.nixosModules.home-manager {
+          home-manager.nixosModules.home-manager
+          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.elias = import ./home/default.nix;
+            nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays ];
           }
         ];
       };
