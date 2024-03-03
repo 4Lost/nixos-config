@@ -30,10 +30,6 @@
 - Backup
 - Uni Zeug Drucken
 
-## Dolphin
-
-- COe Cloud einrichten - Nautilus => maby general Nautilus?
-
 ## Obs
 
 - Installieren

@@ -17,8 +17,8 @@ return {
       require("obsidian").setup({
         workspaces = {
           {
-            name = "personal",
-            path = "~/Notes/personal",
+            name = "COe",
+            path = "/run/user/1000/gvfs/smb-share:server=192.168.0.100,share=administration/NetzwerkTeam/wiki",
           },
           {
             name = "work",
