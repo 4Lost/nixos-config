@@ -9,7 +9,7 @@
       env = { "TERM" = "xterm-256color"; };
 
       font = {
-        size = 10;
+        size = 9;
         normal.family = "Fira Code";
         bold.family = "Fira Code";
         italic.family = "Fira Code";

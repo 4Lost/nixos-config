@@ -2,9 +2,7 @@
 
 {
   services = {
-    ssh-agent = {
-      enable = true;
-    };
+    ssh-agent = { enable = true; };
     openssh = {
       enable = true;
       settings = {

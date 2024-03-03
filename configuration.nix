@@ -10,11 +10,11 @@
     efi.canTouchEfiVariables = true;
   };
 
-  # Define your hostname.
-  networking.hostName = "eliasLaptop";
-
-  # Use NetworkManager for networking.
-  networking.networkmanager.enable = true;
+  # Chose NetworkManager and hostname.
+  networking = {
+    hostName = "eliasLaptop";
+    networkmanager.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -23,39 +23,37 @@
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";
-    useXkbConfig = true; # use xkb.options in tty.
+    # Use xkb.options in tty.
+    useXkbConfig = true;
   };
 
-  services.xserver = {
-    enable = true;
-    displayManager = {
-      sddm = {
-        enable = true;
-        theme = "catppuccin-mocha";
-      };
-      defaultSession = "none+xmonad";
-    };
-    windowManager.xmonad = { enable = true; };
-    xkb = { layout = "de"; };
-  };
-
+  # Activate Flakes.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services = {
+    # Set XServer Options.
+    xserver = {
+      enable = true;
+      displayManager = {
+        sddm = {
+          enable = true;
+          theme = "catppuccin-mocha";
+        };
+        defaultSession = "none+xmonad";
+      };
+      libinput.enable = true; # Enable touchpad.
+      windowManager.xmonad.enable = true;
+      xkb.layout = "de";
+    };
+    # Enable CUPS to print.
+    printing.enable = true;
+  };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account.
   users = {
     mutableUsers = false;
     users.elias = {
@@ -68,6 +66,7 @@
     };
   };
 
+  # Basic Packages.
   environment.systemPackages = with pkgs; [
     (libsForQt5.callPackage ./home/themes/catppuccin-sddm.nix { })
 
@@ -77,6 +76,7 @@
     alacritty
     dmenu
   ];
+
   # Enable zsh for setting it as shell for users.
   programs.zsh.enable = true;
 

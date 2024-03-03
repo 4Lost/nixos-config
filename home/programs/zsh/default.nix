@@ -1,16 +1,9 @@
 { pkgs, config, ... }:
 
 {
-  home.packages = with pkgs; [
-    #zsh
-    fzf
-    python3
-    zsh-nix-shell
-    nix-zsh-completions
-  ];
+  home.packages = with pkgs; [ fzf python3 zsh-nix-shell nix-zsh-completions ];
 
   programs.zsh = {
-    enable = true;
     dotDir = ".config/zsh";
     shellAliases = { update = "sudo nixos-rebuild switch"; };
     enableAutosuggestions = true;

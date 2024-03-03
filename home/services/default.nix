@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./ssh-agent.nix
-  ];
-}
+{ imports = [ ./openssh.nix ./ssh-agent.nix ]; }
