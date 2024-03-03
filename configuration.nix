@@ -51,6 +51,8 @@
     };
     # Enable CUPS to print.
     printing.enable = true;
+    # For Samba support in Nautilus.
+    gvfs.enable = true;
   };
 
   # Define a user account.
@@ -75,6 +77,12 @@
     curl
     alacritty
     dmenu
+
+    gnome.nautilus
+    lxqt.lxqt-policykit # provides a default authentication client for policykit
+
+    #libsForQt5.dolphin
+    #libsForQt5.kdegraphics
   ];
 
   # Enable zsh for setting it as shell for users.
