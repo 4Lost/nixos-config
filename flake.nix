@@ -26,10 +26,7 @@
               useUserPackages = true;
               users.elias = import ./home/default.nix;
             };
-            nixpkgs.overlays = [
-              inputs.neovim-nightly-overlay.overlay
-              ./home/overlays/nautilus.nix
-            ];
+            nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlay ];
           }
         ];
       };
