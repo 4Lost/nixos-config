@@ -1,10 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./programs
-    ./services
-  ];
+  imports = [ ./programs ./services ];
   home = {
     username = "elias";
     homeDirectory = "/home/elias";
@@ -28,9 +25,7 @@
       firefox
       #signal-desktop
       #telegram-desktop
-      xfce.thunar
       # zathura
-      xfce.xfconf
     ];
 
     # environment.shells = [ pkgs.zsh ];

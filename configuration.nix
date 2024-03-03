@@ -1,19 +1,20 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
+  # Include the results of the hardware scan.
+  imports = [ ./hardware-configuration.nix ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
-  networking.hostName = "eliasLaptop"; # Define your hostname.
-  # Pick only one of the below networking options.
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable =
-    true; # Easiest to use and most distros use this by default.
+  # Define your hostname.
+  networking.hostName = "eliasLaptop";
+
+  # Use NetworkManager for networking.
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -68,17 +69,18 @@
   };
 
   environment.systemPackages = with pkgs; [
-    (libsForQt5.callPackage ./home/programs/catppuccin-sddm.nix { })
+    (libsForQt5.callPackage ./home/themes/catppuccin-sddm.nix { })
 
     git
-    #neovim
     wget
     curl
     alacritty
     dmenu
   ];
-
+  # Enable zsh for setting it as shell for users.
   programs.zsh.enable = true;
-  system.stateVersion = "23.11"; # Do not change!!!!
+
+  # Set stateVersion. Leave it as set.
+  system.stateVersion = "23.11";
 }
 

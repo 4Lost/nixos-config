@@ -3,8 +3,8 @@ return {
     "epwalsh/obsidian.nvim",
     lazy = true,
     event = {
-      "BufReadPre " .. vim.fn.expand("~") .. "/Notes/**.md",
-      "BufNewFile " .. vim.fn.expand("~") .. "/Notes/**.md",
+      "BufReadPre " .. vim.fn.expand("~") .. "**.md",
+      "BufNewFile " .. vim.fn.expand("~") .. "**.md",
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -30,7 +30,10 @@ return {
           },
         },
       })
+      function OpenMarkdownPreview(url)
+        execute "silent ! firefox --new-window " . a:url
+      endfunction
+      let g:mkdp_browserfunc = 'OpenMarkdownPreview'
     end,
   },
 }
-
