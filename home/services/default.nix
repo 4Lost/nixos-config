@@ -1,1 +1,5 @@
-{ imports = [ ./openssh.nix ./ssh-agent.nix ]; }
+{ pkgs, ... }:
+
+{
+  imports = [ ./ssh-agent.nix ];
+}

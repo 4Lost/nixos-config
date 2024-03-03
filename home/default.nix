@@ -18,7 +18,7 @@
       lm_sensors
 
       # extras
-      #    openssh
+      # openssh
       #betterbird
       #bitwarden
       # dropbox
