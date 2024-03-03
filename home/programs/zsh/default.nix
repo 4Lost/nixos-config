@@ -6,7 +6,11 @@
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
-    shellAliases = { update = "sudo nixos-rebuild switch"; };
+    shellAliases = {
+      update = "sudo nixos-rebuild switch";
+      addTV =
+        "xrandr --output eDP-1 --auto --output HDMI-1 --mode 1920x1080 --right-of eDP-1";
+    };
     enableAutosuggestions = true;
     enableCompletion = true;
     enableVteIntegration = true;
