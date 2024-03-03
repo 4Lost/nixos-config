@@ -32,7 +32,6 @@
 
 ## Dolphin
 
-- Installieren
 - COe Cloud einrichten - Nautilus => maby general Nautilus?
 
 ## Obs

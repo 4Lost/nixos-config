@@ -1,7 +1,7 @@
 {
   imports = [
     ./alacritty
-    ./dolphin
+    ./thunar
     ./neovim
     ./git.nix
     ./wallpaper.nix
