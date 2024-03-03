@@ -125,7 +125,7 @@ in {
             pkgs.vimUtils.packDir
             config.programs.neovim.finalPackage.passthru.packpathDirs
           }/pack/myNeovimPackages/start",
-          patterns = {"arkav", "Bekaboo", "catppuccin", "epwalsh", "folke", "ggandor", "HiPhish", "hrsh7th", "iamcco", "Joosep", "Julian", "karb94", "L3MON4D3", "lervag", "neovim", "numToStr", "nvim-lua", "nvim-lualine", "nvim-telescope", "nvim-tree", "nvim-treesitter", "Olical", "onsails", "PaterJason", "rafamadiz", "saadparwaiz1", "skanehira", "stevearc", "tpope", "windwp"},
+          patterns = {"arkav", "Bekaboo", "catppuccin", "epwalsh", "folke", "ggandor", "HiPhish", "hrsh7th", "iamcco", "Joosep", "Julian", "karb94", "kylechui", "L3MON4D3", "lervag", "neovim", "numToStr", "nvim-lua", "nvim-lualine", "nvim-telescope", "nvim-tree", "nvim-treesitter", "Olical", "onsails", "PaterJason", "rafamadiz", "saadparwaiz1", "skanehira", "stevearc", "tpope", "windwp"},
         },
         install = {
           -- Safeguard in case we forget to install a plugin with Nix

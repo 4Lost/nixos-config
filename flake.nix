@@ -29,7 +29,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.elias = import ./home/default.nix;
-            nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlays ];
+            nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlay ];
           }
         ];
       };
