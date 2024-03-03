@@ -24,10 +24,6 @@
   - Netzwerk
   - i3?
 
-## Multiple Monitore
-
-- einrichten
-
 ## Dateien
 
 - Sortieren

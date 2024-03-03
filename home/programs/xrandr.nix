@@ -1,5 +1,0 @@
-{ ... }:
-
-{
-  programs.xrandr = { enable = true; };
-}

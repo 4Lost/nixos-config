@@ -16,9 +16,9 @@
 
       # system tools
       lm_sensors
+      arandr
 
-      # extras
-      # openssh
+      # noch ned conf
       #betterbird
       #bitwarden
       # dropbox
