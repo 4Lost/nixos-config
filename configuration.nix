@@ -1,10 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -13,7 +12,8 @@
   networking.hostName = "eliasLaptop"; # Define your hostname.
   # Pick only one of the below networking options.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable =
+    true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -34,12 +34,8 @@
       };
       defaultSession = "none+xmonad";
     };
-    windowManager.xmonad = {
-      enable = true;
-    };
-    xkb = {
-      layout = "de";
-    };
+    windowManager.xmonad = { enable = true; };
+    xkb = { layout = "de"; };
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -66,7 +62,8 @@
       home = "/home/elias";
       shell = pkgs.zsh;
       extraGroups = [ "wheel" "networkmanager" ];
-      hashedPassword = "$6$pdAJt1f0v7Zb13Ri$1WpKrErAp5JCb7eXs7EeeWYRMBLu5/WKDdMyGzJyYQDijG2NiywUXpAkl/8p1noxOOqYbb.MTw7JmTzhWGsT21";
+      hashedPassword =
+        "$6$pdAJt1f0v7Zb13Ri$1WpKrErAp5JCb7eXs7EeeWYRMBLu5/WKDdMyGzJyYQDijG2NiywUXpAkl/8p1noxOOqYbb.MTw7JmTzhWGsT21";
     };
   };
 

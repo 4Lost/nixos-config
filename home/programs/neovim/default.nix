@@ -15,6 +15,8 @@ let
 in {
   home.sessionVariables = { EDITOR = "nvim"; };
 
+  home.packages = with pkgs; [ nerdfonts ];
+
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;

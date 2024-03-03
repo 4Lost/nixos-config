@@ -12,9 +12,7 @@
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
-    shellAliases = {
-      update = "sudo nixos-rebuild switch";
-    };
+    shellAliases = { update = "sudo nixos-rebuild switch"; };
     enableAutosuggestions = true;
     enableCompletion = true;
     enableVteIntegration = true;
@@ -23,9 +21,7 @@
       size = 100000000000;
       path = "${config.xdg.dataHome}/zsh/zsh_history";
     };
-    syntaxHighlighting = {
-      enable = true;
-    };
+    syntaxHighlighting = { enable = true; };
     initExtra = ''
       PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
       RPROMPT='[%F{yellow}%?%f]'
