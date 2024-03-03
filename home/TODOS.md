@@ -171,4 +171,4 @@
 
 ## git
 
-- Packete sigieren für github
+- Packete signieren für github
