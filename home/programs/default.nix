@@ -1,8 +1,9 @@
 {
   imports = [
     ./alacritty
-    ./neovim
     ./git.nix
+    ./neovim
+    ./rofi
     ./wallpaper.nix
     ./xmonad
     ./zathura.nix

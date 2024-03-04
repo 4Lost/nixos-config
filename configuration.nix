@@ -2,7 +2,8 @@
 
 {
   # Include the results of the hardware scan.
-  imports = [ ./hardware-configuration.nix ];
+  imports =
+    [ ./hardware-configuration.nix ./home/programs/dropbox/default.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -78,7 +79,6 @@
     alacritty
     dmenu
 
-    dropbox-cli
     gnome.nautilus
     lxqt.lxqt-policykit # provides a default authentication client for policykit
   ];

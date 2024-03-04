@@ -1,5 +1,7 @@
 # Neues
 
+## Rofi
+
 ## Obsidian
 
 - Install?
@@ -105,11 +107,6 @@
 
 - Maby nur PC
 
-## Dropbox
-
-- Installieren
-- aufräumen
-
 ## Rofi
 
 - Installieren
@@ -177,3 +174,7 @@
 ## Nautilus
 
 - Thumbnailer
+
+## Dropbox
+
+- aufräumen
