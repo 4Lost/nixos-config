@@ -5,8 +5,9 @@
 - Install?
 - Vaults einrichten in home/programs/neovim/lua/plugins/obsidian.lua
   - IJB
-  - COe
   - Privat (evntl. für Rubik's Cube)
+  - COe nicht?
+- Only open if vault.
 
 ## Sddm
 
@@ -172,3 +173,7 @@
 ## git
 
 - Packete signieren für github
+
+## Nautilus
+
+- Thumbnailer

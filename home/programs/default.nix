@@ -1,6 +1,7 @@
 {
   imports = [
     ./alacritty
+    ./dropbox
     ./neovim
     ./git.nix
     ./wallpaper.nix

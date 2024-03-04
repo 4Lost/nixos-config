@@ -2,7 +2,10 @@ return {
   {
     "epwalsh/obsidian.nvim",
     lazy = true,
-    ft = "markdown",
+    event = {
+      "BufReadPre home/elias/dropbox/",
+      "BufNewFile home/elias/dropbox/",
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
