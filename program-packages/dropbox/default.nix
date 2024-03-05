@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-  home.systemPackages = with pkgs; [ dropbox dropbox-cli ];
+  environment.systemPackages = with pkgs; [ dropbox dropbox-cli ];
 
   networking.firewall = {
     allowedTCPPorts = [ 17500 ];

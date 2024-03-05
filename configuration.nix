@@ -2,10 +2,8 @@
 
 {
   # Include the results of the hardware scan.
-  imports = [
-    ./hardware-configuration.nix
-    #./home/programs/dropbox/default.nix
-  ];
+  imports =
+    [ ./hardware-configuration.nix ./program-packages/dropbox/default.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {

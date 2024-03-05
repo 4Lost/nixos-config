@@ -1,12 +1,11 @@
 {
   imports = [
     ./alacritty
-    ./dropbox
     ./git.nix
     ./neovim
     ./obs
     ./rofi
-    ./signal
+    ./signal.nix
     ./telegram.nix
     ./wallpaper.nix
     ./xmonad
