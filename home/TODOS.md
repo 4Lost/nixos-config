@@ -18,23 +18,14 @@
 
 - ???
 
-## Telegram
-
-- Installieren
-
-## Signal
-
--- Installieren
-
 ## Planify
 
 - Installieren
 - Sync
 
-## Anki
+## Lockscreen
 
-- Installieren
-- Sync
+- Lockscreen implementieren
 
 ## Ktouch
 
@@ -74,12 +65,6 @@
 
 - Maby nur PC
 
-## Rofi
-
-- Installieren
-- Theme wählen
-- also standard auswählen
-
 ## Zoom
 
 - Installieren
@@ -89,6 +74,10 @@
 ## Pulseaudio
 
 - einrichten
+
+## Rofi
+
+- Theme wählen
 
 ## Neovim
 
@@ -169,3 +158,8 @@
 ## NixOS - Trash
 
 - Garbage collect einrichten
+
+## Images
+
+- Hintergrund, Lockscreen
+- Webhook

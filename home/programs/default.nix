@@ -1,6 +1,7 @@
 {
   imports = [
     ./alacritty
+    ./anki.nix
     ./git.nix
     ./neovim
     ./obs
