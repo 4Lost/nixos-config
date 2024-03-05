@@ -26,8 +26,19 @@
               useUserPackages = true;
               users.elias = import ./home/default.nix;
             };
-            nixpkgs.overlays = [ inputs.neovim-nightly-overlay.overlay ];
+            nixpkgs.overlays = [
+              (final: prev: {
+                xmobar = final.haskellPackages.callPackage
+                  ./home/programs/xmonad/src/xmobar/default.nix { };
+              })
+              inputs.neovim-nightly-overlay.overlay
+            ];
           }
+        ] ++ xmonad-contrib.nixosModules ++ [
+          # `modernise` replaces the standard xmonad module and wrapper script
+          # with those from unstable. This is currently a necessary workaround to
+          # make Mod-q recompilation work.
+          xmonad-contrib.modernise."x86_64-linux"
         ];
       };
     };

@@ -43,7 +43,13 @@
         defaultSession = "none+xmonad";
       };
       libinput.enable = true; # Enable touchpad.
-      windowManager.xmonad.enable = true;
+      windowManager.xmonad = {
+        enable = true;
+        flake = {
+          enable = true;
+          compiler = "ghc924";
+        };
+      };
       xkb.layout = "de";
     };
     # Enable CUPS to print.
@@ -91,7 +97,10 @@
     '';
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [ "electron-25.9.0" ];
+  };
 
   # Enable zsh for setting it as shell for users.
   programs.zsh.enable = true;
