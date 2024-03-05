@@ -31,10 +31,6 @@
   # Activate Flakes.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   services = {
     # Set XServer Options.
     xserver = {
@@ -79,14 +75,36 @@
     alacritty
     dmenu
 
+    acpilight # For setting Backlight.
+
     gnome.nautilus
     lxqt.lxqt-policykit # provides a default authentication client for policykit
   ];
+
+  # permissions for acpilight
+  services.udev = {
+    enable = true;
+    extraRules = ''
+      SUBSYSTEM=="backlight", ACTION=="add", \
+        RUN+="${pkgs.coreutils-full}/bin/chgrp video /sys/class/backlight/%k/brightness", \
+        RUN+="${pkgs.coreutils-full}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+    '';
+  };
 
   nixpkgs.config.allowUnfree = true;
 
   # Enable zsh for setting it as shell for users.
   programs.zsh.enable = true;
+
+  # Audio
+  # rtkit is optional but recommended
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
   # Set stateVersion. Leave it as set.
   system.stateVersion = "23.11";

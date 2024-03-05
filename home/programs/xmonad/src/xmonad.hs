@@ -14,7 +14,6 @@ main = xmonad . ewmhFullscreen . ewmh . xmobarProp $ def
         }
       `additionalKeysP`
         [ ("M-p", spawn "rofi -show \"drun\"")
-        , ("M-S-p", spawn "rofi-pass")
         , ("M-b", spawn "firefox")
         , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10")
         , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10")

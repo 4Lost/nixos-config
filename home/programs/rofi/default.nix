@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ oranchelo-icon-theme nerdfonts pass xclip ];
+  home.packages = with pkgs; [ oranchelo-icon-theme nerdfonts xclip ];
 
   xsession.initExtra = "setxkbmap de"; # rofi pass needs this to be set
 
@@ -29,8 +29,6 @@
         EDITOR='rofi-sensible-terminal -e vim'
         clibpoard_backend=xclip
         clip=clipboard
-        password_length=32
-        default_user="$\{ROFI_PASS_DEFAULT_USER-$(whoami)\}"
       '';
     };
   };

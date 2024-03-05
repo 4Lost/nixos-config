@@ -3,8 +3,8 @@ return {
     "epwalsh/obsidian.nvim",
     lazy = true,
     event = {
-      "BufReadPre home/elias/dropbox/",
-      "BufNewFile home/elias/dropbox/",
+      "BufReadPre /home/elias/Dropbox/IJB/IJB-Notes/*",
+      "BufNewFile /home/elias/Dropbox/IJB/IJB-Notes/*",
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -17,8 +17,8 @@ return {
       require("obsidian").setup({
         workspaces = {
           {
-            name = "COe",
-            path = "/run/user/1000/gvfs/smb-share:server=192.168.0.100,share=administration/NetzwerkTeam/wiki",
+            name = "IJB-Notes",
+            path = "/home/elias/Dropbox/IJB/IJB-Notes",
           },
         },
       })

@@ -17,15 +17,12 @@
       # system tools
       lm_sensors
       arandr
+      pavucontrol
 
-      # noch ned conf
-      #betterbird
-      #bitwarden
-      # dropbox
+      obsidian
+      lean4
+
       firefox
-      #signal-desktop
-      #telegram-desktop
-      # zathura
     ];
 
     # environment.shells = [ pkgs.zsh ];
