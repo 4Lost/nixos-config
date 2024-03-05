@@ -1,38 +1,5 @@
 # Neues
 
-## Rofi
-
-## Obsidian
-
-- Install?
-- Vaults einrichten in home/programs/neovim/lua/plugins/obsidian.lua
-  - IJB
-  - Privat (evntl. für Rubik's Cube)
-  - COe nicht?
-- Only open if vault.
-
-## Sddm
-
-- Profilbild?
-- Sperrbild?
-- Wann sperren -> XMonad
-
-## XMoBar
-
-- Installieren
-- zu XMonad hinzufügen
-- Zur Leiste hinzufügen
-  - Uhrzeit
-  - Akku
-  - Netzwerk
-  - i3?
-
-## Dateien
-
-- Sortieren
-- Backup
-- Uni Zeug Drucken
-
 ## Obs
 
 - Installieren
@@ -178,3 +145,27 @@
 ## Dropbox
 
 - aufräumen
+
+## Sddm
+
+- Profilbild?
+- Sperrbild?
+- Wann sperren -> XMonad
+
+## XMoBar
+
+- Zur Leiste hinzufügen
+  - Uhrzeit
+  - Akku
+  - Netzwerk
+  - i3?
+
+## Dateien
+
+- Sortieren
+- Backup
+- Uni Zeug Drucken
+
+## NixOS - Trash
+
+- Garbage collect einrichten

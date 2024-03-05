@@ -7,7 +7,6 @@
     enable = true;
     settings = {
       env = { "TERM" = "xterm-256color"; };
-
       font = {
         size = 9;
         normal.family = "Fira Code";

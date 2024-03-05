@@ -14,13 +14,13 @@ main = xmonad . ewmhFullscreen . ewmh . xmobarProp $ def
         }
       `additionalKeysP`
         [ ("M-p", spawn "rofi -show \"drun\"")
-        , ("M-b", spawn "firefox")
-        , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10")
-        , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10")
-        , ("<XF86AudioMute>", spawn "wpctl set-mute 58 toggle")
-        , ("<XF86AudioRaiseVolume>", spawn "wpctl set-volume 58 0.05+")
-        , ("<XF86AudioLowerVolume>", spawn "wpctl set-volume 58 0.05-")
-        , ("<XF86AudioMicMute>", spawn "wpctl set-mute 52 toggle")
+        , ("M-c", spawn "firefox")
+        --, ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10")
+        --, ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10")
+        --, ("<XF86AudioMute>", spawn "wpctl set-mute 58 toggle")
+        --, ("<XF86AudioRaiseVolume>", spawn "wpctl set-volume 58 0.05+")
+        --, ("<XF86AudioLowerVolume>", spawn "wpctl set-volume 58 0.05-")
+        --, ("<XF86AudioMicMute>", spawn "wpctl set-mute 52 toggle")
         ]
       `removeKeysP`
         [ "M-q"
