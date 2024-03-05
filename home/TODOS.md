@@ -1,9 +1,5 @@
 # Neues
 
-## Obs
-
-- Installieren
-
 ## GHCI
 
 - Installieren
@@ -17,6 +13,10 @@
   - Uni
   - Kalender
   - Signing
+
+## Audio
+
+- ???
 
 ## Telegram
 
