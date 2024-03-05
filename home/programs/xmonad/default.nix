@@ -9,13 +9,6 @@
         enableContribAndExtras = true;
         config = ./src/xmonad.hs;
       };
-      #displayManagaer = {
-      #  sddm = {
-      #    enable = true;
-      #    theme = "sugar-dark";
-      #  };
-      #  defaultSession = "none+xmonad";
-      #};
     };
   };
 
