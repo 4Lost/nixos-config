@@ -16,12 +16,7 @@
 
 ## Audio
 
-- ???
-
-## Planify
-
-- Installieren
-- Sync
+- alsa
 
 ## Lockscreen
 
@@ -39,11 +34,6 @@
 
 - Installieren
 - Spiele
-
-## Element
-
-- Installieren
-- Matrix connecten
 
 ## Spotify
 
@@ -121,6 +111,7 @@
 
 - Hotkeys einrichten
   - i3
+  - mit alsa
 - Workspaces
 
 ## git
@@ -148,6 +139,7 @@
   - Akku
   - Netzwerk
   - i3?
+  - Audio
 
 ## Dateien
 

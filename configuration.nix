@@ -65,7 +65,7 @@
       isNormalUser = true;
       home = "/home/elias";
       shell = pkgs.zsh;
-      extraGroups = [ "wheel" "networkmanager" ];
+      extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
       hashedPassword =
         "$6$pdAJt1f0v7Zb13Ri$1WpKrErAp5JCb7eXs7EeeWYRMBLu5/WKDdMyGzJyYQDijG2NiywUXpAkl/8p1noxOOqYbb.MTw7JmTzhWGsT21";
     };
@@ -82,6 +82,8 @@
     dmenu
 
     acpilight # For setting Backlight.
+    pulseaudio
+    pulseaudio-ctl
 
     gnome.nautilus
     lxqt.lxqt-policykit # provides a default authentication client for policykit
@@ -106,15 +108,10 @@
   programs.zsh.enable = true;
 
   # Audio
-  # rtkit is optional but recommended
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit =
+    true; # # If compatibility with 32-bit applications is desired.
 
   # Set stateVersion. Leave it as set.
   system.stateVersion = "23.11";
