@@ -3,7 +3,7 @@ import Xmobar
 config :: Config
 config =
   defaultConfig
-    { font = "Fira Code"
+    { font = "Fira Code 9"
     , position    = TopH 30
     , borderColor = "#402339"
     , border      = FullB
@@ -13,6 +13,7 @@ config =
     , commands =
       [
         Run $ Com "./scripts/backlight.sh" [] "backlight" 10
+        Run $ Com "./scripts/audio.sh" [] "audio" 10
         Run $ Cpu
         [
           "--template", "<fc=#a9a1e1><fn=1>\xf085</fn></fc> <total>%"
@@ -38,7 +39,7 @@ config =
           , "--"
           , "--on", "<fc=#5c0714><fn=1>\xe050</fn>>/fc> <volumestatus>"
         ]
-        , Run $ Date "<fc=#ECBE7B><fn=1>\xf017</fn></fc> %d.%m.%y %H:%M" "date" 300
+        , Run $ Date "<fc=#ECBE7B><fn=1>\xf017</fn></fc> %a %d.%m.%y %H:%M" "date" 300
         , Run $ DynNetwork
         [
           "-t","<fc=#4db5bd><fn=1>\xf063</fn></fc> <rx> <fc=#c678dd><fn=1>\xf062</fn></fc> <tx>"
@@ -68,7 +69,7 @@ config =
     ]
     , sepChar     = "%"
     , alignSep    = "}{"
-    , template = "%XMonadLog% }{ %backlight% | %cpu% | %memory% | %battery% | %dynnetwork% | %date% "
+    , template = "%XMonadLog% }{ %audio% | %backlight% | %cpu% | %memory% | %battery% | %dynnetwork% | %date% "
     }
 
 main :: IO ()

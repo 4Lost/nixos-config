@@ -12,5 +12,5 @@
     };
   };
 
-  home.packages = [ pkgs.xmobar ];
+  home.packages = with pkgs; [ xmobar maim ];
 }

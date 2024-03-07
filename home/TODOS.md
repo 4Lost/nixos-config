@@ -114,10 +114,6 @@
   - mit alsa
 - Workspaces
 
-## git
-
-- Packete signieren für github
-
 ## Nautilus
 
 - Thumbnailer
@@ -131,15 +127,6 @@
 - Profilbild?
 - Sperrbild?
 - Wann sperren -> XMonad
-
-## XMoBar
-
-- Zur Leiste hinzufügen
-  - Uhrzeit
-  - Akku
-  - Netzwerk
-  - i3?
-  - Audio
 
 ## Dateien
 

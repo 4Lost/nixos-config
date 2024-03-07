@@ -11,6 +11,7 @@ import XMonad.Util.ClickableWorkspaces
 import XMonad.Util.Loggers
 import Data.ByteString (maximum)
 import Text.XHtml (gray)
+import Distribution.Compat.Prelude (print)
 
 
 main = xmonad . ewmhFullscreen . ewmh . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey $ myconfig
@@ -24,14 +25,19 @@ myconfig = def
   }
   `additionalKeysP`
   [
+    -- System
     ("M-p", spawn "rofi -show \"drun\"")
+    , ("<print>", spawn "maim --format=png \"/home/elias/Pictures/screenshot-$(date -u +'%Y-%m-%d-%H:%M:%S.png')\"")
+    --Program
     , ("M-c", spawn "firefox")
+    -- Brightness
     , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10")
     , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10")
-    --, ("<XF86AudioMute>", spawn "wpctl set-mute 58 toggle")
-    --, ("<XF86AudioRaiseVolume>", spawn "wpctl set-volume 58 0.05+")
-    --, ("<XF86AudioLowerVolume>", spawn "wpctl set-volume 58 0.05-")
-    --, ("<XF86AudioMicMute>", spawn "wpctl set-mute 52 toggle")
+    -- Audio
+    , ("<XF86AudioMute>", spawn "pulseaudio-ctl mute")
+    , ("<XF86AudioRaiseVolume>", spawn "pulseaudio-ctl up 5")
+    , ("<XF86AudioLowerVolume>", spawn "pulseaudio-ctl down 5")
+    , ("<XF86AudioMicMute>", spawn "pulseaudio-ctl mute-input")
   ]
   `removeKeysP` []
 
