@@ -14,10 +14,6 @@
   - Kalender
   - Signing
 
-## Audio
-
-- alsa
-
 ## Lockscreen
 
 - Lockscreen implementieren
@@ -59,11 +55,14 @@
 
 - Installieren
 
+## Catppuccin Theme
+
+- Firefox
+- Ecosia
+- Anki
+- Zathura
+
 # Optimierung
-
-## Pulseaudio
-
-- einrichten
 
 ## Rofi
 

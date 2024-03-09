@@ -10,7 +10,6 @@ import XMonad.Layout.Magnifier
 import XMonad.Util.ClickableWorkspaces
 import XMonad.Util.Loggers
 import Data.ByteString (maximum)
-import Text.XHtml (gray)
 import Distribution.Compat.Prelude (print)
 
 
@@ -20,14 +19,14 @@ myconfig = def
   {
     layoutHook = myLayout
     , terminal = "alacritty"
-    , normalBorderColor = "#050508"
-    , focusedBorderColor = "#89b4fa"
+    , normalBorderColor = "#f5c2e7"
+    , focusedBorderColor = "#cdd6f4"
   }
   `additionalKeysP`
   [
     -- System
     ("M-p", spawn "rofi -show \"drun\"")
-    , ("<print>", spawn "maim --format=png \"/home/elias/Pictures/screenshot-$(date -u +'%Y-%m-%d-%H:%M:%S.png')\"")
+    , ("<print>", spawn "maim --format=png \"/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S)\"")
     --Program
     , ("M-c", spawn "firefox")
     -- Brightness
@@ -38,15 +37,17 @@ myconfig = def
     , ("<XF86AudioRaiseVolume>", spawn "pulseaudio-ctl up 5")
     , ("<XF86AudioLowerVolume>", spawn "pulseaudio-ctl down 5")
     , ("<XF86AudioMicMute>", spawn "pulseaudio-ctl mute-input")
+    -- Print
+    , ("<XF86AudioMicMute>", spawn "pulseaudio-ctl mute-input")
   ]
   `removeKeysP` []
 
 myXmobarPP :: PP
 myXmobarPP = def
     {
-      ppSep               = magenta " • "
+      ppSep               = pink " • "
       , ppWsSep           = ""
-      , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#a8dfe3" 2
+      , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#f5c2e7" 2
       , ppHidden          = wrap " " ""
       , ppHiddenNoWindows = gray . wrap " " ""
       , ppUrgent          = red . wrap (yellow "!") (yellow "!")
@@ -55,17 +56,17 @@ myXmobarPP = def
       , ppExtras          = [logTitles formatFocused formatUnfocused]
     }
   where
-    formatFocused   = wrap "[" "]" . magenta . ppWindow
+    formatFocused   = wrap "[" "]" . pink . ppWindow
     formatUnfocused = wrap "[" "]" . gray . ppWindow
 
     ppWindow :: String -> String
     ppWindow = xmobarRaw . (\w -> if null w then "???" else w) . shorten 15 -- set maximum length of windowtitle to 15
 
-    magenta, gray, red, yellow :: String -> String
-    magenta   = xmobarColor "#ff79c6" ""
-    gray = xmobarColor "#5c5e5e" ""
-    red      = xmobarColor "#ff5555" ""
-    yellow   = xmobarColor "#f1fa8c" ""
+    pink, gray, red, yellow :: String -> String
+    pink   = xmobarColor "#f5c2e7" ""
+    gray = xmobarColor "#cdd6f4" ""
+    red      = xmobarColor "#f38ba8" ""
+    yellow   = xmobarColor "#f9e2af" ""
 
 
 myLayout = Tall 1 (3/100) (1/2) ||| Mirror (Tall 1 (3/100) (1/2)) ||| Full ||| ThreeColMid 1 (3/100) (1/2) -- wenn wieder zoom von fokusierten Seitenfenstern gewünscht, dann Fireox fixn und: magnifiercz' 1.3 (ThreeColMid 1 (3/100) (1/2))
