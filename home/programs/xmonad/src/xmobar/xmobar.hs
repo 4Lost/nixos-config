@@ -3,18 +3,18 @@ import Xmobar
 config :: Config
 config =
   defaultConfig
-    { font = "Fira Code 9"
-    , position    = TopH 30
-    , borderColor = "#402339"
+    { font = "Fira Code 10"
+    , position    = TopH 25
+    , borderColor = "#f38ba8"
     , border      = FullB
     , borderWidth = 2
-    , bgColor     = "#381f32"
-    , fgColor     = "#a8dfe3"
+    , bgColor     = "#eba0ac"
+    , fgColor     = "#b4befe"
     , commands =
       [
-        Run $ Com "./scripts/backlight.sh" [] "backlight" 10
-        Run $ Com "./scripts/audio.sh" [] "audio" 10
-        Run $ Cpu
+        Run $ Com "/bin/sh" ["-c", "Status=$(pulseaudio-ctl full-status); Volume=$(cut -d ' ' -f 1 <<<$Status); Mute=$(cut -d ' ' -f 2 <<<$Status); Microphone=$(cut -d ' ' -f 3 <<<$ Status); if [[ $Mute == \"yes\" ]]; then Symbol=\"\xf466\"; elif [[ $Volume -le 50 ]]; then Symbol=\"\xf027\"; elseSymbol=\"\xf028\"; fi; if [[ $Microphone == *\"yes\"* ]]; then MicOut=\"\xf036d\"; else MicOut=\"\xf036c\"; fi; echo \"<fc=#db4d65><fn=1>$Symbol</fn></fc> $Volume% <fc=#db4d65><fn=1>$MicOut</fn></fc>\""] "audio" 100
+        , Run $ Com "/bin/sh" ["-c", "echo \"<fc=#dbb302><fn=1>\xf00e0</fn></fc> $(xbacklight -get)%\""] "backlight" 100
+        , Run $ Cpu
         [
           "--template", "<fc=#a9a1e1><fn=1>\xf085</fn></fc> <total>%"
           , "--Low","3"
@@ -32,13 +32,6 @@ config =
           ,"-n","#bbc2cf"
           ,"-h","#fb4934"
         ] 50
-        , Run $ Alsa "default" "Master"
-        [
-          "--template", "<fc=#5c0714><fn=1>\xe050</fn>>/fc> <volumestatus>"
-          , "--suffix"  , "True"
-          , "--"
-          , "--on", "<fc=#5c0714><fn=1>\xe050</fn>>/fc> <volumestatus>"
-        ]
         , Run $ Date "<fc=#ECBE7B><fn=1>\xf017</fn></fc> %a %d.%m.%y %H:%M" "date" 300
         , Run $ DynNetwork
         [

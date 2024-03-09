@@ -142,3 +142,7 @@
 
 - Hintergrund, Lockscreen
 - Webhook
+
+## Terminal
+
+- Maby auf Kitty umsteigen wegen Fira Code
