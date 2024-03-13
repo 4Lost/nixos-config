@@ -57,7 +57,6 @@
 
 ## Catppuccin Theme
 
-- Firefox
 - Ecosia
 - Anki
 - Zathura
@@ -67,6 +66,7 @@
 ## Rofi
 
 - Theme wählen
+- Oder Theme an Farben anpassen
 
 ## Neovim
 
@@ -142,6 +142,8 @@
 - Hintergrund, Lockscreen
 - Webhook
 
-## Terminal
+## xmobar
 
-- Maby auf Kitty umsteigen wegen Fira Code
+- XMonadLog change colors
+- pulseaudioctl only gives correct answer after one change
+- change bash scripts to Haskell Functions

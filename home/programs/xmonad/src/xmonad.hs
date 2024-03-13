@@ -47,8 +47,8 @@ myXmobarPP = def
     {
       ppSep               = pink " • "
       , ppWsSep           = ""
-      , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#f5c2e7" 2
-      , ppHidden          = wrap " " ""
+      , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#f38ba8" 2
+      , ppHidden          = green . wrap " " ""
       , ppHiddenNoWindows = gray . wrap " " ""
       , ppUrgent          = red . wrap (yellow "!") (yellow "!")
       , ppTitleSanitize   = xmobarStrip
@@ -62,8 +62,9 @@ myXmobarPP = def
     ppWindow :: String -> String
     ppWindow = xmobarRaw . (\w -> if null w then "???" else w) . shorten 15 -- set maximum length of windowtitle to 15
 
-    pink, gray, red, yellow :: String -> String
+    pink, gray, red, yellow, green :: String -> String
     pink   = xmobarColor "#f5c2e7" ""
+    green = xmobarColor "#a6e3a1" ""
     gray = xmobarColor "#cdd6f4" ""
     red      = xmobarColor "#f38ba8" ""
     yellow   = xmobarColor "#f9e2af" ""
