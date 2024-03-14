@@ -48,6 +48,7 @@ myXmobarPP = def
       ppSep               = pink " • "
       , ppWsSep           = ""
       , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#f38ba8" 2
+      , ppVisible         = wrap " " "" . xmobarBorder "Top" "#a6e3a1" 2
       , ppHidden          = green . wrap " " ""
       , ppHiddenNoWindows = gray . wrap " " ""
       , ppUrgent          = red . wrap (yellow "!") (yellow "!")

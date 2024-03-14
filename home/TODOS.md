@@ -75,36 +75,6 @@
 ## Firefox
 
 - Addons strukturieren
-- Lesezeichen strukturieren
-  - Studium
-  - Linux
-    - Arch Linux
-    - NixOS
-    - Allgemein
-  - Nützlich?
-  - Online Tools?
-    - Spiele ?
-  - Musik? => Downloaden?
-  - Hobbies
-    - 3D
-    - Bienen
-    - Gärtnern
-    - Handarbeit
-    - Instrumente
-    - Kohen
-    - Programieren
-    - Sport
-    - Yu-Gi-Oh!
-    - Zauberwürfel
-    - Zocken
-    - Raspberry Pi
-    - Training
-    - Slackline
-    - Radeln
-  - Studium
-    - Info
-    - Mathe
-    - Allgemein
 
 ## XMonad
 
@@ -144,6 +114,5 @@
 
 ## xmobar
 
-- XMonadLog change colors
 - pulseaudioctl only gives correct answer after one change
 - change bash scripts to Haskell Functions

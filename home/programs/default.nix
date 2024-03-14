@@ -10,6 +10,7 @@
     ./rofi
     ./signal.nix
     ./telegram.nix
+    ./thunderbird
     ./wallpaper.nix
     ./xmonad
     ./zathura.nix
