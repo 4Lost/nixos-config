@@ -53,11 +53,6 @@
 
 # Optimierung
 
-## Rofi
-
-- Theme wählen
-- Oder Theme an Farben anpassen
-
 ## Neovim
 
 - Sidebar

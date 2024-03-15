@@ -12,5 +12,5 @@
     };
   };
 
-  home.packages = with pkgs; [ xmobar maim ];
+  home.packages = with pkgs; [ xmobar maim xdotool ];
 }

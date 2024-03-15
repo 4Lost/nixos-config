@@ -11,24 +11,38 @@ import XMonad.Util.ClickableWorkspaces
 import XMonad.Util.Loggers
 import Data.ByteString (maximum)
 import Distribution.Compat.Prelude (print)
+import Control.Monad.RWS (All(All))
+import XMonad.Hooks.ManageHelpers
 
 
 main = xmonad . ewmhFullscreen . ewmh . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey $ myconfig
 
 myconfig = def
   {
-    layoutHook = myLayout
-    , terminal = "alacritty"
-    , normalBorderColor = "#f5c2e7"
-    , focusedBorderColor = "#cdd6f4"
+    modMask               = mod4Mask
+    , layoutHook          = myLayout
+    , terminal            = "alacritty"
+    , normalBorderColor   = "#f5c2e7"
+    , focusedBorderColor  = "#cdd6f4"
+    , manageHook          = myManageHooks
   }
   `additionalKeysP`
   [
     -- System
     ("M-p", spawn "rofi -show \"drun\"")
-    , ("<Print>", spawn "maim --format=png \"/home/elias/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S).png\"")
+    -- Screenshots
+    , ("<Print>", spawn "maim --format=png \"/home/$USER/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S).png\"") -- Whole Screen to File
+    , ("M-<Print>", spawn "maim --format=png --window  $(xdotool getactivewindow) \"/home/$USER/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S).png\"") -- Focused Window to File
+    , ("S-<Print>", spawn "maim --format=png --select \"/home/$USER/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S).png\"") -- Selection to File
+    , ("C-<Print>", spawn "maim --format=png | xclip -selection clipboard -t image/png") -- Whole Screen to Clipboard
+    , ("M-C-<Print>", spawn "maim --format=png --window $(xdotool getactivewindow) | xclip -section clipboard -t image/png") -- Focused Window to Clipboard
+    , ("C-S-<Print>", spawn "maim --format=png --select | xclip -selection clipboard -t image/png") -- Selection to Clipboard
     --Program
     , ("M-c", spawn "firefox")
+    , ("M-y", spawn "signal-desktop")
+    , ("M-x", spawn "telegram-desktop")
+    , ("M-c", spawn "firefox")
+    , ("M-v", spawn "thunderbird")
     -- Brightness
     , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10")
     , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10")
@@ -36,8 +50,6 @@ myconfig = def
     , ("<XF86AudioMute>", spawn "pulseaudio-ctl mute")
     , ("<XF86AudioRaiseVolume>", spawn "pulseaudio-ctl up 5")
     , ("<XF86AudioLowerVolume>", spawn "pulseaudio-ctl down 5")
-    , ("<XF86AudioMicMute>", spawn "pulseaudio-ctl mute-input")
-    -- Print
     , ("<XF86AudioMicMute>", spawn "pulseaudio-ctl mute-input")
   ]
   `removeKeysP` []
@@ -72,6 +84,12 @@ myXmobarPP = def
 
 
 myLayout = Tall 1 (3/100) (1/2) ||| Mirror (Tall 1 (3/100) (1/2)) ||| Full ||| ThreeColMid 1 (3/100) (1/2) -- wenn wieder zoom von fokusierten Seitenfenstern gewünscht, dann Fireox fixn und: magnifiercz' 1.3 (ThreeColMid 1 (3/100) (1/2))
+
+myManageHooks :: ManageHook
+myManageHooks = composeAll
+  [
+    isDialog --> doFloat
+  ]
 
 myStartupHook :: X ()
 myStartupHook = do
