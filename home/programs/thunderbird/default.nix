@@ -1,11 +1,23 @@
 { pkgs, ... }:
 
 {
-  #programs.thunderbird = true;
+  programs.thunderbird = {
+    enable = true;
+    profiles = {
+      privat.isDefault = true;
+      kjr.isDefault = false;
+    };
+    settings = { };
+  };
   accounts.email = {
     accounts = {
       kjr = {
         address = "elias.schroeter@kjr-ebe.de";
+        imap = {
+          host = "outlook.office365.com";
+          port = 993;
+          tls.enable = true;
+        };
         realName = "Elias Schröter";
         signature = {
           text = ''
@@ -15,6 +27,14 @@
           showSignature = "append";
         };
         passwordCommand = "mail-password";
+        smtp = {
+          host = "smtp.office365.com";
+          port = 587;
+          tls = {
+            enable = true;
+            useStartTls = true;
+          };
+        };
         userName = "elias.schroeter@kjr-ebe.de";
         thunderbird = { enable = true; };
       };
@@ -42,13 +62,13 @@
         smtp = {
           host = "mail.ecloud.global";
           port = 587;
+          tls = {
+            enable = true;
+            useStartTls = true;
+          };
         };
         userName = "elias.schroeter@e.email";
         primary = true;
-        tls = {
-          enable = true;
-          useStartTls = true;
-        };
         thunderbird = { enable = true; };
       };
     };

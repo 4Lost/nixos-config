@@ -28,6 +28,14 @@
     useXkbConfig = true;
   };
 
+  # Enable Asterisks for Password prompt
+  security.sudo = {
+    enable = true;
+    extraConfig = ''
+      Defaults pwfeedback
+    '';
+  };
+
   # Activate Flakes.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -82,6 +90,7 @@
     dmenu
 
     acpilight # For setting Backlight.
+    dbus
     pulseaudio
     pulseaudio-ctl
 

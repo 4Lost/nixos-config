@@ -4,16 +4,6 @@
 
 - Installieren
 
-## Betterbird
-
-- Installieren
-- Config
-  - KJR
-  - Privat
-  - Uni
-  - Kalender
-  - Signing
-
 ## Lockscreen
 
 - Lockscreen implementieren
@@ -116,3 +106,9 @@
 
 - pulseaudioctl only gives correct answer after one change
 - change bash scripts to Haskell Functions
+
+## Betterbird
+
+- Theme declarativ setzen
+- zweites Profil fixen
+- uni mail

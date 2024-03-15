@@ -26,7 +26,7 @@ myconfig = def
   [
     -- System
     ("M-p", spawn "rofi -show \"drun\"")
-    , ("<print>", spawn "maim --format=png \"/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S)\"")
+    , ("<Print>", spawn "maim --format=png \"/home/elias/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S).png\"")
     --Program
     , ("M-c", spawn "firefox")
     -- Brightness
