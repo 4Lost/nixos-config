@@ -43,14 +43,16 @@ executable xmobar
     main-is:          xmobar.hs
 
     other-modules:    Commands,
+                      ColorCache,
                       XUtil,
                       Plugins,
                       Plugins.Audio
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.17.2.1,
                       xmobar ^>=0.47.1,
-                      process ^>=1.6.18.0
-
+                      process ^>=1.6.18.0,
+                      mtl >= 2.0 && < 2.2,
+                      X11 >= 1.6.1
     -- Directories containing source files.
     hs-source-dirs:   .
 
