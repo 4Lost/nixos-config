@@ -28,8 +28,10 @@ myconfig = def
   }
   `additionalKeysP`
   [
+    -- Messages
+    ("M-m w", spawn "xmessage 'Test Message :)'")  -- type mod+x then w to pop up 'woohoo!')
     -- System
-    ("M-p", spawn "rofi -show \"drun\"")
+    , ("M-p", spawn "rofi -show \"drun\"")
     -- Screenshots
     , ("<Print>", spawn "maim --format=png \"/home/$USER/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S).png\"") -- Whole Screen to File
     , ("M-<Print>", spawn "maim --format=png --window  $(xdotool getactivewindow) \"/home/$USER/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S).png\"") -- Focused Window to File
@@ -89,6 +91,7 @@ myManageHooks :: ManageHook
 myManageHooks = composeAll
   [
     isDialog --> doFloat
+    , className =? "Xmessage" --> doCenterFloat
   ]
 
 myStartupHook :: X ()

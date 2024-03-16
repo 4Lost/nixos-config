@@ -1,12 +1,13 @@
 # Neues
 
+## Kalender
+
+- inplemantieren
+- in Thunderbird übernehmen
+
 ## GHCI
 
 - Installieren
-
-## Lockscreen
-
-- Lockscreen implementieren
 
 ## Ktouch
 
@@ -63,9 +64,6 @@
 
 ## XMonad
 
-- Hotkeys einrichten
-  - i3
-  - mit alsa
 - Workspaces
 
 ## Nautilus
@@ -79,8 +77,7 @@
 ## Sddm
 
 - Profilbild?
-- Sperrbild?
-- Wann sperren -> XMonad
+- Wann sperren -> XMonad?
 
 ## Dateien
 
@@ -107,3 +104,8 @@
 - Theme declarativ setzen
 - zweites Profil fixen
 - uni mail
+- privat mail key fixen
+
+## Lockscreen
+
+- Optisch anpassen -> ist nur proviorisch bis jetzt
