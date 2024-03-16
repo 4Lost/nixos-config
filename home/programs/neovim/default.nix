@@ -143,6 +143,6 @@ in {
     recursive = true;
     source = ./lua;
   };
-  xdg.configFile."nvim/coc-settings.json".source = ./coc-settins.json;
+  xdg.configFile."nvim/coc-settings.json".source = ./coc-settings.json;
 }
 
