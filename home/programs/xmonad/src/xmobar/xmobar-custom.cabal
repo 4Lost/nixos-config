@@ -42,7 +42,10 @@ executable xmobar
     -- .hs or .lhs file containing the Main module.
     main-is:          xmobar.hs
 
-    other-modules:    Plugins.Audio
+    other-modules:    Commands,
+                      XUtil,
+                      Plugins,
+                      Plugins.Audio
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.17.2.1,
                       xmobar ^>=0.47.1,

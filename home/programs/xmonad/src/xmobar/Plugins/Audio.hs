@@ -16,7 +16,7 @@
 
 module Plugins.Audio where
 
---import Plugins
+import Plugins
 import System.Process
 import GHC.Show (Show(show))
 

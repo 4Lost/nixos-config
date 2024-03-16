@@ -12,5 +12,11 @@
     };
   };
 
-  home.packages = with pkgs; [ xmobar maim xdotool xorg.xmessage ];
+  home.packages = with pkgs; [
+    xmobar
+    maim
+    xdotool
+    xorg.xmessage
+    cabal-install
+  ];
 }
