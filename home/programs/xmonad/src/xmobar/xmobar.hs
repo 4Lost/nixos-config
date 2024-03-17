@@ -17,6 +17,7 @@ config =
     , fgColor     = "#f5e0dc"
     , commands =
       [
+        Run $ Audio "abc" 200
         --Run $ Com "/bin/sh" ["-c", "Status=$(pulseaudio-ctl full-status); Volume=$(cut -d ' ' -f 1 <<<$Status); Mute=$(cut -d ' ' -f 2 <<<$Status); Microphone=$(cut -d ' ' -f 3 <<<$Status); SpeakerColor=\"#a6e3a1\"; MicColor=\"#a6e3a1\"; if [[ $Mute == \"yes\" ]]; then Symbol=\"\xf466\"; SpeakerColor=\"#f38ba8\"; elif [[ $Volume -le 50 ]]; then Symbol=\"\xf027\"; elseSymbol=\"\xf028\"; fi; if [[ $Microphone == \"yes\" ]]; then MicOut=\"\xf036d\"; MicColor=\"#f38ba8\"; else MicOut=\"\xf036c\"; fi; echo \"<fc=$SpeakerColor><fn=1>$Symbol</fn></fc> $Volume% <fc=$MicColor><fn=1>$MicOut</fn></fc>\""] "audio" 10
         --Run $ Com "/bin/sh" ["-c", "Status=$(pulseaudio-ctl full-status);
         --  Volume=$(cut -d ' ' -f 1 <<<$Status);
@@ -47,7 +48,8 @@ config =
         --  "--template", "<fc=<speakerColor>><fn=1><speakerIcon></fn></fc> <Volume>% <fc=<micColor>><fn=1><micIcon></fn></fc>"
         --  , "" ""
         --] 10
-        Run $ Audio "#f38ba8" "#a6e3a1" "\xf466" "\xf027" "\xf027" "\xf036d" "\xf036c" 10
+        -- Run $ Audio "#f38ba8" "#a6e3a1" "\xf466" "\xf027" "\xf027" "\xf036d" "\xf036c" 10
+        --Run $ Audio "<fc=#fab387><fn=1>\xf017</fn></fc> %a %d.%m.%y %H:%M" "date" 300
         , Run $ Com "/bin/sh" ["-c", "echo \"<fc=#f9e2af><fn=1>\xf00e0</fn></fc> $(xbacklight -get)%\""] "backlight" 10
         , Run $ Cpu
         [
