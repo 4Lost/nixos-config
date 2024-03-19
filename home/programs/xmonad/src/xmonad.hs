@@ -54,7 +54,7 @@ myconfig = def
     , ("<XF86AudioLowerVolume>", spawn "pulseaudio-ctl down 5")
     , ("<XF86AudioMicMute>", spawn "pulseaudio-ctl mute-input")
   ]
-  `removeKeysP` []
+  `removeKeysP` [ "M-S-q" ]
 
 myXmobarPP :: PP
 myXmobarPP = def

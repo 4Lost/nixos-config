@@ -17,8 +17,8 @@ config =
     , fgColor     = "#f5e0dc"
     , commands =
       [
-        Run $ Audio "abc" 200
-        --Run $ Com "/bin/sh" ["-c", "Status=$(pulseaudio-ctl full-status); Volume=$(cut -d ' ' -f 1 <<<$Status); Mute=$(cut -d ' ' -f 2 <<<$Status); Microphone=$(cut -d ' ' -f 3 <<<$Status); SpeakerColor=\"#a6e3a1\"; MicColor=\"#a6e3a1\"; if [[ $Mute == \"yes\" ]]; then Symbol=\"\xf466\"; SpeakerColor=\"#f38ba8\"; elif [[ $Volume -le 50 ]]; then Symbol=\"\xf027\"; elseSymbol=\"\xf028\"; fi; if [[ $Microphone == \"yes\" ]]; then MicOut=\"\xf036d\"; MicColor=\"#f38ba8\"; else MicOut=\"\xf036c\"; fi; echo \"<fc=$SpeakerColor><fn=1>$Symbol</fn></fc> $Volume% <fc=$MicColor><fn=1>$MicOut</fn></fc>\""] "audio" 10
+        --Run $ Audio 10
+        Run $ Com "/bin/sh" ["-c", "Status=$(pulseaudio-ctl full-status); Volume=$(cut -d ' ' -f 1 <<<$Status); Mute=$(cut -d ' ' -f 2 <<<$Status); Microphone=$(cut -d ' ' -f 3 <<<$Status); SpeakerColor=\"#a6e3a1\"; MicColor=\"#a6e3a1\"; if [[ $Mute == \"yes\" ]]; then Symbol=\"\xf466\"; SpeakerColor=\"#f38ba8\"; elif [[ $Volume -le 50 ]]; then Symbol=\"\xf027\"; elseSymbol=\"\xf028\"; fi; if [[ $Microphone == \"yes\" ]]; then MicOut=\"\xf036d\"; MicColor=\"#f38ba8\"; else MicOut=\"\xf036c\"; fi; echo \"<fc=$SpeakerColor><fn=1>$Symbol</fn></fc> $Volume% <fc=$MicColor><fn=1>$MicOut</fn></fc>\""] "audio" 60
         --Run $ Com "/bin/sh" ["-c", "Status=$(pulseaudio-ctl full-status);
         --  Volume=$(cut -d ' ' -f 1 <<<$Status);
         --  Mute=$(cut -d ' ' -f 2 <<<$Status);
@@ -40,7 +40,7 @@ config =
         --    MicOut=\"\xf036d\";
         --    MicColor=\"#f38ba8\";
         --  else MicOut=\"\xf036c\";
-        --  fi;
+        --  fi;xmobar.Run not found
         --
         --  echo \"<fc=$SpeakerColor><fn=1>$Symbol</fn></fc> $Volume% <fc=$MicColor><fn=1>$MicOut</fn></fc>\""] "audio" 10
         --Run $ Audio

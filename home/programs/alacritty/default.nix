@@ -17,7 +17,7 @@ in {
         import = "${theme}";
       };
       font = {
-        size = 9;
+        size = 7;
         normal.family = "Fira Code";
         bold.family = "Fira Code";
         italic.family = "Fira Code";

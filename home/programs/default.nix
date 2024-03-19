@@ -2,8 +2,10 @@
   imports = [
     ./alacritty
     ./anki.nix
+    ./discord.nix
     ./element.nix
     ./git.nix
+    ./ktouch.nix
     ./neovim
     ./obs
     ./planify.nix
