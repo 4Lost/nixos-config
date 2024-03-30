@@ -3,7 +3,7 @@
 let
   theme = builtins.fetchurl {
     url =
-      "https://github.com/catppuccin/alacritty/ raw/main/catppuccin-mocha.toml";
+      "https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml";
     sha256 = "061yalrzpqivr67k2f8hsqixr77srgd8y47xvhp5vg0sjmh5lrcy";
   };
 in {

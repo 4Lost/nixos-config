@@ -2,8 +2,11 @@
 
 {
   # Include the results of the hardware scan.
-  imports =
-    [ ./hardware-configuration.nix ./program-packages/dropbox/default.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./program-packages/dropbox/default.nix
+    ./program-packages/steam/default.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -12,20 +15,25 @@
   };
 
   # Chose NetworkManager and hostname.
-  networking = {
-    hostName = "eliasLaptop";
-    networkmanager.enable = true;
-  };
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+
   console = {
     font = "Lat2-Terminus16";
     # Use xkb.options in tty.
     useXkbConfig = true;
+  };
+
+  # Garbage collect
+  nix.gc = {
+    automatic = true; # Enable the automatic garbage collector
+    dates = "10:00"; # When to run the garbage collector
+    options = "--delete-older-than 7d";
   };
 
   # Enable Asterisks for Password prompt
@@ -62,8 +70,6 @@
     };
     # Enable CUPS to print.
     printing.enable = true;
-    # For Samba support in Nautilus.
-    gvfs.enable = true;
   };
 
   # Define a user account.
@@ -91,12 +97,21 @@
 
     acpilight # For setting Backlight.
     dbus
-    pulseaudio
+    pulseaudioFull
     pulseaudio-ctl
+    bluez
+    bluez-alsa
+    bluez-tools
 
-    gnome.nautilus
+    #gnome.nautilus
     lxqt.lxqt-policykit # provides a default authentication client for policykit
   ];
+
+  hardware.pulseaudio.extraConfig = ''
+    load-module module-combine-sink
+    load-module module-bluetooth-policy
+    load-module module-bluetooth-discover
+  '';
 
   # permissions for acpilight
   services.udev = {

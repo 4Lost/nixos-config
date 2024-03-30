@@ -1,21 +1,25 @@
 {
   imports = [
     ./alacritty
-    ./anki.nix
-    ./discord.nix
-    ./element.nix
-    ./git.nix
-    ./ktouch.nix
+    ./anki
+    ./discord
+    ./element
+    ./git
+    ./ktouch
+    ./libreoffice
+    ./nemo
     ./neovim
     ./obs
-    ./planify.nix
+    ./planify
     ./rofi
-    ./signal.nix
-    ./telegram.nix
+    ./signal
+    ./spotify
+    ./telegram
     ./thunderbird
-    ./wallpaper.nix
+    ./wallpaper
     ./xmonad
-    ./zathura.nix
+    ./zathura
+    ./zoom
     ./zsh
   ];
 }

@@ -1,7 +1,13 @@
 { pkgs, config, ... }:
 
 {
-  home.packages = with pkgs; [ fzf python3 zsh-nix-shell nix-zsh-completions ];
+  home.packages = with pkgs; [
+    fzf
+    python3
+    zsh-nix-shell
+    nix-zsh-completions
+    neofetch
+  ];
 
   programs.zsh = {
     enable = true;
@@ -9,7 +15,8 @@
     shellAliases = {
       update = "sudo nixos-rebuild switch";
       addTV =
-        "xrandr --output eDP-1 --auto --output HDMI-1 --mode 1920x1080 --right-of eDP-1";
+        "xrandr --output eDP-1 --auto --output HDMI-1 --mode 1920x1080 --left-of eDP-1";
+      conWG = "ssh elias@logout.nonagon.dev -p 6969";
     };
     enableAutosuggestions = true;
     enableCompletion = true;
@@ -21,6 +28,8 @@
     };
     syntaxHighlighting = { enable = true; };
     initExtra = ''
+      neofetch
+
       PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
       RPROMPT='[%F{yellow}%?%f]'
       bindkey "^[[A" history-beginning-search-backward

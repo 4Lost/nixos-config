@@ -15,7 +15,7 @@ let
 in {
   home.sessionVariables = { EDITOR = "nvim"; };
 
-  home.packages = with pkgs; [ nerdfonts ];
+  home.packages = with pkgs; [ nerdfonts texliveFull ];
 
   programs.neovim = {
     enable = true;
@@ -90,7 +90,6 @@ in {
       isort
       python311Packages.autopep8
       # LaTeX
-      texliveFull
       texlab
       xdotool
       pplatex

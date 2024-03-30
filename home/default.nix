@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./programs ./services ];
   home = {
     username = "elias";
     homeDirectory = "/home/elias";
@@ -18,33 +17,22 @@
       lm_sensors
       arandr
       pavucontrol
+      sshf
+      sshfss
 
       obsidian
       lean4
 
       firefox
+      bitwarden
     ];
-
-    # environment.shells = [ pkgs.zsh ];
-    # environment.variables.EDITOR = "nvim";
-    # environment.pathsToLink = [ "/share/zsh" ];
 
     stateVersion = "23.11";
   };
-  programs = {
-    home-manager.enable = true;
-    # thunar.enable = true;
-    # xfconf.enable = true;
-    # thunar.plugins = with pkgs.xfce; [
-    #   thunar-archive-plugin
-    #   thunar-volman
-    # ];
-  };
+  programs = { home-manager.enable = true; };
 
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [ "electron-25.9.0" ];
   };
-  # services.gvfs.enable = true;
-  # services.tumbler.enable = true;
 }

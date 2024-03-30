@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./ssh-agent.nix ./gpg-agent.nix ./xscreenlocker.nix ];
+  imports = [ ./ssh-agent ./gpg-agent ./betterlockscreen ];
 }
