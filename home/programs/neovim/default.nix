@@ -83,7 +83,7 @@ in {
       cabal-install
       haskellPackages.fourmolu
       # Lean
-      lean4
+      lean
       # Python
       ruff-lsp
       nodePackages.pyright

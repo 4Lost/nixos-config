@@ -7,7 +7,6 @@
     ./element
     ./git
     ./ktouch
-    ./lean4
     ./libreoffice
     ./maestral
     ./neovim
