@@ -54,7 +54,7 @@ myconfig = def
     , ("<XF86AudioLowerVolume>", spawn "pulseaudio-ctl down 5")
     , ("<XF86AudioMicMute>", spawn "pulseaudio-ctl mute-input")
   ]
-  `removeKeysP` [ "M-S-q" ]
+  --`removeKeysP` [ "M-S-q" ]
 
 myXmobarPP :: PP
 myXmobarPP = def
@@ -97,3 +97,4 @@ myManageHooks = composeAll
 myStartupHook :: X ()
 myStartupHook = do
   mapM_ spawnOnce ["xmobar -x " ++ show sid | sid <- [0..9]]
+  spawnOnce "dropbox"

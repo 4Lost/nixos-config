@@ -2,11 +2,8 @@
 
 {
   # Include the results of the hardware scan.
-  imports = [
-    ./hardware-configuration.nix
-    ./program-packages/dropbox/default.nix
-    ./program-packages/steam/default.nix
-  ];
+  imports =
+    [ ./hardware-configuration.nix ./program-packages/steam/default.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {

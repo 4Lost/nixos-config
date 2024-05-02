@@ -1,5 +1,10 @@
 # Neues
 
+## maestral
+
+- autocompletion
+- config files and finding the gui
+
 ## Bluetooth
 
 - Connection failed

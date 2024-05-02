@@ -3,14 +3,17 @@
     ./alacritty
     ./anki
     ./discord
+    ./dolphin
     ./element
     ./git
     ./ktouch
     ./libreoffice
-    ./nemo
+    ./maestral
     ./neovim
     ./obs
     ./planify
+    ./prusa-slicer
+    ./pulseaudio
     ./rofi
     ./signal
     ./spotify
@@ -21,5 +24,6 @@
     ./zathura
     ./zoom
     ./zsh
+    ./zulip
   ];
 }

@@ -8,6 +8,7 @@
       # archives
       unzip
       zip
+      fuse
 
       # misc
       tree
@@ -17,8 +18,7 @@
       lm_sensors
       arandr
       pavucontrol
-      sshf
-      sshfss
+      sshfs
 
       obsidian
       lean4
@@ -30,6 +30,9 @@
     stateVersion = "23.11";
   };
   programs = { home-manager.enable = true; };
+
+  home.file."git/minlog".source =
+    config.lib.file.mkOutOfStoreSymlink "${pkgs.minlog}/share/minlog";
 
   nixpkgs.config = {
     allowUnfree = true;
