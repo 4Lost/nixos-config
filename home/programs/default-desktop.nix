@@ -1,1 +1,1 @@
-{ imports = [ ./default.nix ./audacity ]; }
+{ imports = [ ./default.nix ./audacity-desktop ]; }

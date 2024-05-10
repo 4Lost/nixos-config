@@ -2,7 +2,7 @@
 
 {
   # Import general Configs
-  imports = [ ./../configuration.nix ];
+  imports = [ ./../hardware-configuration-laptop.nix ./../configuration.nix ];
 
   # Hostname
   networking.hostName = "eliasLaptop";
@@ -15,5 +15,16 @@
       Experimental = true;
     };
   };
+  environment.systemPackages = with pkgs; [
+    bluez
+    bluez-alsa
+    bluez-tools
+    gnome.networkmanager-vpnc
+    networkmanagerapplet
+  ];
+  hardware.pulseaudio.extraConfig = ''
+    load-module module-bluetooth-policy
+    load-module module-bluetooth-discover
+  '';
   services.blueman.enable = true;
 }

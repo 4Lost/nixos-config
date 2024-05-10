@@ -32,7 +32,7 @@
                   ./home/programs/xmonad/src/xmobar/default.nix { };
               })
               inputs.neovim-nightly-overlay.overlay
-              (import program-packages/overlay.nix { })
+              (import builds/overlay.nix { })
               (import overlays/lean.nix)
             ];
           }
@@ -60,6 +60,7 @@
                   ./home/programs/xmonad/src/xmobar/default.nix { };
               })
               inputs.neovim-nightly-overlay.overlay
+              (import builds/overlay.nix { })
               (import overlays/lean.nix)
             ];
           }

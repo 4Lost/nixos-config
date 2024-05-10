@@ -4,7 +4,9 @@
     ./anki
     ./discord
     ./dolphin
+    ./dunst
     ./element
+    ./eww
     ./git
     ./ktouch
     ./libreoffice

@@ -2,7 +2,7 @@
 
 {
   # Import general Configs
-  imports = [ ./configuration.nix ];
+  imports = [ ./../hardware-configuration-desktop.nix ./../configuration.nix ];
 
   # Hostname
   networking.hostName = "eliasDesktop";

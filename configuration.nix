@@ -2,8 +2,7 @@
 
 {
   # Include the results of the hardware scan.
-  imports =
-    [ ./hardware-configuration.nix ./program-packages/steam/default.nix ];
+  imports = [ ./builds/steam/default.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -96,9 +95,8 @@
     dbus
     pulseaudioFull
     pulseaudio-ctl
-    bluez
-    bluez-alsa
-    bluez-tools
+
+    libnotify
 
     #gnome.nautilus
     lxqt.lxqt-policykit # provides a default authentication client for policykit
@@ -106,9 +104,10 @@
 
   hardware.pulseaudio.extraConfig = ''
     load-module module-combine-sink
-    load-module module-bluetooth-policy
-    load-module module-bluetooth-discover
   '';
+
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   # permissions for acpilight
   services.udev = {
@@ -124,7 +123,6 @@
     allowUnfree = true;
     permittedInsecurePackages = [ "electron-25.9.0" ];
   };
-
   # Enable zsh for setting it as shell for users.
   programs.zsh.enable = true;
 
