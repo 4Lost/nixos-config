@@ -31,9 +31,6 @@
   };
   programs = { home-manager.enable = true; };
 
-  home.file."git/minlog".source =
-    config.lib.file.mkOutOfStoreSymlink "${pkgs.minlog}/share/minlog";
-
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [ "electron-25.9.0" ];
