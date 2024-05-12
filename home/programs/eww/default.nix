@@ -5,6 +5,6 @@
 
   xdg.configFile."eww" = {
     recursive = true;
-    source = ./eww;
+    source = ./src;
   };
 }

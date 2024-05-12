@@ -1,0 +1,44 @@
+(defwindow bar-primary
+  :monitor 0
+  :geometry (geometry :x "0px"
+    :y "0px"
+    :width "100%"
+    :height "25px"
+    :anchor "top center")
+  :stacking "fg"
+  :reserve (struts :distance "25px" :side "top")
+  :windowtype "dock"
+  :wm-ignore false
+  (box
+    (button
+        :width "60px"
+        :onclick "notify-send 'Wow' 'That's a clock, idiot!'"
+        "${time}")))
+; List of all workspaces
+(defvar workspacesList "[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]")
+
+(defwidget workspaces
+  (box
+    (for entry in workspacesList
+      (button :onclick "notify-send 'click' 'button ${entry}'"
+          entry))))
+
+
+(defwidget labeled-container [name]
+(box :class "container"
+    name
+  (children)))
+
+(deflisten brightness :initial "0"
+  `tail -F /tmp/brightness`)
+
+(deflisten volume :initial "0"
+  `tail -F /tmp/volume`)
+
+(defvar variable_containing_yuck
+  "(box (button 'foo') (button 'bar'))")
+
+
+(defpoll time :interval "1s"
+  :initial "00:00:00"  ; optional, defaults to poll at startup
+  `date +%H:%M:%S`)

@@ -23,7 +23,6 @@
     ./thunderbird
     ./wallpaper
     ./xmonad
-    ./zathura
     ./zoom
     ./zsh
     ./zulip
