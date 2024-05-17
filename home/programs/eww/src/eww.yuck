@@ -1,44 +1,72 @@
 (defwindow bar-primary
   :monitor 0
   :geometry (geometry :x "0px"
-    :y "0px"
+    :y "25px"
     :width "100%"
     :height "25px"
     :anchor "top center")
   :stacking "fg"
-  :reserve (struts :distance "25px" :side "top")
+  :reserve (struts :distance "50px" :side "top")
   :windowtype "dock"
   :wm-ignore false
+(box
+    :orientation "horizontal"
+    :halign "right"
+  (eventbox :onclick "notify-send Left"
+      :onrightclick "notify-send Right"
+      "Click Me!")
+  (rightSideBar)))
+
+;; The Wrapper of the rightside Information
+(defwidget rightSideBar []
   (box
-    (button
-        :width "60px"
-        :onclick "notify-send 'Wow' 'That's a clock, idiot!'"
-        "${time}")))
-; List of all workspaces
-(defvar workspacesList "[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]")
+    :space-evenly "false"
+    :halign "end"
+    (nw)
+    (date)
+  ))
 
-(defwidget workspaces
-  (box
-    (for entry in workspacesList
-      (button :onclick "notify-send 'click' 'button ${entry}'"
-          entry))))
-
-
-(defwidget labeled-container [name]
+;; The Internet Information box.
+(defwidget nw []
 (box :class "container"
-    name
-  (children)))
+    :space-evenly "false"
+    :halign "end"
+    (label :class "iconNWDown" :text " ")
+  (label :class "text" :text " ${nwdown} ")
+    (label :class "iconNWUp" :text " ")
+  (label :class "text" :text "${nwup} ")))
 
-(deflisten brightness :initial "0"
-  `tail -F /tmp/brightness`)
+;; The date Information box.
+(defwidget date []
+(box :class "container"
+    :space-evenly "false"
+    :halign "end"
+    (label :class "iconClock" :text " ")
+  (label :class "text" :text "${date-time} ")))
 
-(deflisten volume :initial "0"
-  `tail -F /tmp/volume`)
+;; Variables
 
-(defvar variable_containing_yuck
-  "(box (button 'foo') (button 'bar'))")
+(defpoll nwup
+  :interval "1s"
+  :initial "-"  ; optional, defaults to poll at startup
+  `echo "up"`)
 
+(defpoll nwdown
+  :interval "1s"
+  :initial "-"  ; optional, defaults to poll at startup
+  `echo "down"`)
 
-(defpoll time :interval "1s"
-  :initial "00:00:00"  ; optional, defaults to poll at startup
-  `date +%H:%M:%S`)
+(defpoll date-time
+  :interval "1s"
+  :initial "initial-value"  ; optional, defaults to poll at startup
+  `date "+%a %d.%m.%y %H:%M:%S"`)
+
+;; IDK
+(defwidget greeter [?text name]
+(box :orientation "horizontal"
+    :halign "center"
+    :geometry (geometry :x "0px"
+      :y "0px"
+      :height "20px"
+      :anchor "top center")
+    text))
