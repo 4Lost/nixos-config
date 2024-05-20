@@ -98,6 +98,9 @@
 
     libnotify
 
+    gnome.seahorse
+    libgnome-keyring
+
     #gnome.nautilus
     lxqt.lxqt-policykit # provides a default authentication client for policykit
   ];
