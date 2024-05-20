@@ -8,10 +8,12 @@
     ./element
     ./eww
     ./git
+    ./inkscape
     ./ktouch
     ./libreoffice
     ./maestral
     ./neovim
+    ./nextcloud
     ./obs
     ./planify
     ./prusa-slicer

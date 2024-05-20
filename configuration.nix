@@ -132,6 +132,10 @@
   hardware.pulseaudio.support32Bit =
     true; # # If compatibility with 32-bit applications is desired.
 
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.lightdm.enableGnomeKeyring = true;
+  #ssh.startAgent = true;
+
   # Set stateVersion. Leave it as set.
   system.stateVersion = "23.11";
 }
