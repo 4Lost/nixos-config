@@ -25,6 +25,7 @@ myconfig = def
     , normalBorderColor   = "#f5c2e7"
     , focusedBorderColor  = "#cdd6f4"
     , manageHook          = myManageHooks
+    , startupHook         = myStartupHook
   }
   `additionalKeysP`
   [
@@ -98,3 +99,4 @@ myStartupHook :: X ()
 myStartupHook = do
   mapM_ spawnOnce ["xmobar -x " ++ show sid | sid <- [0..9]]
   spawnOnce "dropbox"
+  spawnOnce "nextcloud --background"
