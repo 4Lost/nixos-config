@@ -22,9 +22,19 @@
   (box
     :space-evenly "false"
     :halign "end"
+    (audio)
     (nw)
     (date)
   ))
+
+;; The Internet Information box.
+(defwidget audio []
+(box :class "container"
+    :space-evenly "false"
+    :halign "end"
+    (label :class "iconBat" :text "${volicon} ")
+  (label :class "text" :text "${vol} % ")
+  (label :class "text" :text "${micicon} ")))
 
 ;; The Internet Information box.
 (defwidget nw []
@@ -46,12 +56,27 @@
 
 ;; Variables
 
-(defpoll nwup
+(defpoll volicon
+  :interval "1s"
+  :initial "-"  ; optional, defaults to poll at startup
+  `if [[ $(cut -d ' ' -f 2 <<< $(pulseaudio-ctl full-status)) == "yes" ]]; then echo "󰝟"; else echo ""; fi`)
+
+(defpoll vol
+  :interval "1s"
+  :initial "-"  ; optional, defaults to poll at startup
+  `Volume=$(cut -d ' ' -f 1 <<<$(pulseaudio-ctl full-status)); echo "$(( Volume/2 ))"`)
+
+(defpoll micicon
+  :interval "1s"
+  :initial "-"  ; optional, defaults to poll at startup
+  `if [[ $(cut -d ' ' -f 3 <<< $(pulseaudio-ctl full-status)) == "yes" ]]; then echo ""; else echo ""; fi`)
+
+(defpoll nwup ;; TODO
   :interval "1s"
   :initial "-"  ; optional, defaults to poll at startup
   `echo "up"`)
 
-(defpoll nwdown
+(defpoll nwdown ; TODO
   :interval "1s"
   :initial "-"  ; optional, defaults to poll at startup
   `echo "down"`)

@@ -15,6 +15,7 @@
     ./neovim
     ./nextcloud
     ./obs
+    ./picard
     ./planify
     ./prusa-slicer
     ./pulseaudio
