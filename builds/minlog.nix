@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   name = "minlog";
-  version = "2024-04-24";
+  version = "2024-04-14";
 
   src = fetchgit {
     url = "http://www.ed.math.lmu.de/m/~minlogit/git/minlog.git";
