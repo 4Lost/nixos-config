@@ -22,11 +22,13 @@
     ./rofi
     ./signal
     ./spotify
+    ./stack
     ./telegram
     ./thunderbird
     ./wallpaper
     ./xmonad
     ./zoom
+    ./zlib
     ./zsh
     ./zulip
   ];
