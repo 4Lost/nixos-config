@@ -103,6 +103,9 @@
 
     #gnome.nautilus
     lxqt.lxqt-policykit # provides a default authentication client for policykit
+
+    # for Haskell project
+    haskellPackages.zlib
   ];
 
   hardware.pulseaudio.extraConfig = ''

@@ -2,6 +2,7 @@
   imports = [
     ./alacritty
     ./anki
+    ./cura
     ./discord
     ./dolphin
     ./dunst
@@ -28,7 +29,6 @@
     ./wallpaper
     ./xmonad
     ./zoom
-    ./zlib
     ./zsh
     ./zulip
   ];

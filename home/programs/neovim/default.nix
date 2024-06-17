@@ -27,7 +27,6 @@ in {
       bufferline-nvim
       catppuccin-nvim
       cmp-buffer
-      coc-nvim
       cmp-conjure
       cmp-nvim-lua
       cmp-nvim-lsp

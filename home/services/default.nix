@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./ssh-agent ./gpg-agent ./betterlockscreen ];
+  imports = [ ./ssh-agent ./gpg-agent ];
 }
