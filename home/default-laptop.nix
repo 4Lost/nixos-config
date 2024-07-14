@@ -1,13 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./programs/default-laptop.nix
-    ./services/default-laptop.nix
-    ./default.nix
-  ];
-
-  home.file."minlog".source =
-    config.lib.file.mkOutOfStoreSymlink "${pkgs.minlog}/share/minlog";
+  imports = [ ./programs/default-laptop.nix ./default.nix ];
 
 }

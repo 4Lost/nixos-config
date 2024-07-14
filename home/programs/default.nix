@@ -2,7 +2,7 @@
   imports = [
     ./alacritty
     ./anki
-    ./cura
+    #./cura
     ./discord
     ./dolphin
     ./dunst
@@ -14,6 +14,7 @@
     ./libreoffice
     ./maestral
     ./neovim
+    ##./nixvim
     ./nextcloud
     ./obs
     ./picard

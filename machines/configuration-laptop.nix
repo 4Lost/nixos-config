@@ -6,16 +6,12 @@
 
   # Hostname
   networking.hostName = "eliasLaptop";
-  hardware.pulseaudio.enable = true;
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
-  };
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   environment.systemPackages = with pkgs; [
-    bluez
-    bluez-tools
     gnome.networkmanager-vpnc
     networkmanagerapplet
   ];
-  services.blueman.enable = true;
 }

@@ -1,17 +1,8 @@
 { pkgs, config, ... }:
 
 let
-  obsidian-nvim = pkgs.vimUtils.buildVimPlugin {
-    pname = "obsidian.nvim";
-    version = "v3.5.1";
-    src = pkgs.fetchFromGitHub {
-      owner = "epwalsh";
-      repo = "obsidian.nvim";
-      rev = "4eb44381811ab6af67b9f9fe3117616afbe1e118";
-      sha256 = "sha256-/zj12pwppb1RGi3EovXla6Ahzkoxh3qhxQFOfnfPwac=";
-    };
-    meta.homepage = "https://github.com/epwalsh/obsidian.nvim";
-  };
+  mkLuaConfig = file: args:
+    builtins.readFile "${pkgs.substituteAll (args // { src = file; })}";
 in {
   home.sessionVariables = { EDITOR = "nvim"; };
 
@@ -19,11 +10,12 @@ in {
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
+    vimAlias = true;
+    vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;
 
-    plugins = with pkgs.vimPlugins; [
+    plugins = (with pkgs.vimPlugins; [
       bufferline-nvim
       catppuccin-nvim
       cmp-buffer
@@ -53,7 +45,6 @@ in {
       nvim-lspconfig
       nvim-surround
       nvim-tree-lua
-      nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
       nvim-ts-context-commentstring
       nvim-web-devicons
@@ -65,6 +56,9 @@ in {
       telescope-nvim
       vimtex
       which-key-nvim
+    ]) ++ [
+      (pkgs.vimPlugins.nvim-treesitter.withPlugins
+        (plugins: pkgs.tree-sitter.allGrammars))
     ];
 
     extraPackages = with pkgs; [
@@ -85,7 +79,7 @@ in {
       lean
       # Python
       ruff-lsp
-      nodePackages.pyright
+      pyright
       isort
       python311Packages.autopep8
       # LaTeX
@@ -108,34 +102,10 @@ in {
       chez
     ];
 
-    extraLuaConfig = ''
-      vim.g.mapleader = " "
-      vim.g.maplocalleader = ","
-      require("lazy").setup({
-        spec = {
-          -- Import plugins from lua/plugins
-          { import = "plugins" },
-        },
-        performance = {
-          reset_packpath = false,
-          rtp = {
-              reset = false,
-            }
-          },
-        dev = {
-          path = "${
-            pkgs.vimUtils.packDir
-            config.programs.neovim.finalPackage.passthru.packpathDirs
-          }/pack/myNeovimPackages/start",
-          patterns = {"arkav", "Bekaboo", "catppuccin", "epwalsh", "folke", "ggandor", "HiPhish", "hrsh7th", "iamcco", "Joosep", "Julian", "karb94", "kylechui", "L3MON4D3", "lervag", "mrcjkb", "neovim", "numToStr", "nvim-lua", "nvim-lualine", "nvim-telescope", "nvim-tree", "nvim-treesitter", "Olical", "onsails", "PaterJason", "rafamadiz", "saadparwaiz1", "skanehira", "stevearc", "tpope", "windwp"},
-        },
-        install = {
-          -- Safeguard in case we forget to install a plugin with Nix
-          missing = false,
-        },
-      })
-      require("config/options")
-    '';
+    extraLuaConfig = mkLuaConfig ./init.lua {
+      path = "${pkgs.vimUtils.packDir
+        config.programs.neovim.finalPackage.passthru.packpathDirs}";
+    };
   };
 
   xdg.configFile."nvim/lua" = {

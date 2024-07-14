@@ -23,10 +23,10 @@ name:               xmobar-custom
 version:            0.1.0.0
 
 -- The package author(s).
-author:             4Lost
+author:             einfischy
 
 -- An email address to which users can send suggestions, bug reports, and patches.
-maintainer:         elias.schroeter@e.email
+maintainer:         accounts.codeberg@kstn.in
 
 -- A copyright notice.
 -- copyright:
@@ -43,9 +43,8 @@ executable xmobar
     main-is:          xmobar.hs
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.17.2.1,
-                      xmobar ^>=0.47.1,
-                      process
+    build-depends:    base >= 4.11.0 && < 4.20,
+                      xmobar ^>=0.48
 
     -- Directories containing source files.
     hs-source-dirs:   .

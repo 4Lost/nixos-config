@@ -11,7 +11,7 @@ import XMonad.Util.ClickableWorkspaces
 import XMonad.Util.Loggers
 import Data.ByteString (maximum)
 import Distribution.Compat.Prelude (print)
-import Control.Monad.RWS (All(All))
+--import Control.Monad.RWS (All(All))
 import XMonad.Hooks.ManageHelpers
 
 

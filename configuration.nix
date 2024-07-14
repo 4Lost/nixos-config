@@ -45,24 +45,28 @@
 
   services = {
     # Set XServer Options.
+    displayManager = {
+      sddm = {
+        enable = true;
+        theme = "catppuccin-mocha";
+      };
+      defaultSession = "none+xmonad";
+    };
+    libinput.enable = true; # Enable touchpad.
     xserver = {
       enable = true;
-      displayManager = {
-        sddm = {
-          enable = true;
-          theme = "catppuccin-mocha";
-        };
-        defaultSession = "none+xmonad";
-      };
-      libinput.enable = true; # Enable touchpad.
       windowManager.xmonad = {
         enable = true;
         flake = {
           enable = true;
-          compiler = "ghc924";
+          compiler = "ghc982";
         };
+        enableContribAndExtras = true;
       };
-      xkb.layout = "de";
+      xkb = {
+        layout = "de";
+        options = "caps:swapescape";
+      };
     };
     # Enable CUPS to print.
     printing.enable = true;
@@ -98,7 +102,7 @@
 
     libnotify
 
-    gnome.seahorse
+    seahorse
     libgnome-keyring
 
     #gnome.nautilus
@@ -108,12 +112,15 @@
     haskellPackages.zlib
   ];
 
-  hardware.pulseaudio.extraConfig = ''
-    load-module module-combine-sink
-  '';
-
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+
+  environment.sessionVariables = {
+    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
+  };
 
   # permissions for acpilight
   services.udev = {
@@ -131,12 +138,6 @@
   };
   # Enable zsh for setting it as shell for users.
   programs.zsh.enable = true;
-
-  # Audio
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit =
-    true; # # If compatibility with 32-bit applications is desired.
 
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.lightdm.enableGnomeKeyring = true;

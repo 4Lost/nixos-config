@@ -43,7 +43,7 @@
         address = "elias.schroeter@e.email";
         gpg = {
           key = "0x99D2EF975FE523CC";
-          signByDefault = true;
+          signByDefault = false;
         };
         aliases = [ "elias.schroeter@murena.io" "xacufe67.cadome83@murena.io" ];
         imap = {

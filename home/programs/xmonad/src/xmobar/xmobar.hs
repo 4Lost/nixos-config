@@ -1,5 +1,5 @@
 import Xmobar
-import Plugins.Audio
+--import Plugins.Audio
 --import Xmobar.Run.Exec
 --import Xmobar (Command(ComX))
 --import GHC.Real (Integral(rem))
