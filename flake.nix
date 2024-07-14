@@ -76,7 +76,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                home-manager.extraSpecialArgs = { inherit inputs; };
+                extraSpecialArgs = { inherit inputs; };
                 users.elias = import ./home/default-desktop.nix;
               };
               nixpkgs.overlays = [
