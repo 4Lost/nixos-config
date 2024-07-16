@@ -68,7 +68,7 @@
         eliasDesktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./machines/configuration-desktop.nix
+            ./machines/configuration-desktop2.nix
             ./home/services/pipewire.nix
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
@@ -77,7 +77,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
-                users.elias = import ./home/default-desktop.nix;
+                users.elias = import ./home/default-laptop.nix;
               };
               nixpkgs.overlays = [
                 (final: prev: {

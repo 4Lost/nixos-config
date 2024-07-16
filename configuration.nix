@@ -65,7 +65,7 @@
       };
       xkb = {
         layout = "de";
-        options = "caps:swapescape";
+        options = "caps:deadgraveacute";
       };
     };
     # Enable CUPS to print.
