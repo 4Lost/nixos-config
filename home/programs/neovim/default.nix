@@ -48,7 +48,6 @@ in {
       nvim-treesitter-textobjects
       nvim-ts-context-commentstring
       nvim-web-devicons
-      obsidian-nvim
       oil-nvim
       plenary-nvim
       rainbow-delimiters-nvim

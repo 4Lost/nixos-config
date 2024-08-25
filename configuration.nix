@@ -94,6 +94,7 @@
     curl
     alacritty
     dmenu
+    cmake
 
     acpilight # For setting Backlight.
     dbus

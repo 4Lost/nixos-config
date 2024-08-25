@@ -20,7 +20,7 @@
       pavucontrol
       sshfs
 
-      obsidian
+      ##obsidian
       lean4
 
       firefox

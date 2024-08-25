@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./programs/default-desktop.nix ./services ./default.nix ];
+  imports = [ ./programs/default-desktop.nix ./default.nix ];
 }
