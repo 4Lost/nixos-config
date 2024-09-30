@@ -2,12 +2,13 @@
   imports = [
     ./alacritty
     ./anki
-    #./cura
+    ./cura
     ./discord
     ./dolphin
     ./dunst
     ./element
     ./eww
+    ./freecad
     ./git
     ./inkscape
     ./ktouch
