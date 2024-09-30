@@ -11,7 +11,7 @@
   hardware.bluetooth.powerOnBoot = true;
 
   environment.systemPackages = with pkgs; [
-    gnome.networkmanager-vpnc
+    networkmanager-vpnc
     networkmanagerapplet
   ];
 }
