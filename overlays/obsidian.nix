@@ -3,7 +3,7 @@ final: prev: {
 
     src = prev.fetchurl {
       url = old.src.url;
-      hash = "sha256-ho8E2Iq+s/w8NjmxzZo/y5aj3MNgbyvIGjk3nSKPLDw=";
+      hash = "sha256-ok1fedN8+OXBisFpVXbKRW2OhE4o9MC9lJmtMMST6V8=";
     };
   });
 }
