@@ -20,7 +20,6 @@
       pavucontrol
       sshfs
 
-      ##obsidian
       obsidian
       lean4
 
