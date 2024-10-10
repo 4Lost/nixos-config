@@ -2,7 +2,7 @@
   imports = [
     ./alacritty
     ./anki
-    ./cura
+    #./cura
     ./discord
     ./dolphin
     ./dunst
@@ -18,6 +18,7 @@
     ##./nixvim
     ./nextcloud
     ./obs
+    ./obsidian
     ./picard
     ./planify
     ./prusa-slicer

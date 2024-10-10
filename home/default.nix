@@ -23,6 +23,8 @@
       ##obsidian
       lean4
 
+      cups
+      epson-escpr
       firefox
       bitwarden
     ];

@@ -95,6 +95,7 @@
     alacritty
     dmenu
     cmake
+    cups
 
     acpilight # For setting Backlight.
     dbus
