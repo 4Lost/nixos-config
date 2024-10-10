@@ -18,7 +18,6 @@
     ##./nixvim
     ./nextcloud
     ./obs
-    ./obsidian
     ./picard
     ./planify
     ./prusa-slicer

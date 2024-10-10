@@ -21,6 +21,7 @@
       sshfs
 
       ##obsidian
+      obsidian
       lean4
 
       cups
