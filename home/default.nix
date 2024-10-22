@@ -22,6 +22,7 @@
 
       obsidian
       lean4
+      gcc
 
       cups
       epson-escpr
