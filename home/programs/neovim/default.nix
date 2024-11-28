@@ -77,7 +77,7 @@ in {
       # Lean
       lean
       # Python
-      ruff-lsp
+      ruff
       pyright
       isort
       python311Packages.autopep8

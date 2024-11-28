@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  # Include the results of the hardware scan.
+  # Importing necessary setup for Steam.
   imports = [ ./builds/steam/default.nix ];
 
   # Use the systemd-boot EFI boot loader.
@@ -10,34 +10,28 @@
     efi.canTouchEfiVariables = true;
   };
 
-  # Chose NetworkManager and hostname.
+  # Chose NetworkManager, timezone, internationalisation properties and console settings.
   networking.networkmanager.enable = true;
-
-  # Set your time zone.
   time.timeZone = "Europe/Berlin";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   console = {
     font = "Lat2-Terminus16";
     # Use xkb.options in tty.
     useXkbConfig = true;
   };
-
-  # Garbage collect
-  nix.gc = {
-    automatic = true; # Enable the automatic garbage collector
-    dates = "10:00"; # When to run the garbage collector
-    options = "--delete-older-than 7d";
-  };
-
-  # Enable Asterisks for Password prompt
+  # Enable Asterisks for Password prompt.
   security.sudo = {
     enable = true;
     extraConfig = ''
       Defaults pwfeedback
     '';
+  };
+
+  # Configuration of the Garbage collect.
+  nix.gc = {
+    automatic = true; # Enable the automatic garbage collector
+    dates = "10:00"; # When to run the garbage collector
+    options = "--delete-older-than 7d";
   };
 
   # Activate Flakes.
@@ -85,7 +79,7 @@
     };
   };
 
-  # Basic Packages.
+  # Setting the Basic Packages.
   environment.systemPackages = with pkgs; [
     (libsForQt5.callPackage ./home/themes/catppuccin-sddm.nix { })
 
@@ -104,16 +98,15 @@
 
     libnotify
 
+    # For Saving the Auth of Nextcloud.
     seahorse
     libgnome-keyring
 
-    #gnome.nautilus
+    # For setting the necessary permissions for gnome.nautilus.
     lxqt.lxqt-policykit # provides a default authentication client for policykit
-
-    # for Haskell project
-    haskellPackages.zlib
   ];
 
+  # Adding Features to Dolphin.
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
@@ -124,7 +117,7 @@
     XDG_STATE_HOME = "$HOME/.local/state";
   };
 
-  # permissions for acpilight
+  # Setting the permissions for acpilight.
   services.udev = {
     enable = true;
     extraRules = ''
@@ -138,12 +131,13 @@
     allowUnfree = true;
     permittedInsecurePackages = [ "electron-25.9.0" ];
   };
+
   # Enable zsh for setting it as shell for users.
   programs.zsh.enable = true;
 
+  # Enabling the Keyring.
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.lightdm.enableGnomeKeyring = true;
-  #ssh.startAgent = true;
 
   # Set stateVersion. Leave it as set.
   system.stateVersion = "23.11";

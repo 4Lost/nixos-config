@@ -1,13 +1,7 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, sddm
-, qtgraphicaleffects
-, qtquickcontrols2
-, qtsvg
-}:
+{ lib, stdenv, fetchFromGitHub, sddm, qtgraphicaleffects, qtquickcontrols2
+, qtsvg }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "catppuccin-sddm";
   version = "unstable-2024-02-05";
 
@@ -18,12 +12,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-0zoJOTFjQq3gm5i3xCRbyk781kB7BqcWWNrrIkWf2Xk=";
   };
 
-  buildInputs = [
-    sddm
-    qtgraphicaleffects
-    qtquickcontrols2
-    qtsvg
-  ];
+  buildInputs = [ sddm qtgraphicaleffects qtquickcontrols2 qtsvg ];
 
   dontWrapQtApps = true;
 

@@ -1,6 +1,6 @@
-{ lib, stdenv, fetchgit, chez, gnumake, which, emacs, texliveFull }:
+{ lib, stdenv, fetchgit, chez, which, emacs, texliveFull }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   name = "minlog";
   version = "2024-04-14";
 

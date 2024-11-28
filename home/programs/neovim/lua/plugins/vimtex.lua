@@ -11,6 +11,16 @@ return {
         end,
       })
 
+      vim.g.vimtex_compiler_latexmk = {
+        options = {
+          "-verbose",
+          "-file-line-error",
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-shell-escape",
+        },
+      }
+
       vim.g.vimtex_mappings_disable = { ["n"] = { "K" } } -- disable `K` as it conflicts with LSP hover
       vim.g.vimtex_quickfix_method = "pplatex"
       vim.g.vimtex_view_method = "zathura"

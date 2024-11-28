@@ -13,11 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nur = { url = "github:nix-community/NUR"; };
 
     neovim-nightly-overlay = {
@@ -32,67 +27,66 @@
 
   };
 
-  outputs =
-    { nixpkgs, xmonad-contrib, home-manager, nur, nixvim, ... }@inputs: {
-      formatter.x86_64-linux =
-        nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-      nixosConfigurations = {
-        eliasLaptop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/configuration-laptop.nix
-            ./home/services/pipewire.nix
-            nur.nixosModules.nur
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit inputs; };
-                users.elias = import ./home/default-laptop.nix;
-              };
-              nixpkgs.overlays = [
-                (final: prev: {
-                  xmobar = final.haskellPackages.callPackage
-                    ./home/programs/xmonad/src/xmobar/default.nix { };
-                })
-                inputs.neovim-nightly-overlay.overlays.default
-                inputs.wpaperd.overlays.default
-                inputs.nur.overlay
-                (import builds/overlay.nix { })
-                (import overlays/obsidian.nix)
-              ];
-            }
-          ] ++ xmonad-contrib.nixosModules;
-        };
-        eliasDesktop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/configuration-desktop.nix
-            ./home/services/pipewire.nix
-            nur.nixosModules.nur
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit inputs; };
-                users.elias = import ./home/default-desktop.nix;
-              };
-              nixpkgs.overlays = [
-                (final: prev: {
-                  xmobar = final.haskellPackages.callPackage
-                    ./home/programs/xmonad/src/xmobar/default.nix { };
-                })
-                inputs.neovim-nightly-overlay.overlays.default
-                inputs.wpaperd.overlays.default
-                inputs.nur.overlay
-                (import builds/overlay.nix { })
-                (import overlays/obsidian.nix)
-              ];
-            }
-          ] ++ xmonad-contrib.nixosModules;
-        };
+  outputs = { nixpkgs, xmonad-contrib, home-manager, nur, ... }@inputs: {
+    formatter.x86_64-linux =
+      nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+    nixosConfigurations = {
+      eliasLaptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./machines/configuration-laptop.nix
+          ./home/services/pipewire.nix
+          nur.nixosModules.nur
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; };
+              users.elias = import ./home/default-laptop.nix;
+            };
+            nixpkgs.overlays = [
+              (final: prev: {
+                xmobar = final.haskellPackages.callPackage
+                  ./home/programs/xmonad/src/xmobar/default.nix { };
+              })
+              inputs.neovim-nightly-overlay.overlays.default
+              inputs.wpaperd.overlays.default
+              inputs.nur.overlay
+              (import overlays/minlog.nix)
+              (import overlays/obsidian.nix)
+            ];
+          }
+        ] ++ xmonad-contrib.nixosModules;
+      };
+      eliasDesktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./machines/configuration-desktop.nix
+          ./home/services/pipewire.nix
+          nur.nixosModules.nur
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; };
+              users.elias = import ./home/default-desktop.nix;
+            };
+            nixpkgs.overlays = [
+              (final: prev: {
+                xmobar = final.haskellPackages.callPackage
+                  ./home/programs/xmonad/src/xmobar/default.nix { };
+              })
+              inputs.neovim-nightly-overlay.overlays.default
+              inputs.wpaperd.overlays.default
+              inputs.nur.overlay
+              (import overlays/minlog.nix)
+              (import overlays/obsidian.nix)
+            ];
+          }
+        ] ++ xmonad-contrib.nixosModules;
       };
     };
+  };
 }
