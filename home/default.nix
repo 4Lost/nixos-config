@@ -25,7 +25,6 @@
       gcc
 
       cups
-      epson-escpr
       firefox
       bitwarden
     ];
