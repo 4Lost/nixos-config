@@ -17,6 +17,7 @@
       addTV =
         "xrandr --output eDP-1 --auto --output HDMI-1 --mode 1920x1080 --left-of eDP-1";
       conWG = "ssh elias@logout.nonagon.dev -p 6969";
+      conWS = "ssh elias@192.168.31.200";
     };
     autosuggestion.enable = true;
     enableCompletion = true;

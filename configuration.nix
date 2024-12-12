@@ -2,7 +2,7 @@
 
 {
   # Importing necessary setup for Steam.
-  imports = [ ./builds/steam/default.nix ];
+  imports = [ ./builds/steam/default.nix ./home/extras/printer.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
