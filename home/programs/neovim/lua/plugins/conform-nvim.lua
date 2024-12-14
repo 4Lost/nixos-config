@@ -31,6 +31,8 @@ return {
           yaml = { "prettierd" },
           nix = { "nixfmt" },
           tex = { "latexindent" },
+          c = { "clang_format" },
+          cpp = { "clang_format" },
           ["*"] = { "codespell" },
           ["_"] = { "trim_whitespace" },
         },
@@ -47,9 +49,11 @@ return {
             inherit = true,
             prepend_args = { "-y=\"defaultIndent:'  '\"" },
           },
+          clang_format = {
+            prepend_args = { "--style=~/.config/.clang-format" },
+          },
         },
       })
     end,
   },
 }
-

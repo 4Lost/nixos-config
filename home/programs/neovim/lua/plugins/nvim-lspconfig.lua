@@ -70,7 +70,7 @@ return {
         on_attach = on_attach,
       })
       lspconfig["hls"].setup({
-        filetypes = { 'haskell', 'lhaskell', 'cabal' },
+        filetypes = { "haskell", "lhaskell", "cabal" },
         capabilities = capabilities,
         on_attach = on_attach,
       })
@@ -86,7 +86,7 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
       })
-      lspconfig["ruff_lsp"].setup({
+      lspconfig["ruff"].setup({
         capabilities = capabilities,
         on_attach = on_attach,
       })
