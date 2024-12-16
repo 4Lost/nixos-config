@@ -6,7 +6,7 @@ let
 in {
   home.sessionVariables = { EDITOR = "nvim"; };
 
-  home.packages = with pkgs; [ nerdfonts texliveFull ];
+  home.packages = with pkgs; [ nerdfonts texliveFull clang-tools ];
 
   programs.neovim = {
     enable = true;

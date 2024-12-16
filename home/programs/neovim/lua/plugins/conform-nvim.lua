@@ -50,7 +50,10 @@ return {
             prepend_args = { "-y=\"defaultIndent:'  '\"" },
           },
           clang_format = {
-            prepend_args = { "--style=~/.config/.clang-format" },
+            prepend_args = {
+              "--style=file:./.clang-format",
+              "--fallback-style=LLVM",
+            },
           },
         },
       })
