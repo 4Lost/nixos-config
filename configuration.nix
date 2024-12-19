@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-
+  # Flutter
   programs = { adb.enable = true; };
 
   system.userActivationScripts = {
@@ -97,6 +97,8 @@
     (libsForQt5.callPackage ./home/themes/catppuccin-sddm.nix { })
     # flutter
     android-studio
+    google-chrome
+    android-studio
     clang
     cmake
     flutter
@@ -107,6 +109,7 @@
     xz
     zip
     mesa
+    dart
 
     git
     wget
