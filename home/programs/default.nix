@@ -28,6 +28,7 @@
     ./stack
     ./telegram
     ./thunderbird
+    ./vscode
     ./wallpaper
     ./xmonad
     ./zoom

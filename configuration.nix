@@ -1,6 +1,19 @@
 { pkgs, ... }:
 
 {
+
+  programs = { adb.enable = true; };
+
+  system.userActivationScripts = {
+    stdio = {
+      text = ''
+        rm -f ~/Android/Sdk/platform-tools/adb
+        ln -s /run/current-system/sw/bin/adb ~/Android/Sdk/platform-tools/adb
+      '';
+      deps = [ ];
+    };
+  };
+
   # Importing necessary setup for Steam.
   imports = [ ./builds/steam/default.nix ./home/extras/printer.nix ];
 
@@ -73,7 +86,7 @@
       isNormalUser = true;
       home = "/home/elias";
       shell = pkgs.zsh;
-      extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
+      extraGroups = [ "wheel" "networkmanager" "audio" "video" "adbusers" ];
       hashedPassword =
         "$6$pdAJt1f0v7Zb13Ri$1WpKrErAp5JCb7eXs7EeeWYRMBLu5/WKDdMyGzJyYQDijG2NiywUXpAkl/8p1noxOOqYbb.MTw7JmTzhWGsT21";
     };
@@ -82,6 +95,18 @@
   # Setting the Basic Packages.
   environment.systemPackages = with pkgs; [
     (libsForQt5.callPackage ./home/themes/catppuccin-sddm.nix { })
+    # flutter
+    android-studio
+    clang
+    cmake
+    flutter
+    ninja
+    pkg-config
+    curl
+    unzip
+    xz
+    zip
+    mesa
 
     git
     wget
