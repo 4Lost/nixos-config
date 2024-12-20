@@ -107,6 +107,7 @@
     curl
     unzip
     xz
+    sqlite
     zip
     mesa
     dart
