@@ -97,8 +97,6 @@
     (libsForQt5.callPackage ./home/themes/catppuccin-sddm.nix { })
     # flutter
     android-studio
-    google-chrome
-    android-studio
     clang
     cmake
     flutter
@@ -108,6 +106,7 @@
     unzip
     xz
     sqlite
+    sqlite-utils
     zip
     mesa
     dart
