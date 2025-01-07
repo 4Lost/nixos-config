@@ -11,7 +11,7 @@
         "epson-inkjet-printer-escpr/Epson-XP-520_Series-epson-escpr-en.ppd";
       ppdOptions = {
         PageSize = "A4";
-        Ink = "Mono";
+        Ink = "Color";
       };
     }];
     ensureDefaultPrinter = "Epson-XP-520";
