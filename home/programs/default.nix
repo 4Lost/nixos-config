@@ -24,10 +24,12 @@
     ./pulseaudio
     ./rofi
     ./signal
+    ./skanlite
     ./spotify
     ./stack
     ./telegram
     ./thunderbird
+    ./vlc
     ./vscode
     ./wallpaper
     ./xmonad
