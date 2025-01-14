@@ -4,6 +4,9 @@
   # Flutter
   programs = { adb.enable = true; };
 
+  # SSH
+  programs.ssh.startAgent = true;
+
   system.userActivationScripts = {
     stdio = {
       text = ''
