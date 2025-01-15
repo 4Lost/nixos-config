@@ -2,6 +2,7 @@
   imports = [
     ./alacritty
     ./anki
+    ./calibre
     #./cura
     ./discord
     ./dolphin
