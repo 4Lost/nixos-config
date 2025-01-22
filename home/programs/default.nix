@@ -21,6 +21,7 @@
     ./obs
     ./picard
     ./planify
+    ./prismlauncher
     ./prusa-slicer
     ./pulseaudio
     ./rofi
