@@ -40,7 +40,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              useGlobalPkgs = true;
+              #useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
               users.elias = import ./home/default-laptop.nix;
@@ -68,7 +68,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              useGlobalPkgs = true;
+              #useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
               users.elias = import ./home/default-desktop.nix;
