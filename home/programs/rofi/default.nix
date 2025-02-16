@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ oranchelo-icon-theme nerdfonts xclip ];
+  home.packages = with pkgs; [
+    #oranchelo-icon-theme
+    nerd-fonts.jetbrains-mono
+    xclip
+  ];
 
   xsession.initExtra = "setxkbmap de"; # rofi pass needs this to be set
 
@@ -11,7 +15,7 @@
     theme = ./theme.rafi;
     extraConfig = {
       mode = "run,drun,window,ssh,network";
-      icon-theme = "Oranchelo";
+      #icon-theme = "Oranchelo";
       show-icons = true;
       drun-display-format = "{icon} {name}";
       location = 0;

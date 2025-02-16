@@ -6,7 +6,11 @@ let
 in {
   home.sessionVariables = { EDITOR = "nvim"; };
 
-  home.packages = with pkgs; [ nerdfonts texliveFull clang-tools ];
+  home.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    texliveFull
+    clang-tools
+  ];
 
   programs.neovim = {
     enable = true;
@@ -88,7 +92,7 @@ in {
       neovim-remote
       # Nix
       nixd
-      nixfmt
+      nixfmt-classic
       # Rust
       rust-analyzer
       # Bash

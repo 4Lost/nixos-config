@@ -29,7 +29,7 @@ return {
           markdown = { "prettierd" },
           json = { "prettierd" },
           yaml = { "prettierd" },
-          nix = { "nixfmt" },
+          nix = { "nixfmt-classic" },
           tex = { "latexindent" },
           c = { "clang_format" },
           cpp = { "clang_format" },
