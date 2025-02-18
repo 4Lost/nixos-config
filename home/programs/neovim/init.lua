@@ -14,7 +14,7 @@ require("lazy").setup({
     path = "@path@/pack/myNeovimPackages/start",
     patterns = {
       "folke",
-      "catppuccin",
+      "geodimm",
       "Julian",
       "hrsh7th",
       "neovim",
@@ -51,6 +51,7 @@ require("lazy").setup({
       "elkowar",
       "dynamotn",
       "LhKipp",
+      "Fanael",
     },
   },
   install = {
