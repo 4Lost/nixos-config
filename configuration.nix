@@ -17,8 +17,8 @@
     };
   };
 
-  # Importing necessary setup for Steam.
-  imports = [ ./builds/steam/default.nix ./home/extras/printer.nix ];
+  # Importing necessary setup for Steam & Printing & Flutter.
+  imports = [ ./builds/steam/default.nix ./home/extras/printer.nix ./builds/flutter.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -160,8 +160,19 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [ "electron-25.9.0" ];
+    permittedInsecurePackages = [ "electron-32.3.3" ];
   };
+
+  # Virtualbox
+  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
+  boot.kernelModules = ["kvm-amd"];
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" "kv" ];
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.dragAndDrop = true;
+  virtualisation.virtualbox.host.enableKvm = true;
+  virtualisation.virtualbox.host.addNetworkInterface = false;
 
   # Enable zsh for setting it as shell for users.
   programs.zsh.enable = true;

@@ -27,6 +27,7 @@
     ./rofi
     ./signal
     ./skanlite
+    ./slack
     ./spotify
     ./stack
     ./telegram
