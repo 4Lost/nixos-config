@@ -17,8 +17,8 @@
     };
   };
 
-  # Importing necessary setup for Steam.
-  imports = [ ./builds/steam/default.nix ./home/extras/printer.nix ];
+  # Importing necessary setup for Steam & Printing & Flutter.
+  imports = [ ./builds/steam/default.nix ./home/extras/printer.nix ./builds/flutter.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -160,7 +160,7 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [ "electron-25.9.0" ];
+    permittedInsecurePackages = [ "electron-32.3.3" ];
   };
 
   # Virtualbox

@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    #oranchelo-icon-theme
+    oranchelo-icon-theme
     nerd-fonts.jetbrains-mono
     xclip
   ];
@@ -15,7 +15,7 @@
     theme = ./theme.rafi;
     extraConfig = {
       mode = "run,drun,window,ssh,network";
-      #icon-theme = "Oranchelo";
+      con-theme = "Oranchelo";
       show-icons = true;
       drun-display-format = "{icon} {name}";
       location = 0;
