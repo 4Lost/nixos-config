@@ -14,7 +14,6 @@
     ./inkscape
     ./ktouch
     ./libreoffice
-    ./maestral
     ./neovim
     ##./nixvim
     ./nextcloud
