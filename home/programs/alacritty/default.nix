@@ -4,7 +4,7 @@ let
   theme = builtins.fetchurl {
     url =
       "https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml";
-    sha256 = "1rnc6gsqjdvkb6xbv1pnawrp6f0j5770dqml2di90j3lhv0fppgw";
+    sha256 = "1idjbm5jim9b36235hgwgp9ab81fmbij42y7h85l4l7cqcbyz74l";
   };
 in {
   home.packages = with pkgs; [ fira-code alacritty-theme ];
