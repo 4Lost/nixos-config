@@ -3,7 +3,6 @@
     ./alacritty
     ./anki
     ./calibre
-    #./cura
     ./discord
     ./dolphin
     ./dunst
@@ -15,7 +14,6 @@
     ./ktouch
     ./libreoffice
     ./neovim
-    ##./nixvim
     ./nextcloud
     ./obs
     ./picard
@@ -37,6 +35,5 @@
     ./xmonad
     ./zoom
     ./zsh
-    ./zulip
   ];
 }
