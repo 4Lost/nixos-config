@@ -16,6 +16,7 @@
     ./neovim
     ./nextcloud
     ./obs
+    ./openscad
     ./picard
     ./planify
     ./prismlauncher
