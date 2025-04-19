@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ oranchelo-icon-theme nerdfonts xclip ];
+  home.packages = with pkgs; [
+    oranchelo-icon-theme
+    nerd-fonts.jetbrains-mono
+    xclip
+  ];
 
   xsession.initExtra = "setxkbmap de"; # rofi pass needs this to be set
 

@@ -36,11 +36,10 @@
         modules = [
           ./machines/configuration-laptop.nix
           ./home/services/pipewire.nix
-          nur.nixosModules.nur
+          nur.modules.nixos.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
               users.elias = import ./home/default-laptop.nix;
@@ -52,7 +51,7 @@
               })
               inputs.neovim-nightly-overlay.overlays.default
               inputs.wpaperd.overlays.default
-              inputs.nur.overlay
+              inputs.nur.overlays.default
               (import overlays/minlog.nix)
               (import overlays/obsidian.nix)
             ];
@@ -64,11 +63,10 @@
         modules = [
           ./machines/configuration-desktop.nix
           ./home/services/pipewire.nix
-          nur.nixosModules.nur
+          nur.modules.nixos.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
               users.elias = import ./home/default-desktop.nix;
@@ -80,7 +78,7 @@
               })
               inputs.neovim-nightly-overlay.overlays.default
               inputs.wpaperd.overlays.default
-              inputs.nur.overlay
+              inputs.nur.overlays.default
               (import overlays/minlog.nix)
               (import overlays/obsidian.nix)
             ];
