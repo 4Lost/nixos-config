@@ -1,97 +1,29 @@
-(defwindow bar-primary
-  :monitor 0
-  :geometry (geometry :x "0px"
-    :y "25px"
-    :width "100%"
-    :height "25px"
-    :anchor "top center")
-  :stacking "fg"
-  :reserve (struts :distance "50px" :side "top")
-  :windowtype "dock"
-  :wm-ignore false
-(box
-    :orientation "horizontal"
-    :halign "right"
-  (eventbox :onclick "notify-send Left"
-      :onrightclick "notify-send Right"
-      "Click Me!")
-  (rightSideBar)))
+(defwidget workspaces-and-windows []
+  (let content (split " " (file "/tmp/xmonad-eww-log"))
+    (let ws-list (take 9 content)
+      (let win-list (drop 9 content)
+        (box :orientation "vertical" :class "bar"
 
-;; The Wrapper of the rightside Information
-(defwidget rightSideBar []
-  (box
-    :space-evenly "false"
-    :halign "end"
-    (audio)
-    (nw)
-    (date)
-  ))
+          ;; Workspaces
+          (box :orientation "horizontal"
+            (for ws in ws-list
+              (let class (if (starts-with ws "[[")
+                "ws-current"
+                (if (starts-with ws "(")
+                    "ws-visible"
+                    "ws-hidden")))
+                (let name (string-trim ws "[]()")
+                  (button :onclick (format "wmctrl -s %s" name)
+                          :class class
+                          (label :text name))))))
 
-;; The Internet Information box.
-(defwidget audio []
-(box :class "container"
-    :space-evenly "false"
-    :halign "end"
-    (label :class "iconBat" :text "${volicon} ")
-  (label :class "text" :text "${vol} % ")
-  (label :class "text" :text "${micicon} ")))
-
-;; The Internet Information box.
-(defwidget nw []
-(box :class "container"
-    :space-evenly "false"
-    :halign "end"
-    (label :class "iconNWDown" :text " ")
-  (label :class "text" :text " ${nwdown} ")
-    (label :class "iconNWUp" :text " ")
-  (label :class "text" :text "${nwup} ")))
-
-;; The date Information box.
-(defwidget date []
-(box :class "container"
-    :space-evenly "false"
-    :halign "end"
-    (label :class "iconClock" :text " ")
-  (label :class "text" :text "${date-time} ")))
-
-;; Variables
-
-(defpoll volicon
-  :interval "1s"
-  :initial "-"  ; optional, defaults to poll at startup
-  `if [[ $(cut -d ' ' -f 2 <<< $(pulseaudio-ctl full-status)) == "yes" ]]; then echo "󰝟"; else echo ""; fi`)
-
-(defpoll vol
-  :interval "1s"
-  :initial "-"  ; optional, defaults to poll at startup
-  `Volume=$(cut -d ' ' -f 1 <<<$(pulseaudio-ctl full-status)); echo "$(( Volume/2 ))"`)
-
-(defpoll micicon
-  :interval "1s"
-  :initial "-"  ; optional, defaults to poll at startup
-  `if [[ $(cut -d ' ' -f 3 <<< $(pulseaudio-ctl full-status)) == "yes" ]]; then echo ""; else echo ""; fi`)
-
-(defpoll nwup ;; TODO
-  :interval "1s"
-  :initial "-"  ; optional, defaults to poll at startup
-  `echo "up"`)
-
-(defpoll nwdown ; TODO
-  :interval "1s"
-  :initial "-"  ; optional, defaults to poll at startup
-  `echo "down"`)
-
-(defpoll date-time
-  :interval "1s"
-  :initial "initial-value"  ; optional, defaults to poll at startup
-  `date "+%a %d.%m.%y %H:%M:%S"`)
-
-;; IDK
-(defwidget greeter [?text name]
-(box :orientation "horizontal"
-    :halign "center"
-    :geometry (geometry :x "0px"
-      :y "0px"
-      :height "20px"
-      :anchor "top center")
-    text))
+          ;; Open windows
+          (box :orientation "horizontal" :class "window-list"
+            (for win in win-list
+              (let class (if (starts-with win "*") "win-focused" "win")
+                (label :class class :text (string-trim win "*")))))
+        )
+      )
+    )
+  )
+)
