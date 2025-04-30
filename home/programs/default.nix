@@ -3,7 +3,6 @@
     ./alacritty
     ./anki
     ./calibre
-    #./cura
     ./discord
     ./dolphin
     ./dunst
@@ -14,11 +13,10 @@
     ./inkscape
     ./ktouch
     ./libreoffice
-    ./maestral
     ./neovim
-    ##./nixvim
     ./nextcloud
     ./obs
+    ./openscad
     ./picard
     ./planify
     ./prismlauncher
@@ -38,6 +36,5 @@
     ./xmonad
     ./zoom
     ./zsh
-    ./zulip
   ];
 }

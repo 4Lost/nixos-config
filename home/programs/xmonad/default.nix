@@ -19,5 +19,7 @@
     xorg.xmessage
     ghc
     cabal-install
+    wmctrl
+    trayer
   ];
 }
