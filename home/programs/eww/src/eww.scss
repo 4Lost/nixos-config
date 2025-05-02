@@ -1,0 +1,76 @@
+// <-- Preamble -->
+  // <-- Colors -->
+    $white-text: #f5e0dc;
+    $grey-text: #6c7086;
+    $grey-background: #1e1e2e;
+    $green: #a6e3a1;
+    $red: #f38ba8;
+    $yellow: #f9e2af;
+    $violet: #cba6f7;
+    $blue: #89b4fa;
+    $gold: #fab387;
+  // <-- Prepare all -->
+    * { all: unset; }
+// <-- Bar -->
+  // <-- Widgets -->
+    // <-- Audio -->
+      .micOn {color: $green;}
+      .micOff {color: $red;}
+      .speakerOn {color: $green;}
+      .speakerOff {color: $red;}
+    // <-- Backlight -->
+      .backlight {color: $yellow;}
+    // <-- CPU & Memory -->
+      .cpu {color: $violet;}
+      .memory {color: $blue;}
+    // <-- Battery -->
+      .batteryFull {color: $gold;}
+      .batteryHalf {color: $green;}
+      .batteryEmpty {color: $red;}
+      .batteryCharging {color: $violet;}
+      .networkDown {color: $red;}
+    // <-- Network -->
+      .networkUp {color: $blue;}
+    // <-- Workspaces -->
+      .workspace-button {
+        background: $grey-background;
+      }
+      .ws-current {
+        color: $green;
+      }
+      .ws-visible {
+        color: $red;
+      }
+      .ws-hidden {
+        color: $white-text;
+      }
+      .ws-empty {
+        color: $grey-text;
+      }
+  // <-- Window -->
+    .bar {
+      padding: 0.2em 1em;
+      background: $grey-background;
+      color: $white-text;
+      font-family: "Fira Code";
+      font-size: 12px;
+    }
+// <-- Powermenu -->
+    .powermenu-button {
+      background-color: #313244;
+      color: $white-text;
+      padding: 15px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  // <-- Window -->
+    .powermenu {
+      background-color: $grey-background;
+      padding: 20px;
+    }
+    .powermenuWindow {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+    }

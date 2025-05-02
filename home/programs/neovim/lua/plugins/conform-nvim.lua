@@ -29,11 +29,7 @@ return {
           markdown = { "prettierd" },
           json = { "prettierd" },
           yaml = { "prettierd" },
-<<<<<<< HEAD
-          nix = { "nixfmt-classic" },
-=======
           nix = { "nixfmt-rfc-style" },
->>>>>>> test
           tex = { "latexindent" },
           c = { "clang_format" },
           cpp = { "clang_format" },
@@ -55,7 +51,6 @@ return {
           },
           clang_format = {
             prepend_args = {
-              "--style=file:./.clang-format",
               "--fallback-style=LLVM",
             },
           },

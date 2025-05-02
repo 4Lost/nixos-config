@@ -19,7 +19,7 @@ import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Hooks.ManageHelpers
 
 main = do
-    xmonad . ewmhFullscreen . ewmh $ myConfig
+    xmonad . docks . ewmhFullscreen . ewmh $ myConfig
 
 myConfig =
     def
@@ -50,16 +50,15 @@ myKeys =
     , ("M-c", spawn "firefox")
     , ("M-y", spawn "signal-desktop")
     , ("M-x", spawn "telegram-desktop")
-    , ("M-c", spawn "firefox")
     , ("M-v", spawn "thunderbird")
     , -- Brightness
       ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10")
     , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10")
     , -- Audio
-      ("<XF86AudioMute>", spawn "pulseaudio-ctl mute")
-    , ("<XF86AudioRaiseVolume>", spawn "pulseaudio-ctl up 5")
-    , ("<XF86AudioLowerVolume>", spawn "pulseaudio-ctl down 5")
-    , ("<XF86AudioMicMute>", spawn "pulseaudio-ctl mute-input")
+      ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
+    , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%")
+    , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%")
+    , ("<XF86AudioMicMute>", spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle")
     ]
 
 -- `removeKeysP` [ "M-S-q" ]
@@ -69,18 +68,18 @@ myXmobarPP =
     def
         { ppOutput = \str -> do
             writeFile "/tmp/xmonad-eww-log" str
-        , ppCurrent = wrap "[[" "]]"
+        , ppCurrent = wrap "[" "]"
         , ppVisible = wrap "(" ")"
-        , ppHidden = wrap " " " "
+        , ppHidden = wrap "{" "}"
         , ppHiddenNoWindows = id
         , ppUrgent = wrap "!" "!"
-        , ppSep = " "
+        , ppSep = "|"
         , ppOrder = \(ws : _ : _ : wins : _) -> [ws, wins]
         , ppExtras = [logTitles formatFocused formatUnfocused]
         }
   where
-    formatFocused = wrap "*" "*" . ppWindow
-    formatUnfocused = id . ppWindow
+    formatFocused = wrap "(" ")" . ppWindow
+    formatUnfocused = wrap "[" "]" . ppWindow
 
     ppWindow :: String -> String
     ppWindow w = if null w then "???" else take 30 w
@@ -97,5 +96,5 @@ myManageHooks =
 myStartupHook :: X ()
 myStartupHook = do
     spawnOnce "nextcloud --background"
-    spawnOnce "trayer --edge top --align left --widthtype request --height 25 --transparent true --alpha 0 --expand false --SetDockType true --SetPartialStrut true --monitor primary &"
+    spawnOnce "trayer --edge top --align left --widthtype request --height 25 --transparent true --alpha 0 --expand true --SetDockType true --SetPartialStrut true"
     spawnOnce "eww open bar"

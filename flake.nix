@@ -40,10 +40,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-<<<<<<< HEAD
-              #useGlobalPkgs = true;
-=======
->>>>>>> test
+              backupFileExtension = "backup";
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
               users.elias = import ./home/default-laptop.nix;
@@ -71,10 +68,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-<<<<<<< HEAD
-              #useGlobalPkgs = true;
-=======
->>>>>>> test
+              backupFileExtension = "backup";
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
               users.elias = import ./home/default-desktop.nix;

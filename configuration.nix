@@ -181,6 +181,10 @@
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.lightdm.enableGnomeKeyring = true;
 
+  # Disable powerbutton => for use with eww
+  services.logind.extraConfig = ''HandlePowerKey=ignore'';
+  services.acpid.enable = true;
+
   # Set stateVersion. Leave it as set.
   system.stateVersion = "23.11";
 }

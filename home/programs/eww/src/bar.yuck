@@ -1,0 +1,230 @@
+;; /-- Variables -->
+  (defpoll windows
+    :interval "1s"
+    :initial "-"
+    `sh ~/.config/eww/scripts/xmonad_logs.sh`)
+
+  (defpoll micClass
+    :interval "1s"
+    :initial "micOff"
+    `sh ~/.config/eww/scripts/mic_class.sh`)
+
+  (defpoll micIcon
+    :interval "1s"
+    :initial "󰍭"
+    `sh ~/.config/eww/scripts/mic_icon.sh`)
+
+  (defpoll speakerClass
+    :interval "1s"
+    :initial "speakerOff"
+    `sh ~/.config/eww/scripts/speaker_class.sh`)
+
+  (defpoll speakerIcon
+    :interval "1s"
+    :initial ""
+    `sh ~/.config/eww/scripts/speaker_icon.sh`)
+
+  (defpoll speakerVolume
+    :interval "1s"
+    :initial "0"
+    `sh ~/.config/eww/scripts/speaker_volume.sh`)
+
+  (defpoll backlight
+    :interval "1s"
+    :initial "0"
+    `xbacklight -get`)
+
+  (defpoll cpu
+    :interval "1s"
+    :initial "0"
+    `sh ~/.config/eww/scripts/cpu.sh`)
+
+  (defpoll memory
+    :interval "1s"
+    :initial "0"
+    `sh ~/.config/eww/scripts/memory.sh`)
+
+  (defpoll batteryClass
+    :interval "1s"
+    :initial "speakerOff"
+    `sh ~/.config/eww/scripts/battery_class.sh`)
+
+  (defpoll batteryIcon
+    :interval "1s"
+    :initial ""
+    `sh ~/.config/eww/scripts/battery_icon.sh`)
+
+  (defpoll batteryVolume
+    :interval "1s"
+    :initial "0"
+    `sh ~/.config/eww/scripts/battery_volume.sh`)
+
+  (defpoll networkDown
+    :interval "1s"
+    :initial "0"
+    `sh ~/.config/eww/scripts/network_down.sh`)
+
+  (defpoll networkUp
+    :interval "1s"
+    :initial "0"
+    `sh ~/.config/eww/scripts/network_up.sh`)
+
+  (defpoll date
+    :interval "1s"
+    :initial "-"
+    `date '+ %a %d.%m.%y  %H:%M'`)
+
+  (defvar ws1 "ws-empty")
+  (defvar ws2 "ws-empty")
+  (defvar ws3 "ws-empty")
+  (defvar ws4 "ws-empty")
+  (defvar ws5 "ws-empty")
+  (defvar ws6 "ws-empty")
+  (defvar ws7 "ws-empty")
+  (defvar ws8 "ws-empty")
+  (defvar ws9 "ws-empty")
+
+;; /-- Blocks -->
+  (defwidget widgetWorkspaces []
+    (box
+      :orientation "horizontal"
+      :class "workspace-buttons"
+      (button
+        :onclick "wmctrl -s 0"
+        :class "workspace-button ${ws1}"
+        (label
+          :text "1"))
+      (label
+        :text " ")
+      (button
+        :onclick "wmctrl -s 1"
+        :class "workspace-button ${ws2}"
+        (label
+          :text "2"))
+      (label
+        :text " ")
+      (button
+        :onclick "wmctrl -s 2"
+        :class "workspace-button ${ws3}"
+        (label
+          :text "3"))
+      (label
+        :text " ")
+      (button
+        :onclick "wmctrl -s 3"
+        :class "workspace-button ${ws4}"
+        (label
+          :text "4"))
+      (label
+        :text " ")
+      (button
+        :onclick "wmctrl -s 4"
+        :class "workspace-button ${ws5}"
+        (label
+          :text "5"))
+      (label
+        :text " ")
+      (button
+        :onclick "wmctrl -s 5"
+        :class "workspace-button ${ws6}"
+        (label
+          :text "6"))
+      (label
+        :text " ")
+      (button
+        :onclick "wmctrl -s 6"
+        :class "workspace-button ${ws7}"
+        (label
+          :text "7"))
+      (label
+        :text " ")
+      (button
+        :onclick "wmctrl -s 7"
+        :class "workspace-button ${ws8}"
+        (label
+          :text "8"))
+      (label
+        :text " ")
+      (button
+        :onclick "wmctrl -s 8"
+        :class "workspace-button ${ws9}"
+        (label
+          :text "9"))
+      (label
+        :text " ")))
+
+  (defwidget widgetWindows []
+    (label
+      :text "| ${windows}"))
+
+  (defwidget widgetMic []
+    (label
+      :class micClass
+      :text "${micIcon} "))
+
+  (defwidget widgetSpeaker []
+    (label
+      :class speakerClass
+      :text "${speakerIcon} ${speakerVolume}% "))
+
+  (defwidget widgetBacklight []
+    (label
+      :class "backlight"
+      :text " ${backlight}% "))
+
+  (defwidget widgetCpu []
+    (label
+      :class "cpu"
+      :text " ${cpu}% "))
+
+  (defwidget widgetMemory []
+    (label
+      :class "memory"
+      :text " ${memory}% "))
+
+  (defwidget widgetBattery []
+    (label
+      :class batteryClass
+      :text "${batteryIcon} ${batteryVolume}% "))
+
+  (defwidget widgetNetworkDown []
+    (label
+      :class "networkDown"
+      :text " ${networkDown}KiB "))
+
+  (defwidget widgetNetworkUp []
+    (label
+      :class "networkUp"
+      :text " ${networkUp}KiB "))
+
+;; /-- Bar -->
+  (defwindow bar []
+    :geometry (geometry
+      :x "0px"
+      :y "0px"
+      :width "100%"
+      :height "25px"
+      :anchor "top center"
+    )
+    :reserve (struts
+      :distance "25px"
+      :side "top")
+    :windowtype "dock"
+    (box
+      :orientation "horizontal"
+      :space-evenly false
+      :class "bar"
+      (widgetWorkspaces)
+      (widgetWindows)
+      (box :hexpand true)
+      (widgetMic)
+      (widgetSpeaker)
+      (widgetBacklight)
+      (widgetCpu)
+      (widgetMemory)
+      (widgetBattery)
+      (widgetNetworkDown)
+      (widgetNetworkUp)
+      (label :text date)
+    )
+  )

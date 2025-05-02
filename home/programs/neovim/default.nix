@@ -10,10 +10,6 @@ in {
     nerd-fonts.jetbrains-mono
     texliveFull
     clang-tools
-<<<<<<< HEAD
-=======
-    vimPlugins.catppuccin-nvim
->>>>>>> test
   ];
 
   programs.neovim = {
@@ -34,6 +30,7 @@ in {
       cmp_luasnip
       conform-nvim
       conjure
+      comment-nvim
       dropbar-nvim
       friendly-snippets
       lazy-nvim
@@ -95,11 +92,7 @@ in {
       neovim-remote
       # Nix
       nixd
-<<<<<<< HEAD
-      nixfmt-classic
-=======
       nixfmt-rfc-style
->>>>>>> test
       # Rust
       rust-analyzer
       # Bash
