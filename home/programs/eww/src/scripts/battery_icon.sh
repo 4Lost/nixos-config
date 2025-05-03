@@ -3,7 +3,9 @@ stat=$(cat /sys/class/power_supply/AC/online)
 
 icon=""
 
-if [[ $stat == 1 ]]; then
+if [ ! -d "/sys/class/power_supply/BAT0" ]; then
+  icon=""
+elif [[ $stat == 1 ]]; then
   icon=""
 elif [[ $bat -le 10 ]]; then
   icon=""
