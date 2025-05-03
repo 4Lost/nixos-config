@@ -2,28 +2,28 @@
   (box
     :class "powermenu"
     (button
-      :onclick "systemctl poweroff"
+      :onclick "close eww power; systemctl poweroff"
       :class "powermenu-button"
       (label
         :text "⏻ "))
     (label
       :text " ")
     (button
-      :onclick "loginctl lock-session"
+      :onclick "close eww power; loginctl lock-session"
       :class "powermenu-button"
       (label
         :text ""))
     (label
       :text " ")
     (button
-      :onclick "systemctl reboot"
+      :onclick "close eww power; systemctl reboot"
       :class "powermenu-button"
       (label
         :text ""))
     (label
       :text "")
     (button
-      :onclick "loginctl terminate-user $USER"
+      :onclick "close eww power; loginctl terminate-user $USER"
       :class "powermenu-button"
       (label
         :text ""))))
