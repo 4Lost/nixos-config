@@ -133,6 +133,8 @@
     seahorse
     libgnome-keyring
 
+    acpid
+
     # For setting the necessary permissions for gnome.nautilus.
     lxqt.lxqt-policykit # provides a default authentication client for policykit
   ];

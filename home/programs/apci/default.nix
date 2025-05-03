@@ -1,5 +1,3 @@
-{}:
-
 {
   xdg.configFile."acpi" = {
     recursive = true;

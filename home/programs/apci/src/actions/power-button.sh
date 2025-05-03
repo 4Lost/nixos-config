@@ -1,1 +1,1 @@
-eww open powerpopup
+eww open power
