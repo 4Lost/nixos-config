@@ -1,5 +1,9 @@
 WINDOW_NAME="power"
-if eww windows | grep -q "$WINDOW_NAME"; then
+
+echo "Power button pressed" >>/tmp/acpi_log.txt
+
+# Check if the window is already open
+if eww active-windows | grep -q "$WINDOW_NAME"; then
   eww close "$WINDOW_NAME"
 else
   eww open "$WINDOW_NAME"

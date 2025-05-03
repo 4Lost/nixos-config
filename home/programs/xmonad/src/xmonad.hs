@@ -59,6 +59,8 @@ myKeys =
     , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%")
     , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%")
     , ("<XF86AudioMicMute>", spawn "pactl set-source-mute @DEFAULT_SOURCE@ toggle")
+    , -- Powerbutton
+      ("<XF86PowerOff>", spawn "/home/$USER/.config/eww/scripts/powermenu.sh")
     ]
 
 -- `removeKeysP` [ "M-S-q" ]

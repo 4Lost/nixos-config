@@ -133,8 +133,6 @@
     seahorse
     libgnome-keyring
 
-    acpid
-
     # For setting the necessary permissions for gnome.nautilus.
     lxqt.lxqt-policykit # provides a default authentication client for policykit
   ];
@@ -185,13 +183,6 @@
 
   # Disable powerbutton => for use with eww
   services.logind.extraConfig = ''HandlePowerKey=ignore'';
-  services.acpid.enable = true;
-  environment.etc = {
-    "acpi/events/power".text = ''
-      event=button/power.*
-      action=/home/elias/eww/scripts/powermenu.sh
-    '';
-  };
 
   # Set stateVersion. Leave it as set.
   system.stateVersion = "23.11";

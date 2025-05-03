@@ -46,10 +46,6 @@
               users.elias = import ./home/default-laptop.nix;
             };
             nixpkgs.overlays = [
-              (final: prev: {
-                xmobar = final.haskellPackages.callPackage
-                  ./home/programs/xmonad/src/xmobar/default.nix { };
-              })
               inputs.neovim-nightly-overlay.overlays.default
               inputs.wpaperd.overlays.default
               inputs.nur.overlays.default
@@ -74,10 +70,6 @@
               users.elias = import ./home/default-desktop.nix;
             };
             nixpkgs.overlays = [
-              (final: prev: {
-                xmobar = final.haskellPackages.callPackage
-                  ./home/programs/xmonad/src/xmobar/default.nix { };
-              })
               inputs.neovim-nightly-overlay.overlays.default
               inputs.wpaperd.overlays.default
               inputs.nur.overlays.default
