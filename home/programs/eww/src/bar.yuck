@@ -72,7 +72,7 @@
   (defpoll date
     :interval "1s"
     :initial "-"
-    `date '+ %a %d.%m.%y  %H:%M'`)
+    `date '+ %a %d.%m.%y %H:%M'`)
 
   (defvar ws1 "ws-empty")
   (defvar ws2 "ws-empty")
@@ -83,6 +83,8 @@
   (defvar ws7 "ws-empty")
   (defvar ws8 "ws-empty")
   (defvar ws9 "ws-empty")
+
+  (defvar layouts "")
 
 ;; /-- Blocks -->
   (defwidget widgetWorkspaces []
@@ -149,53 +151,108 @@
         :onclick "wmctrl -s 8"
         :class "workspace-button ${ws9}"
         (label
-          :text "9"))
-      (label
-        :text " ")))
+          :text "9"))))
 
   (defwidget widgetWindows []
     (label
-      :text "| ${windows}"))
+      :text "${windows}"))
 
-  (defwidget widgetMic []
+  (defwidget widgetLayouts []
     (label
-      :class micClass
-      :text "${micIcon} "))
+      :text "${layouts}"))
+
+  (defwidget widgetLogSeperator []
+    (label
+      :class "text separator"
+      :text "⦁"))
 
   (defwidget widgetSpeaker []
-    (label
-      :class speakerClass
-      :text "${speakerIcon} ${speakerVolume}% "))
+    (box
+      :space-evenly false
+      (label
+        :class speakerClass
+        :text "${speakerIcon} ")
+      (label
+        :class "text"
+        :text "${speakerVolume}% ")
+      (label
+        :class micClass
+        :text "${micIcon}")))
 
   (defwidget widgetBacklight []
-    (label
-      :class "backlight"
-      :text " ${backlight}% "))
+    (box
+      :space-evenly false
+      (label
+        :class "backlight"
+        :text " ")
+      (label
+        :class "text"
+        :text "${backlight}%")))
 
   (defwidget widgetCpu []
-    (label
-      :class "cpu"
-      :text " ${cpu}% "))
+    (box
+      :space-evenly false
+      (label
+        :class "cpu"
+        :text " ")
+      (label
+        :class "text"
+        :text "${cpu}%")))
 
   (defwidget widgetMemory []
-    (label
-      :class "memory"
-      :text " ${memory}% "))
+    (box
+      :space-evenly false
+      (label
+        :class "memory"
+        :text "  ")
+      (label
+        :class "text"
+        :text "${memory}%")))
 
   (defwidget widgetBattery []
-    (label
-      :class batteryClass
-      :text "${batteryIcon} ${batteryVolume}% "))
+    (box
+      :space-evenly false
+      (label
+        :class batteryClass
+        :text "${batteryIcon} ")
+      (label
+        :class "text"
+        :text "${batteryVolume}%")))
 
   (defwidget widgetNetworkDown []
-    (label
-      :class "networkDown"
-      :text " ${networkDown}KiB "))
+    (box
+      :space-evenly false
+      (label
+        :class "networkDown"
+        :text " ")
+      (label
+        :class "text"
+        :text "${networkDown}")))
 
   (defwidget widgetNetworkUp []
+    (box
+      :space-evenly false
+      (label
+        :class "networkUp"
+        :text " ")
+      (label
+        :class "text"
+        :text "${networkUp}")))
+
+  (defwidget widgetTime []
+    (box
+      :space-evenly false
+      (label
+        :class "time"
+        :text " ")
+      (label
+        :class "text"
+        :text "${date}")))
+
+  (defwidget widgetSeperator []
     (label
-      :class "networkUp"
-      :text " ${networkUp}KiB "))
+      :class "text separator"
+      :text "|"))
 
 ;; /-- Bar -->
   (defwindow bar []
@@ -215,16 +272,25 @@
       :space-evenly false
       :class "bar"
       (widgetWorkspaces)
+      (widgetLogSeperator)
+      (widgetLayouts)
+      (widgetLogSeperator)
       (widgetWindows)
       (box :hexpand true)
-      (widgetMic)
       (widgetSpeaker)
+      (widgetSeperator)
       (widgetBacklight)
+      (widgetSeperator)
       (widgetCpu)
+      (widgetSeperator)
       (widgetMemory)
+      (widgetSeperator)
       (widgetBattery)
+      (widgetSeperator)
       (widgetNetworkDown)
+      (widgetSeperator)
       (widgetNetworkUp)
-      (label :text date)
+      (widgetSeperator)
+      (widgetTime)
     )
   )

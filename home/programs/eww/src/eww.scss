@@ -9,8 +9,11 @@
     $violet: #cba6f7;
     $blue: #89b4fa;
     $gold: #fab387;
+    $orange: #fab387;
   // <-- Prepare all -->
-    * { all: unset; }
+    * {all: unset;}
+    .text {color: $white-text;}
+    .separator {padding: 0px 4px;}
 // <-- Bar -->
   // <-- Widgets -->
     // <-- Audio -->
@@ -32,21 +35,12 @@
     // <-- Network -->
       .networkUp {color: $blue;}
     // <-- Workspaces -->
-      .workspace-button {
-        background: $grey-background;
-      }
-      .ws-current {
-        color: $green;
-      }
-      .ws-visible {
-        color: $red;
-      }
-      .ws-hidden {
-        color: $white-text;
-      }
-      .ws-empty {
-        color: $grey-text;
-      }
+      .workspace-button {background: $grey-background;}
+      .ws-current {color: $green;}
+      .ws-visible {color: $red;}
+      .ws-hidden {color: $white-text;}
+      .ws-empty {color: $grey-text;}
+      .time {color: $orange;}
   // <-- Window -->
     .bar {
       padding: 0.2em 1em;

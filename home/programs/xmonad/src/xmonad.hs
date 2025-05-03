@@ -76,7 +76,7 @@ myXmobarPP =
         , ppHiddenNoWindows = id
         , ppUrgent = wrap "!" "!"
         , ppSep = "|"
-        , ppOrder = \(ws : _ : _ : wins : _) -> [ws, wins]
+        , ppOrder = \(ws : layout : _ : wins : _) -> [ws, layout, wins]
         , ppExtras = [logTitles formatFocused formatUnfocused]
         }
   where

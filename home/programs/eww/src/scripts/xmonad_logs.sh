@@ -1,5 +1,5 @@
 line=$(cat /tmp/xmonad-eww-log)
-IFS='|' read -r workspaces windows <<<"$line"
+IFS='|' read -r workspaces layouts windows <<<"$line"
 # Workspaces
 workspaceArray=($workspaces)
 i=0
@@ -15,5 +15,7 @@ for ws in "${workspaceArray[@]}"; do
     eww update ws$i="ws-empty"
   fi
 done
+# Layouts
+eww update layouts="${layouts}"
 # Windows
 echo "${windows}"
