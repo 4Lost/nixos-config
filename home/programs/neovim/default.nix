@@ -1,16 +1,19 @@
 { pkgs, config, ... }:
 
 let
+  deferred-clipboard-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "deferred-clipboard-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "EtiamNullam";
+      repo = "deferred-clipboard.nvim";
+      rev = "f58d9a20fe5d5891c61773814a1f3051ce43c006";
+      hash = "sha256-HTk70Fb4n/F4nVkfxSKRsgrXnoFwMpSV276WvDt5uY0=";
+    };
+  };
   mkLuaConfig = file: args:
     builtins.readFile "${pkgs.substituteAll (args // { src = file; })}";
 in {
   home.sessionVariables = { EDITOR = "nvim"; };
-
-  home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    texliveFull
-    clang-tools
-  ];
 
   programs.neovim = {
     enable = true;
@@ -18,7 +21,6 @@ in {
     vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;
-
     plugins = (with pkgs.vimPlugins; [
       bufferline-nvim
       catppuccin-nvim
@@ -59,6 +61,7 @@ in {
       telescope-nvim
       vimtex
       which-key-nvim
+
     ]) ++ [
       (pkgs.vimPlugins.nvim-treesitter.withPlugins
         (plugins: pkgs.tree-sitter.allGrammars))
@@ -103,6 +106,9 @@ in {
       shfmt
       # Scheme
       chez
+      nerd-fonts.jetbrains-mono
+      texliveFull
+      clang-tools
     ];
 
     extraLuaConfig = mkLuaConfig ./init.lua {

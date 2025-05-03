@@ -4,6 +4,7 @@ return {
     dependencies = {
       {
         "numToStr/Comment.nvim",
+        name = "comment.nvim",
         lazy = false,
         config = function()
           require("Comment").setup({
@@ -17,4 +18,3 @@ return {
     },
   },
 }
-

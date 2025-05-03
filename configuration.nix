@@ -1,13 +1,6 @@
 { pkgs, ... }:
 
-{
-  # Flutter
-  programs = { adb.enable = true; };
-
-  # SSH
-  programs.ssh.startAgent = true;
-
-  system.userActivationScripts = {
+{  system.userActivationScripts = {
     stdio = {
       text = ''
         rm -f ~/Android/Sdk/platform-tools/adb
@@ -52,7 +45,6 @@
 
   # Activate Flakes.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   services = {
     # Set XServer Options.
     displayManager = {
@@ -98,6 +90,8 @@
   # Setting the Basic Packages.
   environment.systemPackages = with pkgs; [
     (libsForQt5.callPackage ./home/themes/catppuccin-sddm.nix { })
+    xsecurelock
+    xss-lock
     # flutter
     android-studio
     clang
@@ -124,8 +118,8 @@
 
     acpilight # For setting Backlight.
     dbus
-    pulseaudioFull
-    pulseaudio-ctl
+    # pulseaudioFull
+    # pulseaudio-ctl
 
     libnotify
 
@@ -137,30 +131,11 @@
     lxqt.lxqt-policykit # provides a default authentication client for policykit
   ];
 
-  # Adding Features to Dolphin.
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
-
   environment.sessionVariables = {
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
-  };
-
-  # Setting the permissions for acpilight.
-  services.udev = {
-    enable = true;
-    extraRules = ''
-      SUBSYSTEM=="backlight", ACTION=="add", \
-        RUN+="${pkgs.coreutils-full}/bin/chgrp video /sys/class/backlight/%k/brightness", \
-        RUN+="${pkgs.coreutils-full}/bin/chmod g+w /sys/class/backlight/%k/brightness"
-    '';
-  };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [ "electron-32.3.3" ];
   };
 
   # Virtualbox
@@ -174,17 +149,38 @@
   virtualisation.virtualbox.host.enableKvm = true;
   virtualisation.virtualbox.host.addNetworkInterface = false;
 
-  # Enable zsh for setting it as shell for users.
-  programs.zsh.enable = true;
+  programs = {
+    # Flutter
+    adb.enable = true;
+    ssh.startAgent = true;
+    zsh.enable = true;
+  };
 
   # Enabling the Keyring.
-  services.gnome.gnome-keyring.enable = true;
   security.pam.services.lightdm.enableGnomeKeyring = true;
-
-  # Disable powerbutton => for use with eww
-  services.logind.extraConfig = ''HandlePowerKey=ignore'';
+  services = {
+    gnome.gnome-keyring.enable = true;
+    # Disable powerbutton => for use with eww
+    logind.extraConfig = ''HandlePowerKey=ignore'';
+    # Setting the permissions for acpilight.
+    udev = {
+      enable = true;
+      extraRules = ''
+        SUBSYSTEM=="backlight", ACTION=="add", \
+          RUN+="${pkgs.coreutils-full}/bin/chgrp video /sys/class/backlight/%k/brightness", \
+          RUN+="${pkgs.coreutils-full}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+      '';
+    };
+    # Adding Features to Dolphin.
+    gvfs.enable = true;
+    udisks2.enable = true;
+  };
 
   # Set stateVersion. Leave it as set.
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [ "electron-32.3.3" ];
+  };
   system.stateVersion = "23.11";
 }
 

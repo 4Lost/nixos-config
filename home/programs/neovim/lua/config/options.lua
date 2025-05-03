@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+opt.clipboard = "unnamedplus"
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
 opt.list = true -- Show some invisible characters (tabs...
