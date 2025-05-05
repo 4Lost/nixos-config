@@ -1,2 +1,2 @@
 (include "./bar.yuck")
-(include "./powerpopup.yuck")
+(include "./power.yuck")

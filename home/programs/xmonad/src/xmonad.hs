@@ -100,3 +100,5 @@ myStartupHook = do
     spawnOnce "nextcloud --background"
     spawnOnce "trayer --edge top --align left --widthtype request --height 25 --transparent true --alpha 0 --expand true --SetDockType true --SetPartialStrut true"
     spawnOnce "eww open bar"
+    spawnOnce "xss-lock -- ~/.config/eww/scripts/blur-lock.sh &"
+    spawnOnce "xset s 600 600 && xset +dpms && xset dpms 600 900 1200"

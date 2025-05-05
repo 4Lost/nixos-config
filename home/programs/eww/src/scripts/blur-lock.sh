@@ -1,1 +1,1 @@
-xsecurelock
+betterlockscreen --lock blur

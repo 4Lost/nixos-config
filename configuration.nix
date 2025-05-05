@@ -90,8 +90,9 @@
   # Setting the Basic Packages.
   environment.systemPackages = with pkgs; [
     (libsForQt5.callPackage ./home/themes/catppuccin-sddm.nix { })
-    xsecurelock
+    # Betterlockscreen
     xss-lock
+    xorg.xset
     # flutter
     android-studio
     clang
@@ -155,6 +156,8 @@
     ssh.startAgent = true;
     zsh.enable = true;
   };
+  # Betterlockscreen
+  security.pam.services.i3lock.enable = true;
 
   # Enabling the Keyring.
   security.pam.services.lightdm.enableGnomeKeyring = true;
