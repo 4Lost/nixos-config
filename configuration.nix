@@ -1,21 +1,15 @@
 { pkgs, ... }:
 
-{  system.userActivationScripts = {
-    stdio = {
-      text = ''
-        rm -f ~/Android/Sdk/platform-tools/adb
-        ln -s /run/current-system/sw/bin/adb ~/Android/Sdk/platform-tools/adb
-      '';
-      deps = [ ];
-    };
-  };
-
+{
   # Importing necessary setup for Steam & Printing & Flutter.
   imports = [ ./builds/steam/default.nix ./home/extras/printer.nix ./builds/flutter.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
-    systemd-boot.enable = true;
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 120;
+    };
     efi.canTouchEfiVariables = true;
   };
 
@@ -25,7 +19,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";
-    # Use xkb.options in tty.
     useXkbConfig = true;
   };
   # Enable Asterisks for Password prompt.
@@ -36,6 +29,9 @@
     '';
   };
 
+  # Activate Flakes.
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Configuration of the Garbage collect.
   nix.gc = {
     automatic = true; # Enable the automatic garbage collector
@@ -43,36 +39,29 @@
     options = "--delete-older-than 7d";
   };
 
-  # Activate Flakes.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   services = {
-    # Set XServer Options.
     displayManager = {
       sddm = {
         enable = true;
         theme = "catppuccin-mocha";
+        wayland.enable = true;
       };
-      defaultSession = "none+xmonad";
+      #autoLogin = {
+      #  enable = true;
+      #  user = "elias";
+      #};
+      defaultSession = "river";
     };
     libinput.enable = true; # Enable touchpad.
-    xserver = {
-      enable = true;
-      windowManager.xmonad = {
-        enable = true;
-        flake = {
-          enable = true;
-          compiler = "ghc982";
-        };
-        enableContribAndExtras = true;
-      };
-      xkb = {
-        layout = "de";
-        options = "caps:deadgraveacute";
-      };
-    };
-    # Enable CUPS to print.
     printing.enable = true;
   };
+
+  programs = {
+    river.enable = true;
+    ssh.startAgent = true;
+    zsh.enable = true;
+  };
+
 
   # Define a user account.
   users = {
@@ -90,24 +79,6 @@
   # Setting the Basic Packages.
   environment.systemPackages = with pkgs; [
     (libsForQt5.callPackage ./home/themes/catppuccin-sddm.nix { })
-    # Betterlockscreen
-    xss-lock
-    xorg.xset
-    # flutter
-    android-studio
-    clang
-    cmake
-    flutter
-    ninja
-    pkg-config
-    curl
-    unzip
-    xz
-    sqlite
-    sqlite-utils
-    zip
-    mesa
-    dart
 
     git
     wget
@@ -119,8 +90,6 @@
 
     acpilight # For setting Backlight.
     dbus
-    # pulseaudioFull
-    # pulseaudio-ctl
 
     libnotify
 
@@ -150,12 +119,6 @@
   virtualisation.virtualbox.host.enableKvm = true;
   virtualisation.virtualbox.host.addNetworkInterface = false;
 
-  programs = {
-    # Flutter
-    adb.enable = true;
-    ssh.startAgent = true;
-    zsh.enable = true;
-  };
   # Betterlockscreen
   security.pam.services.i3lock.enable = true;
 

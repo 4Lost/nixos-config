@@ -1,1 +1,1 @@
-pkill -KILL xmonad
+pkill river

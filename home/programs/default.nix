@@ -1,5 +1,6 @@
 {
   imports = [
+    ./river
     ./alacritty
     ./anki
     ./betterlockscreen
