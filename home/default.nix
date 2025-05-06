@@ -31,6 +31,19 @@
 
     stateVersion = "23.11";
   };
+
+
+  systemd.user.services = {
+    idle-inhibitor = {
+      Unit = {
+        Description = "Presentation Mode";
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
+      };
+    };
+  };
   programs = { home-manager.enable = true; };
 
   nixpkgs.config = {

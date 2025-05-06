@@ -119,8 +119,8 @@
   virtualisation.virtualbox.host.enableKvm = true;
   virtualisation.virtualbox.host.addNetworkInterface = false;
 
-  # Betterlockscreen
-  security.pam.services.i3lock.enable = true;
+  # Hyprlock
+  security.pam.services.hyprlock = {};
 
   # Enabling the Keyring.
   security.pam.services.lightdm.enableGnomeKeyring = true;

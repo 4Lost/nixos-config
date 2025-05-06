@@ -1,13 +1,13 @@
 { pkgs, lib, ... }:
 
 {
-
   home.packages = with pkgs; [
     wlr-randr
     yad slurp
     grim
     wl-clipboard
     rivercarro
+    # river-status
   ];
   xdg.configFile."helperscripts" = {
     recursive = true;
@@ -33,13 +33,12 @@
     systemd = { enable = true; };
     xwayland.enable = true;
     extraConfig = ''
-      rivertile -view-padding 0 -outer-padding 25 &
+      rivertile -view-padding 0 -outer-padding 0 &
     '';
     settings = {
       spawn = [
         "nextcloud --background"
-        "~/.config/helperscriptsstartEww.sh"
-        "trayer --edge top --align left --widthtype request --height 25 --transparent true --alpha 0 --expand true --SetDockType true --SetPartialStrut true"
+        "/home/elias/.config/helperscripts/startEww.sh"
       ];
       spawn-tagmask = "${all_but_scratch_tag}";
       keyboard-layout = "de";

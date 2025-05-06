@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./ssh-agent ./gpg-agent ];
+  imports = [ ./ssh-agent ./gpg-agent ./hypridle.nix ];
 }

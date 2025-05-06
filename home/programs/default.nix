@@ -1,5 +1,6 @@
 {
   imports = [
+    ./hyprlock.nix
     ./river
     ./alacritty
     ./anki

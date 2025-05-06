@@ -254,6 +254,13 @@
       :class "text separator"
       :text "|"))
 
+  (defwidget idle_inhibitor []
+    (box :class "idle_inhibitor"
+      :space-evenly false
+    (button :class "icon"
+            :onclick "systemctl --user is-active idle-inhibitor.service && systemctl --user stop idle-inhibitor.service || systemctl --user start idle-inhibitor.service"
+    (label :text "${idle_inhibitor == 'start' ? '󰈈' :  '󰛐' }"))))
+
 ;; /-- Bar -->
   (defwindow bar []
     :geometry (geometry
@@ -266,6 +273,8 @@
     :reserve (struts
       :distance "25px"
       :side "top")
+    :exclusive true
+    :layer "top"
     :windowtype "dock"
     (box
       :orientation "horizontal"
@@ -277,6 +286,7 @@
       (widgetLogSeperator)
       (widgetWindows)
       (box :hexpand true)
+      (idle_inhibitor)
       (widgetSpeaker)
       (widgetSeperator)
       (widgetBacklight)

@@ -36,6 +36,7 @@
               users.elias = import ./home/default-laptop.nix;
             };
             nixpkgs.overlays = [
+              # (import ./overlays/river-status.nix)
               inputs.nur.overlays.default
             ];
           }
