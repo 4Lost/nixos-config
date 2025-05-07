@@ -1,1 +1,1 @@
-{ imports = [ ./default.nix ./zathura/default-laptop.nix ]; }
+{ imports = [ ./default.nix ./zathura-laptop.nix ]; }

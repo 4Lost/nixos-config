@@ -33,6 +33,7 @@ in {
       conform-nvim
       conjure
       comment-nvim
+      deferred-clipboard-nvim
       dropbar-nvim
       friendly-snippets
       lazy-nvim

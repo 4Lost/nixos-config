@@ -1,92 +1,221 @@
-;; /-- Variables -->
-  (defpoll windows
-    :interval "1s"
-    :initial "-"
-    `sh ~/.config/eww/scripts/xmonad_logs.sh`)
+;; /-- Bar -->
 
-  (defpoll micClass
-    :interval "1s"
-    :initial "micOff"
-    `sh ~/.config/eww/scripts/mic_class.sh`)
+(defwindow bar []
+  :geometry (geometry
+    :x "0px"
+    :y "0px"
+    :width "100%"
+    :height "25px"
+    :anchor "top center"
+  )
+  :reserve (struts
+    :distance "25px"
+    :side "top")
+  :exclusive true
+  :layer "top"
+  :windowtype "dock"
+  (box
+    :orientation "horizontal"
+    :space-evenly false
+    :class "bar"
+    ;;(widgetWorkspaces)
+    ;;(widgetLogSeperator)
+    ;;(widgetLayouts)
+    ;;(widgetLogSeperator)
+    ;;(widgetWindows)
+    (box :hexpand true)
+    (idle_inhibitor)
+    (widSep)
+    (WidgetAudio)
+    (widSep)
+    (widgetBacklight)
+    (widSep)
+    (widgetCpu)
+    (widSep)
+    (widgetMemory)
+    (widSep)
+    (widgetBattery)
+    (widSep)
+    (widgetNetwork)
+    (widSep)
+    (widgetTime)
+  )
+)
 
-  (defpoll micIcon
-    :interval "1s"
-    :initial "󰍭"
-    `sh ~/.config/eww/scripts/mic_icon.sh`)
+;; /-- Widget Separator -->
 
-  (defpoll speakerClass
-    :interval "1s"
-    :initial "speakerOff"
-    `sh ~/.config/eww/scripts/speaker_class.sh`)
+(defwidget widSep []
+  (label
+    :class "text separator"
+    :text "|"))
 
-  (defpoll speakerIcon
-    :interval "1s"
-    :initial ""
-    `sh ~/.config/eww/scripts/speaker_icon.sh`)
+;; /-- Idle Inhibitor -->
 
-  (defpoll speakerVolume
-    :interval "1s"
-    :initial "0"
-    `sh ~/.config/eww/scripts/speaker_volume.sh`)
+(deflisten idle_inhibitor "journalctl --output=cat --output-fields=JOB_TYPE --user --follow --unit=idle-inhibitor")
 
-  (defpoll backlight
-    :interval "1s"
-    :initial "0"
-    `xbacklight -get`)
+(defwidget idle_inhibitor []
+  (box
+    :space-evenly false
+  (button
+    :class "${idle_inhibitor == 'start' ? 'idleOn' :  'idleOff' }"
+    :onclick "systemctl --user is-active idle-inhibitor.service && systemctl --user stop idle-inhibitor.service || systemctl --user start idle-inhibitor.service"
+  (label :text "${idle_inhibitor == 'start' ? '󰈈' :  '󰛐' }"))))
 
-  (defpoll cpu
-    :interval "1s"
-    :initial "0"
-    `sh ~/.config/eww/scripts/cpu.sh`)
+;; /-- Audio -->
 
-  (defpoll memory
-    :interval "1s"
-    :initial "0"
-    `sh ~/.config/eww/scripts/memory.sh`)
+(defvar micClass "micOff")
+(defvar micIcon "󰍭")
+(defvar speakerClass "speakerOff")
+(defvar speakerIcon "")
+(defpoll speakerVolume
+  :interval "1s"
+  :initial "0"
+  `sh ~/.config/eww/scripts/audio.sh`)
 
-  (defpoll batteryClass
-    :interval "1s"
-    :initial "speakerOff"
-    `sh ~/.config/eww/scripts/battery_class.sh`)
+(defwidget WidgetAudio []
+  (box
+    :space-evenly false
+    (label
+      :class speakerClass
+      :text "${speakerIcon} ")
+    (label
+      :class "text"
+      :text "${speakerVolume}% ")
+    (label
+      :class micClass
+      :text "${micIcon}")))
 
-  (defpoll batteryIcon
-    :interval "1s"
-    :initial ""
-    `sh ~/.config/eww/scripts/battery_icon.sh`)
+;; /-- Backlight -->
 
-  (defpoll batteryVolume
-    :interval "1s"
-    :initial "0"
-    `sh ~/.config/eww/scripts/battery_volume.sh`)
+(defpoll backlight
+  :interval "1s"
+  :initial "0"
+  `xbacklight -get`)
 
-  (defpoll networkDown
-    :interval "1s"
-    :initial "0"
-    `sh ~/.config/eww/scripts/network_down.sh`)
+(defwidget widgetBacklight []
+  (box
+    :space-evenly false
+    (label
+      :class "backlight"
+      :text " ")
+    (label
+      :class "text"
+      :text "${backlight}%")))
 
-  (defpoll networkUp
-    :interval "1s"
-    :initial "0"
-    `sh ~/.config/eww/scripts/network_up.sh`)
+;; /-- CPU -->
 
-  (defpoll date
-    :interval "1s"
-    :initial "-"
-    `date '+ %a %d.%m.%y %H:%M'`)
+(defpoll cpu
+  :interval "1s"
+  :initial "0"
+  `sh ~/.config/eww/scripts/cpu.sh`)
 
-  (defvar ws1 "ws-empty")
-  (defvar ws2 "ws-empty")
-  (defvar ws3 "ws-empty")
-  (defvar ws4 "ws-empty")
-  (defvar ws5 "ws-empty")
-  (defvar ws6 "ws-empty")
-  (defvar ws7 "ws-empty")
-  (defvar ws8 "ws-empty")
-  (defvar ws9 "ws-empty")
+(defwidget widgetCpu []
+  (box
+    :space-evenly false
+    (label
+      :class "cpu"
+      :text " ")
+    (label
+      :class "text"
+      :text "${cpu}%")))
 
-  (defvar layouts "")
+;; /-- Memory -->
 
-;; /-- Blocks -->
+(defpoll memory
+  :interval "1s"
+  :initial "0"
+  `sh ~/.config/eww/scripts/memory.sh`)
+
+(defwidget widgetMemory []
+  (box
+    :space-evenly false
+    (label
+      :class "memory"
+      :text "  ")
+    (label
+      :class "text"
+      :text "${memory}%")))
+
+;; /-- Battery -->
+
+(defvar batteryClass "speakerOff")
+(defvar batteryIcon "")
+(defpoll batteryVolume
+  :interval "1s"
+  :initial "0"
+  `sh ~/.config/eww/scripts/battery.sh`)
+
+(defwidget widgetBattery []
+  (box
+    :space-evenly false
+    (label
+      :class batteryClass
+      :text "${batteryIcon} ")
+    (label
+      :class "text"
+      :text "${batteryVolume}%")))
+
+;; /-- Network -->
+
+(defvar networkDown "0")
+(defpoll networkUp
+  :interval "1s"
+  :initial "0"
+  `sh ~/.config/eww/scripts/network.sh`)
+
+(defwidget widgetNetwork []
+  (box
+    :space-evenly false
+    (label
+      :class "networkDown"
+      :text " ")
+    (label
+      :class "text"
+      :text "${networkDown} ")
+    (label
+      :class "networkUp"
+      :text " ")
+    (label
+      :class "text"
+      :text "${networkUp}")))
+
+;; /-- Time -->
+
+(defpoll date
+  :interval "1s"
+  :initial "-"
+  `date '+ %a %d.%m.%y %H:%M'`)
+
+(defwidget widgetTime []
+  (box
+    :space-evenly false
+    (label
+      :class "time"
+      :text " ")
+    (label
+      :class "text"
+      :text "${date}")))
+
+
+
+
+;; /-- XMonad Logs | Old -->
+
+(defvar ws1 "ws-empty")
+(defvar ws2 "ws-empty")
+(defvar ws3 "ws-empty")
+(defvar ws4 "ws-empty")
+(defvar ws5 "ws-empty")
+(defvar ws6 "ws-empty")
+(defvar ws7 "ws-empty")
+(defvar ws8 "ws-empty")
+(defvar ws9 "ws-empty")
+(defvar layouts "")
+(defpoll windows
+  :interval "1s"
+  :initial "-"
+  `sh ~/.config/eww/scripts/xmonad_logs.sh`)
+
   (defwidget widgetWorkspaces []
     (box
       :orientation "horizontal"
@@ -166,141 +295,5 @@
       :class "text separator"
       :text "⦁"))
 
-  (defwidget widgetSpeaker []
-    (box
-      :space-evenly false
-      (label
-        :class speakerClass
-        :text "${speakerIcon} ")
-      (label
-        :class "text"
-        :text "${speakerVolume}% ")
-      (label
-        :class micClass
-        :text "${micIcon}")))
 
-  (defwidget widgetBacklight []
-    (box
-      :space-evenly false
-      (label
-        :class "backlight"
-        :text " ")
-      (label
-        :class "text"
-        :text "${backlight}%")))
 
-  (defwidget widgetCpu []
-    (box
-      :space-evenly false
-      (label
-        :class "cpu"
-        :text " ")
-      (label
-        :class "text"
-        :text "${cpu}%")))
-
-  (defwidget widgetMemory []
-    (box
-      :space-evenly false
-      (label
-        :class "memory"
-        :text "  ")
-      (label
-        :class "text"
-        :text "${memory}%")))
-
-  (defwidget widgetBattery []
-    (box
-      :space-evenly false
-      (label
-        :class batteryClass
-        :text "${batteryIcon} ")
-      (label
-        :class "text"
-        :text "${batteryVolume}%")))
-
-  (defwidget widgetNetworkDown []
-    (box
-      :space-evenly false
-      (label
-        :class "networkDown"
-        :text " ")
-      (label
-        :class "text"
-        :text "${networkDown}")))
-
-  (defwidget widgetNetworkUp []
-    (box
-      :space-evenly false
-      (label
-        :class "networkUp"
-        :text " ")
-      (label
-        :class "text"
-        :text "${networkUp}")))
-
-  (defwidget widgetTime []
-    (box
-      :space-evenly false
-      (label
-        :class "time"
-        :text " ")
-      (label
-        :class "text"
-        :text "${date}")))
-
-  (defwidget widgetSeperator []
-    (label
-      :class "text separator"
-      :text "|"))
-
-  (defwidget idle_inhibitor []
-    (box :class "idle_inhibitor"
-      :space-evenly false
-    (button :class "icon"
-            :onclick "systemctl --user is-active idle-inhibitor.service && systemctl --user stop idle-inhibitor.service || systemctl --user start idle-inhibitor.service"
-    (label :text "${idle_inhibitor == 'start' ? '󰈈' :  '󰛐' }"))))
-
-;; /-- Bar -->
-  (defwindow bar []
-    :geometry (geometry
-      :x "0px"
-      :y "0px"
-      :width "100%"
-      :height "25px"
-      :anchor "top center"
-    )
-    :reserve (struts
-      :distance "25px"
-      :side "top")
-    :exclusive true
-    :layer "top"
-    :windowtype "dock"
-    (box
-      :orientation "horizontal"
-      :space-evenly false
-      :class "bar"
-      (widgetWorkspaces)
-      (widgetLogSeperator)
-      (widgetLayouts)
-      (widgetLogSeperator)
-      (widgetWindows)
-      (box :hexpand true)
-      (idle_inhibitor)
-      (widgetSpeaker)
-      (widgetSeperator)
-      (widgetBacklight)
-      (widgetSeperator)
-      (widgetCpu)
-      (widgetSeperator)
-      (widgetMemory)
-      (widgetSeperator)
-      (widgetBattery)
-      (widgetSeperator)
-      (widgetNetworkDown)
-      (widgetSeperator)
-      (widgetNetworkUp)
-      (widgetSeperator)
-      (widgetTime)
-    )
-  )

@@ -1,43 +1,32 @@
 {
   imports = [
-    ./hyprlock.nix
-    ./river
-    ./alacritty
-    ./anki
-    ./betterlockscreen
-    ./calibre
-    ./discord
-    ./dolphin
-    ./dunst
-    ./element
+    ./3dprint.nix
+    ./alacritty.nix
+    ./anki.nix
+    ./calibre.nix
+    ./dolphin.nix
     ./eww
-    ./freecad
-    ./git
-    ./inkscape
-    ./ktouch
-    ./libreoffice
+    ./git.nix
+    ./hyprlock.nix
+    ./inkscape.nix
+    ./ktouch.nix
+    ./libreoffice.nix
+    ./messenger.nix
     ./neovim
-    ./nextcloud
-    ./obs
-    ./openscad
-    ./picard
-    ./planify
-    ./prismlauncher
-    ./prusa-slicer
+    ./nextcloud.nix
+    ./picard.nix
+    ./planify.nix
+    ./prismlauncher.nix
     ./pulseaudio
+    ./river
     ./rofi
-    ./signal
-    ./skanlite
-    ./slack
-    ./spotify
-    ./stack
-    ./telegram
-    ./thunderbird
-    ./vlc
-    ./vscode
-    ./wallpaper
-    ./xmonad
-    ./zoom
-    ./zsh
+    ./skanlite.nix
+    ./spotify.nix
+    ./swww
+    ./thunderbird.nix
+    ./vlc.nix
+    ./vscode.nix
+    ./zoom.nix
+    ./zsh.nix
   ];
 }

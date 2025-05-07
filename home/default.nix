@@ -16,7 +16,6 @@
 
       # system tools
       lm_sensors
-      arandr
       pavucontrol
       sshfs
 
@@ -32,7 +31,6 @@
     stateVersion = "23.11";
   };
 
-
   systemd.user.services = {
     idle-inhibitor = {
       Unit = {
@@ -44,7 +42,7 @@
       };
     };
   };
-  programs = { home-manager.enable = true; };
+  programs.home-manager.enable = true;
 
   nixpkgs.config = {
     allowUnfree = true;

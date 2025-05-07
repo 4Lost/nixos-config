@@ -1,5 +1,5 @@
-// <-- Preamble -->
-  // <-- Colors -->
+// /-- Preamble -->
+  // /-- Colors -->
     $white-text: #f5e0dc;
     $grey-text: #6c7086;
     $grey-background: #1e1e2e;
@@ -10,38 +10,41 @@
     $blue: #89b4fa;
     $gold: #fab387;
     $orange: #fab387;
-  // <-- Prepare all -->
+  // /-- Prepare all -->
     * {all: unset;}
     .text {color: $white-text;}
     .separator {padding: 0px 4px;}
-// <-- Bar -->
-  // <-- Widgets -->
-    // <-- Audio -->
+// /-- Bar -->
+  // /-- Widgets -->
+    // /-- Idle Inhibtor -->
+      .idleOn {color: $green;}
+      .idleOff {color: $green;}
+    // /-- Audio -->
       .micOn {color: $green;}
       .micOff {color: $red;}
       .speakerOn {color: $green;}
       .speakerOff {color: $red;}
-    // <-- Backlight -->
+    // /-- Backlight -->
       .backlight {color: $yellow;}
-    // <-- CPU & Memory -->
+    // /-- CPU & Memory -->
       .cpu {color: $violet;}
       .memory {color: $blue;}
-    // <-- Battery -->
+    // /-- Battery -->
       .batteryFull {color: $gold;}
       .batteryHalf {color: $green;}
       .batteryEmpty {color: $red;}
       .batteryCharging {color: $violet;}
       .networkDown {color: $red;}
-    // <-- Network -->
+    // /-- Network -->
       .networkUp {color: $blue;}
-    // <-- Workspaces -->
+    // /-- Workspaces -->
       .workspace-button {background: $grey-background;}
       .ws-current {color: $green;}
       .ws-visible {color: $red;}
       .ws-hidden {color: $white-text;}
       .ws-empty {color: $grey-text;}
       .time {color: $orange;}
-  // <-- Window -->
+  // /-- Window -->
     .bar {
       padding: 0.2em 1em;
       background: $grey-background;
@@ -49,7 +52,7 @@
       font-family: "Fira Code";
       font-size: 12px;
     }
-// <-- Powermenu -->
+// /-- Powermenu -->
     .powermenu-button {
       background-color: #313244;
       color: $white-text;
@@ -58,7 +61,7 @@
       border-radius: 6px;
       font-size: 14px;
     }
-  // <-- Window -->
+  // /-- Window -->
     .powermenu {
       background-color: $grey-background;
       padding: 20px;

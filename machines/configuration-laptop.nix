@@ -1,10 +1,8 @@
 { pkgs, ... }:
 
 {
-  # Import general Configs
-  imports = [ ./../hardware-configuration-laptop.nix ./../configuration.nix ];
+  imports = [ ./hardware-configuration-laptop.nix ./../configuration.nix ];
 
-  # Hostname
   networking.hostName = "eliasLaptop";
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;

@@ -3,7 +3,8 @@
 {
   home.packages = with pkgs; [
     wlr-randr
-    yad slurp
+    yad
+    slurp
     grim
     wl-clipboard
     rivercarro
@@ -30,11 +31,9 @@
       MOZ_ENABLE_WAYLAND = "1";
       GDK_BACKEND = "wayland";
     };
-    systemd = { enable = true; };
+    systemd.enable = true;
     xwayland.enable = true;
-    extraConfig = ''
-      rivertile -view-padding 0 -outer-padding 0 &
-    '';
+    extraConfig = ''rivertile -view-padding 0 -outer-padding 0 &'';
     settings = {
       spawn = [
         "nextcloud --background"
@@ -42,7 +41,6 @@
       ];
       spawn-tagmask = "${all_but_scratch_tag}";
       keyboard-layout = "de";
-      #keyboard-layout = "-options caps:swapescape 'us(colemak_dh)'";
       default-layout = "rivertile";
       rule-add = {
         "-app-id" = {

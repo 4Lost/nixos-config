@@ -9,7 +9,7 @@
     (label
       :text " ")
     (button
-      :onclick "close eww power; ./scripts/blur-lock.sh"
+      :onclick "close eww power; /home/elias/.config/helperscripts/lock.sh"
       :class "powermenu-button"
       (label
         :text ""))
@@ -23,7 +23,7 @@
     (label
       :text "")
     (button
-      :onclick "close eww power; ./scripts/logout.sh"
+      :onclick "close eww power; /home/elias/.config/helperscripts/logout.sh"
       :class "powermenu-button"
       (label
         :text ""))))

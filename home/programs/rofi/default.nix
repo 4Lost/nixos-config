@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     oranchelo-icon-theme
     nerd-fonts.jetbrains-mono
-    xclip
   ];
 
   xsession.initExtra = "setxkbmap de"; # rofi pass needs this to be set
@@ -31,7 +30,7 @@
       enable = true;
       extraConfig = ''
         EDITOR='rofi-sensible-terminal -e vim'
-        clibpoard_backend=xclip
+        clibpoard_backend=wl-copy
         clip=clipboard
       '';
     };
