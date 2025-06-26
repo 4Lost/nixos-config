@@ -80,6 +80,9 @@
   environment.systemPackages = with pkgs; [
     (libsForQt5.callPackage ./home/themes/catppuccin-sddm.nix { })
 
+    flutter
+    dart
+
     git
     wget
     curl
