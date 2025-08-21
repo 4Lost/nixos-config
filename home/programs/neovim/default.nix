@@ -11,7 +11,7 @@ let
     };
   };
   mkLuaConfig = file: args:
-    builtins.readFile "${pkgs.substituteAll (args // { src = file; })}";
+    builtins.readFile (pkgs.replaceVars file args);
 in {
   home.sessionVariables = { EDITOR = "nvim"; };
 

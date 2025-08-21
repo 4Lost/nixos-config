@@ -129,6 +129,7 @@
   security.pam.services.lightdm.enableGnomeKeyring = true;
   services = {
     gnome.gnome-keyring.enable = true;
+    gnome.gcr-ssh-agent.enable = false;
     # Disable powerbutton => for use with eww
     logind.extraConfig = ''HandlePowerKey=ignore'';
     # Setting the permissions for acpilight.

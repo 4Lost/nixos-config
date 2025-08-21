@@ -9,7 +9,6 @@
     ./git.nix
     ./hyprlock.nix
     ./inkscape.nix
-    ./ktouch.nix
     ./libreoffice.nix
     ./messenger.nix
     ./neovim
