@@ -112,15 +112,15 @@
   };
 
   # Virtualbox
-  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
-  boot.kernelModules = ["kvm-amd"];
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" "kv" ];
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  virtualisation.virtualbox.guest.enable = true;
-  virtualisation.virtualbox.guest.dragAndDrop = true;
-  virtualisation.virtualbox.host.enableKvm = true;
-  virtualisation.virtualbox.host.addNetworkInterface = false;
+  # boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
+  # boot.kernelModules = ["kvm-amd"];
+  # virtualisation.virtualbox.host.enable = true;
+  # users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" "kv" ];
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
+  # virtualisation.virtualbox.guest.enable = true;
+  # virtualisation.virtualbox.guest.dragAndDrop = true;
+  # virtualisation.virtualbox.host.enableKvm = true;
+  # virtualisation.virtualbox.host.addNetworkInterface = false;
 
   # Hyprlock
   security.pam.services.hyprlock = {};

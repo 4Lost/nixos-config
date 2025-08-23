@@ -14,10 +14,9 @@
     dotDir = ".config/zsh";
     shellAliases = {
       update = "sudo nixos-rebuild switch";
-      addTV =
-        "xrandr --output eDP-1 --auto --output HDMI-1 --mode 1920x1080 --left-of eDP-1";
       conWG = "ssh elias@logout.nonagon.dev -p 6969";
       conWS = "ssh elias@192.168.31.200";
+      setupPC = "wlr-randr --output HDMI-A-2 --on --mode 1920x1080 --pos 0,0;wlr-randr --output DVI-D-1 --on --mode 1920x1080 --pos 1920,0;wlr-randr --output DP-2 --on --mode 1920x1080 --pos 3840,0 --primary";
     };
     autosuggestion.enable = true;
     enableCompletion = true;
