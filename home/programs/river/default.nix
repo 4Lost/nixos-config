@@ -8,7 +8,7 @@
     grim
     wl-clipboard
     rivercarro
-    # river-status
+    ristate
   ];
   xdg.configFile."helperscripts" = {
     recursive = true;

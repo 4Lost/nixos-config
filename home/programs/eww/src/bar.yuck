@@ -18,11 +18,11 @@
     :orientation "horizontal"
     :space-evenly false
     :class "bar"
-    ;;(widgetWorkspaces)
-    ;;(widgetLogSeperator)
-    ;;(widgetLayouts)
-    ;;(widgetLogSeperator)
-    ;;(widgetWindows)
+    (widgetWorkspaces)
+    (widgetLogSeperator)
+    (widgetLayouts)
+    (widgetLogSeperator)
+    (widgetWindows)
     (box :hexpand true)
     (idle_inhibitor)
     (widSep)
@@ -199,88 +199,47 @@
 
 
 
-;; /-- XMonad Logs | Old -->
+;; /-- River State -->
 
-(defvar ws1 "ws-empty")
-(defvar ws2 "ws-empty")
-(defvar ws3 "ws-empty")
-(defvar ws4 "ws-empty")
-(defvar ws5 "ws-empty")
-(defvar ws6 "ws-empty")
-(defvar ws7 "ws-empty")
-(defvar ws8 "ws-empty")
-(defvar ws9 "ws-empty")
-(defvar layouts "")
-(defpoll windows
-  :interval "1s"
-  :initial "-"
-  `sh ~/.config/eww/scripts/xmonad_logs.sh`)
+  (defvar ws1 "ws-empty")
+  (defvar ws2 "ws-empty")
+  (defvar ws3 "ws-empty")
+  (defvar ws4 "ws-empty")
+  (defvar ws5 "ws-empty")
+  (defvar ws6 "ws-empty")
+  (defvar ws7 "ws-empty")
+  (defvar ws8 "ws-empty")
+  (defvar ws9 "ws-empty")
+
+  (defvar layouts "")
+  (defpoll windows
+    :interval "1s"
+    :initial "-"
+    `sh ~/.config/eww/scripts/ristate_read.sh`)
 
   (defwidget widgetWorkspaces []
     (box
       :orientation "horizontal"
       :class "workspace-buttons"
-      (button
-        :onclick "wmctrl -s 0"
-        :class "workspace-button ${ws1}"
-        (label
-          :text "1"))
-      (label
-        :text " ")
-      (button
-        :onclick "wmctrl -s 1"
-        :class "workspace-button ${ws2}"
-        (label
-          :text "2"))
-      (label
-        :text " ")
-      (button
-        :onclick "wmctrl -s 2"
-        :class "workspace-button ${ws3}"
-        (label
-          :text "3"))
-      (label
-        :text " ")
-      (button
-        :onclick "wmctrl -s 3"
-        :class "workspace-button ${ws4}"
-        (label
-          :text "4"))
-      (label
-        :text " ")
-      (button
-        :onclick "wmctrl -s 4"
-        :class "workspace-button ${ws5}"
-        (label
-          :text "5"))
-      (label
-        :text " ")
-      (button
-        :onclick "wmctrl -s 5"
-        :class "workspace-button ${ws6}"
-        (label
-          :text "6"))
-      (label
-        :text " ")
-      (button
-        :onclick "wmctrl -s 6"
-        :class "workspace-button ${ws7}"
-        (label
-          :text "7"))
-      (label
-        :text " ")
-      (button
-        :onclick "wmctrl -s 7"
-        :class "workspace-button ${ws8}"
-        (label
-          :text "8"))
-      (label
-        :text " ")
-      (button
-        :onclick "wmctrl -s 8"
-        :class "workspace-button ${ws9}"
-        (label
-          :text "9"))))
+
+      (button :onclick "riverctl set-focused-tags 1" :class "workspace-button ${ws1}" (label :text "1"))
+      (label :text " ")
+      (button :onclick "riverctl set-focused-tags 2" :class "workspace-button ${ws2}" (label :text "2"))
+      (label :text " ")
+      (button :onclick "riverctl set-focused-tags 3" :class "workspace-button ${ws3}" (label :text "3"))
+      (label :text " ")
+      (button :onclick "riverctl set-focused-tags 4" :class "workspace-button ${ws4}" (label :text "4"))
+      (label :text " ")
+      (button :onclick "riverctl set-focused-tags 5" :class "workspace-button ${ws5}" (label :text "5"))
+      (label :text " ")
+      (button :onclick "riverctl set-focused-tags 6" :class "workspace-button ${ws6}" (label :text "6"))
+      (label :text " ")
+      (button :onclick "riverctl set-focused-tags 7" :class "workspace-button ${ws7}" (label :text "7"))
+      (label :text " ")
+      (button :onclick "riverctl set-focused-tags 8" :class "workspace-button ${ws8}" (label :text "8"))
+      (label :text " ")
+      (button :onclick "riverctl set-focused-tags 9" :class "workspace-button ${ws9}" (label :text "9"))
+  ))
 
   (defwidget widgetWindows []
     (label

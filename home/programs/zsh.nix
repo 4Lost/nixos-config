@@ -11,7 +11,7 @@
 
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     shellAliases = {
       update = "sudo nixos-rebuild switch";
       conWG = "ssh elias@logout.nonagon.dev -p 6969";
