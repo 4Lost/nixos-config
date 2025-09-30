@@ -36,7 +36,6 @@
     extraConfig = ''rivertile -view-padding 0 -outer-padding 0 &'';
     settings = {
       spawn = [
-        "nextcloud --background"
         "/home/elias/.config/helperscripts/startEww.sh"
       ];
       spawn-tagmask = "${all_but_scratch_tag}";

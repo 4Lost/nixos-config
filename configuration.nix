@@ -15,6 +15,9 @@
 
   # Chose NetworkManager, timezone, internationalisation properties and console settings.
   networking.networkmanager.enable = true;
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-vpnc
+  ];
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -78,7 +81,7 @@
 
   # Setting the Basic Packages.
   environment.systemPackages = with pkgs; [
-    (libsForQt5.callPackage ./home/themes/catppuccin-sddm.nix { })
+    (kdePackages.callPackage ./home/themes/catppuccin-sddm.nix { })
 
     flutter
     dart
@@ -90,6 +93,11 @@
     dmenu
     cmake
     cups
+    exfatprogs
+    exfat
+    ntfs3g
+    parted
+    networkmanager-vpnc
 
     acpilight # For setting Backlight.
     dbus
@@ -131,7 +139,9 @@
     gnome.gnome-keyring.enable = true;
     gnome.gcr-ssh-agent.enable = false;
     # Disable powerbutton => for use with eww
-    logind.extraConfig = ''HandlePowerKey=ignore'';
+    logind.settings.Login = {
+      HandlePowerKey = "ignore";
+    };
     # Setting the permissions for acpilight.
     udev = {
       enable = true;
