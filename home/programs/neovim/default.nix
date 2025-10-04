@@ -22,7 +22,6 @@ in {
     withNodeJs = true;
     withPython3 = true;
     plugins = (with pkgs.vimPlugins; [
-      bufferline-nvim
       catppuccin-nvim
       cmp-buffer
       cmp-conjure

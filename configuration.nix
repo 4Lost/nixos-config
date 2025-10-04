@@ -81,7 +81,13 @@
 
   # Setting the Basic Packages.
   environment.systemPackages = with pkgs; [
-    (kdePackages.callPackage ./home/themes/catppuccin-sddm.nix { })
+    (catppuccin-sddm.override {
+      flavor = "mocha";
+      font = "Fira Code";
+      fontSize = "9";
+    })
+
+
 
     flutter
     dart
@@ -98,6 +104,7 @@
     ntfs3g
     parted
     networkmanager-vpnc
+    rcon-cli
 
     acpilight # For setting Backlight.
     dbus
