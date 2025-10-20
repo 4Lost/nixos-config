@@ -60,7 +60,7 @@
   };
 
   programs = {
-    river.enable = true;
+    river-classic.enable = true;
     ssh.startAgent = true;
     zsh.enable = true;
   };
