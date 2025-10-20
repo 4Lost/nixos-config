@@ -87,7 +87,7 @@
       fontSize = "9";
     })
 
-
+    exiftool
 
     flutter
     dart
@@ -105,6 +105,7 @@
     parted
     networkmanager-vpnc
     rcon-cli
+    imv
 
     acpilight # For setting Backlight.
     dbus

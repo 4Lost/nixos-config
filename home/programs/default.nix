@@ -4,6 +4,7 @@
     ./alacritty.nix
     ./anki.nix
     ./calibre.nix
+    ./digikam.nix
     ./dolphin.nix
     ./eww
     ./git.nix

@@ -37,6 +37,7 @@
     settings = {
       spawn = [
         "/home/elias/.config/helperscripts/startEww.sh"
+        "nextcloud"
       ];
       spawn-tagmask = "${all_but_scratch_tag}";
       keyboard-layout = "de";
