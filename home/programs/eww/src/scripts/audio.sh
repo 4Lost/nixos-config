@@ -1,9 +1,9 @@
-mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
-volume=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | tr -d '%')
+mute=$(wpctl get-volume @DEFAULT_SINK@ | grep -o "muted")
+volume=$(wpctl get-volume @DEFAULT_SINK@ | awk '{print int($1*100)}')
 
 # /-- Mic -->
-
-if pactl get-source-mute @DEFAULT_SOURCE@ | grep -q "yes"; then
+mic_mute=$(wpctl get-volume @DEFAULT_SOURCE@ | grep -o "muted")
+if [[ "$mic_mute" == "muted" ]]; then
   eww update micClass="micOff"
   eww update micIcon="󰍭"
 else

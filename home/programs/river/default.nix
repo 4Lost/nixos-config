@@ -15,7 +15,7 @@
     source = ./src;
   };
 
-  wayland.windowManager.river = let
+  wayland.windowManager.river-classic = let
     all_tags = "$(((1 << 32) - 1))";
     scratch_tag = "$((1 << 20 ))";
     all_but_scratch_tag = "$(( ((1 << 32) - 1) ^ ${scratch_tag} ))";
