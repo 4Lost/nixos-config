@@ -46,7 +46,7 @@
     displayManager = {
       sddm = {
         enable = true;
-        theme = "catppuccin-mocha";
+        theme = "catppuccin-mocha-mauve";
         wayland.enable = true;
       };
       #autoLogin = {
@@ -83,10 +83,12 @@
   environment.systemPackages = with pkgs; [
     (catppuccin-sddm.override {
       flavor = "mocha";
-      font = "Fira Code";
+      accent = "mauve";
+      font  = "Fira Code";
       fontSize = "9";
+      # background = "${./wallpaper.png}";
+      loginBackground = true;
     })
-
     exiftool
 
     flutter

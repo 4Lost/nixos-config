@@ -107,10 +107,10 @@
           "Super Down" = ''send-layout-cmd rivertile "main-location bottom"'';
           "Super Left" = ''send-layout-cmd rivertile "main-location left"'';
           # Audio
-          "None XF86AudioRaiseVolume" = "spawn 'pactl set-sink-volume @DEFAULT_SINK@ +10%'";
-          "None XF86AudioLowerVolume" = "spawn 'pactl set-sink-volume @DEFAULT_SINK@ -10%'";
-          "None XF86AudioMute" = "spawn 'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
-          "None XF86AudioMicMute" = "spawn 'pactl set-source-mute @DEFAULT_SOURCE@ toggle'";
+          "None XF86AudioRaiseVolume" = "spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+'";
+          "None XF86AudioLowerVolume" = "spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-'";
+          "None XF86AudioMute" = "spawn 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'";
+          "None XF86AudioMicMute" = "spawn 'wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle'";
           # Brightness
           "None XF86MonBrightnessUp" = "spawn 'xbacklight -inc 10'";
           "None XF86MonBrightnessDown" = "spawn 'xbacklight -dec 10'";

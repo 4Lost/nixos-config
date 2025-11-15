@@ -1,9 +1,10 @@
-mute=$(wpctl get-volume @DEFAULT_SINK@ | grep -o "muted")
-volume=$(wpctl get-volume @DEFAULT_SINK@ | awk '{print int($1*100)}')
+# /-- Get Information -->
+sink_info=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+volume=$(echo "$sink_info" | awk '{print int($2 * 100)}')
+mic_info=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
 
 # /-- Mic -->
-mic_mute=$(wpctl get-volume @DEFAULT_SOURCE@ | grep -o "muted")
-if [[ "$mic_mute" == "muted" ]]; then
+if echo "$mic_info" | grep -q "\[MUTED\]"; then
   eww update micClass="micOff"
   eww update micIcon="󰍭"
 else
@@ -13,7 +14,7 @@ fi
 
 # /-- Speaker -->
 
-if [[ "$mute" == "yes" ]]; then
+if echo "$sink_info" | grep -q "\[MUTED\]"; then
   eww update speakerClass="speakerOff"
   eww update speakerIcon=""
 elif [[ "$volume" -le 100 ]]; then
