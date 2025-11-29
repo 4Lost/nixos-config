@@ -25,7 +25,7 @@
 
       cups
       firefox
-      bitwarden
+      bitwarden-desktop
     ];
 
     stateVersion = "23.11";

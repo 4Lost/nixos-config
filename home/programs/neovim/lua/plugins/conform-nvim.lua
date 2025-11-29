@@ -33,7 +33,7 @@ return {
           tex = { "latexindent" },
           c = { "clang_format" },
           cpp = { "clang_format" },
-          ["*"] = { "codespell" },
+          -- ["*"] = { "codespell" },
           ["_"] = { "trim_whitespace" },
         },
         formatters = {
