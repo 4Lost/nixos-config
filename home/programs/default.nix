@@ -23,6 +23,7 @@
     ./skanlite.nix
     ./spotify.nix
     ./swww
+    ./taskwarrior
     ./thunderbird.nix
     ./vlc.nix
     ./vscode.nix
