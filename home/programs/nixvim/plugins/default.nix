@@ -1,0 +1,52 @@
+{
+  imports = [
+    ./autopairs.nix
+    ./barbar.nix
+    ./bullets.nix
+    ./cmp.nix
+    ./comment-box.nix
+    ./comment.nix
+    ./conform.nix
+    ./dap.nix
+    ./diffview.nix
+    ./dynomark.nix
+    ./edgy.nix
+    ./gitsigns.nix
+    ./haskell-tools.nix
+    ./knap.nix
+    ./leap.nix
+    ./lsp.nix
+    ./ltex-extra.nix
+    ./lualine.nix
+    ./markdown-preview.nix
+    ./mkdnflow.nix
+    ./neoscroll.nix
+    ./neotree.nix
+    ./noice.nix
+    ./notify.nix
+    ./oil.nix
+    ./otter.nix
+    ./papis.nix
+    ./peek.nix
+    ./markdown-preview.nix
+    ./smart-splits.nix
+    ./sniprun.nix
+    ./startup.nix
+    ./surround.nix
+    ./telescope.nix
+    ./texpresso.nix
+    ./todo-comments.nix
+    ./toggleterm.nix
+    ./treesitter.nix
+    ./trouble.nix
+    ./typst-preview.nix
+    ./typst-vim.nix
+    ./undotree.nix
+    ./vimtex.nix
+    ./which-key.nix
+    ./yanky.nix
+    ./zk.nix
+
+    ./snippets.nix
+  ];
+}

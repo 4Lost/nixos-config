@@ -26,7 +26,9 @@
       size = 100000000000;
       path = "${config.xdg.dataHome}/zsh/zsh_history";
     };
-    syntaxHighlighting = { enable = true; };
+    syntaxHighlighting = {
+      enable = true;
+    };
     initContent = ''
       export LD_LIBRARY_PATH="/nix/store/yjm4j9n85bcp42v5nkz2xifrp4a9s63k-sqlite-3.46.1/lib"o
       export CHROME_EXECUTABLE="/run/current-system/sw/bin/google-chrome-stable"
@@ -36,6 +38,20 @@
       RPROMPT='[%F{yellow}%?%f]'
       bindkey "^[[A" history-beginning-search-backward
       bindkey "^[[B" history-beginning-search-forward
+
+      # trep: tree projall report - top-level projects with headers
+      trep() {
+        project() {
+          echo -e "\e[1;34m/----- Project $1 -----\e[0m"
+          task projall "project:$1"
+          echo ""
+        }
+        while IFS= read -r proj; do
+          project "$proj"
+        done < <(task _projects | grep -v '\.')
+      }
+
+      alias trep='trep'
     '';
     plugins = [
       {

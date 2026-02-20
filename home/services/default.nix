@@ -1,5 +1,10 @@
 { ... }:
 
 {
-  imports = [ ./ssh-agent ./gpg-agent ./hypridle.nix ./nextcloud.nix ./nextcloud.nix ];
+  imports = [
+    ./ssh-agent
+    ./gpg-agent
+    ./hypridle.nix
+    ./nextcloud.nix
+  ];
 }

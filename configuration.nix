@@ -2,7 +2,10 @@
 
 {
   # Importing necessary setup for Steam & Printing & Flutter.
-  imports = [ ./builds/steam/default.nix ./home/extras/printer.nix ./builds/flutter.nix ];
+  imports = [
+    ./builds/steam/default.nix
+    ./home/extras/printer.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -33,7 +36,10 @@
   };
 
   # Activate Flakes.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Configuration of the Garbage collect.
   nix.gc = {
@@ -65,7 +71,6 @@
     zsh.enable = true;
   };
 
-
   # Define a user account.
   users = {
     mutableUsers = false;
@@ -73,9 +78,14 @@
       isNormalUser = true;
       home = "/home/elias";
       shell = pkgs.zsh;
-      extraGroups = [ "wheel" "networkmanager" "audio" "video" "adbusers" ];
-      hashedPassword =
-        "$6$pdAJt1f0v7Zb13Ri$1WpKrErAp5JCb7eXs7EeeWYRMBLu5/WKDdMyGzJyYQDijG2NiywUXpAkl/8p1noxOOqYbb.MTw7JmTzhWGsT21";
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "audio"
+        "video"
+        "adbusers"
+      ];
+      hashedPassword = "$6$pdAJt1f0v7Zb13Ri$1WpKrErAp5JCb7eXs7EeeWYRMBLu5/WKDdMyGzJyYQDijG2NiywUXpAkl/8p1noxOOqYbb.MTw7JmTzhWGsT21";
     };
   };
 
@@ -84,15 +94,12 @@
     (catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
-      font  = "Fira Code";
+      font = "Fira Code";
       fontSize = "9";
       # background = "${./wallpaper.png}";
       loginBackground = true;
     })
     exiftool
-
-    flutter
-    dart
 
     git
     wget
@@ -129,19 +136,8 @@
     XDG_STATE_HOME = "$HOME/.local/state";
   };
 
-  # Virtualbox
-  # boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
-  # boot.kernelModules = ["kvm-amd"];
-  # virtualisation.virtualbox.host.enable = true;
-  # users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" "kv" ];
-  # virtualisation.virtualbox.host.enableExtensionPack = true;
-  # virtualisation.virtualbox.guest.enable = true;
-  # virtualisation.virtualbox.guest.dragAndDrop = true;
-  # virtualisation.virtualbox.host.enableKvm = true;
-  # virtualisation.virtualbox.host.addNetworkInterface = false;
-
   # Hyprlock
-  security.pam.services.hyprlock = {};
+  security.pam.services.hyprlock = { };
 
   # Enabling the Keyring.
   security.pam.services.lightdm.enableGnomeKeyring = true;
@@ -173,4 +169,3 @@
   };
   system.stateVersion = "23.11";
 }
-

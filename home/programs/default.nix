@@ -12,10 +12,9 @@
     ./inkscape.nix
     ./libreoffice.nix
     ./messenger.nix
-    ./neovim
     ./nextcloud.nix
+    ./nixvim
     ./picard.nix
-    ./planify.nix
     ./prismlauncher.nix
     ./pulseaudio
     ./river

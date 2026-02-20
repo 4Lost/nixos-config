@@ -19,10 +19,6 @@
       pavucontrol
       sshfs
 
-      obsidian
-      lean4
-      gcc
-
       cups
       firefox
       bitwarden-desktop
