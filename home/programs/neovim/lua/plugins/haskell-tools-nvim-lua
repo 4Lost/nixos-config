@@ -1,5 +1,0 @@
-{
-  'mrccjkb/haskell-tools.nvim',
-  version = '^3',
-  lazy = false,
-}
