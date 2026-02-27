@@ -30,6 +30,7 @@
     ./peek.nix
     ./markdown-preview.nix
     ./smart-splits.nix
+    ./snippets.nix
     ./sniprun.nix
     ./startup.nix
     ./surround.nix
@@ -43,10 +44,9 @@
     ./typst-vim.nix
     ./undotree.nix
     ./vimtex.nix
+    ./web-devicons.nix
     ./which-key.nix
     ./yanky.nix
     ./zk.nix
-
-    ./snippets.nix
   ];
 }

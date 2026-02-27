@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./services
+  ];
+
   home = {
     username = "elias";
     homeDirectory = "/home/elias";

@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./ssh-agent
-    ./gpg-agent
+    ./ssh-agent.nix
+    ./gpg-agent.nix
     ./hypridle.nix
     ./nextcloud.nix
   ];

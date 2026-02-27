@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 
 {
   programs.nixvim = {
@@ -9,7 +9,7 @@
       which-key.settings.spec = [
         {
           __unkeyed-1 = "<leader>c";
-          group = "Boxes";
+          group = "Comment Boxes";
           icon = "□ ";
         }
       ];
@@ -53,4 +53,3 @@
     ];
   };
 }
-

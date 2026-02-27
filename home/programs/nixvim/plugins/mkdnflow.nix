@@ -105,65 +105,65 @@
             };
           };
           mappings = {
-            MkdnEnter = {
-              key = "<CR>";
-              modes = [
+            MkdnEnter = [
+              [
                 "n"
                 "v"
                 "i"
-              ];
-            };
-            MkdnGoBack = {
-              key = "<BS>";
-              modes = "n";
-            };
-            MkdnDecreaseHeading = {
-              key = "-";
-              modes = "n";
-            };
-            MkdnIncreaseHeading = {
-              key = "+";
-              modes = "n";
-            };
-            MkdnNewListItemAboveInsert = {
-              key = "O";
-              modes = "n";
-            };
-            MkdnNewListItemBelowInsert = {
-              key = "o";
-              modes = "n";
-            };
-            MkdnTableNewColAfter = {
-              key = "<leader>ic";
-              modes = "n";
-            };
-            MkdnTableNewColBefore = {
-              key = "<leader>iC";
-              modes = "n";
-            };
-            MkdnTableNewRowAbove = {
-              key = "<leader>iR";
-              modes = "n";
-            };
-            MkdnTableNewRowBelow = {
-              key = "<leader>ir";
-              modes = "n";
-            };
-            MkdnTableNextCell = {
-              key = "<Tab>";
-              modes = "i";
-            };
-            MkdnTablePrevCell = {
-              key = "<S-Tab>";
-              modes = "i";
-            };
-            MkdnToggleToDo = {
-              key = "<C-Space>";
-              modes = [
+              ]
+              "<CR>"
+            ];
+            MkdnGoBack = [
+              "n"
+              "<BS>"
+            ];
+            MkdnDecreaseHeading = [
+              "n"
+              "-"
+            ];
+            MkdnIncreaseHeading = [
+              "n"
+              "+"
+            ];
+            MkdnNewListItemAboveInsert = [
+              "n"
+              "O"
+            ];
+            MkdnNewListItemBelowInsert = [
+              "n"
+              "o"
+            ];
+            MkdnTableNewColAfter = [
+              "n"
+              "<leader>ic"
+            ];
+            MkdnTableNewColBefore = [
+              "n"
+              "<leader>iC"
+            ];
+            MkdnTableNewRowAbove = [
+              "n"
+              "<leader>iR"
+            ];
+            MkdnTableNewRowBelow = [
+              "n"
+              "<leader>ir"
+            ];
+            MkdnTableNextCell = [
+              "i"
+              "<Tab>"
+            ];
+            MkdnTablePrevCell = [
+              "i"
+              "<S-Tab>"
+            ];
+            MkdnToggleToDo = [
+              [
                 "n"
                 "v"
-              ];
-            };
+              ]
+              "<C-Space>"
+            ];
           };
           create_dirs = true;
           new_file_template = {

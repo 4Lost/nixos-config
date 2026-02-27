@@ -19,7 +19,7 @@ in
       dynomark-nvim
     ];
 
-    extraConfigLua = ''require('dynomark').setup({})'';
+    extraConfigLua = "require('dynomark').setup({})";
 
     keymaps = [
       {
@@ -35,7 +35,7 @@ in
         action = "<Plug>(DynomarkRun)";
         mode = [ "n" ];
         options = {
-          desc = "Run dynomark query under cursor";
+          desc = "Run Dynomark query under cursor";
         };
       }
     ];
