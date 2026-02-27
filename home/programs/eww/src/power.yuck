@@ -2,28 +2,28 @@
   (box
     :class "powermenu"
     (button
-      :onclick "close eww power; systemctl poweroff"
+      :onclick "eww close power; systemctl poweroff"
       :class "powermenu-button"
       (label
         :text "⏻ "))
     (label
       :text " ")
     (button
-      :onclick "close eww power; /home/elias/.config/helperscripts/lock.sh"
+      :onclick "eww close power; /home/elias/.config/helperscripts/lock.sh"
       :class "powermenu-button"
       (label
         :text ""))
     (label
       :text " ")
     (button
-      :onclick "close eww power; systemctl reboot"
+      :onclick "eww close power; systemctl reboot"
       :class "powermenu-button"
       (label
         :text ""))
     (label
       :text "")
     (button
-      :onclick "close eww power; /home/elias/.config/helperscripts/logout.sh"
+      :onclick "eww close power; /home/elias/.config/helperscripts/logout.sh"
       :class "powermenu-button"
       (label
         :text ""))))

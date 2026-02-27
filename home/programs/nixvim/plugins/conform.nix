@@ -12,7 +12,7 @@
     beamMinimal28Packages.elixir
     clang-tools
     prettierd
-    nixfmt-rfc-style
+    nixfmt
     tex-fmt
     hclfmt
     topiary # TODO: Install https://github.com/blindFS/topiary-nushell somehow, e.g. clone languages.ncl to ~/.config/topiary/languages.ncl & nu.scm to ~/.config/topiary/topiary-queries/queries/nu.scm
@@ -130,4 +130,3 @@
     };
   };
 }
-

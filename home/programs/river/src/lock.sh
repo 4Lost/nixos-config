@@ -1,1 +1,1 @@
-betterlockscreen --lock blur
+hyprlock
