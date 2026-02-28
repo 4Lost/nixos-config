@@ -58,7 +58,7 @@
     :space-evenly false
   (button
     :class "${idle_inhibitor == 'start' ? 'idleOn' :  'idleOff' }"
-    :onclick "systemctl --user is-active idle-inhibitor.service && systemctl --user stop idle-inhibitor.service || systemctl --user start idle-inhibitor.service"
+    :onclick "systemctl is-active idle-inhibitor.service && systemctl stop idle-inhibitor.service || systemctl start idle-inhibitor.service"
   (label :text "${idle_inhibitor == 'start' ? '󰈈' :  '󰛐' }"))))
 
 ;; /-- Audio -->
@@ -196,9 +196,6 @@
       :class "text"
       :text "${date}")))
 
-
-
-
 ;; /-- River State -->
 
   (defvar ws1 "ws-empty")
@@ -253,6 +250,3 @@
     (label
       :class "text separator"
       :text "⦁"))
-
-
-

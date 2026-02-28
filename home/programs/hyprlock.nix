@@ -31,6 +31,17 @@
           blur_size = 3;
         }
       ];
+
+      auth = {
+        fingerprint = {
+          enabled = true;
+          # Optional: Customize messages
+          ready_message = "(Scan fingerprint to unlock)";
+          present_message = "Scanning fingerprint";
+          retry_delay = 250;
+        };
+      };
+
       input-field = [
         {
           size = "200, 50";

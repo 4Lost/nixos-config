@@ -137,10 +137,19 @@
   };
 
   # Hyprlock
-  security.pam.services.hyprlock = { };
+  security.pam.services.hyprlock = {
+    text = ''
+      auth sufficient pam_fprint.so
+      auth include login
+    '';
+  };
+
+  # Fingerprint SDDM
+  services.fprintd.enable = true;
 
   # Enabling the Keyring.
-  security.pam.services.lightdm.enableGnomeKeyring = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
   services = {
     gnome.gnome-keyring.enable = true;
     gnome.gcr-ssh-agent.enable = false;
