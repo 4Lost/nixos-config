@@ -1,9 +1,13 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
     wlr-randr
-    yad
     slurp
     grim
     wl-clipboard
@@ -39,7 +43,7 @@
       extraConfig = "rivertile -view-padding 0 -outer-padding 0 &";
       settings = {
         spawn = [
-          "/home/elias/.config/helperscripts/startEww.sh"
+          "/home/${config.home.username}/.config/helperscripts/startEww.sh"
           # "nextcloud"
         ];
         spawn-tagmask = "${all_but_scratch_tag}";
@@ -66,23 +70,23 @@
           normal = {
             "Super+Shift Return" = "spawn alacritty";
             # Messages
-            "Control+Super W" = "spawn 'yad --text=\"Hello from Wayland!\" --button=OK'";
+            "Control+Super W" = "spawn 'printf \"Hello from Wayland!\" | dunstify -'";
             # System
             "Super P" = "spawn 'rofi -show drun'";
             "Super+Shift C" = "close";
             # Screenshots
             "None Print" =
-              "spawn 'grim ~/Pictures/screenshot_$(date +%F_%H-%M-%S).png; yad --text=\"Screenshot - Whole Screen to File (/home/$USER/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S))\"'"; # Whole Screen to File
+              "spawn 'grim ~/Pictures/screenhot_$(date +%F_%H-%M-%S).png;/home/${config.home.username}/.config/helperscripts/screenshot-whole-file.sh'"; # Whole Screen to File
             "Super Print" =
-              "spawn 'grim -g \"$(slurp)\" ~/Pictures/screenshot_$(date +%F_%H-%M-%S).png; yad --text=\"Screenshot - Selection to File (/home/$USER/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S))\"'"; # Selection to File
+              "spawn 'grim -g \"$(slurp)\" ~/Pictures/screenshot_$(date +%F_%H-%M-%S).png;/home/${config.home.username}/.config/helperscripts/screenshot-selection-file.sh'"; # Selection to File
             "Shift Print" =
-              "spawn 'grim -g \"$(riverctl windows --focused | awk '{print $3,$4,$5,$6}')\" ~/Pictures/active_window_$(date +%F_%H-%M-%S).png; yad --text=\"Screenshot - Active Window to File (/home/$USER/Pictures/screenshot-$(date -u +%Y-%m-%d-%H:%M:%S))\"'"; # Active Window to File
+              "spawn 'grim -g \"$(riverctl windows --focused | awk '{print $3,$4,$5,$6}')\" ~/Pictures/active_window_$(date +%F_%H-%M-%S).png;/home/${config.home.username}/.config/helperscripts/screenshot-active-window.sh'"; # Active Window to File
             "Control Print" =
-              "spawn 'grim -g \"$(slurp)\" - | wl-copy --type image/png; yad --text=\"Screenshot - Whole Screen to Clipboard\"'"; # Whole Screen to Clipboard
+              "spawn 'grim -g \"$(slurp)\" - | wl-copy --type image/png;/home/${config.home.username}/.config/helperscripts/screenshot-whole-clipboard.sh'"; # Whole Screen to Clipboard
             "Control+Super Print" =
-              "spawn 'grim -g \"$(slurp)\" - | wl-copy --type image/png; yad --text=\"Screenshot - Selection to Clipboard\"'"; # Selection to Clipboard
+              "spawn 'grim -g \"$(slurp)\" - | wl-copy --type image/png;/home/${config.home.username}/.config/helperscripts/screenshot-selection-clipboard.sh'"; # Selection to Clipboard
             "Control+Shift Print" =
-              "spawn 'grim -g \"$(riverctl windows --focused | awk '{print $3,$4,$5,$6}')\" - | wl-copy --type image/png; yad --text=\"Screenshot - Active Window to Clipboard\"'"; # Active Window to Clipboard
+              "spawn 'grim -g \"$(riverctl windows --focused | awk '{print $3,$4,$5,$6}')\" - | wl-copy --type image/png;/home/${config.home.username}/.config/helperscripts/screenshot-active-clipboard.sh'"; # Active Window to Clipboard
             # Window Control
             "Super J" = "focus-view next";
             "Super K" = "focus-view previous";
@@ -132,7 +136,7 @@
             # Program
             "Super C" = "spawn 'firefox'";
             "Super Y" = "spawn 'signal-desktop'";
-            "Super X" = "spawn 'telegram-desktop'";
+            "Super X" = "spawn 'Telegram'";
             "Super V" = "spawn 'thunderbird'";
           }
           // genTagMappings (i: "Super ${i}") (i: "set-focused-tags ${tags i}")

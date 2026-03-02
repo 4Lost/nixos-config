@@ -6,6 +6,7 @@
     ./calibre.nix
     ./digikam.nix
     ./dolphin.nix
+    ./dunst.nix
     ./eww
     ./git.nix
     ./hyprlock.nix

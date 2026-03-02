@@ -1,4 +1,4 @@
-;; /-- Bar -->
+;; ── Bar ─────────────────────────────────────────────────────────────
 
 (defwindow bar []
   :geometry (geometry
@@ -42,14 +42,14 @@
   )
 )
 
-;; /-- Widget Separator -->
+;; ── Widget Separator ────────────────────────────────────────────────
 
 (defwidget widSep []
   (label
     :class "text separator"
     :text "|"))
 
-;; /-- Idle Inhibitor -->
+;; ── Idle Inhibitor ──────────────────────────────────────────────────
 
 (deflisten idle_inhibitor "journalctl --output=cat --output-fields=JOB_TYPE --user --follow --unit=idle-inhibitor")
 
@@ -61,7 +61,7 @@
     :onclick "systemctl is-active idle-inhibitor.service && systemctl stop idle-inhibitor.service || systemctl start idle-inhibitor.service"
   (label :text "${idle_inhibitor == 'start' ? '󰈈' :  '󰛐' }"))))
 
-;; /-- Audio -->
+;; ── Audio ───────────────────────────────────────────────────────────
 
 (defvar micClass "micOff")
 (defvar micIcon "󰍭")
@@ -85,7 +85,7 @@
       :class micClass
       :text "${micIcon}")))
 
-;; /-- Backlight -->
+;; ── Backlight ───────────────────────────────────────────────────────
 
 (defpoll backlight
   :interval "1s"
@@ -102,7 +102,7 @@
       :class "text"
       :text "${backlight}%")))
 
-;; /-- CPU -->
+;; ── CPU ─────────────────────────────────────────────────────────────
 
 (defpoll cpu
   :interval "1s"
@@ -119,7 +119,7 @@
       :class "text"
       :text "${cpu}%")))
 
-;; /-- Memory -->
+;; ── Memory ──────────────────────────────────────────────────────────
 
 (defpoll memory
   :interval "1s"
@@ -136,7 +136,7 @@
       :class "text"
       :text "${memory}%")))
 
-;; /-- Battery -->
+;; ── Battery ─────────────────────────────────────────────────────────
 
 (defvar batteryClass "speakerOff")
 (defvar batteryIcon "")
@@ -155,7 +155,7 @@
       :class "text"
       :text "${batteryVolume}%")))
 
-;; /-- Network -->
+;; ── Network ─────────────────────────────────────────────────────────
 
 (defvar networkDown "0")
 (defpoll networkUp
@@ -179,7 +179,7 @@
       :class "text"
       :text "${networkUp}")))
 
-;; /-- Time -->
+;; ── Time ────────────────────────────────────────────────────────────
 
 (defpoll date
   :interval "1s"
@@ -196,7 +196,7 @@
       :class "text"
       :text "${date}")))
 
-;; /-- River State -->
+;; ── River State ─────────────────────────────────────────────────────
 
   (defvar ws1 "ws-empty")
   (defvar ws2 "ws-empty")

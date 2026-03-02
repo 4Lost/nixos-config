@@ -6,6 +6,6 @@
   ];
   xsession.initExtra = ''
     swww-daemon
-    swww img "/etc/nixos/home/programs/wallpaper/background_temp.jpeg" fill
+    swww img "/etc/nixos/home/programs/swww/background_temp.jpeg" fill
   '';
 }

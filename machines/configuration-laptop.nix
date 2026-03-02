@@ -17,6 +17,18 @@
     };
   };
 
+  # Hyprlock
+  security.pam.services = {
+    hyprlock = {
+      text = ''
+        auth sufficient pam_fprint.so
+        auth include login
+      '';
+    };
+    sudo.fprintAuth = true;
+    login.fprintAuth = true;
+  };
+
   # ── Bluetooth ─────────────────────────────────────────────────────────
   services.blueman.enable = true;
   hardware.bluetooth = {

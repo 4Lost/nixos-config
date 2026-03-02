@@ -136,17 +136,6 @@
     XDG_STATE_HOME = "$HOME/.local/state";
   };
 
-  # Hyprlock
-  security.pam.services.hyprlock = {
-    text = ''
-      auth sufficient pam_fprint.so
-      auth include login
-    '';
-  };
-
-  # Fingerprint SDDM
-  services.fprintd.enable = true;
-
   # Enabling the Keyring.
   security.pam.services.login.enableGnomeKeyring = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
