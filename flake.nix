@@ -25,6 +25,8 @@
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    # impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs =
@@ -33,6 +35,7 @@
       home-manager,
       nur,
       nixvim,
+      # impermanence,
       ...
     }@inputs:
     {
@@ -45,6 +48,7 @@
             ./home/services/pipewire.nix
             nur.modules.nixos.default
             home-manager.nixosModules.home-manager
+            # impermanence.nixosModules.impermanence
             {
               home-manager = {
                 useUserPackages = true;
@@ -66,6 +70,7 @@
             ./home/services/pipewire.nix
             nur.modules.nixos.default
             home-manager.nixosModules.home-manager
+            # impermanence.nixosModules.impermanence
             {
               home-manager = {
                 useUserPackages = true;

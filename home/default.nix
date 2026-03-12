@@ -5,6 +5,26 @@
     ./services
   ];
 
+  # home.persistence."/persistent" = {
+  #   directories = [
+  #     "Downloads"
+  #     "Pictures"
+  #     "Documents"
+  #     {
+  #       directory = ".gnupg";
+  #       mode = "0700";
+  #     }
+  #     {
+  #       directory = ".ssh";
+  #       mode = "0700";
+  #     }
+  #     {
+  #       directory = ".local/share/keyrings";
+  #       mode = "0700";
+  #     }
+  #   ];
+  # };
+  #
   home = {
     username = "elias";
     homeDirectory = "/home/elias";
@@ -29,18 +49,6 @@
     ];
 
     stateVersion = "23.11";
-  };
-
-  systemd.user.services = {
-    idle-inhibitor = {
-      Unit = {
-        Description = "Presentation Mode";
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
-      };
-    };
   };
 
   programs.home-manager.enable = true;

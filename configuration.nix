@@ -120,6 +120,7 @@
     dbus
 
     libnotify
+    dunst
 
     # For Saving the Auth of Nextcloud.
     seahorse
