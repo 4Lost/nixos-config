@@ -55,6 +55,8 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [ "electron-32.3.3" ];
+    permittedInsecurePackages = [ "qtwebengine-5.15.19" ];
   };
+
+  # ── whatsie insecure ──────────────────────────────────────────────────
 }

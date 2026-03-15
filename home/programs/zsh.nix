@@ -6,7 +6,7 @@
     python3
     zsh-nix-shell
     nix-zsh-completions
-    neofetch
+    fastfetch
   ];
 
   programs.zsh = {
@@ -32,7 +32,7 @@
     initContent = ''
       export LD_LIBRARY_PATH="/nix/store/yjm4j9n85bcp42v5nkz2xifrp4a9s63k-sqlite-3.46.1/lib"o
       export CHROME_EXECUTABLE="/run/current-system/sw/bin/google-chrome-stable"
-      neofetch
+      fastfetch
 
       PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
       RPROMPT='[%F{yellow}%?%f]'

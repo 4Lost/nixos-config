@@ -25,7 +25,7 @@
         auth include login
       '';
     };
-    sudo.fprintAuth = true;
+    # sudo.fprintAuth = true;
     login.fprintAuth = true;
   };
 
