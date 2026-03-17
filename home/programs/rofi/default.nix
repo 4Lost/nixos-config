@@ -11,7 +11,6 @@
   programs.rofi = {
     enable = true;
     terminal = "${pkgs.alacritty}/bin/alacritty";
-    theme = ./theme.rafi;
     extraConfig = {
       mode = "run,drun,window,ssh,network";
       con-theme = "Oranchelo";
@@ -36,4 +35,3 @@
     };
   };
 }
-

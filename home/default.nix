@@ -3,6 +3,7 @@
 {
   imports = [
     ./services
+    ./themes
   ];
 
   # home.persistence."/persistent" = {
@@ -53,10 +54,9 @@
 
   programs.home-manager.enable = true;
 
+  # ── whatsie insecure ──────────────────────────────────────────────────
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [ "qtwebengine-5.15.19" ];
+    permittedInsecurePackages = [ "electron-32.3.3" "qtwebengine-5.15.19" ];
   };
-
-  # ── whatsie insecure ──────────────────────────────────────────────────
 }

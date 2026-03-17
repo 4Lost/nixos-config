@@ -18,13 +18,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Nix expressions for VSCode and OpenVSX extensions
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    catppuccin.url = "github:catppuccin/nix";
 
     # impermanence.url = "github:nix-community/impermanence";
   };
@@ -35,6 +36,7 @@
       home-manager,
       nur,
       nixvim,
+      catppuccin,
       # impermanence,
       ...
     }@inputs:
@@ -47,13 +49,17 @@
             ./machines/configuration-laptop.nix
             ./home/services/pipewire.nix
             nur.modules.nixos.default
+            catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             # impermanence.nixosModules.impermanence
             {
               home-manager = {
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
-                users.elias = import ./home/default-laptop.nix;
+                users.elias.imports = [
+                  ./home/default-laptop.nix
+                  catppuccin.homeModules.catppuccin
+                ];
               };
               nixpkgs.overlays = [
                 # (import ./overlays/river-status.nix)
@@ -69,13 +75,17 @@
             ./machines/configuration-desktop.nix
             ./home/services/pipewire.nix
             nur.modules.nixos.default
+            catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             # impermanence.nixosModules.impermanence
             {
               home-manager = {
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
-                users.elias = import ./home/default-desktop.nix;
+                users.elias.imports = [
+                  ./home/default-desktop.nix
+                  catppuccin.homeModules.catppuccin
+                ];
               };
               nixpkgs.overlays = [
                 inputs.nur.overlays.default

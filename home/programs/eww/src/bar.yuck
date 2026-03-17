@@ -59,7 +59,9 @@
   (button
     :class "${idle_inhibitor == 'start' ? 'idleOn' :  'idleOff' }"
     :onclick "systemctl --user is-active hypridle.service && systemctl --user stop hypridle.service || systemctl --user start hypridle.service"
-  (label :text "${idle_inhibitor == 'start' ? '󰈈' :  '󰛐' }"))))
+  (label
+    :class "${idle_inhibitor == 'start' ? 'speakerOn' : 'speakerOff'}"
+    :text "${idle_inhibitor == 'start' ? '󰈈' :  '󰛐' }"))))
 
 ;; ── Audio ───────────────────────────────────────────────────────────
 

@@ -52,7 +52,7 @@
     displayManager = {
       sddm = {
         enable = true;
-        theme = "catppuccin-mocha-mauve";
+        theme = "catppuccin-mocha-pink";
         wayland.enable = true;
       };
       #autoLogin = {
@@ -93,7 +93,7 @@
   environment.systemPackages = with pkgs; [
     (catppuccin-sddm.override {
       flavor = "mocha";
-      accent = "mauve";
+      accent = "pink";
       font = "Fira Code";
       fontSize = "9";
       # background = "${./wallpaper.png}";

@@ -10,6 +10,8 @@
     ./eww
     ./git.nix
     ./hyprlock.nix
+    ./hyprpaper
+    ./imv.nix
     ./inkscape.nix
     ./libreoffice.nix
     ./messenger.nix
@@ -22,11 +24,11 @@
     ./rofi
     ./skanlite.nix
     ./spotify.nix
-    ./swww
     ./taskwarrior
     ./thunderbird.nix
     ./vlc.nix
     ./vscode.nix
+    ./zathura.nix
     ./zoom.nix
     ./zsh.nix
   ];
