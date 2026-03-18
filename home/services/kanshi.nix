@@ -7,16 +7,18 @@
     systemdTarget = "graphical-session.target";
     settings = [
       {
-        profile.name = "laptop undocked";
+        profile.name = "laptop-undocked";
         profile.outputs = [ { criteria = "eDP-1"; } ];
         profile.exec = [
           "systemctl --user start hypridle.service"
+          "eww reload"
         ];
       }
       {
-        profile.name = "laptop docked";
+        profile.name = "laptop-docked";
         profile.exec = [
           "systemctl --user start hypridle.service"
+          "eww reload"
         ];
         profile.outputs = [
           {

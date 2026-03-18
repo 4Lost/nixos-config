@@ -11,6 +11,7 @@
     ./hyprlock.nix
     ./nvim.nix
     ./taskwarrior.nix
+    ./qt.nix
   ];
 
   catppuccin = {
