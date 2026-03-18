@@ -43,7 +43,7 @@
             yaml = true;
           };
           filetypes = {
-            md = true;
+            markdown = true;
             qmd = true;
           };
           to_do = {
