@@ -11,9 +11,8 @@
 
   programs.taskwarrior = {
     enable = true;
-    colorTheme = ./catppuccin.theme;
     package = pkgs.taskwarrior3;
-    dataLocation = "~/Nextcloud/tasks";
+    dataLocation = "~/tasks"; # TODO: change to Nextcloud again
     config = {
       uda.parentName = {
         type = "string";

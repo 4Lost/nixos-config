@@ -2,42 +2,49 @@
   description = "My NixOS Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    catppuccin.url = "github:catppuccin/nix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
+    images = {
+      url = "path:home/themes/images";
+      flake = false;
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # impermanence.url = "github:nix-community/impermanence";
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    catppuccin.url = "github:catppuccin/nix";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # impermanence.url = "github:nix-community/impermanence";
+    nur = {
+      url = "github:nix-community/NUR";
+    };
   };
 
   outputs =
     {
-      nixpkgs,
-      home-manager,
-      nur,
-      nixvim,
       catppuccin,
+      home-manager,
+      images,
       # impermanence,
+      nix-vscode-extensions,
+      nixpkgs,
+      nixvim,
+      nur,
       ...
     }@inputs:
     {
@@ -45,6 +52,7 @@
       nixosConfigurations = {
         eliasLaptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             ./machines/configuration-laptop.nix
             ./home/services/pipewire.nix

@@ -8,11 +8,11 @@
 {
   home.packages = with pkgs; [
     wlr-randr
-    slurp
     grim
-    wl-clipboard
     rivercarro
     ristate
+    slurp
+    wl-clipboard
   ];
   xdg.configFile."helperscripts" = {
     recursive = true;
@@ -44,7 +44,7 @@
       settings = {
         spawn = [
           "/home/${config.home.username}/.config/helperscripts/startEww.sh"
-          # "nextcloud"
+          "nextcloud"
         ];
         spawn-tagmask = "${all_but_scratch_tag}";
         keyboard-layout = "de";
@@ -68,7 +68,7 @@
         };
         map = {
           normal = {
-            "Super+Shift Return" = "spawn alacritty";
+            "Super+Shift Return" = "spawn kitty";
             # Messages
             "Control+Super W" = "spawn 'printf \"Hello from Wayland!\" | dunstify -'";
             # System

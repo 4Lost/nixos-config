@@ -1,18 +1,17 @@
 {
   imports = [
     ./3dprint.nix
-    ./alacritty.nix
     ./anki.nix
     ./calibre.nix
     ./digikam.nix
-    ./dolphin.nix
     ./dunst.nix
     ./eww
+    ./filebrowser.nix
     ./git.nix
     ./hyprlock.nix
-    ./hyprpaper
     ./imv.nix
     ./inkscape.nix
+    ./kitty.nix
     ./libreoffice.nix
     ./messenger.nix
     ./nextcloud.nix

@@ -101,6 +101,18 @@
         "type": "github"
       }
     },
+    "images": {
+      "flake": false,
+      "locked": {
+        "path": "home/themes/images",
+        "type": "path"
+      },
+      "original": {
+        "path": "home/themes/images",
+        "type": "path"
+      },
+      "parent": []
+    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -266,6 +278,7 @@
       "inputs": {
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
+        "images": "images",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": "nixpkgs_3",

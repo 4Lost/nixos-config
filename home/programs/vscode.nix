@@ -3,10 +3,11 @@
 {
   programs.vscode = {
     enable = true;
-    profiles.default.extensions = with pkgs.vscode-extensions; [
-      dracula-theme.theme-dracula
-      vscodevim.vim
-      yzhang.markdown-all-in-one
-    ];
+    package = pkgs.vscodium;
+    profiles.default = {
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
+      extensions = with pkgs.vscode-extensions; [ vscodevim.vim ];
+    };
   };
 }

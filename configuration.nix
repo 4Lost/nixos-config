@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   # Importing necessary setup for Steam & Printing & Flutter.
@@ -83,6 +83,7 @@
         "networkmanager"
         "audio"
         "video"
+        "render"
         "adbusers"
       ];
       hashedPassword = "$6$pdAJt1f0v7Zb13Ri$1WpKrErAp5JCb7eXs7EeeWYRMBLu5/WKDdMyGzJyYQDijG2NiywUXpAkl/8p1noxOOqYbb.MTw7JmTzhWGsT21";
@@ -96,8 +97,9 @@
       accent = "pink";
       font = "Fira Code";
       fontSize = "9";
-      # background = "${./wallpaper.png}";
+      background = "${inputs.images}/lockpaper.jpg";
       loginBackground = true;
+      userIcon = true;
     })
     exiftool
 
