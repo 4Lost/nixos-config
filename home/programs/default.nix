@@ -1,20 +1,18 @@
 {
   imports = [
     ./3dprint.nix
+    ./alacritty.nix
     ./anki.nix
     ./calibre.nix
     ./digikam.nix
-    ./dunst.nix
     ./eww
     ./filebrowser.nix
     ./git.nix
     ./hyprlock.nix
     ./imv.nix
     ./inkscape.nix
-    ./kitty.nix
     ./libreoffice.nix
     ./messenger.nix
-    ./nextcloud.nix
     ./nixvim
     ./picard.nix
     ./prismlauncher.nix
@@ -30,5 +28,6 @@
     ./zathura.nix
     ./zoom.nix
     ./zsh.nix
+    ./zk.nix
   ];
 }

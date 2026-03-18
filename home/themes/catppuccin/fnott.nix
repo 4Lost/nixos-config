@@ -1,0 +1,16 @@
+{ ... }:
+
+{
+  services.fnott.settings = {
+    main = {
+      notification-margin = 5;
+      title-color = "a6adc8ff";
+      summary-color = "cdd6f4ff";
+      body-color = "cdd6f4ff";
+      background = "1e1e2eff";
+      border-color = "89b4faff";
+      progress-bar-color = "6c7086ff";
+    };
+    critical.border-color = "fab387ff";
+  };
+}

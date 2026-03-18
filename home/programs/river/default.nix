@@ -8,7 +8,6 @@
 {
   home.packages = with pkgs; [
     wlr-randr
-    grim
     rivercarro
     ristate
     slurp
@@ -44,7 +43,6 @@
       settings = {
         spawn = [
           "/home/${config.home.username}/.config/helperscripts/startEww.sh"
-          "nextcloud"
         ];
         spawn-tagmask = "${all_but_scratch_tag}";
         keyboard-layout = "de";
@@ -68,25 +66,14 @@
         };
         map = {
           normal = {
-            "Super+Shift Return" = "spawn kitty";
+            "Super+Shift Return" = "spawn alacritty";
             # Messages
             "Control+Super W" = "spawn 'printf \"Hello from Wayland!\" | dunstify -'";
             # System
             "Super P" = "spawn 'rofi -show drun'";
             "Super+Shift C" = "close";
             # Screenshots
-            "None Print" =
-              "spawn 'grim ~/Pictures/screenhot_$(date +%F_%H-%M-%S).png;/home/${config.home.username}/.config/helperscripts/screenshot-whole-file.sh'"; # Whole Screen to File
-            "Super Print" =
-              "spawn 'grim -g \"$(slurp)\" ~/Pictures/screenshot_$(date +%F_%H-%M-%S).png;/home/${config.home.username}/.config/helperscripts/screenshot-selection-file.sh'"; # Selection to File
-            "Shift Print" =
-              "spawn 'grim -g \"$(riverctl windows --focused | awk '{print $3,$4,$5,$6}')\" ~/Pictures/active_window_$(date +%F_%H-%M-%S).png;/home/${config.home.username}/.config/helperscripts/screenshot-active-window.sh'"; # Active Window to File
-            "Control Print" =
-              "spawn 'grim -g \"$(slurp)\" - | wl-copy --type image/png;/home/${config.home.username}/.config/helperscripts/screenshot-whole-clipboard.sh'"; # Whole Screen to Clipboard
-            "Control+Super Print" =
-              "spawn 'grim -g \"$(slurp)\" - | wl-copy --type image/png;/home/${config.home.username}/.config/helperscripts/screenshot-selection-clipboard.sh'"; # Selection to Clipboard
-            "Control+Shift Print" =
-              "spawn 'grim -g \"$(riverctl windows --focused | awk '{print $3,$4,$5,$6}')\" - | wl-copy --type image/png;/home/${config.home.username}/.config/helperscripts/screenshot-active-clipboard.sh'"; # Active Window to Clipboard
+            "None Print" = "spawn 'flameshot gui'";
             # Window Control
             "Super J" = "focus-view next";
             "Super K" = "focus-view previous";

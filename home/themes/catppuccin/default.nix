@@ -6,6 +6,7 @@
 {
   imports = [
     ./cursor.nix
+    ./fnott.nix
     ./gtk.nix
     ./hyprlock.nix
     ./nvim.nix
@@ -17,18 +18,18 @@
     flavor = "mocha";
     accent = "pink";
 
+    alacritty.enable = true;
     anki.enable = true;
-    dunst.enable = true;
     element-desktop.enable = true;
     firefox.enable = true;
     fzf.enable = true;
     imv.enable = true;
-    kitty.enable = true;
     lazygit.enable = true;
     rofi.enable = true;
     spotify-player.enable = true;
     thunderbird.enable = true;
     vscode.profiles.default.enable = true;
+    yazi.enable = true;
     zathura.enable = true;
     zsh-syntax-highlighting.enable = true;
   };
