@@ -1,10 +1,9 @@
-hostname=$(hostname)
+HOST_NAME=$(hostname)
 
-if [[ "$hostname" == "eliasLaptop" ]]; then
+if [[ "$HOST_NAME" == "eliasLaptop" ]]; then
   eww open bar --screen eDP-1
   /home/elias/.config/eww/scripts/ristate.sh
-elif [[ "$hostname" == "eliasDesktop" ]]; then
-  echo "This is another PC!"
-else
-  echo "This is an unknown PC."
+elif [[ "$HOST_NAME" == "eliasDesktop" ]]; then
+  eww open bar --screen DVI-D-1
+  /home/elias/.config/eww/scripts/ristate.sh
 fi

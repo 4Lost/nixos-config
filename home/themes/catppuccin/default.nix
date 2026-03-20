@@ -10,11 +10,11 @@ in
   imports = [
     ./cursor.nix
     ./fnott.nix
-    # ./gtk.nix TODO: check why so weird
+    ./gtk.nix
     ./hyprlock.nix
     ./nvim.nix
     ./taskwarrior.nix
-    # ./qt.nix TODO: check why so weird
+    ./qt.nix
   ];
 
   catppuccin = {

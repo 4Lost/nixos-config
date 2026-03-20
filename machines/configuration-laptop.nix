@@ -17,7 +17,7 @@
     };
   };
 
-  # Hyprlock
+  # ── Hyprlock ──────────────────────────────────────────────────────────
   security.pam.services = {
     hyprlock = {
       text = ''
@@ -33,7 +33,7 @@
   services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = true;
+    powerOnBoot = false;
   };
 
   # ── Network ───────────────────────────────────────────────────────────

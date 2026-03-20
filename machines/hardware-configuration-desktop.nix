@@ -14,27 +14,41 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-label/NIXROOT";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/aded1c84-f4d0-4841-ab2f-68266532737f";
+      fsType = "btrfs";
+      options = [ "subvol=root" ];
+    };
+
+  fileSystems."/.swapvol" =
+    { device = "/dev/disk/by-uuid/aded1c84-f4d0-4841-ab2f-68266532737f";
+      fsType = "btrfs";
+      options = [ "subvol=swap" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-label/NIXBOOT";
+    { device = "/dev/disk/by-uuid/A38E-500D";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  swapDevices = [{
-    device = "/.swapfile";
-    size = 2048;
-  }];
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/aded1c84-f4d0-4841-ab2f-68266532737f";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/aded1c84-f4d0-4841-ab2f-68266532737f";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/partition-root" =
+    { device = "/dev/disk/by-uuid/aded1c84-f4d0-4841-ab2f-68266532737f";
+      fsType = "btrfs";
+    };
+
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

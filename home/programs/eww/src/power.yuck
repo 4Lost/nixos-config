@@ -1,3 +1,13 @@
+(defwindow power []
+  :class "powermenuWindow"
+  :geometry (geometry
+    :width "200px"
+    :height "50px"
+    :anchor "center center"
+    :x "0%"
+    :y "0%")
+  (powerpopup))
+
 (defwidget powerpopup []
   (box
     :class "powermenu"
@@ -27,23 +37,3 @@
       :class "powermenu-button"
       (label
         :text ""))))
-(defwidget powermenu [shutdown shutdown_icon reboot
-                    reboot_icon logout logout_icon]
-  (box :class "powermenu" :spacing 5
-       :vexpand true :hexpand true
-       :valign "end" :halign "end"
-       :space-evenly false
-    (button :onclick shutdown shutdown_icon)
-    (button :onclick reboot reboot_icon)
-    (button :onclick logout logout_icon)))
-
-(defwindow power []
-  :class "powermenuWindow"
-  :geometry (geometry
-    :width "200px"
-    :height "50px"
-    :anchor "center center"
-    :x "0%"
-    :y "0%")
-  (powerpopup)
-)

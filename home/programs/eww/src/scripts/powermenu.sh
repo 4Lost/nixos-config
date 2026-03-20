@@ -1,10 +1,19 @@
-WINDOW_NAME="power"
-
-echo "Power button pressed" >>/tmp/acpi_log.txt
+WINDOW="power"
+DISPLAY=""
 
 # Check if the window is already open
-if eww active-windows | grep -q "$WINDOW_NAME"; then
-  eww close "$WINDOW_NAME"
-else
-  eww open "$WINDOW_NAME" --screen "$(wlr-randr | grep -oP '^\S+' | head -n 1)"
+if eww active-windows | grep -q "$WINDOW"; then
+  eww close "$WINDOW"
+  exit 0
 fi
+
+# Determin screen
+if [[ "$(hostname)" == "eliasLaptop" ]]; then
+  DISPLAY="eDP-1"
+elif [[ "$(hostname)" == "eliasDesktop" ]]; then
+  DISPLAY="DVI-D-1"
+fi
+
+echo "$DISPLAY"
+
+eww open "$WINDOW" --screen "$DISPLAY"

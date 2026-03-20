@@ -4,13 +4,13 @@ let
   images = pkgs.callPackage ./home/themes/images.nix { };
 in
 {
-  # Importing necessary setup for Steam & Printing & Flutter.
+  # ── Steam & Printer ───────────────────────────────────────────────────
   imports = [
     ./builds/steam/default.nix
     ./home/extras/printer.nix
   ];
 
-  # Use the systemd-boot EFI boot loader.
+  # ── Use the systemd-boot EFI boot loader. ─────────────────────────────
   boot.loader = {
     systemd-boot = {
       enable = true;
@@ -19,18 +19,21 @@ in
     efi.canTouchEfiVariables = true;
   };
 
-  # Chose NetworkManager, timezone, internationalisation properties and console settings.
-  networking.networkmanager.enable = true;
-  networking.networkmanager.plugins = with pkgs; [
-    networkmanager-vpnc
-  ];
+  # ── NetworkManager, timezone, internationalisation properties and ─────
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-vpnc
+    ];
+  };
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";
     useXkbConfig = true;
   };
-  # Enable Asterisks for Password prompt.
+
+  # ── Enable Asterisks for Password prompt. ─────────────────────────────
   security.sudo = {
     enable = true;
     extraConfig = ''
@@ -38,17 +41,19 @@ in
     '';
   };
 
-  # Activate Flakes.
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix = {
+    # ── Flakes ────────────────────────────────────────────────────────────
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
-  # Configuration of the Garbage collect.
-  nix.gc = {
-    automatic = true; # Enable the automatic garbage collector
-    dates = "10:00"; # When to run the garbage collector
-    options = "--delete-older-than 7d";
+    # ── Garbage collect ───────────────────────────────────────────────────
+    gc = {
+      automatic = true;
+      dates = "12:00";
+      options = "--delete-older-than 7d";
+    };
   };
 
   services = {
@@ -78,7 +83,7 @@ in
     };
   };
 
-  # Define a user account.
+  # ── User account ──────────────────────────────────────────────────────
   users = {
     mutableUsers = false;
     users.elias = {
@@ -97,7 +102,6 @@ in
     };
   };
 
-  # Setting the Basic Packages.
   environment.systemPackages = with pkgs; [
     (catppuccin-sddm.override {
       flavor = "mocha";
@@ -146,17 +150,21 @@ in
     XDG_STATE_HOME = "$HOME/.local/state";
   };
 
-  # Enabling the Keyring.
-  security.pam.services.login.enableGnomeKeyring = true;
-  security.pam.services.sddm.enableGnomeKeyring = true;
+  # ── Keyring ───────────────────────────────────────────────────────────
+  security.pam.services = {
+    login.enableGnomeKeyring = true;
+    sddm.enableGnomeKeyring = true;
+  };
+
   services = {
-    gnome.gnome-keyring.enable = true;
-    gnome.gcr-ssh-agent.enable = false;
-    # Disable powerbutton => for use with eww
-    logind.settings.Login = {
-      HandlePowerKey = "ignore";
+    gnome = {
+      gnome-keyring.enable = true;
+      gcr-ssh-agent.enable = false;
     };
-    # Setting the permissions for acpilight.
+
+    # Disable powerbutton => for use with eww
+    logind.settings.Login.HandlePowerKey = "ignore";
+    # ── Permissions for acpilight ─────────────────────────────────────────
     udev = {
       enable = true;
       extraRules = ''

@@ -96,6 +96,31 @@
             }
           ];
         };
+        nixos = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./machines/configuration-desktop.nix
+            ./home/services/pipewire.nix
+            nur.modules.nixos.default
+            catppuccin.nixosModules.catppuccin
+            home-manager.nixosModules.home-manager
+            # impermanence.nixosModules.impermanence
+            {
+              home-manager = {
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
+                users.elias.imports = [
+                  ./home/default-desktop.nix
+                  catppuccin.homeModules.catppuccin
+                ];
+              };
+              nixpkgs.overlays = [
+                inputs.nur.overlays.default
+                inputs.nix-vscode-extensions.overlays.default
+              ];
+            }
+          ];
+        };
       };
     };
 }
