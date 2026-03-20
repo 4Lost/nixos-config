@@ -1,5 +1,8 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
+let
+  images = pkgs.callPackage ./home/themes/images { };
+in
 {
   # Importing necessary setup for Steam & Printing & Flutter.
   imports = [
@@ -101,7 +104,7 @@
       accent = "pink";
       font = "Fira Code";
       fontSize = "9";
-      background = "${inputs.images}/lockpaper.png";
+      background = "${images.lock}";
       loginBackground = true;
       userIcon = true;
     })

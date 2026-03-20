@@ -1,8 +1,11 @@
 {
-  inputs,
+  pkgs,
   ...
 }:
 
+let
+  images = pkgs.callPackage ../images { };
+in
 {
   imports = [
     ./cursor.nix
@@ -36,5 +39,5 @@
   };
 
   # ── Icon for Lock & Loginscreen ───────────────────────────────────────
-  xdg.configFile.".face.icon".source = inputs.images + /face.icon;
+  xdg.configFile.".face.icon".source = "${images.face}";
 }
