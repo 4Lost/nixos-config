@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    images = {
-      url = "path:home/themes/images";
-      flake = false;
-    };
-
     # impermanence.url = "github:nix-community/impermanence";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -39,7 +34,6 @@
     {
       catppuccin,
       home-manager,
-      images,
       # impermanence,
       nix-vscode-extensions,
       nixpkgs,
