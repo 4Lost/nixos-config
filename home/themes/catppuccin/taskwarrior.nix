@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  programs.taskwarrior.colorTheme = ./catppuccin-taskwarrior.theme;
+  programs.taskwarrior.colorTheme = ./taskwarrior.theme;
 }

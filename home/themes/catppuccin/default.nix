@@ -7,11 +7,11 @@
   imports = [
     ./cursor.nix
     ./fnott.nix
-    ./gtk.nix
+    # ./gtk.nix TODO: check why so weird
     ./hyprlock.nix
     ./nvim.nix
     ./taskwarrior.nix
-    ./qt.nix
+    # ./qt.nix TODO: check why so weird
   ];
 
   catppuccin = {

@@ -57,10 +57,10 @@
   (box
     :space-evenly false
   (button
-    :class "${idle_inhibitor == 'start' ? 'idleOn' :  'idleOff' }"
+    :class "${idle_inhibitor == 'stop' ? 'idleOff' :  'idleOn' }"
     :onclick "systemctl --user is-active hypridle.service && systemctl --user stop hypridle.service || systemctl --user start hypridle.service"
   (label
-    :text "${idle_inhibitor == 'start' ? '󰈈' :  '󰛐' }"))))
+    :text "${idle_inhibitor == 'stop' ? '󰛐' : '󰈈' }"))))
 
 ;; ── Audio ───────────────────────────────────────────────────────────
 

@@ -33,7 +33,6 @@
       # archives
       unzip
       zip
-      fuse
 
       # misc
       tree
@@ -42,7 +41,6 @@
       # system tools
       lm_sensors
       pavucontrol
-      sshfs
 
       cups
       firefox
@@ -57,6 +55,9 @@
   # ── whatsie insecure ──────────────────────────────────────────────────
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [ "electron-32.3.3" "qtwebengine-5.15.19" ];
+    permittedInsecurePackages = [
+      "electron-32.3.3"
+      "qtwebengine-5.15.19"
+    ];
   };
 }

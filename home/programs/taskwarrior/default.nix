@@ -12,7 +12,7 @@
   programs.taskwarrior = {
     enable = true;
     package = pkgs.taskwarrior3;
-    dataLocation = "~/Nextcloud/tasks";
+    dataLocation = "~/Nextcloud/.tasks";
     config = {
       uda.parentName = {
         type = "string";

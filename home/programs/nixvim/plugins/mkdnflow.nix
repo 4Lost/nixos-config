@@ -52,7 +52,7 @@
               "-"
               "X"
             ];
-            update_parents = true;
+            status_propagation.up = true;
           };
           foldtext = {
             title_transformer.__raw = ''
@@ -169,11 +169,8 @@
           new_file_template = {
             use_template = true;
             placeholders = {
-              before = {
-                title = "link_title";
-                date = "os_date";
-              };
-              after = { };
+              title = "link_title";
+              date = "os_date";
             };
             template = ''
               ---

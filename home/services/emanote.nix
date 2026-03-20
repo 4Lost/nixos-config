@@ -15,7 +15,7 @@ in
     # host = "127.0.0.1"; # default listen address is 127.0.0.1
     # port = 7000;        # default http port is 7000
     notes = [
-      "/home/elias/zettelkasten"
+      "/home/elias/Nextcloud/zettelkasten"
     ];
     # TODO: currentSystem
     package = emanote.packages."x86_64-linux".default;

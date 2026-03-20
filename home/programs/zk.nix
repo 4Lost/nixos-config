@@ -12,7 +12,7 @@
       };
       tool.fzf-preview = "bat -p --color always {-1}";
       notebook = {
-        dir = "~/zettelkasten"; # TODO: change location to Nextcloud
+        dir = "~/Nextcloud/zettelkasten";
       };
       alias = {
         n = "zk new inbox/$@";

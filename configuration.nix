@@ -69,6 +69,10 @@
     river-classic.enable = true;
     ssh.startAgent = true;
     zsh.enable = true;
+    fuse = {
+      enable = true;
+      userAllowOther = true;
+    };
   };
 
   # Define a user account.
@@ -97,7 +101,7 @@
       accent = "pink";
       font = "Fira Code";
       fontSize = "9";
-      background = "${inputs.images}/lockpaper.jpg";
+      background = "${inputs.images}/lockpaper.png";
       loginBackground = true;
       userIcon = true;
     })
@@ -117,6 +121,7 @@
     networkmanager-vpnc
     rcon-cli
     imv
+    sshfs
 
     acpilight # For setting Backlight.
     dbus
