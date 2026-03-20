@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  images = pkgs.callPackage ./home/themes/images { };
+  images = pkgs.callPackage ./home/themes/images.nix { };
 in
 {
   # Importing necessary setup for Steam & Printing & Flutter.

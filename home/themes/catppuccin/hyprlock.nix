@@ -12,7 +12,7 @@ let
     yellow = "rgb(f9e2af)";
     font = "Fira Code";
   };
-  images = pkgs.callPackage ../images { };
+  images = pkgs.callPackage ../images.nix { };
 in
 {
   # ── Hyprlock ──────────────────────────────────────────────────────────
@@ -22,6 +22,8 @@ in
       hide_cursor = true;
       ignore_empty_input = true;
     };
+
+    animations.enabled = false;
 
     background = {
       monitor = "";

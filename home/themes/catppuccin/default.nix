@@ -4,7 +4,7 @@
 }:
 
 let
-  images = pkgs.callPackage ../images { };
+  images = pkgs.callPackage ../images.nix { };
 in
 {
   imports = [
