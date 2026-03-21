@@ -27,7 +27,7 @@
   };
 
   home.file = {
-    "zettelkasten/.zk/templates/default.md" = {
+    "/Nextcloud/zettelkasten/.zk/templates/default.md" = {
       text = ''
         ---
         title: {{ title }}

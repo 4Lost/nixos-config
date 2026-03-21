@@ -125,7 +125,7 @@ in
     exfat
     ntfs3g
     parted
-    networkmanager-vpnc
+    vpnc
     rcon-cli
     imv
     sshfs
