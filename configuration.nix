@@ -19,7 +19,7 @@ in
     efi.canTouchEfiVariables = true;
   };
 
-  # ── NetworkManager, timezone, internationalisation properties and ─────
+  # ── NetworkManager, timezone, internationalisation properties and ... ──
   networking.networkmanager = {
     enable = true;
     plugins = with pkgs; [
