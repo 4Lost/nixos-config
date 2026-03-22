@@ -8,14 +8,14 @@
 
   networking.hostName = "eliasLaptop";
 
-  # ── Fingerprint ───────────────────────────────────────────────────────
-  services.fprintd = {
-    enable = true;
-    tod = {
-      enable = true;
-      driver = pkgs.libfprint-2-tod1-goodix;
-    };
-  };
+  # # ── Fingerprint ───────────────────────────────────────────────────────
+  # services.fprintd = {
+  #   enable = true;
+  #   tod = {
+  #     enable = true;
+  #     driver = pkgs.libfprint-2-tod1-goodix;
+  #   };
+  # };
 
   # ── Hyprlock ──────────────────────────────────────────────────────────
   security.pam.services = {
@@ -25,8 +25,8 @@
         auth include login
       '';
     };
-    sudo.fprintAuth = false;
-    login.fprintAuth = true;
+    # sudo.fprintAuth = false;
+    # login.fprintAuth = true;
   };
 
   # ── Bluetooth ─────────────────────────────────────────────────────────
