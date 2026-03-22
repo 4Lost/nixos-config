@@ -28,6 +28,11 @@
     nur = {
       url = "github:nix-community/NUR";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -39,6 +44,7 @@
       nixpkgs,
       nixvim,
       nur,
+      sops-nix,
       ...
     }@inputs:
     {
@@ -50,10 +56,11 @@
           modules = [
             ./machines/configuration-laptop.nix
             ./home/services/pipewire.nix
-            nur.modules.nixos.default
             catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             # impermanence.nixosModules.impermanence
+            nur.modules.nixos.default
+            sops-nix.nixosModules.sops
             {
               home-manager = {
                 useUserPackages = true;
@@ -76,10 +83,11 @@
           modules = [
             ./machines/configuration-desktop.nix
             ./home/services/pipewire.nix
-            nur.modules.nixos.default
             catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             # impermanence.nixosModules.impermanence
+            nur.modules.nixos.default
+            sops-nix.nixosModules.sops
             {
               home-manager = {
                 useUserPackages = true;
