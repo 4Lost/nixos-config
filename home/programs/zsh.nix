@@ -13,12 +13,17 @@
     enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
     shellAliases = {
+      encryptSops = "sops --age age1ammls20r5t3dx4cvhpt8n5dejxcpdmpqt37sa9r9fuztd8c43g4sz889zd -e -i secrets/secrets.yaml";
       update = "sudo nixos-rebuild switch";
       conWG = "ssh elias@logout.nonagon.dev -p 6969";
       conWS = "ssh elias@192.168.31.200";
       setupPC = "wlr-randr --output HDMI-A-2 --on --mode 1920x1080 --pos 0,0;wlr-randr --output DVI-D-1 --on --mode 1920x1080 --pos 1920,0;wlr-randr --output DP-2 --on --mode 1920x1080 --pos 3840,0 --primary";
     };
     autosuggestion.enable = true;
+    localVariables = {
+      EDITOR = "nvim";
+      SOPS_AGE_KEY_FILE = "/etc/sops/keys.txt";
+    };
     enableCompletion = true;
     enableVteIntegration = true;
     history = {

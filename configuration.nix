@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   images = pkgs.callPackage ./home/themes/images.nix { };
@@ -8,6 +8,7 @@ in
   imports = [
     ./builds/steam/default.nix
     ./home/extras/printer.nix
+    ./home/extras/sops.nix
   ];
 
   # ── Use the systemd-boot EFI boot loader. ─────────────────────────────
@@ -98,7 +99,7 @@ in
         "render"
         "adbusers"
       ];
-      hashedPassword = "$6$pdAJt1f0v7Zb13Ri$1WpKrErAp5JCb7eXs7EeeWYRMBLu5/WKDdMyGzJyYQDijG2NiywUXpAkl/8p1noxOOqYbb.MTw7JmTzhWGsT21";
+      hashedPassword = config.sops.secrets.user_password.path;
     };
   };
 

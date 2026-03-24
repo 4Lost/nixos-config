@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -15,12 +20,12 @@
           defaultBranch = "main";
         };
         user = {
-          email = "elias.schroeter@e.email";
-          name = "Elias Schröter";
+          email = config.sops.secrets.git.email.path;
+          name = config.sops.secrets.git.name.path;
         };
       };
       signing = {
-        key = "04F3A2ED4B33F254";
+        key = config.sops.secrets.git.signingkey.path;
         format = lib.mkForce "openpgp";
         signByDefault = true;
       };

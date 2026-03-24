@@ -48,6 +48,7 @@
 
       # sops
       sops
+      age
     ];
 
     stateVersion = "23.11";
