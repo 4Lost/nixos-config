@@ -12,36 +12,12 @@
   };
   accounts.email = {
     accounts = {
-      kjr = {
-        address = "elias.schroeter@kjr-ebe.de";
-        imap = {
-          host = "outlook.office365.com";
-          port = 993;
-          tls.enable = true;
-        };
-        realName = "Elias Schröter";
-        signature = {
-          text = ''
-            Mit freundlichen Grüßen,
-            Elias Schröter.
-          '';
-          showSignature = "append";
-        };
-        passwordCommand = "OAuth2";
-        smtp = {
-          host = "smtp.office365.com";
-          port = 587;
-          tls = {
-            enable = true;
-            useStartTls = true;
-          };
-        };
-        userName = "elias.schroeter@kjr-ebe.de";
-        thunderbird = { enable = true; };
-      };
       privat = {
         address = "elias.schroeter@e.email";
-        aliases = [ "elias.schroeter@murena.io" "xacufe67.cadome83@murena.io" ];
+        aliases = [
+          "elias.schroeter@murena.io"
+          "xacufe67.cadome83@murena.io"
+        ];
         imap = {
           host = "mail.ecloud.global";
           port = 993;
@@ -66,7 +42,9 @@
         };
         userName = "elias.schroeter@e.email";
         primary = true;
-        thunderbird = { enable = true; };
+        thunderbird = {
+          enable = true;
+        };
       };
       uni = {
         address = "elias.schroeter@campus.lmu.de";
@@ -94,7 +72,9 @@
         };
         userName = "elias.schroeter@campus.lmu.de";
         primary = false;
-        thunderbird = { enable = true; };
+        thunderbird = {
+          enable = true;
+        };
       };
     };
   };
