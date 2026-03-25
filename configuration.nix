@@ -6,9 +6,9 @@ in
 {
   # ── Steam & Printer ───────────────────────────────────────────────────
   imports = [
-    ./builds/steam/default.nix
-    ./home/extras/printer.nix
-    ./home/extras/sops.nix
+    ./builds/steam.nix
+    ./builds/printer.nix
+    ./builds/sops.nix
   ];
 
   # ── Use the systemd-boot EFI boot loader. ─────────────────────────────
@@ -99,7 +99,7 @@ in
         "render"
         "adbusers"
       ];
-      hashedPassword = config.sops.secrets.user_password.path;
+      hashedPassword = config.sops.secrets."user_password".path;
     };
   };
 

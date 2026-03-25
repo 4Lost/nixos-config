@@ -46,9 +46,9 @@
       firefox
       bitwarden-desktop
 
-      # sops
-      sops
+      # Sops
       age
+      sops
     ];
 
     stateVersion = "23.11";
