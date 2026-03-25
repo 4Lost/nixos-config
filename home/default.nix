@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./extras
     ./services
     ./themes
   ];

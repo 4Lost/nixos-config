@@ -99,7 +99,7 @@ in
         "render"
         "adbusers"
       ];
-      hashedPassword = config.sops.secrets."user_password".path;
+      hashedPasswordFile = config.sops.secrets."user_password".path;
     };
   };
 

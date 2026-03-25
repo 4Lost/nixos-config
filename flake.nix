@@ -68,6 +68,7 @@
                 users.elias.imports = [
                   ./home/default-laptop.nix
                   catppuccin.homeModules.catppuccin
+                  sops-nix.homeManagerModules.sops
                 ];
               };
               nixpkgs.overlays = [
@@ -95,6 +96,7 @@
                 users.elias.imports = [
                   ./home/default-desktop.nix
                   catppuccin.homeModules.catppuccin
+                  sops-nix.homeManagerModules.sops
                 ];
               };
               nixpkgs.overlays = [
