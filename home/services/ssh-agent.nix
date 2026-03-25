@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  services.ssh-agent.enable = false;
+  services.ssh-agent.enable = true;
 }
