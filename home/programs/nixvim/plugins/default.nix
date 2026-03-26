@@ -25,6 +25,7 @@
     ./noice.nix
     ./notify.nix
     ./oil.nix
+    ./openscad.nix
     ./otter.nix
     ./papis.nix
     ./peek.nix
