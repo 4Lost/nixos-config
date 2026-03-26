@@ -34,7 +34,7 @@ in
     thunderbird.enable = true;
     vscode.profiles.default.enable = true;
     yazi.enable = true;
-    zathura.enable = true;
+    # zathura.enable = true; # TODO: add switch to light mode
     zsh-syntax-highlighting.enable = true;
   };
 
