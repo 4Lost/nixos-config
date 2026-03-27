@@ -67,8 +67,6 @@
         map = {
           normal = {
             "Super+Shift Return" = "spawn alacritty";
-            # Messages
-            "Control+Super W" = "spawn 'printf \"Hello from Wayland!\" | dunstify -'";
             # System
             "Super P" = "spawn 'rofi -show drun'";
             "Super+Shift C" = "close";

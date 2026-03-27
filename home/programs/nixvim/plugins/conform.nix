@@ -50,6 +50,12 @@
           tex = [
             "tex-fmt"
           ];
+          openscad = [
+            "squeeze_blanks"
+            "trim_whitespace"
+            "trim_newlines"
+            "scadstyle"
+          ];
           "_" = [
             "squeeze_blanks"
             "trim_whitespace"
@@ -96,6 +102,15 @@
           };
           tex-fmt = {
             command = "tex-fmt";
+          };
+          scadstyle = {
+            "inherit" = true;
+            prepend_args = [
+              "--indent-type"
+              "Spaces"
+              "--indent-width"
+              "2"
+            ];
           };
         };
       };
