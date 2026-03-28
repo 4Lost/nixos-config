@@ -66,7 +66,7 @@
         };
         map = {
           normal = {
-            "Super+Shift Return" = "spawn alacritty";
+            "Super+Shift Return" = "spawn kitty";
             # System
             "Super P" = "spawn 'rofi -show drun'";
             "Super+Shift C" = "close";

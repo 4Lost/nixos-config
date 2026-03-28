@@ -14,7 +14,7 @@ in
     ./hyprlock.nix
     ./nvim.nix
     ./taskwarrior.nix
-    # ./qt.nix
+    ./qt.nix
   ];
 
   catppuccin = {
@@ -22,12 +22,12 @@ in
     flavor = "mocha";
     accent = "pink";
 
-    alacritty.enable = true;
     anki.enable = true;
     element-desktop.enable = true;
     firefox.enable = true;
     fzf.enable = true;
     imv.enable = true;
+    kitty.enable = true;
     lazygit.enable = true;
     rofi.enable = true;
     spotify-player.enable = true;

@@ -1,7 +1,6 @@
 {
   imports = [
     ./3dprint.nix
-    ./alacritty.nix
     ./anki.nix
     ./calibre.nix
     ./digikam.nix
@@ -11,6 +10,7 @@
     ./hyprlock.nix
     ./imv.nix
     ./inkscape.nix
+    ./kitty.nix
     ./libreoffice.nix
     ./messenger.nix
     ./nixvim

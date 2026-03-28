@@ -71,7 +71,6 @@ in
       defaultSession = "river";
     };
     libinput.enable = true; # Enable touchpad.
-    printing.enable = true;
   };
 
   programs = {
@@ -184,5 +183,5 @@ in
     allowUnfree = true;
     permittedInsecurePackages = [ "electron-32.3.3" ];
   };
-  system.stateVersion = "23.11";
+  system.stateVersion = "26.05";
 }

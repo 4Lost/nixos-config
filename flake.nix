@@ -33,6 +33,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    yazi.url = "github:sxyazi/yazi";
   };
 
   outputs =
@@ -45,6 +46,7 @@
       nixvim,
       nur,
       sops-nix,
+      yazi,
       ...
     }@inputs:
     {

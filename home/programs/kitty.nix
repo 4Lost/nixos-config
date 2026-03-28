@@ -11,6 +11,11 @@
 
   programs.kitty = {
     enable = true;
+    font = {
+      size = 6;
+      name = "Fira Code";
+      package = pkgs.fira-code;
+    };
     settings = {
       clear_all_shortcuts = true;
       enabled_layouts = "splits:slit_axis=horizontal,stack";
