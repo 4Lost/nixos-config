@@ -5,7 +5,7 @@
     ./calibre.nix
     ./digikam.nix
     ./eww
-    ./filebrowser.nix
+    ./filebrowser
     ./git.nix
     ./hyprlock.nix
     ./imv.nix

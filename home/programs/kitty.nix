@@ -12,7 +12,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      size = 6;
+      size = 8;
       name = "Fira Code";
       package = pkgs.fira-code;
     };
