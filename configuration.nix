@@ -6,9 +6,9 @@ in
 {
   # ── Steam & Printer ───────────────────────────────────────────────────
   imports = [
-    ./builds/steam.nix
-    ./builds/printer.nix
-    ./builds/sops.nix
+    ./system/steam.nix
+    ./system/printer.nix
+    ./system/sops.nix
   ];
 
   # ── Use the systemd-boot EFI boot loader. ─────────────────────────────
@@ -43,11 +43,14 @@ in
   };
 
   nix = {
-    # ── Flakes ────────────────────────────────────────────────────────────
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    # ── Flakes ───────────────────────────────────────────────────────────
+    settings = {
+      download-buffer-size = 524288000;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
 
     # ── Garbage collect ───────────────────────────────────────────────────
     gc = {
