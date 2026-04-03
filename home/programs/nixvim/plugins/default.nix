@@ -1,5 +1,6 @@
 {
   imports = [
+    ./aerial.nix
     ./autopairs.nix
     ./barbar.nix
     ./bullets.nix
