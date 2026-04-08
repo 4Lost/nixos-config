@@ -5,6 +5,8 @@
     plugins = {
       trouble = {
         enable = true;
+        lazyLoad.settings.cmd = "Trouble";
+
         settings = {
           modes = {
             diagnostics = {

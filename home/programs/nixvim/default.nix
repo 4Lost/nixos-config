@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -6,38 +6,38 @@
     ./plugins
   ];
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  home.sessionVariables.EDITOR = "nvim";
 
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
-
-    nixpkgs.useGlobalPackages = false;
-
-    clipboard = {
-      providers = {
-        wl-copy.enable = true;
-      };
-    };
-
-    viAlias = true;
-    vimAlias = true;
-
-    lualoader.enable = true;
-
-    extraPackages = with pkgs; [
+    extraPackages = with pkgs; [ # TODO:
       texliveFull
       texlivePackages.standalone
       texlivePackages.relsize # needed for BA
       # papis-nvim
     ];
-    extraConfigVim = ''
-      filetype plugin on
-      set nocompatible
-      syntax on
-    '';
+
+    nixpkgs.useGlobalPackages = false;
+
+    clipboard.providers.wl-copy.enable = true;
+    keymaps = [
+      {
+        key = "Y";
+        action = ''"+y'';
+        options.silent = true;
+      }
+      {
+        key = "P";
+        action = ''"+p'';
+        options.silent = true;
+      }
+    ];
+
+    viAlias = true;
+    vimAlias = true;
+
+    lualoader.enable = true;
 
     globals = {
       mapleader = " ";
