@@ -1,21 +1,54 @@
 {
   imports = [
-    ./css-color.nix
+    ./aerial.nix
+    ./autopairs.nix
+    ./barbar.nix
+    ./bullets.nix
+    ./cmp.nix
+    ./colorizor.nix
+    ./comment-box.nix
+    ./comment.nix
+    ./conform.nix
+    ./csvview.nix
+    ./dap.nix
+    ./dynomark.nix
+    ./edgy.nix
+    ./gitsigns.nix
     ./img-clip.nix
+    ./knap.nix
+    ./lualine.nix
+    ./lsp.nix
     ./lz-n.nix
+    ./markdown-preview.nix
+    ./mkdnflow.nix
+    ./neoscroll.nix
+    ./neotree.nix
+    ./noice.nix
+    ./notify.nix
+    ./oil.nix
+    ./otter.nix
+    ./papis.nix
     ./rainbow.nix
     ./render-markdown.nix
     ./rustaceanvim.nix
+    ./smart-splits.nix
+    ./snippets.nix
+    ./sniprun.nix
+    ./startup.nix
+    ./surround.nix
+    ./todo-comments.nix
     ./toggleterm.nix
+    ./treesitter.nix
     ./trouble.nix
+    ./typst-preview.nix
+    ./typst-vim.nix
     ./undotree.nix
     ./unified.nix
+    ./vimtex.nix
     ./web-devicons.nix
     ./which-key.nix
     ./wilder.nix
     ./yazi.nix
     ./yuck.nix
-
-    ./vimtex.nix
   ];
 }

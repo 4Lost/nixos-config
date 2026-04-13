@@ -16,6 +16,7 @@
         }
       ];
     };
+
     keymaps = [
       {
         key = "<leader>us";

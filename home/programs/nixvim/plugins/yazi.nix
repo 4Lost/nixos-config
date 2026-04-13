@@ -5,10 +5,7 @@
     plugins = {
       yazi = {
         enable = true;
-        lazyLoad.settings.event = [
-          "BufReadPost"
-          "BufNewFile"
-        ];
+        autoLoad = true;
       };
 
       which-key.settings.spec = [

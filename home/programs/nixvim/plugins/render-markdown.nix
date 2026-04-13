@@ -13,6 +13,15 @@
           ft = [ "markdown" ];
           latex.enabled = false;
           completions.lsp.enabled = true;
+
+          code = {
+            width = "block";
+            min_width = 45;
+            left_pad = 2;
+            language_pad = 2;
+          };
+
+          heading.icons = [ "󰎤 " "󰎧 " "󰎪 " "󰎭 " "󰎱 " "󰎳 " ];
         };
       };
 
@@ -28,11 +37,9 @@
     keymaps = [
       {
         action = "<CMD>RenderMarkdown toggle<CR>";
-        key = "<leader>mp";
+        key = "<leader>ms";
         mode = "n";
-        options = {
-          desc = "Toggle markdown preview";
-        };
+        options.desc = "Toggle markdown preview";
       }
     ];
   };

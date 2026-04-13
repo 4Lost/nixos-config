@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  programs.nixvim.plugins.web-devicons = {
+  programs.nixvim.plugins.gitsigns = {
     enable = true;
     autoLoad = true;
   };

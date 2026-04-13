@@ -3,10 +3,7 @@
 {
   programs.nixvim.plugins.wilder = {
     enable = true;
-    lazyLoad.settings.event = [
-      "BufReadPost"
-      "BufNewFile"
-    ];
+    autoLoad = true;
 
     settings.modes = [
       ":"

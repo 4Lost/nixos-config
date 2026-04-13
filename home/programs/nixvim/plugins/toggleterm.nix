@@ -20,7 +20,7 @@
 
       which-key.settings.spec = [
         {
-          __unkeyed-1 = "<leader>c";
+          __unkeyed-1 = "<leader>s";
           group = "Terminal";
           icon = " ";
         }
@@ -30,27 +30,21 @@
     keymaps = [
       {
         action = "<CMD>ToggleTermSendCurrentLine<CR>";
-        key = "<leader>cl";
+        key = "<leader>sl";
         mode = "n";
-        options = {
-          desc = "Send Current Line";
-        };
+        options.desc = "Send Current Line";
       }
       {
         action = "<CMD>ToggleTermSendVisualLines<CR>";
-        key = "<leader>cv";
+        key = "<leader>sv";
         mode = "x";
-        options = {
-          desc = "Send all the (whole) lines in selection";
-        };
+        options.desc = "Send all the (whole) lines in selection";
       }
       {
         action = "<CMD>ToggleTermSendVisualSelection<CR>";
-        key = "<leader>cs";
+        key = "<leader>ss";
         mode = "x";
-        options = {
-          desc = "Send selection";
-        };
+        options.desc = "Send selection";
       }
     ];
   };

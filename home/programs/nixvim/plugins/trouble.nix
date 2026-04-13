@@ -16,9 +16,7 @@
             # Diagnostics for the current buffer only
             diagnostics_buffer = {
               mode = "diagnostics";
-              filter = {
-                buf = 0;
-              };
+              filter.buf = 0;
             };
           };
           focus = false;

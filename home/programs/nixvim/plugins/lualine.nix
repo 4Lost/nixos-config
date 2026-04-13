@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  programs.nixvim.plugins.web-devicons = {
+  programs.nixvim.plugins.lualine = {
     enable = true;
     autoLoad = true;
   };
