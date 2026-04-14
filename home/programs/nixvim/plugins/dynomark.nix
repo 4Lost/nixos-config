@@ -14,11 +14,7 @@ let
 in
 {
   programs.nixvim = {
-
-    extraPlugins = [
-      dynomark-nvim
-    ];
-
+    extraPlugins = [ dynomark-nvim ];
     extraConfigLua = "require('dynomark').setup({})";
 
     keymaps = [
@@ -26,17 +22,13 @@ in
         key = "<leader>v";
         action = "<Plug>(DynomarkToggle)";
         mode = [ "n" ];
-        options = {
-          desc = "Toggle Dynomark";
-        };
+        options.desc = "Toggle Dynomark";
       }
       {
         key = "<leader>V";
         action = "<Plug>(DynomarkRun)";
         mode = [ "n" ];
-        options = {
-          desc = "Run Dynomark query under cursor";
-        };
+        options.desc = "Run Dynomark query under cursor";
       }
     ];
   };

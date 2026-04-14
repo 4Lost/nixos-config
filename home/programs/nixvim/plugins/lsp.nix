@@ -7,7 +7,10 @@
   ];
 
   programs.nixvim = {
-    plugins.lsp.enable = true;
+    plugins.lsp = {
+      enable = true;
+      autoLoad = true;
+    };
 
     lsp = {
       luaConfig = {
@@ -17,65 +20,29 @@
         '';
       };
       servers = {
-        nixd = {
-          enable = false;
-        };
-        rust_analyzer = {
-          enable = true;
-        };
-        leanls = {
-          enable = true;
-        };
+        nixd.enable = false;
+        rust_analyzer.enable = true;
+        leanls.enable = true;
         nil_ls = {
           enable = !config.programs.nixvim.plugins.lsp.servers.nixd.enable;
           config = {
             nil = {
-              formatting = {
-                command = [
-                  "nixfmt"
-                ];
-              };
-              diagnostics = {
-                ignored = [ ];
-              };
-              nix = {
-                flake = {
-                  autoArchive = true;
-                };
-              };
+              formatting.command = [ "nixfmt" ];
+              diagnostics.ignored = [ ];
+              nix.flake.autoArchive = true;
             };
           };
         };
-        nushell = {
-          enable = true;
-        };
-        pylsp = {
-          enable = true;
-        };
-        pylyzer = {
-          enable = false;
-        };
-        pyright = {
-          enable = true;
-        };
-        clangd = {
-          enable = true;
-        };
-        zk = {
-          enable = true;
-        };
-        elixirls = {
-          enable = true;
-        };
-        marksman = {
-          enable = true;
-        };
-        texlab = {
-          enable = true;
-        };
-        lua_ls = {
-          enable = true;
-        };
+        nushell.enable = true;
+        pylsp.enable = true;
+        pylyzer.enable = false;
+        pyright.enable = true;
+        clangd.enable = true;
+        zk.enable = true;
+        elixirls.enable = true;
+        marksman.enable = true;
+        texlab.enable = true;
+        lua_ls.enable = true;
         ltex_plus = {
           enable = true;
           package = pkgs.ltex-ls-plus;
@@ -93,9 +60,7 @@
             };
           };
         };
-        tinymist = {
-          enable = true;
-        };
+        tinymist.enable = true;
       };
     };
   };

@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./emanote.nix
     ./flameshot.nix
     ./fnott.nix
     ./gpg-agent.nix

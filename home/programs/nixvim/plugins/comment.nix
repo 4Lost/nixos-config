@@ -1,16 +1,10 @@
 { ... }:
 
 {
-  programs.nixvim = {
-    plugins = {
-      comment = {
-        enable = true;
-        settings = {
-          mappings = {
-            basic = true;
-          };
-        };
-      };
-    };
+  programs.nixvim.plugins.comment = {
+    enable = true;
+    autoLoad = true;
+
+    settings.mappings.basic = true;
   };
 }

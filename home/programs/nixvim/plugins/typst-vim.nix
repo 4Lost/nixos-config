@@ -1,17 +1,15 @@
 { ... }:
 
-# TODO: coneal does not work
+# TODO: conceal does not work
 {
-  programs.nixvim = {
-    plugins = {
-      typst-vim = {
-        enable = true;
-        settings = {
-          conceal = 1;
-          conceal_math = 1;
-          conceal_emoji = 1;
-        };
-      };
+  programs.nixvim.plugins.typst-vim = {
+    enable = true;
+    lazyLoad.settings.filetypes = [ "typst" ];
+
+    settings = {
+      conceal = 1;
+      conceal_math = 1;
+      conceal_emoji = 1;
     };
   };
 }

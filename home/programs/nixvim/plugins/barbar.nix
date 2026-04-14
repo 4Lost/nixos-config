@@ -3,9 +3,9 @@
 {
   programs.nixvim = {
     plugins = {
-      barbar = {
-        enable = true;
-      };
+      barbar.enable = true;
+      autoLoad = true;
+
       which-key.settings.spec = [
         {
           __unkeyed-1 = "<leader>b";
@@ -22,62 +22,49 @@
         }
       ];
     };
+
     keymaps = [
       {
         action = "<CMD>BufferPrevious<CR>";
         key = "<leader>,";
         mode = "n";
-        options = {
-          desc = "Tab ";
-        };
+        options.desc = "Tab ";
       }
       {
         action = "<CMD>BufferNext<CR>";
         key = "<leader>.";
         mode = "n";
-        options = {
-          desc = "Tab ";
-        };
+        options.desc = "Tab ";
       }
       {
         action = "<CMD>BufferMovePrevious<CR>";
         key = "<leader>b<";
         mode = "n";
-        options = {
-          desc = "Re-Order ";
-        };
+        options.desc = "Re-Order ";
       }
       {
         action = "<CMD>BufferMoveNext<CR>";
         key = "<leader>b>";
         mode = "n";
-        options = {
-          desc = "Re-Order ";
-        };
+        options.desc = "Re-Order ";
       }
       {
         action = "<CMD>BufferClose<CR>";
         key = "<leader>bc";
         mode = "n";
-        options = {
-          desc = "Close";
-        };
+        options.desc = "Close";
       }
       {
-        action = "<CMD>tabnew +Telescope\\ file_browser<CR>";
+        action = "<CMD>tabnew +Telescope\\ yazi<CR>"; # TODO: does not work
         key = "<leader>bn";
         mode = "n";
-        options = {
-          desc = "Create";
-        };
+        options.desc = "Create";
       }
       {
         action = "<CMD>BufferPick<CR>";
         key = "<leader>bp";
         mode = "n";
-        options = {
-          desc = "Pick Tab";
-        };
+        options.desc = "Pick Tab";
       }
     ];
   };

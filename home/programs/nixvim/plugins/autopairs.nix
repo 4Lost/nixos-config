@@ -1,13 +1,10 @@
 { ... }:
 
 {
-  programs.nixvim.plugins = {
-    nvim-autopairs = {
-      enable = true;
-      settings = {
-        check_ts = true;
-      };
-    };
+  programs.nixvim.plugins.nvim-autopairs = {
+    enable = true;
+    autoLoad = true;
+
+    settings.check_ts = true;
   };
 }
-

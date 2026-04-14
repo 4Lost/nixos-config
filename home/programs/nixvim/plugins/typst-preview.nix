@@ -2,37 +2,29 @@
 
 {
   programs.nixvim = {
-    plugins = {
-      typst-preview = {
-        enable = true;
-        lazyLoad = {
-          settings = {
-            ft = "typst";
-            cmd = "TypstPreview";
-          };
-        };
+    plugins.typst-preview = {
+      enable = true;
+      lazyLoad = {
         settings = {
-          open_command = "qutebrowser --target tab %s";
+          ft = [ "typst" ];
+          cmd = "TypstPreview";
         };
       };
+
+      settings.open_command = "qutebrowser --target tab %s";
     };
-    files = {
-      "ftplugin/typst.lua" = {
-        keymaps = [
-          {
-            action = "<CMD>TypstPreview<CR>";
-            key = "<C-k>t";
-            mode = [
-              "n"
-              "v"
-              "i"
-            ];
-            options = {
-              desc = "Typst Preview";
-            };
-          }
+
+    files."ftplugin/typst.lua".keymaps = [
+      {
+        action = "<CMD>TypstPreview<CR>";
+        key = "<C-k>t";
+        mode = [
+          "n"
+          "v"
+          "i"
         ];
-      };
-    };
+        options.desc = "Typst Preview";
+      }
+    ];
   };
 }

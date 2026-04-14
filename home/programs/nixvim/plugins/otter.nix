@@ -1,9 +1,8 @@
 { ... }:
 
 {
-  programs.nixvim.plugins = {
-    otter = {
-      enable = true;
-    };
+  programs.nixvim.plugins.otter = {
+    enable = true;
+    autoLoad = true;
   };
 }

@@ -2,13 +2,13 @@
 
 {
   programs.nixvim = {
-    extraConfigLua = ''
-      vim.api.nvim_create_autocmd("FileType", {pattern = "markdown", command = "set awa"})
-    '';
+    extraConfigLua = ''vim.api.nvim_create_autocmd("FileType", {pattern = "markdown", command = "set awa"})'';
 
     plugins = {
       mkdnflow = {
         enable = true;
+        lazyLoad.settings.filetypes = [ "md" ];
+
         settings = {
           links = {
             style = "wiki";
@@ -31,6 +31,7 @@
                 end
               '';
           };
+
           modules = {
             conceal = true;
             cursor = true;
@@ -42,10 +43,12 @@
             tables = true;
             yaml = true;
           };
+
           filetypes = {
             markdown = true;
             qmd = true;
           };
+
           to_do = {
             symbols = [
               " "
@@ -54,6 +57,7 @@
             ];
             status_propagation.up = true;
           };
+
           foldtext = {
             title_transformer.__raw = ''
               function()
@@ -104,6 +108,7 @@
               middle = "─";
             };
           };
+
           mappings = {
             MkdnEnter = [
               [
@@ -165,6 +170,7 @@
               "<C-Space>"
             ];
           };
+
           create_dirs = true;
           new_file_template = {
             use_template = true;
@@ -173,10 +179,14 @@
               date = "os_date";
             };
             template = ''
-              ---
+                          ---
               title: {{ title }}
+              description: 
+              published: true
               date: {{ date }}
-              tags: []
+              tags: private
+              editor: markdown
+              dateCreated: {{ date }}
               ---
               # {{ title }}
             '';

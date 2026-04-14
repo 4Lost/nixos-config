@@ -3,6 +3,8 @@
 {
   programs.nixvim.plugins.openscad = {
     enable = true;
+    lazyLoad.settings.filetype = [ "scad" ];
+
     luaConfig.post = ''
       vim.g.openscad_fuzzy_finder = 'skim'
       -- when the pdf_command is run, the last argument will be the pdf filename

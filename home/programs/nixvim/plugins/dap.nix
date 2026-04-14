@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -13,10 +13,13 @@
     plugins = {
       dap-python = {
         enable = true;
+        autoLoad = true;
       };
 
       dap = {
         enable = true;
+        autoLoad = true;
+
         luaConfig.post = ''
           local dap, dapui = require("dap"), require("dapui")
           dap.listeners.before.attach.dapui_config = function()
@@ -32,11 +35,13 @@
             dapui.close()
           end
         '';
+
         adapters = {
           executables = {
             lldb = {
               command = "${pkgs.lldb_19}/bin/lldb-dap";
             };
+
             gdb = {
               command = "${pkgs.gdb}/bin/gdb";
               args = [
@@ -45,6 +50,7 @@
                 "set print pretty on"
               ];
             };
+
             rust-gdb = {
               command = "${pkgs.rustc}/bin/rust-gdb";
               args = [
@@ -55,9 +61,8 @@
             };
           };
         };
-        signs = {
-          dapBreakpoint.text = "";
-        };
+
+        signs.dapBreakpoint.text = "";
         configurations = {
           cpp = [
             {
@@ -104,6 +109,7 @@
               cwd = "\${workspaceFolder}";
             }
           ];
+
           c = [
             {
               name = "Launch file";
@@ -136,6 +142,7 @@
               args = { };
             }
           ];
+
           rust = [
             {
               name = "Launch";
@@ -182,12 +189,17 @@
           ];
         };
       };
+
       dap-ui = {
         enable = true;
+        autoLoad = true;
       };
+
       dap-virtual-text = {
         enable = true;
+        autoLoad = true;
       };
+
       which-key.settings.spec = [
         {
           __unkeyed-1 = "<leader>d";
@@ -196,70 +208,55 @@
         }
       ];
     };
+
     keymaps = [
       {
         key = "<leader>dt";
         action.__raw = "function() require('dap').toggle_breakpoint() end";
         mode = [ "n" ];
-        options = {
-          desc = "Toggle Breakpoint";
-        };
+        options.desc = "Toggle Breakpoint";
       }
       {
         key = "<leader>dc";
         action.__raw = "function() require('dap').continue() end";
         mode = [ "n" ];
-        options = {
-          desc = "Continue";
-        };
+        options.desc = "Continue";
       }
       {
         key = "<leader>dc";
         action.__raw = "function() require('dap').continue() end";
         mode = [ "n" ];
-        options = {
-          desc = "Continue";
-        };
+        options.desc = "Continue";
       }
       {
         key = "<leader>di";
         action.__raw = "function() require('dap').step_into() end";
         mode = [ "n" ];
-        options = {
-          desc = "Step Into";
-        };
+        options.desc = "Step Into";
       }
       {
         key = "<leader>do";
         action.__raw = "function() require('dap').step_over() end";
         mode = [ "n" ];
-        options = {
-          desc = "Step Over";
-        };
+        options.desc = "Step Over";
       }
       {
         key = "<leader>du";
         action.__raw = "function() require('dap').step_out() end";
         mode = [ "n" ];
-        options = {
-          desc = "Step Out";
-        };
+        options.desc = "Step Out";
       }
       {
         key = "<leader>dr";
         action.__raw = "function() require('dap').repl.open() end";
         mode = [ "n" ];
-        options = {
-          desc = "Open REPL";
-        };
+        options.desc = "Open REPL";
       }
       {
         key = "<leader>dl";
         action.__raw = "function() require('dap').run_last() end";
         mode = [ "n" ];
-        options = {
-          desc = "Run Last";
-        };
+        options.desc = "Run Last";
       }
       {
         key = "<leader>dq";
@@ -272,27 +269,21 @@
             end
           '';
         mode = [ "n" ];
-        options = {
-          desc = "Terminate";
-        };
+        options.desc = "Terminate";
       }
       {
         key = "<leader>db";
         action.__raw = "function() require('dap').list_breakpoints() end";
         mode = [ "n" ];
-        options = {
-          desc = "List Breakpoints";
-        };
+        options.desc = "List Breakpoints";
+
       }
       {
         key = "<leader>de";
         action.__raw = "function() require('dap').set_exception_breakpoints({ ' all ' }) end";
         mode = [ "n" ];
-        options = {
-          desc = "Set Exception Breakpoints";
-        };
+        options.desc = "Set Exception Breakpoints";
       }
     ];
   };
 }
-

@@ -21,13 +21,13 @@
   programs.nixvim.plugins = {
     conform-nvim = {
       enable = true;
+      autoLoad = true;
+
       settings = {
         formatters_by_ft = {
           lua = [ "stylua" ];
           rust = [ "rustfmt" ];
-          python = [
-            "black"
-          ];
+          python = [ "black" ];
           haskell = [ "fourmolu" ];
           terraform = [ "hcl" ];
           elixir = [ "mix" ];
@@ -47,9 +47,7 @@
           yaml = [ "prettierd" ];
           nu = [ "topiary_nu" ];
           nix = [ "nixfmt" ];
-          tex = [
-            "tex-fmt"
-          ];
+          tex = [ "tex-fmt" ];
           "_" = [
             "squeeze_blanks"
             "trim_whitespace"
@@ -94,9 +92,7 @@
               "2"
             ];
           };
-          tex-fmt = {
-            command = "tex-fmt";
-          };
+          tex-fmt.command = "tex-fmt";
         };
       };
     };

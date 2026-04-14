@@ -12,8 +12,6 @@
       haskellPackages.ghci-dap
     ];
 
-    extraPlugins = with pkgs.vimPlugins; [
-      haskell-tools-nvim
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ haskell-tools-nvim ];
   };
 }

@@ -2,16 +2,13 @@
 
 {
   programs.nixvim = {
-    plugins = {
-      notify = {
-        enable = true;
-        settings = {
-          render = "wrapped-compact";
-        };
-      };
+    plugins.notify = {
+      enable = true;
+      autoLoad = true;
+
+      settings.render = "wrapped-compact";
     };
-    opts = {
-      termguicolors = true;
-    };
+
+    opts.termguicolors = true;
   };
 }

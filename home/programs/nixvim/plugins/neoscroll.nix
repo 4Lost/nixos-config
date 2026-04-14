@@ -4,6 +4,8 @@
   programs.nixvim.plugins = {
     neoscroll = {
       enable = true;
+      autoLoad = true;
+
       settings = {
         cursor_scrolls_alone = true;
         easing_function = "quadratic";
@@ -22,7 +24,6 @@
         respect_scrolloff = false;
         stop_eof = true;
       };
-
     };
   };
 }

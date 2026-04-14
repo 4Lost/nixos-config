@@ -1,6 +1,5 @@
 { pkgs, ... }:
 
-# TODO: Make filetype keybindings work
 let
   keys = [
     {
@@ -11,9 +10,7 @@ let
         "v"
         "i"
       ];
-      options = {
-        desc = "Close Viewer (knap)";
-      };
+      options.desc = "Close Viewer (knap)";
     }
     {
       action.__raw = "function() require('knap').toggle_autopreviewing() end";
@@ -23,9 +20,7 @@ let
         "v"
         "i"
       ];
-      options = {
-        desc = "Toggle Auto-Processing (knap)";
-      };
+      options.desc = "Toggle Auto-Processing (knap)";
     }
     {
       action.__raw = "function() require('knap').forward_jump() end";
@@ -35,9 +30,7 @@ let
         "v"
         "i"
       ];
-      options = {
-        desc = "SyncTeX Forward Search (Knap)";
-      };
+      options.desc = "SyncTeX Forward Search (Knap)";
     }
   ];
 in
@@ -47,22 +40,18 @@ in
     texliveFull
     rubber
   ];
+
   programs.nixvim = {
     extraPlugins = with pkgs.vimPlugins; [ knap ];
-    globals = {
-      knap_settings = {
-        htmltohtmlviewerlaunch = "luakit %outputfile%";
-        mdtohtmlviewerlaunch = "luakit %outputfile%";
-        markdowntohtmlviewerlaunch = "luakit %outputfile%";
-      };
+    globals.knap_settings = {
+      htmltohtmlviewerlaunch = "luakit %outputfile%";
+      mdtohtmlviewerlaunch = "luakit %outputfile%";
+      markdowntohtmlviewerlaunch = "luakit %outputfile%";
     };
+
     files = {
-      "ftplugin/latex.lua" = {
-        keymaps = keys;
-      };
-      "ftplugin/markdown.lua" = {
-        keymaps = keys;
-      };
+      "ftplugin/latex.lua".keymaps = keys;
+      "ftplugin/markdown.lua".keymaps = keys;
     };
   };
 }

@@ -5,7 +5,9 @@
     plugins = {
       comment-box = {
         enable = true;
+        autoLoad = true;
       };
+
       which-key.settings.spec = [
         {
           __unkeyed-1 = "<leader>c";
@@ -14,41 +16,32 @@
         }
       ];
     };
+
     keymaps = [
       {
         key = "<leader>cb";
         action = "<Cmd>CBccbox<CR>";
-        options = {
-          desc = "Box Title";
-        };
+        options.desc = "Box Title";
       }
       {
         key = "<leader>ct";
         action = "<Cmd>CBllline<CR>";
-        options = {
-          desc = "Titled Line";
-        };
+        options.desc = "Titled Line";
       }
       {
         key = "<leader>cl";
         action = "<Cmd>CBline<CR>";
-        options = {
-          desc = "Simple Line";
-        };
+        options.desc = "Simple Line";
       }
       {
         key = "<leader>cm";
         action = "<Cmd>CBllbox14<CR>";
-        options = {
-          desc = "Marked";
-        };
+        options.desc = "Marked";
       }
       {
         key = "<leader>cd";
         action = "<Cmd>CBd<CR>";
-        options = {
-          desc = "Remove a Box";
-        };
+        options.desc = "Remove a Box";
       }
     ];
   };

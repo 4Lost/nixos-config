@@ -5,38 +5,46 @@
     plugins = {
       toggleterm = {
         enable = true;
+        lazyLoad.settings.cmd = [
+          "ToggleTermSendCurrentLine"
+          "ToggleTermSendVisualLines"
+          "ToggleTermSendVisualSelection"
+        ];
+
         settings = {
           open_mapping.__raw = "[[<c-,>]]";
           insert_mappings = true;
           shade_terminals = false;
         };
       };
+
+      which-key.settings.spec = [
+        {
+          __unkeyed-1 = "<leader>s";
+          group = "Terminal";
+          icon = " ";
+        }
+      ];
     };
 
     keymaps = [
       {
         action = "<CMD>ToggleTermSendCurrentLine<CR>";
-        key = "<leader>sts";
+        key = "<leader>sl";
         mode = "n";
-        options = {
-          desc = "Send Current Line";
-        };
+        options.desc = "Send Current Line";
       }
       {
         action = "<CMD>ToggleTermSendVisualLines<CR>";
-        key = "<leader>stv";
+        key = "<leader>sv";
         mode = "x";
-        options = {
-          desc = "Send all the (whole) lines in selection";
-        };
+        options.desc = "Send all the (whole) lines in selection";
       }
       {
         action = "<CMD>ToggleTermSendVisualSelection<CR>";
-        key = "<leader>sts";
+        key = "<leader>ss";
         mode = "x";
-        options = {
-          desc = "Send selection";
-        };
+        options.desc = "Send selection";
       }
     ];
   };

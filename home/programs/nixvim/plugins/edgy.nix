@@ -9,10 +9,12 @@
       # To prevent this, set `splitkeep` to either `screen` or `topline`.
       splitkeep = "screen";
     };
+
     plugins = {
       edgy = {
         enable = true;
         autoLoad = true;
+
         settings = {
           bottom.__raw = ''
             {
@@ -37,6 +39,7 @@
               }
             }
           '';
+
           left.__raw = ''
             {
               -- Neo-tree filesystem always takes half the screen height
@@ -77,4 +80,3 @@
     };
   };
 }
-
