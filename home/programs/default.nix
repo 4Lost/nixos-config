@@ -28,6 +28,5 @@
     ./zathura.nix
     ./zoom.nix
     ./zsh.nix
-    ./zk.nix
   ];
 }

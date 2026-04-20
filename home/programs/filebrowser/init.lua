@@ -1,7 +1,8 @@
 require("bunny"):setup({
   hops = {
     { key = "/", path = "/", desc = "Root" },
-    { key = "n", path = "/nix/store", desc = "Nix store" },
+    { key = { "n", "c" }, path = "/etc/nixos", desc = "NixOS config" },
+    { key = { "n", "s" }, path = "/nix/store", desc = "Nix store" },
     { key = "~", path = "~", desc = "Home" },
     { key = "r", path = "~/Repos", desc = "Repos" },
     { key = "d", path = "~/Downloads", desc = "Downloads" },
@@ -10,6 +11,9 @@ require("bunny"):setup({
     { key = { "N", "h" }, path = "~/Nextcloud", desc = "Nexctloud root" },
     { key = { "N", "d" }, path = "~/Nextcloud/Data/Documents", desc = "Nextcloud documents" },
     { key = { "N", "u" }, path = "~/Nextcloud/Uni", desc = "Nextcloud uni" },
+    { key = { "N", "u" }, path = "~/Nextcloud/Uni/26-SoSe/26-SoSe-Francais", desc = "Nextcloud uni current" },
+    { key = { "m", "b" }, path = "~/mnt", desc = "Mount base" },
+    { key = { "m", "r" }, path = "~/mnt/remote", desc = "Mount remote" },
     -- key and path attributes are required, desc is optional
   },
   desc_strategy = "path", -- If desc isn't present, use "path" or "filename", default is "path"
