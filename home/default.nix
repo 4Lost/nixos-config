@@ -57,12 +57,10 @@
 
   programs.home-manager.enable = true;
 
-  # ── whatsie insecure ──────────────────────────────────────────────────
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [
       "electron-32.3.3"
-      "qtwebengine-5.15.19"
     ];
   };
 }

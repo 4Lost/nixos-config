@@ -11,7 +11,7 @@ require("bunny"):setup({
     { key = { "N", "h" }, path = "~/Nextcloud", desc = "Nexctloud root" },
     { key = { "N", "d" }, path = "~/Nextcloud/Data/Documents", desc = "Nextcloud documents" },
     { key = { "N", "u" }, path = "~/Nextcloud/Uni", desc = "Nextcloud uni" },
-    { key = { "N", "u" }, path = "~/Nextcloud/Uni/26-SoSe/26-SoSe-Francais", desc = "Nextcloud uni current" },
+    { key = { "N", "c" }, path = "~/Nextcloud/Uni/26-SoSe/26-SoSe-Francais", desc = "Nextcloud uni current" },
     { key = { "m", "b" }, path = "/mnt", desc = "Mount base" },
     { key = { "m", "r" }, path = "/mnt/remote", desc = "Mount remote" },
     -- key and path attributes are required, desc is optional

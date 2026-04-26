@@ -7,6 +7,5 @@
     signal-desktop
     slack
     telegram-desktop
-    whatsie
   ];
 }
