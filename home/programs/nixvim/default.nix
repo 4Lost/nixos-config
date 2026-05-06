@@ -11,10 +11,8 @@
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
-    extraPackages = with pkgs; [ # TODO:
-      texliveFull
-      texlivePackages.standalone
-      texlivePackages.relsize # needed for BA
+    extraPackages = with pkgs; [
+      texlive.combined.scheme-full
       # papis-nvim
     ];
 
