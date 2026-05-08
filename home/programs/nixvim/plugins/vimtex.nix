@@ -1,11 +1,9 @@
-{ pkgs,... }:
+{ pkgs, ... }:
 
 {
   programs.nixvim = {
     extraPackages = with pkgs; [
-      texliveFull
-      texlivePackages.standalone
-      texlivePackages.relsize # needed for BA
+      texlive.combined.scheme-full
       # papis-nvim
     ];
 
@@ -14,6 +12,7 @@
         enable = true;
         lazyLoad.settings.filetype = [ "tex" ];
 
+        texlivePackage = pkgs.texlive.combined.scheme-full;
         settings = {
           view_automatic = false;
           mappings_disable = {

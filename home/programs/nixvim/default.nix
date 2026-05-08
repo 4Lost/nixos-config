@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
@@ -11,10 +11,6 @@
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
-    extraPackages = with pkgs; [
-      texlive.combined.scheme-full
-      # papis-nvim
-    ];
 
     nixpkgs.useGlobalPackages = false;
 
