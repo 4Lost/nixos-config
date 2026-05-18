@@ -14,6 +14,7 @@
     dotDir = "${config.xdg.configHome}/zsh";
     shellAliases = {
       update = "sudo nixos-rebuild switch";
+      bambo-studio = "flatpak run com.bambulab.BambuStudio";
     };
     autosuggestion.enable = true;
     localVariables = {

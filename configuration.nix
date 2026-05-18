@@ -100,6 +100,7 @@ in
         "video"
         "render"
         "adbusers"
+        "flatpak"
       ];
       hashedPasswordFile = config.sops.secrets."user_password".path;
     };
@@ -152,6 +153,8 @@ in
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
   };
+
+  services.flatpak.enable = true;
 
   # ── Keyring ───────────────────────────────────────────────────────────
   security.pam.services = {
