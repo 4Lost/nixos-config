@@ -12,7 +12,10 @@
     enable = true;
     defaultEditor = true;
 
-    nixpkgs.useGlobalPackages = false;
+    nixpkgs = {
+      useGlobalPackages = false;
+      config.allowUnfree = true;
+    };
 
     clipboard.providers.wl-copy.enable = true;
     keymaps = [

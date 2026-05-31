@@ -76,17 +76,20 @@ in
       plugin = {
         prepend_previewers = [
           {
+            group = "preview";
             run = "exifaudio";
             mime = "audio/*";
           }
         ];
         prepend_fetchers = [
           {
+            group = "fetcher";
             id = "git";
             url = "*";
             run = "git";
           }
           {
+            group = "fetcher";
             id = "git";
             url = "*/";
             run = "git";

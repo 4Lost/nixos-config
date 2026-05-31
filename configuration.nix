@@ -184,10 +184,10 @@ in
     udisks2.enable = true;
   };
 
-  # Set stateVersion. Leave it as set.
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [ "electron-32.3.3" ];
   };
+
   system.stateVersion = "26.05";
 }

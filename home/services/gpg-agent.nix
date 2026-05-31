@@ -52,7 +52,7 @@ in
     enableNushellIntegration = true;
     defaultCacheTtl = 60;
     maxCacheTtl = 120;
-    enableSshSupport = true;
+    # enableSshSupport = true;
     sshKeys = [ "8E42E6C65D5F9894CFFF294851AB0CEB5F0B1FAA" ];
     pinentry.package = pkgs.pinentry-gnome3;
     # under extraConfig

@@ -1,32 +1,35 @@
-TEMP_FILE="/tmp/river-eww-status"
+layout=$(ristate -l 2>/dev/null | jq -r '.layout // ""')
+title=$(ristate -w 2>/dev/null | jq -r '.title // ""')
+tags_json=$(ristate -t 2>/dev/null)
+views_json=$(ristate -vt 2>/dev/null)
 
-# Read last two lines (layout/tags and focused window)
-json=$(tail -n2 "$TEMP_FILE" | head -n1)
-win_json=$(tail -n1 "$TEMP_FILE")
+mapfile -t focused_tags < <(
+  printf '%s\n' "$views_json" |
+    jq -r '.viewstag.Unknown // [] | .[] | tostring'
+)
 
-# Extract layout
-layout=$(echo "$json" | jq -r '.layout // ""')
+if [ "${#focused_tags[@]}" -eq 0 ]; then
+  mapfile -t focused_tags < <(
+    printf '%s\n' "$tags_json" |
+      jq -r '.tags.Unknown // [] | .[] | tostring'
+  )
+fi
 
-# Extract focused window title
-windows=$(echo "$win_json" | jq -r '.title // ""')
-
-# Extract focused tags as array
-mapfile -t focused_tags < <(echo "$json" | jq -r '.tags.BOE // [] | .[]')
-
-# Update workspace classes
 for i in $(seq 1 9); do
   class="ws-empty"
   for tag in "${focused_tags[@]}"; do
     if [[ "$tag" == "$i" ]]; then
       class="ws-current"
+      echo "$tag - current"
       break
     fi
   done
-  eww update ws$i="$class"
+  eww update "ws$i=$class"
 done
 
-# Update layout
-eww update layouts="$layout"
-
-# Output focused window for widget
+eww update "layouts=$layout"
+echo "$layouts"
+eww update "windows=$title"
 echo "$windows"
+
+echo "$title"

@@ -56,11 +56,4 @@
   };
 
   programs.home-manager.enable = true;
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-32.3.3"
-    ];
-  };
 }

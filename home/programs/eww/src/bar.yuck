@@ -198,8 +198,18 @@
       :text "${date}")))
 
 ;; ── River State ─────────────────────────────────────────────────────
+(deflisten river_tag
+  :initial ""
+  `ristate -t | jq -r '.tags.Unknown[0] // empty'`)
 
-  (defvar ws1 "ws-empty")
+(deflisten river_title
+  :initial "-"
+  `ristate -w | jq -r '.title // "-"'`)
+
+(deflisten river_layout
+  :initial "-"
+  `ristate -l | jq -r '.layout // "-"'`)
+
   (defvar ws2 "ws-empty")
   (defvar ws3 "ws-empty")
   (defvar ws4 "ws-empty")
@@ -220,7 +230,7 @@
       :orientation "horizontal"
       :class "workspace-buttons"
 
-      (button :onclick "riverctl set-focused-tags 1" :class "workspace-button ${ws1}" (label :text "1"))
+      (button :onclick "riverctl set-focused-tags 1" :class "workspace-button ${if river_tag == \"1\" {\"ws-current\"} {\"ws-empty\"}}" (label :text "1"))
       (label :text " ")
       (button :onclick "riverctl set-focused-tags 2" :class "workspace-button ${ws2}" (label :text "2"))
       (label :text " ")
@@ -232,7 +242,7 @@
       (label :text " ")
       (button :onclick "riverctl set-focused-tags 6" :class "workspace-button ${ws6}" (label :text "6"))
       (label :text " ")
-      (button :onclick "riverctl set-focused-tags 7" :class "workspace-button ${ws7}" (label :text "7"))
+      (button :onclick "riverctl set-focused-tags 7" :class "workspace-button {if river_tag == \"1\" {\"ws-current\"} {\"ws-empty\"}}" (label :text "s"))
       (label :text " ")
       (button :onclick "riverctl set-focused-tags 8" :class "workspace-button ${ws8}" (label :text "8"))
       (label :text " ")
@@ -241,11 +251,11 @@
 
   (defwidget widgetWindows []
     (label
-      :text "${windows}"))
+      :text "${river_title}"))
 
   (defwidget widgetLayouts []
     (label
-      :text "${layouts}"))
+      :text "${river_layout}"))
 
   (defwidget widgetLogSeperator []
     (label
