@@ -35,6 +35,11 @@
     };
 
     yazi.url = "github:sxyazi/yazi";
+
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -48,6 +53,7 @@
       nur,
       sops-nix,
       yazi,
+      zen-browser,
       ...
     }@inputs:
     {

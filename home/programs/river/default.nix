@@ -119,7 +119,7 @@
             # Powerbutton
             "None XF86PowerOff" = "spawn '/home/$USER/.config/eww/scripts/powermenu.sh'";
             # Program
-            "Super C" = "spawn 'firefox'";
+            "Super C" = "spawn 'zen'";
             "Super Y" = "spawn 'signal-desktop'";
             "Super X" = "spawn 'Telegram'";
             "Super V" = "spawn 'thunderbird'";
