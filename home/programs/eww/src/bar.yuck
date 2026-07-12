@@ -230,7 +230,7 @@
       :orientation "horizontal"
       :class "workspace-buttons"
 
-      (button :onclick "riverctl set-focused-tags 1" :class "workspace-button ${if river_tag == \"1\" {\"ws-current\"} {\"ws-empty\"}}" (label :text "1"))
+      (button :onclick "riverctl set-focused-tags 1" :class "workspace-button ${river_tag == \"1\" ? \"ws-current\" : \"ws-empty\"}" (label :text "1"))
       (label :text " ")
       (button :onclick "riverctl set-focused-tags 2" :class "workspace-button ${ws2}" (label :text "2"))
       (label :text " ")
@@ -242,7 +242,7 @@
       (label :text " ")
       (button :onclick "riverctl set-focused-tags 6" :class "workspace-button ${ws6}" (label :text "6"))
       (label :text " ")
-      (button :onclick "riverctl set-focused-tags 7" :class "workspace-button {if river_tag == \"1\" {\"ws-current\"} {\"ws-empty\"}}" (label :text "s"))
+      ;; (button :onclick "riverctl set-focused-tags 7" :class "workspace-button ${river_tag == \"7\" ? \"ws-current\" : \"ws-empty\"}" (label :text "s"))
       (label :text " ")
       (button :onclick "riverctl set-focused-tags 8" :class "workspace-button ${ws8}" (label :text "8"))
       (label :text " ")
