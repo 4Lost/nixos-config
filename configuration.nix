@@ -186,7 +186,7 @@ in
 
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [ "electron-32.3.3" ];
+    permittedInsecurePackages = [ "electron-39.8.10" ];
   };
 
   system.stateVersion = "26.05";

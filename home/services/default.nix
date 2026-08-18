@@ -10,5 +10,6 @@
     ./kdeconnect.nix
     ./nextcloud.nix
     ./ssh-agent.nix
+    ./syncthing.nix
   ];
 }

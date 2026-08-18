@@ -29,7 +29,7 @@
 
       texpresso = {
         enable = true;
-        lazyload.settings.filetype = [ "tex" ];
+        lazyLoad.settings.filetype = [ "tex" ];
       };
 
       which-key.settings.spec = [

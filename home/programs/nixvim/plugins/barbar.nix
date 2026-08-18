@@ -3,8 +3,10 @@
 {
   programs.nixvim = {
     plugins = {
-      barbar.enable = true;
-      autoLoad = true;
+      barbar = {
+        enable = true;
+        autoLoad = true;
+      };
 
       which-key.settings.spec = [
         {

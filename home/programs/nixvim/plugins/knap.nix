@@ -37,7 +37,6 @@ in
 {
   home.packages = with pkgs; [
     pandoc
-    texliveFull
     rubber
   ];
 

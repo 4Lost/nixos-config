@@ -34,7 +34,7 @@
     viAlias = true;
     vimAlias = true;
 
-    lualoader.enable = true;
+    luaLoader.enable = true;
 
     globals = {
       mapleader = " ";

@@ -6,9 +6,9 @@
     colorschemes.catppuccin = {
       #lazyLoad.enable = true;
       enable = true;
-      flavour = "mocha";
-      accents = "pink";
       settings = {
+        flavour = "mocha";
+        accents = "pink";
         integrations = {
           markdown = true;
           leap = true;

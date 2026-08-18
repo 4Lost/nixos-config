@@ -6,7 +6,7 @@
 
     plugins.rustaceanvim = {
       enable = true;
-      lazyload.settings.filetype = [ "rs" ];
+      lazyLoad.settings.filetype = [ "rs" ];
     };
 
     files."ftplugin/rust.lua" = {
