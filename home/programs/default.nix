@@ -6,6 +6,7 @@
     ./digikam.nix
     ./eww
     ./filebrowser
+    ./games.nix
     ./git.nix
     ./hyprlock.nix
     ./imv.nix

@@ -25,13 +25,13 @@
       display-ssh = "  SSH";
       sidebar-mode = true;
     };
-    pass = {
-      enable = true;
-      extraConfig = ''
-        EDITOR='rofi-sensible-terminal -e vim'
-        clibpoard_backend=wl-copy
-        clip=clipboard
-      '';
-    };
+    # pass = {
+    #   enable = true;
+    #   extraConfig = ''
+    #     EDITOR='rofi-sensible-terminal -e vim'
+    #     clibpoard_backend=wl-copy
+    #     clip=clipboard
+    #   '';
+    # };
   };
 }
