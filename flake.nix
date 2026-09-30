@@ -115,6 +115,23 @@
             }
           ];
         };
+        newDevice = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./machines/configuration-newDevice.nix
+            sops-nix.nixosModules.sops
+            {
+              home-manager = {
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
+                users.elias.imports = [
+                  sops-nix.homeManagerModules.sops
+                ];
+              };
+              nixpkgs.overlays = [ ];
+            }
+          ];
+        };
       };
     };
 }
