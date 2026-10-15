@@ -10,8 +10,8 @@
 
   programs.rofi = {
     enable = true;
-    terminal = "${pkgs.alacritty}/bin/alacritty";
-    extraConfig = {
+    settings = {
+      terminal = "${pkgs.alacritty}/bin/alacritty";
       mode = "run,drun,window,ssh,network";
       con-theme = "Oranchelo";
       show-icons = true;

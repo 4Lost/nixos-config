@@ -24,13 +24,13 @@
           tls.enable = true;
         };
         realName = "Elias Schröter";
-        signature = {
-          text = ''
-            Mit freundlichen Grüßen,
-            Elias Schröter.
-          '';
-          showSignature = "append";
-        };
+        # signature = {
+        #   text = ''
+        #     Mit freundlichen Grüßen,
+        #     Elias Schröter.
+        #   '';
+        #   showSignature = "append";
+        # };
         passwordCommand = "mail-password";
         smtp = {
           host = "mail.ecloud.global";

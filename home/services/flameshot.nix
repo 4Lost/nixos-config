@@ -11,6 +11,7 @@
         showHelp = false;
         showStartupLaunchMessage = false;
         useGrimAdapter = true;
+        disabledGrimWarning = true;
       };
     };
   };

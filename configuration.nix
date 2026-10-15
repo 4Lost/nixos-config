@@ -21,12 +21,7 @@ in
   };
 
   # ── NetworkManager, timezone, internationalisation properties and ... ──
-  networking.networkmanager = {
-    enable = true;
-    plugins = with pkgs; [
-      networkmanager-vpnc
-    ];
-  };
+  networking.networkmanager.enable = true;
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   console = {

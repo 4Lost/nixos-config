@@ -16,10 +16,8 @@ let
 in
 {
   home.packages = with pkgs; [
-    # kdePackages.dolphin
-    # kdePackages.dolphin-plugins
-    # kdePackages.baloo-widgets
-    # kdePackages.baloo
+    kdePackages.baloo-widgets
+    kdePackages.baloo
     exiftool
     nautilus
     ouch

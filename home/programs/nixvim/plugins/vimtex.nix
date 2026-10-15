@@ -3,7 +3,7 @@
 {
   programs.nixvim = {
     extraPackages = with pkgs; [
-      texlive.combined.scheme-full
+      texliveFull
       # papis-nvim
     ];
 
@@ -12,7 +12,7 @@
         enable = true;
         lazyLoad.settings.filetype = [ "tex" ];
 
-        texlivePackage = pkgs.texlive.combined.scheme-full;
+        texlivePackage = pkgs.texliveFull;
         settings = {
           view_automatic = false;
           mappings_disable = {

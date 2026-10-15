@@ -38,7 +38,6 @@
 
   # ── Network ───────────────────────────────────────────────────────────
   environment.systemPackages = with pkgs; [
-    networkmanager-vpnc
     networkmanagerapplet
   ];
 }

@@ -123,6 +123,7 @@
             "Super Y" = "spawn 'signal-desktop'";
             "Super X" = "spawn 'Telegram'";
             "Super V" = "spawn 'thunderbird'";
+            "Super+Shift I" = "spawn '/home/$USER/.config/eww/scripts/idle.sh'";
           }
           // genTagMappings (i: "Super ${i}") (i: "set-focused-tags ${tags i}")
           // genTagMappings (i: "Super+Shift ${i}") (i: "set-view-tags ${tags i}")
