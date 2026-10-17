@@ -25,9 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
-    };
+    nur.url = "github:nix-community/NUR";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -70,10 +68,12 @@
             # impermanence.nixosModules.impermanence
             nur.modules.nixos.default
             sops-nix.nixosModules.sops
+
             {
               home-manager = {
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
+
                 users.elias.imports = [
                   ./home/default-laptop.nix
                   catppuccin.homeModules.catppuccin
@@ -81,13 +81,13 @@
                 ];
               };
               nixpkgs.overlays = [
-                # (import ./overlays/river-status.nix)
                 inputs.nur.overlays.default
                 inputs.nix-vscode-extensions.overlays.default
               ];
             }
           ];
         };
+
         eliasDesktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -98,16 +98,19 @@
             # impermanence.nixosModules.impermanence
             nur.modules.nixos.default
             sops-nix.nixosModules.sops
+
             {
               home-manager = {
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
+
                 users.elias.imports = [
                   ./home/default-desktop.nix
                   catppuccin.homeModules.catppuccin
                   sops-nix.homeManagerModules.sops
                 ];
               };
+
               nixpkgs.overlays = [
                 inputs.nur.overlays.default
                 inputs.nix-vscode-extensions.overlays.default
@@ -115,11 +118,13 @@
             }
           ];
         };
+
         newDevice = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./machines/configuration-newDevice.nix
             sops-nix.nixosModules.sops
+
             {
               home-manager = {
                 useUserPackages = true;
