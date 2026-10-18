@@ -14,11 +14,12 @@
     ./kitty.nix
     ./libreoffice.nix
     ./messenger.nix
+    ./mango
     ./nixvim
     ./picard.nix
     ./prismlauncher.nix
     ./pulseaudio
-    ./river
+    # ./river
     ./rofi
     ./skanlite.nix
     ./spotify.nix

@@ -16,7 +16,7 @@
       {
         profile.name = "laptop-docked";
         profile.exec = [
-          "systemctl --user start hypridle.service"
+          "systemctl --user stop hypridle.service"
           "eww reload"
         ];
         profile.outputs = [
@@ -40,18 +40,18 @@
         profile.outputs = [
           {
             criteria = "HDMI-A-2";
-            mode = "1920x1080@60Hz";
+            mode = "3840x2160@30Hz";
             position = "0,0";
           }
           {
-            criteria = "DVI-D-1";
-            mode = "1920x1080@60Hz";
-            position = "1920,0";
+            criteria = "HDMI-A-1";
+            mode = "3840x2160@30Hz";
+            position = "3840,0";
           }
           {
             criteria = "DP-2";
-            mode = "1920x1080@60Hz";
-            position = "3840,0";
+            mode = "3840x2160@60Hz";
+            position = "7680,0";
           }
         ];
       }

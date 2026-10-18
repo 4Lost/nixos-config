@@ -11,6 +11,11 @@
 
     # impermanence.url = "github:nix-community/impermanence";
 
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     nix-vscode-extensions = {
@@ -22,7 +27,7 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur.url = "github:nix-community/NUR";
@@ -45,6 +50,7 @@
       catppuccin,
       home-manager,
       # impermanence,
+      mangowm,
       nix-vscode-extensions,
       nixpkgs,
       nixvim,
@@ -66,6 +72,7 @@
             catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             # impermanence.nixosModules.impermanence
+            mangowm.nixosModules.mango
             nur.modules.nixos.default
             sops-nix.nixosModules.sops
 
@@ -96,6 +103,7 @@
             catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             # impermanence.nixosModules.impermanence
+            mangowm.nixosModules.mango
             nur.modules.nixos.default
             sops-nix.nixosModules.sops
 

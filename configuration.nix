@@ -66,13 +66,13 @@ in
       #  enable = true;
       #  user = "elias";
       #};
-      defaultSession = "river";
+      defaultSession = "mango";
     };
     libinput.enable = true; # Enable touchpad.
   };
 
   programs = {
-    river-classic.enable = true;
+    mango.enable = true;
     ssh.startAgent = true;
     zsh.enable = true;
     fuse = {

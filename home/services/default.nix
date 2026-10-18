@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./flameshot.nix
     ./fnott.nix
     ./gpg-agent.nix
     ./hypridle.nix
