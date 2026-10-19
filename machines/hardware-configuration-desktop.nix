@@ -4,6 +4,7 @@
 {
   config,
   lib,
+  pkgs,
   modulesPath,
   ...
 }:
@@ -14,6 +15,7 @@
   ];
 
   boot.initrd.availableKernelModules = [
+    "nvme"
     "xhci_pci"
     "ahci"
     "usb_storage"
@@ -26,19 +28,17 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/aded1c84-f4d0-4841-ab2f-68266532737f";
-    fsType = "btrfs";
-    options = [ "subvol=root" ];
+    device = "/dev/nvme1n1p2";
+    fsType = "ext4";
   };
 
-  fileSystems."/.swapvol" = {
-    device = "/dev/disk/by-uuid/aded1c84-f4d0-4841-ab2f-68266532737f";
-    fsType = "btrfs";
-    options = [ "subvol=swap" ];
+  fileSystems."/home/elias/Files" = {
+    device = "/dev/sda1";
+    fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/A38E-500D";
+    device = "/dev/nvme1n1p1";
     fsType = "vfat";
     options = [
       "fmask=0022"
@@ -46,26 +46,7 @@
     ];
   };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/aded1c84-f4d0-4841-ab2f-68266532737f";
-    fsType = "btrfs";
-    options = [ "subvol=home" ];
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/aded1c84-f4d0-4841-ab2f-68266532737f";
-    fsType = "btrfs";
-    options = [ "subvol=nix" ];
-  };
-
-  fileSystems."/partition-root" = {
-    device = "/dev/disk/by-uuid/aded1c84-f4d0-4841-ab2f-68266532737f";
-    fsType = "btrfs";
-  };
-
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/aded1c84-f4d0-4841-ab2f-68266532737f"; }
-  ];
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
