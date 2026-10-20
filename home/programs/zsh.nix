@@ -12,25 +12,32 @@
   programs.zsh = {
     enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
+
     shellAliases = {
       update = "sudo nixos-rebuild switch";
       bambo-studio = "flatpak run com.bambulab.BambuStudio";
     };
+
     autosuggestion.enable = true;
+
     localVariables = {
       EDITOR = "nvim";
       SOPS_AGE_KEY_FILE = "/etc/sops/keys.txt";
     };
+
     enableCompletion = true;
     enableVteIntegration = true;
+
     history = {
       expireDuplicatesFirst = true;
       size = 100000000000;
       path = "${config.xdg.dataHome}/zsh/zsh_history";
     };
+
     syntaxHighlighting = {
       enable = true;
     };
+
     initContent = ''
       export LD_LIBRARY_PATH="/nix/store/yjm4j9n85bcp42v5nkz2xifrp4a9s63k-sqlite-3.46.1/lib"
       export CHROME_EXECUTABLE="/run/current-system/sw/bin/google-chrome-stable"
@@ -56,6 +63,7 @@
 
       alias trep='trep'
     '';
+
     plugins = [
       {
         name = "zsh-nix-shell";
@@ -67,6 +75,7 @@
         src = "${pkgs.nix-zsh-completions}/share/zsh/plugins/nix";
       }
     ];
+
     oh-my-zsh = {
       enable = true;
       theme = "jonathan";

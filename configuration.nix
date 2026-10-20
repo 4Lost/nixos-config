@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  # scaleFactor,
+  ...
+}:
 
 let
   images = pkgs.callPackage ./home/themes/images.nix { };
@@ -106,7 +111,7 @@ in
       flavor = "mocha";
       accent = "pink";
       font = "Fira Code";
-      fontSize = "9";
+      fontSize = "9"; # "${toString (scaleFactor * 9)}";
       background = "${images.lock}";
       loginBackground = true;
       userIcon = true;

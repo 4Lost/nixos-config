@@ -6,6 +6,7 @@
     ./digikam.nix
     ./eww
     ./filebrowser
+    ./fuzzel.nix
     ./games.nix
     ./git.nix
     ./hyprlock.nix
@@ -18,8 +19,8 @@
     ./nixvim
     ./picard.nix
     ./prismlauncher.nix
-    ./pulseaudio
-    ./rofi
+    ./pulseaudio.nix
+    ./rofi.nix
     ./skanlite.nix
     ./spotify.nix
     ./taskwarrior

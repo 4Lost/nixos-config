@@ -11,6 +11,7 @@
       border-color = "89b4faff";
       progress-bar-color = "6c7086ff";
     };
+
     critical.border-color = "fab387ff";
   };
 }

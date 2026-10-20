@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  # _module.args.scaleFactor = 1.3;
+  #
   imports = [
     ./hardware-configuration-desktop.nix
     ./../configuration.nix

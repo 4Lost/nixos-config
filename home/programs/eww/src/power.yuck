@@ -1,8 +1,10 @@
+;; (defvar factor @scaleFactor@)
+;;
 (defwindow power []
   :class "powermenuWindow"
   :geometry (geometry
-    :width "200px"
-    :height "50px"
+    :width  "200px";; "${toString (scaleFactor *200)}px"
+    :height "50px" ;; "${toString (scaleFactor * 50)}px"
     :anchor "center center"
     :x "0%"
     :y "0%")

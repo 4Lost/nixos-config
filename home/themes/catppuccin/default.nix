@@ -13,7 +13,7 @@ in
     ./gtk.nix
     ./hyprlock.nix
     ./nvim.nix
-    ./taskwarrior.nix
+    ./taskwarrior
     ./qt.nix
   ];
 
@@ -26,6 +26,7 @@ in
     anki.enable = true;
     element-desktop.enable = true;
     firefox.enable = true;
+    fuzzel.enable = true;
     fzf.enable = true;
     imv.enable = true;
     kitty.enable = true;

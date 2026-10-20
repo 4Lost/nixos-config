@@ -1,4 +1,6 @@
 // /-- Preamble -->
+  /* $factor: @scaleFactor@; */
+  /**/
   // /-- Colors -->
     $white-text: #f5e0dc;
     $grey-text: #6c7086;
@@ -13,7 +15,7 @@
   // /-- Prepare all -->
     * {all: unset;}
     .text {color: $white-text;}
-    .separator {padding: 0px 4px;}
+    .separator {padding: 0px 4px;} // ($scaleFactor * 4)px;}
 // /-- Bar -->
   // /-- Widgets -->
     // /-- Idle Inhibtor -->
@@ -46,25 +48,25 @@
       .time {color: $orange;}
   // /-- Window -->
     .bar {
-      padding: 0.2em 1em;
+      padding: 0.2em 1em; // ($scaleFactor * 0.2)em ($scaleFactor * 1)em;
       background: $grey-background;
       color: $white-text;
       font-family: "Fira Code";
-      font-size: 12px;
+      font-size: 12px; // ($scaleFactor * 12)px;
     }
 // /-- Powermenu -->
     .powermenu-button {
       background-color: #313244;
       color: $white-text;
-      padding: 15px;
+      padding: 15px; // ($scaleFactor * 15)px;
       border: none;
-      border-radius: 6px;
-      font-size: 14px;
+      border-radius: 6px; // ($scaleFactor * 6)px;
+      font-size: 14px; //($scaleFactor * 14)px;
     }
   // /-- Window -->
     .powermenu {
       background-color: $grey-background;
-      padding: 20px;
+      padding: 20px; // ($scaleFactor * 20)px;
     }
     .powermenuWindow {
       background-color: transparent;

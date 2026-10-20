@@ -7,6 +7,7 @@ let
     rev = "4506f9d";
     sha256 = "sha256-RWCqWBpbmU3sh/A+LBJPXL/AY292blKb/zZXGvIA5/o=";
   };
+
   bunny = pkgs.fetchFromGitHub {
     owner = "stelcodes";
     repo = "bunny.yazi";
@@ -23,6 +24,7 @@ in
     ouch
     udisks
   ];
+
   xdg.configFile."menus/applications.menu".source =
     "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
@@ -79,6 +81,7 @@ in
             mime = "audio/*";
           }
         ];
+
         prepend_fetchers = [
           {
             group = "fetcher";

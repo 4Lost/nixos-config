@@ -1,3 +1,5 @@
+;; (defvar factor @scaleFactor@)
+;;
 ;; ── Bar ─────────────────────────────────────────────────────────────
 
 (defwindow bar []
@@ -5,11 +7,11 @@
     :x "0px"
     :y "0px"
     :width "100%"
-    :height "25px"
+    :height "25px" ;; "${toString (25 * factor)}px"
     :anchor "top center"
   )
   :reserve (struts
-    :distance "25px"
+    :distance "25px" ;; "${toSTring (25 * factor)}px"
     :side "top")
   :exclusive true
   :layer "top"
@@ -79,14 +81,14 @@
     :space-evenly false
     (button
       :class speakerClass
-      :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      :onclick "sh ./scripts/mute-audio.sh"
       (label :text "${speakerIcon} "))
     (label
       :class "text"
       :text "${speakerVolume}% ")
     (button
       :class micClass
-      :onclick "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      :onclick "sh ./scripts/mute-mic.sh"
       (label :text "${micIcon}"))))
 
 ;; ── Backlight ───────────────────────────────────────────────────────

@@ -79,9 +79,10 @@
             {
               home-manager = {
                 useUserPackages = true;
+
                 extraSpecialArgs = {
                   inherit inputs;
-                  # isDesktop = false;
+                  # scaleFactor = 2;
                 };
 
                 users.elias.imports = [
@@ -90,6 +91,7 @@
                   sops-nix.homeManagerModules.sops
                 ];
               };
+
               nixpkgs.overlays = [
                 inputs.nur.overlays.default
                 inputs.nix-vscode-extensions.overlays.default
@@ -113,9 +115,10 @@
             {
               home-manager = {
                 useUserPackages = true;
+
                 extraSpecialArgs = {
                   inherit inputs;
-                  # isDesktop = true;
+                  # scaleFactor = 1.3;
                 };
 
                 users.elias.imports = [
@@ -142,11 +145,17 @@
             {
               home-manager = {
                 useUserPackages = true;
-                extraSpecialArgs = { inherit inputs; };
+
+                extraSpecialArgs = {
+                  inherit inputs;
+                  # scaleFactor = 1;
+                };
+
                 users.elias.imports = [
                   sops-nix.homeManagerModules.sops
                 ];
               };
+
               nixpkgs.overlays = [ ];
             }
           ];

@@ -19,8 +19,8 @@
     grim
     slurp
     satty
-    # wayfreeze
 
+    # wayfreeze
     # wlr-randr
   ];
   xdg.configFile."helperscripts" = {
@@ -30,14 +30,9 @@
 
   wayland.windowManager.mango = {
     enable = true;
-    systemd = {
-      enable = true;
-      # xdgAutostart = '' '';
-    };
-    settings = {
-      # /-- Monitors --/
-      # later: see what kanshi can do with it.
+    systemd.enable = true;
 
+    settings = {
       # /-- Input --/
       xkb_rules_layout = "de";
       touch_enable = 0;
@@ -106,7 +101,6 @@
         "Super+Alt+Shift,J,resizewin,(0,100)"
         "Super+Alt+Shift,K,resizewin,(0,-100)"
         "Super+Alt+Shift,L,resizewin,(100,0)"
-
         # "Super+Shift,P,view," = "set-view-tags ${scratch_tag}";
 
         "Super,0,comboview,1|2|3|4|5|6|7|8|9"

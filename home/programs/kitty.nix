@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, ... }: # scaleFactor,
 
 {
   home.packages = with pkgs; [
@@ -12,7 +12,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      size = 8;
+      size = 8; # scaleFactor
       name = "Fira Code";
       package = pkgs.fira-code;
     };
