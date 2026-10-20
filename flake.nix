@@ -79,7 +79,10 @@
             {
               home-manager = {
                 useUserPackages = true;
-                extraSpecialArgs = { inherit inputs; };
+                extraSpecialArgs = {
+                  inherit inputs;
+                  # isDesktop = false;
+                };
 
                 users.elias.imports = [
                   ./home/default-laptop.nix
@@ -110,7 +113,10 @@
             {
               home-manager = {
                 useUserPackages = true;
-                extraSpecialArgs = { inherit inputs; };
+                extraSpecialArgs = {
+                  inherit inputs;
+                  # isDesktop = true;
+                };
 
                 users.elias.imports = [
                   ./home/default-desktop.nix

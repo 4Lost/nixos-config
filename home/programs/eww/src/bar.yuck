@@ -18,6 +18,7 @@
     :orientation "horizontal"
     :space-evenly false
     :class "bar"
+
     (widgetWorkspaces)
     (widgetLogSeperator)
     (widgetLayouts)
@@ -59,8 +60,8 @@
   (button
     :class "${idle_inhibitor == 'stop' ? 'idleOff' :  'idleOn' }"
     :onclick "systemctl --user is-active hypridle.service && systemctl --user stop hypridle.service || systemctl --user start hypridle.service"
-  (label
-    :text "${idle_inhibitor == 'stop' ? '󰛐' : '󰈈' }"))))
+    (label
+      :text "${idle_inhibitor == 'stop' ? '󰛐' : '󰈈' }"))))
 
 ;; ── Audio ───────────────────────────────────────────────────────────
 
@@ -76,15 +77,17 @@
 (defwidget WidgetAudio []
   (box
     :space-evenly false
-    (label
+    (button
       :class speakerClass
-      :text "${speakerIcon} ")
+      :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      (label :text "${speakerIcon} "))
     (label
       :class "text"
       :text "${speakerVolume}% ")
-    (label
+    (button
       :class micClass
-      :text "${micIcon}")))
+      :onclick "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      (label :text "${micIcon}"))))
 
 ;; ── Backlight ───────────────────────────────────────────────────────
 
@@ -149,9 +152,9 @@
 (defwidget widgetBattery []
   (box
     :space-evenly false
-    (label
+    (button :onclick "mmsg dispatch view,1"
       :class batteryClass
-      :text "${batteryIcon} ")
+      (label :text "${batteryIcon} "))
     (label
       :class "text"
       :text "${batteryVolume}%")))
@@ -204,8 +207,15 @@
   :initial "-"
   `sh ~/.config/eww/scripts/mango.sh`)
 
-(defvar mango-title "-")
-(defvar mango-layout "-")
+(defpoll mango-title
+  :interval "25ms"
+  :initial "-"
+  `mmsg get all-monitors | jq -r '.monitors[] | select(.active == true) | .active_client | ((.appid // "-") + " [" + (.title // "-") + "]") | if length > 60 then .[:55] + "...]" else . end'`)
+
+(defpoll mango-layout
+  :interval "25ms"
+  :initial "-"
+  `mmsg get all-monitors | jq -r '.monitors[] | select(.active == true) | .layout_symbol'`)
 
 (defvar ws1 "ws-empty")
 (defvar ws2 "ws-empty")

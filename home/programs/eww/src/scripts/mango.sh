@@ -32,6 +32,3 @@ for i in $(seq 1 9); do
   fi
   eww update "ws$i=$class"
 done
-
-eww update "mango-layout=$(mmsg get all-monitors | jq -r '.monitors[] | select(.active == true) | .layout_symbol')"
-eww update "mango-title=$(mmsg get all-monitors | jq -r '.monitors[] | select(.active == true) | .active_client | "\(.appid // "-") [\(.title // "-")]"')"

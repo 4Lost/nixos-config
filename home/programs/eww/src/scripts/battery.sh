@@ -21,6 +21,7 @@ elif [[ $stat == 1 ]]; then
 elif [[ $bat -le 10 ]]; then
   eww update batteryClass="batteryEmpty"
   eww update batteryIcon=""
+  notify-send -u "critical" -a "Mango" "Battery" "Battery almost empty. Please charge."
 elif [[ $bat -le 50 ]]; then
   eww update batteryClass="batteryHalf"
   eww update batteryIcon=""

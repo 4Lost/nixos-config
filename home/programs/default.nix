@@ -19,7 +19,6 @@
     ./picard.nix
     ./prismlauncher.nix
     ./pulseaudio
-    # ./river
     ./rofi
     ./skanlite.nix
     ./spotify.nix
