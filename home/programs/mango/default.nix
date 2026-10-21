@@ -38,6 +38,7 @@
       touch_enable = 0;
 
       # /-- Theming --/
+      border_px = 3;
       gap_inner_horizontal = 5;
       gap_inner_vertical = 5;
       gap_outer_horizontal = 0;
@@ -50,23 +51,15 @@
       focus_color = "0xf5bde6ff";
       urgent_color = "0xed8796ff";
 
-      tab_bar_height = 33;
-      title_message_bar_height = 52;
-
       # /-- Layout --/
       circle_layout = "tile,fair,center_tile,scroller";
 
       # Keys
       bind = [
-        # Send current window to scratchpad
-        "Super,I,minimized"
-        # Toggle (show/hide) the scratchpad
-        "Alt,Z,toggle_scratchpad"
-        # Retrieve window from scratchpad (restore)
-        "Super+Shift,N,restore_minimized"
-        "Super+Shift,Return,spawn,kitty"
-        "Super,P,spawn,rofi -show drun"
-        "Super+Shift,C,killclient"
+        # Scratchpad
+        "Super,S,minimized"
+        "Alt,S,toggle_scratchpad"
+        "Super+Shift,S,restore_minimized"
         # Screenshots
         "NONE,Print,spawn,/home/$USER/.config/eww/scripts/screenshot-window-to-file.sh"
         "Super,Print,spawn,/home/$USER/.config/eww/scripts/screenshot-window-to-clipboard.sh"
@@ -75,8 +68,9 @@
         "Shift,Print,spawn,/home/$USER/.config/eww/scripts/screenshot-selection-to-file.sh"
         "Super+Shift,Print,spawn,/home/$USER/.config/eww/scripts/screenshot-selection-to-clipboard.sh"
         # Window Ctrl
+        "Super+Shift,C,killclient"
         "Super,N,switch_layout"
-        "Super,R,zoom"
+        "Super,Z,zoom"
         "Super,J,focusstack,next"
         "Super,K,focusstack,prev"
         "Super+Shift,J,exchange_stack_client,next"
@@ -101,8 +95,7 @@
         "Super+Alt+Shift,J,resizewin,(0,100)"
         "Super+Alt+Shift,K,resizewin,(0,-100)"
         "Super+Alt+Shift,L,resizewin,(100,0)"
-        # "Super+Shift,P,view," = "set-view-tags ${scratch_tag}";
-
+        # Global View
         "Super,0,comboview,1|2|3|4|5|6|7|8|9"
         "Super+Shift,0,toggleglobal"
         "Super,Space,togglefloating"
@@ -115,15 +108,18 @@
         # Brightness
         "None,XF86MonBrightnessUp,spawn,xbacklight -inc 10"
         "None,XF86MonBrightnessDown,spawn,xbacklight -dec 10"
-        # Powerbutton
+        # Scripts
         "None,XF86PowerOff,spawn,/home/$USER/.config/eww/scripts/powermenu.sh"
+        "Super,I,spawn,/home/$USER/.config/helperscripts/lock.sh"
+        "Super+Shift,I,spawn,/home/$USER/.config/eww/scripts/idle.sh"
         # Program
+        "Super+Shift,Return,spawn,kitty"
+        "Super,P,spawn,rofi -show drun"
         "Super,C,spawn,zen"
         "Super,Y,spawn,signal-desktop"
         "Super,X,spawn,Telegram"
         "Super,V,spawn,thunderbird"
-        "Super+Shift,I,spawn,/home/$USER/.config/eww/scripts/idle.sh"
-
+        # Tags
         "Super,1,view,1"
         "Super,2,view,2"
         "Super,3,view,3"
@@ -133,7 +129,6 @@
         "Super,7,view,7"
         "Super,8,view,8"
         "Super,9,view,9"
-
         "Super+Shift,1,tag,1"
         "Super+Shift,2,tag,2"
         "Super+Shift,3,tag,3"
@@ -143,7 +138,6 @@
         "Super+Shift,7,tag,7"
         "Super+Shift,8,tag,8"
         "Super+Shift,9,tag,9"
-
         "Super+Ctrl,1,toggleview,1"
         "Super+Ctrl,2,toggleview,2"
         "Super+Ctrl,3,toggleview,3"
@@ -153,7 +147,6 @@
         "Super+Ctrl,7,toggleview,7"
         "Super+Ctrl,8,toggleview,8"
         "Super+Ctrl,9,toggleview,9"
-
         "Super+Shift+Ctrl,1,toggletag,1"
         "Super+Shift+Ctrl,2,toggletag,2"
         "Super+Shift+Ctrl,3,toggletag,3"
