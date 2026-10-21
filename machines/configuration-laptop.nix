@@ -1,10 +1,9 @@
 { pkgs, ... }:
 
 {
-  # _module.args.scaleFactor = 2;
-  #
   imports = [
-    ./hardware-configuration-desktop.nix
+    # ./disko-laptop.nix
+    ./hardware-configuration-laptop.nix
     ./../configuration.nix
   ];
 

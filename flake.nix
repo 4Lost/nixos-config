@@ -80,10 +80,7 @@
               home-manager = {
                 useUserPackages = true;
 
-                extraSpecialArgs = {
-                  inherit inputs;
-                  # scaleFactor = 2;
-                };
+                extraSpecialArgs = { inherit inputs; };
 
                 users.elias.imports = [
                   ./home/default-laptop.nix
@@ -116,10 +113,7 @@
               home-manager = {
                 useUserPackages = true;
 
-                extraSpecialArgs = {
-                  inherit inputs;
-                  # scaleFactor = 1.3;
-                };
+                extraSpecialArgs = { inherit inputs; };
 
                 users.elias.imports = [
                   ./home/default-desktop.nix
@@ -146,10 +140,7 @@
               home-manager = {
                 useUserPackages = true;
 
-                extraSpecialArgs = {
-                  inherit inputs;
-                  # scaleFactor = 1;
-                };
+                extraSpecialArgs = { inherit inputs; };
 
                 users.elias.imports = [
                   sops-nix.homeManagerModules.sops

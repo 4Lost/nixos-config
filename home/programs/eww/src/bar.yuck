@@ -1,5 +1,3 @@
-;; (defvar factor @scaleFactor@)
-;;
 ;; ── Bar ─────────────────────────────────────────────────────────────
 
 (defwindow bar []
@@ -7,11 +5,11 @@
     :x "0px"
     :y "0px"
     :width "100%"
-    :height "25px" ;; "${toString (25 * factor)}px"
+    :height "25px"
     :anchor "top center"
   )
   :reserve (struts
-    :distance "25px" ;; "${toSTring (25 * factor)}px"
+    :distance "25px"
     :side "top")
   :exclusive true
   :layer "top"
@@ -146,6 +144,7 @@
 
 (defvar batteryClass "speakerOff")
 (defvar batteryIcon "")
+(defvar batteryWarning "-")
 (defpoll batteryVolume
   :interval "1s"
   :initial "0"

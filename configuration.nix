@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  # scaleFactor,
   ...
 }:
 
@@ -111,7 +110,7 @@ in
       flavor = "mocha";
       accent = "pink";
       font = "Fira Code";
-      fontSize = "9"; # "${toString (scaleFactor * 9)}";
+      fontSize = "9";
       background = "${images.lock}";
       loginBackground = true;
       userIcon = true;
