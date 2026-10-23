@@ -28,17 +28,17 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/nvme1n1p2";
+    device = "/dev/disk/by-label/NIXROOT";
     fsType = "ext4";
   };
 
   fileSystems."/home/elias/Files" = {
-    device = "/dev/sda1";
+    device = "/dev/disk/by-label/NIXDATA";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/nvme1n1p1";
+    device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";
     options = [
       "fmask=0022"

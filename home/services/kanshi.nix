@@ -11,7 +11,6 @@
         profile.outputs = [
           {
             criteria = "eDP-1";
-            scale = 1.0;
           }
         ];
         profile.exec = [
@@ -30,13 +29,11 @@
             criteria = "HDMI-A-1";
             mode = "1920x1080@60Hz";
             position = "0,0";
-            scale = 1.0;
           }
           {
             criteria = "eDP-1";
             mode = "1920x1080@60Hz";
             position = "1920,0";
-            scale = 1.0;
           }
         ];
       }
@@ -51,19 +48,16 @@
             criteria = "HDMI-A-2";
             mode = "3840x2160@30Hz";
             position = "0,0";
-            scale = 1.3;
           }
           {
             criteria = "HDMI-A-1";
             mode = "3840x2160@30Hz";
             position = "3840,0";
-            scale = 1.3;
           }
           {
             criteria = "DP-2";
             mode = "3840x2160@60Hz";
             position = "7680,0";
-            scale = 1.3;
           }
         ];
       }
@@ -78,13 +72,11 @@
             criteria = "DVI-D-1";
             mode = "1920x1080@60Hz";
             position = "0,0";
-            scale = 1.0;
           }
           {
             criteria = "DP-2";
             mode = "1920x1080@60Hz";
             position = "1920,0";
-            scale = 1.0;
           }
         ];
       }
