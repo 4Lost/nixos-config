@@ -4,12 +4,17 @@
   inputs = {
     catppuccin.url = "github:catppuccin/nix";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence.url = "github:nix-community/impermanence";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # impermanence.url = "github:nix-community/impermanence";
 
     mangowm = {
       url = "github:mangowm/mango";
@@ -48,8 +53,9 @@
   outputs =
     {
       catppuccin,
+      disko,
+      impermanence,
       home-manager,
-      # impermanence,
       mangowm,
       nix-vscode-extensions,
       nixpkgs,
@@ -103,8 +109,9 @@
             ./machines/configuration-desktop.nix
             ./home/services/pipewire.nix
             catppuccin.nixosModules.catppuccin
+            inputs.disko.nixosModules.default
+            inputs.impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
-            # impermanence.nixosModules.impermanence
             mangowm.nixosModules.mango
             nur.modules.nixos.default
             sops-nix.nixosModules.sops

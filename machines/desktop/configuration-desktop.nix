@@ -2,9 +2,12 @@
 
 {
   imports = [
-    # ./disko-desktop.nix
+    ./disko-desktop.nix
+    ./../impermanence.nix
+    ./../home-mounts.nix
+    # ./crypthome.nix
     ./hardware-configuration-desktop.nix
-    ./../configuration.nix
+    ./../../configuration.nix
   ];
 
   networking.hostName = "eliasDesktop";
