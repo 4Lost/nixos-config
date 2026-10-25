@@ -21,7 +21,7 @@
     satty
 
     # wayfreeze
-    # wlr-randr
+    wlr-randr
   ];
   xdg.configFile."helperscripts" = {
     recursive = true;

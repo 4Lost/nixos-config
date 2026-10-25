@@ -1,1 +1,1 @@
-pkill river
+pkill mango
