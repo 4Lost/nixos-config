@@ -106,7 +106,7 @@
         eliasDesktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./machines/configuration-desktop.nix
+            ./machines/desktop/configuration.nix
             ./home/services/pipewire.nix
             catppuccin.nixosModules.catppuccin
             inputs.disko.nixosModules.default
