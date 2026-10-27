@@ -5,12 +5,16 @@
     ./disko-desktop.nix
     ./../impermanence.nix
     ./../home-mounts.nix
-    # ./crypthome.nix
-    ./hardware-configuration-desktop.nix
+    ./hardware-configuration.nix
     ./../../configuration.nix
   ];
 
   networking.hostName = "eliasDesktop";
+
+  fileSystems."/".neededForBoot = true;
+  fileSystems."/persist".neededForBoot = true;
+  fileSystems."/nix".neededForBoot = true;
+  fileSystems."/home".neededForBoot = true;
 
   # ── Hyprlock ──────────────────────────────────────────────────────────
   security.pam.services.hyprlock = { };

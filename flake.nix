@@ -4,10 +4,10 @@
   inputs = {
     catppuccin.url = "github:catppuccin/nix";
 
-    dfiles = {
-      url = "github:duxlabs-dev/dux-files";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # dfiles = {
+    #   url = "github:duxlabs-dev/dux-files";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     disko = {
       url = "github:nix-community/disko";
@@ -49,9 +49,15 @@
 
     yazi.url = "github:sxyazi/yazi";
 
-    yazi-bunny.url = "github:stelcodes/bunny.yazi";
+    yazi-bunny = {
+      url = "github:stelcodes/bunny.yazi";
+      flake = false;
+    };
 
-    yazi-exifaudio.url = "github:Sonico98/exifaudio.yazi";
+    yazi-exifaudio = {
+      url = "github:Sonico98/exifaudio.yazi";
+      flake = false;
+    };
 
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -62,7 +68,7 @@
   outputs =
     {
       catppuccin,
-      dfiles,
+      # dfiles,
       disko,
       impermanence,
       home-manager,
@@ -121,7 +127,7 @@
             ./machines/desktop/configuration.nix
             ./home/services/pipewire.nix
             catppuccin.nixosModules.catppuccin
-            inputs.dfiles.homeModules.dank-files
+            # inputs.dfiles.homeModules.dank-files
             inputs.disko.nixosModules.default
             inputs.impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager

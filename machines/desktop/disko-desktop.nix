@@ -31,7 +31,6 @@
                 settings = {
                   allowDiscards = true;
                 };
-
                 content = {
                   type = "btrfs";
                   extraArgs = [ "-f" ];
@@ -49,7 +48,6 @@
                         "compress=zstd"
                         "noatime"
                       ];
-                      needForBoot = true;
                     };
                     "/nix" = {
                       mountpoint = "/nix";
@@ -57,7 +55,6 @@
                         "compress=zstd"
                         "noatime"
                       ];
-                      needForBoot = true;
                     };
                     "/log" = {
                       mountpoint = "/var/log";
@@ -65,7 +62,6 @@
                         "compress=zstd"
                         "noatime"
                       ];
-                      needForBoot = true;
                     };
                     "/swap" = {
                       mountpoint = "/.swapvol";
@@ -93,7 +89,7 @@
                 settings = {
                   allowDiscards = true;
                 };
-                # keyFile = "/persist/crypt-data.key";
+                keyFile = "/persist/crypt-data.key";
 
                 content = {
                   type = "btrfs";

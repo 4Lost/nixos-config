@@ -13,15 +13,15 @@
   xdg.configFile."menus/applications.menu".source =
     "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
-  programs.dank-files = {
-    enable = true;
-
-    settings = {
-      themeMode = "dark";
-      defaultView = "list";
-      vimKeys = true;
-    };
-  };
+  # programs.dank-files = {
+  #   enable = true;
+  #
+  #   settings = {
+  #     themeMode = "dark";
+  #     defaultView = "list";
+  #     vimKeys = true;
+  #   };
+  # };
 
   # ── Yazi ──────────────────────────────────────────────────────────────
   programs.yazi = {

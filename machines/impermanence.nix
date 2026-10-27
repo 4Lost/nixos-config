@@ -6,6 +6,7 @@
 
     directories = [
       "/etc/NetworkManager/system-connections"
+      "/etc/sops"
       "/etc/ssh"
       "/var/lib/bluetooth"
       "/var/lib/nixos"

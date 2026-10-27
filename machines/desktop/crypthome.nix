@@ -14,7 +14,7 @@
   };
 
   environment.etc."crypttab".text = ''
-    crypthome UUID=REPLACE_WITH_SDA_LUKS_UUID /persist/crypt-home.key luks,discard
+    crypthome UUID=9cc606f2-ba19-4d8e-bae6-755b9d3b886f /persist/crypt-home.key luks,discard
   '';
 
   environment.etc."cryptsetup-keys.d/crypthome.key" = {

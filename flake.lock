@@ -474,6 +474,8 @@
         "nur": "nur",
         "sops-nix": "sops-nix",
         "yazi": "yazi",
+        "yazi-bunny": "yazi-bunny",
+        "yazi-exifaudio": "yazi-exifaudio",
         "zen-browser": "zen-browser"
       }
     },
@@ -605,6 +607,38 @@
       "original": {
         "owner": "sxyazi",
         "repo": "yazi",
+        "type": "github"
+      }
+    },
+    "yazi-bunny": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792528728,
+        "narHash": "sha256-AX7ILZTXPKqvEI3jgVADsfVeSR39qHB7Ti6NGHL0yag=",
+        "owner": "stelcodes",
+        "repo": "bunny.yazi",
+        "rev": "8f3f84e20ea0545d032c134cf184784eaff55d13",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stelcodes",
+        "repo": "bunny.yazi",
+        "type": "github"
+      }
+    },
+    "yazi-exifaudio": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750388105,
+        "narHash": "sha256-RWCqWBpbmU3sh/A+LBJPXL/AY292blKb/zZXGvIA5/o=",
+        "owner": "Sonico98",
+        "repo": "exifaudio.yazi",
+        "rev": "4506f9d5032e714c0689be09d566dd877b9d464e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sonico98",
+        "repo": "exifaudio.yazi",
         "type": "github"
       }
     },
