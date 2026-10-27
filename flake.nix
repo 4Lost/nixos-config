@@ -91,11 +91,12 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./machines/configuration-laptop.nix
-            ./home/services/pipewire.nix
+            ./machines/laptop
             catppuccin.nixosModules.catppuccin
+            # inputs.dfiles.homeModules.dank-files
+            inputs.disko.nixosModules.default
+            inputs.impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
-            # impermanence.nixosModules.impermanence
             mangowm.nixosModules.mango
             nur.modules.nixos.default
             sops-nix.nixosModules.sops
@@ -124,8 +125,7 @@
         eliasDesktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./machines/desktop/configuration.nix
-            ./home/services/pipewire.nix
+            ./machines/desktop
             catppuccin.nixosModules.catppuccin
             # inputs.dfiles.homeModules.dank-files
             inputs.disko.nixosModules.default
@@ -152,28 +152,6 @@
                 inputs.nur.overlays.default
                 inputs.nix-vscode-extensions.overlays.default
               ];
-            }
-          ];
-        };
-
-        newDevice = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/configuration-newDevice.nix
-            sops-nix.nixosModules.sops
-
-            {
-              home-manager = {
-                useUserPackages = true;
-
-                extraSpecialArgs = { inherit inputs; };
-
-                users.elias.imports = [
-                  sops-nix.homeManagerModules.sops
-                ];
-              };
-
-              nixpkgs.overlays = [ ];
             }
           ];
         };

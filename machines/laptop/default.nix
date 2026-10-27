@@ -2,22 +2,35 @@
 
 {
   imports = [
-    ./disko-desktop.nix
+    ./disko.nix
     ./../impermanence.nix
     ./../home-mounts.nix
     ./hardware-configuration.nix
     ./../../configuration.nix
   ];
 
-  networking.hostName = "eliasDesktop";
+  networking.hostName = "eliasLaptop";
 
-  fileSystems."/".neededForBoot = true;
-  fileSystems."/persist".neededForBoot = true;
-  fileSystems."/nix".neededForBoot = true;
-  fileSystems."/home".neededForBoot = true;
+  # # ── Fingerprint ───────────────────────────────────────────────────────
+  # services.fprintd = {
+  #   enable = true;
+  #   tod = {
+  #     enable = true;
+  #     driver = pkgs.libfprint-2-tod1-goodix;
+  #   };
+  # };
 
   # ── Hyprlock ──────────────────────────────────────────────────────────
-  security.pam.services.hyprlock = { };
+  security.pam.services = {
+    hyprlock = {
+      text = ''
+        auth sufficient pam_fprint.so
+        auth include login
+      '';
+    };
+    # sudo.fprintAuth = false;
+    # login.fprintAuth = true;
+  };
 
   # ── Bluetooth ─────────────────────────────────────────────────────────
   services.blueman.enable = true;

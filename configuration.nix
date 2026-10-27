@@ -13,6 +13,8 @@ in
     ./system/steam.nix
     ./system/printer.nix
     ./system/sops.nix
+
+    ./home/services/pipewire.nix
   ];
 
   # ── Use the systemd-boot EFI boot loader. ─────────────────────────────

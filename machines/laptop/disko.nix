@@ -3,14 +3,13 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/nvme0n1";
+        device = "/dev/disk/by-id/nvme-XXX"; # To change
 
         content = {
           type = "gpt";
 
           partitions = {
             ESP = {
-              label = "NixBoot";
               name = "ESP";
               size = "512M";
               type = "EF00";
@@ -23,41 +22,29 @@
               };
             };
 
-            luks = {
+            luks-system = {
               size = "100%";
-              label = "NixLuks";
 
               content = {
                 type = "luks";
-                name = "NixCrypted";
-                # disable settings.keyFile if you want to use interactive password entry
-                #passwordFile = "/tmp/secret.key"; # Interactive
+                name = "cryptsystem";
                 settings = {
                   allowDiscards = true;
-                  # keyFile = "/tmp/secret.key";
                 };
-
-                additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
                 content = {
                   type = "btrfs";
-                  extraArgs = [
-                    "-L"
-                    "NixMain"
-                    "-f"
-                  ];
+                  extraArgs = [ "-f" ];
                   subvolumes = {
                     "/root" = {
                       mountpoint = "/";
                       mountOptions = [
-                        "subvol=NixRoot"
                         "compress=zstd"
                         "noatime"
                       ];
                     };
-                    "/home" = {
-                      mountpoint = "/home";
+                    "/persist" = {
+                      mountpoint = "/persist";
                       mountOptions = [
-                        "subvol=NixHome"
                         "compress=zstd"
                         "noatime"
                       ];
@@ -65,14 +52,27 @@
                     "/nix" = {
                       mountpoint = "/nix";
                       mountOptions = [
-                        "subvol=NixNix"
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/log" = {
+                      mountpoint = "/var/log";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/home" = {
+                      mountpoint = "/home";
+                      mountOptions = [
                         "compress=zstd"
                         "noatime"
                       ];
                     };
                     "/swap" = {
                       mountpoint = "/.swapvol";
-                      swap.swapfile.size = "20M";
+                      swap.swapfile.size = "16G";
                     };
                   };
                 };
