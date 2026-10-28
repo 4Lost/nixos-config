@@ -10,9 +10,10 @@ in
 {
   # ── Steam & Printer ───────────────────────────────────────────────────
   imports = [
-    ./system/steam.nix
+    ./system/dfiles.nix
     ./system/printer.nix
     ./system/sops.nix
+    ./system/steam.nix
 
     ./home/services/pipewire.nix
   ];
@@ -68,10 +69,10 @@ in
         theme = "catppuccin-mocha-pink";
         wayland.enable = true;
       };
-      #autoLogin = {
-      #  enable = true;
-      #  user = "elias";
-      #};
+      autoLogin = {
+        enable = true;
+        user = "elias";
+      };
       defaultSession = "mango";
     };
     libinput.enable = true; # Enable touchpad.

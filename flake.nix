@@ -4,10 +4,10 @@
   inputs = {
     catppuccin.url = "github:catppuccin/nix";
 
-    # dfiles = {
-    #   url = "github:duxlabs-dev/dux-files";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    dfiles = {
+      url = "github:duxlabs-dev/dux-files";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     disko = {
       url = "github:nix-community/disko";
@@ -68,7 +68,7 @@
   outputs =
     {
       catppuccin,
-      # dfiles,
+      dfiles,
       disko,
       impermanence,
       home-manager,
@@ -93,9 +93,9 @@
           modules = [
             ./machines/laptop
             catppuccin.nixosModules.catppuccin
-            # inputs.dfiles.homeModules.dank-files
-            inputs.disko.nixosModules.default
-            inputs.impermanence.nixosModules.impermanence
+            dfiles.nixosModules.default
+            disko.nixosModules.default
+            impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             mangowm.nixosModules.mango
             nur.modules.nixos.default
@@ -124,12 +124,13 @@
 
         eliasDesktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             ./machines/desktop
             catppuccin.nixosModules.catppuccin
-            # inputs.dfiles.homeModules.dank-files
-            inputs.disko.nixosModules.default
-            inputs.impermanence.nixosModules.impermanence
+            dfiles.nixosModules.default
+            disko.nixosModules.default
+            impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             mangowm.nixosModules.mango
             nur.modules.nixos.default

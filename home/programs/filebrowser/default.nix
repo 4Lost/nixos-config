@@ -5,23 +5,13 @@
     kdePackages.baloo-widgets
     kdePackages.baloo
     exiftool
-    nautilus
+    # nautilus
     ouch
     udisks
   ];
 
   xdg.configFile."menus/applications.menu".source =
     "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
-
-  # programs.dank-files = {
-  #   enable = true;
-  #
-  #   settings = {
-  #     themeMode = "dark";
-  #     defaultView = "list";
-  #     vimKeys = true;
-  #   };
-  # };
 
   # ── Yazi ──────────────────────────────────────────────────────────────
   programs.yazi = {
