@@ -10,6 +10,12 @@
     udisks
   ];
 
+  xdg.configFile."dfiles/ui-settings.json".text = builtins.toJSON {
+    themeMode = "dark";
+    defaultView = "list";
+    vimKeys = true;
+  };
+
   xdg.configFile."menus/applications.menu".source =
     "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 

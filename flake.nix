@@ -4,11 +4,6 @@
   inputs = {
     catppuccin.url = "github:catppuccin/nix";
 
-    dfiles = {
-      url = "github:duxlabs-dev/dux-files";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,7 +63,6 @@
   outputs =
     {
       catppuccin,
-      dfiles,
       disko,
       impermanence,
       home-manager,
@@ -93,7 +87,6 @@
           modules = [
             ./machines/laptop
             catppuccin.nixosModules.catppuccin
-            dfiles.nixosModules.default
             disko.nixosModules.default
             impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
@@ -128,7 +121,6 @@
           modules = [
             ./machines/desktop
             catppuccin.nixosModules.catppuccin
-            dfiles.nixosModules.default
             disko.nixosModules.default
             impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager

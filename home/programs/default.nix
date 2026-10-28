@@ -14,7 +14,6 @@
     ./kitty.nix
     ./libreoffice.nix
     ./messenger.nix
-    ./mango
     ./nixvim
     ./picard.nix
     ./prismlauncher.nix

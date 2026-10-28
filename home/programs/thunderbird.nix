@@ -46,29 +46,6 @@
           enable = true;
         };
       };
-      uni = {
-        address = "elias.schroeter@campus.lmu.de";
-        imap = {
-          host = "studlmu.lrz.de";
-          port = 993;
-          tls.enable = true;
-        };
-        realName = "Elias Schröter";
-        passwordCommand = "mail-password";
-        smtp = {
-          host = "postout.lrz.de";
-          port = 587;
-          tls = {
-            enable = true;
-            useStartTls = true;
-          };
-        };
-        userName = "elias.schroeter@campus.lmu.de";
-        primary = false;
-        thunderbird = {
-          enable = true;
-        };
-      };
     };
   };
 }

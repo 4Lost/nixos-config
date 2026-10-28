@@ -10,7 +10,6 @@ in
 {
   # ── Steam & Printer ───────────────────────────────────────────────────
   imports = [
-    ./system/dfiles.nix
     ./system/printer.nix
     ./system/sops.nix
     ./system/steam.nix
@@ -31,7 +30,11 @@ in
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
+  services.xserver.xkb = {
+    layout = "de";
+  };
   console = {
+    earlySetup = true;
     font = "Lat2-Terminus16";
     useXkbConfig = true;
   };
