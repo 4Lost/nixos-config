@@ -3,12 +3,15 @@
 {
   programs.nixvim = {
     colorscheme = "catppuccin";
+
     colorschemes.catppuccin = {
       #lazyLoad.enable = true;
       enable = true;
+
       settings = {
         flavour = "mocha";
         accents = "pink";
+
         integrations = {
           markdown = true;
           leap = true;
@@ -21,6 +24,7 @@
           treesitter = true;
           barbar = true;
           telescope = true;
+
           native_lsp = {
             enabled = true;
             virtual_text = {
@@ -30,6 +34,7 @@
               information = [ "italic" ];
               ok = [ "italic" ];
             };
+
             underlines = {
               errors = [ "underline" ];
               hints = [ "underline" ];
@@ -37,12 +42,15 @@
               information = [ "underline" ];
               ok = [ "underline" ];
             };
+
             inlay_hints.background = true;
           };
+
           lsp_saga = true;
         };
       };
     };
+
     plugins.lualine.settings.theme = "catppuccin";
   };
 }

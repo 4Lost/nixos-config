@@ -2,6 +2,7 @@
 
 {
   imports = [
+    # ./disko-laptop.nix
     ./hardware-configuration-laptop.nix
     ./../configuration.nix
   ];

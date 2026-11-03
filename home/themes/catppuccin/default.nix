@@ -13,8 +13,7 @@ in
     ./gtk.nix
     ./hyprlock.nix
     ./nvim.nix
-    ./taskwarrior.nix
-    ./qt.nix
+    ./taskwarrior
   ];
 
   catppuccin = {
@@ -30,10 +29,11 @@ in
     imv.enable = true;
     kitty.enable = true;
     lazygit.enable = true;
+    qt5ct.enable = true;
     rofi.enable = true;
     spotify-player.enable = true;
     thunderbird.enable = true;
-    vscode.profiles.default.enable = true;
+    vscodium.profiles.default.enable = true;
     yazi.enable = true;
     zathura.enable = true;
     zsh-syntax-highlighting.enable = true;

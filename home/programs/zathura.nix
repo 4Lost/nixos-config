@@ -8,7 +8,7 @@
         nvim --headless -c "VimtexInverseSearch %l '%f'"
       ''; # include ${theme}
       synctex = true;
-      font = "Fira Code 16";
+      font = "Fire Code 16";
     };
   };
 }

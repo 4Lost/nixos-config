@@ -1,7 +1,7 @@
 (defwindow power []
   :class "powermenuWindow"
   :geometry (geometry
-    :width "200px"
+    :width  "200px"
     :height "50px"
     :anchor "center center"
     :x "0%"

@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ eww jq ];
+  home.packages = with pkgs; [
+    eww
+    jq
+  ];
 
   xdg.configFile."eww" = {
     recursive = true;
