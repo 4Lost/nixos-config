@@ -1,8 +1,8 @@
 require("bunny"):setup({
   hops = {
     { key = "/", path = "/", desc = "Root" },
-    { key = { "n", "c" }, path = "/etc/nixos", desc = "NixOS config" },
-    { key = { "n", "s" }, path = "/nix/store", desc = "Nix store" },
+    { key = { "n", "c" }, path = "/persist/etc/nixos", desc = "NixOS config" },
+    { key = { "n", "s" }, path = "/persist/nix/store", desc = "Nix store" },
     { key = "~", path = "~", desc = "Home" },
     { key = "r", path = "~/Repos", desc = "Repos" },
     { key = "d", path = "~/Downloads", desc = "Downloads" },

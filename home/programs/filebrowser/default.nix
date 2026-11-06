@@ -6,6 +6,7 @@
     kdePackages.baloo
     exiftool
     # nautilus
+    dux-files
     ouch
     udisks
   ];
