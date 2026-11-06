@@ -4,7 +4,7 @@
   sops = {
     defaultSopsFile = ../../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
-    age.keyFile = "/etc/sops/keys.txt";
+    age.keyFile = "/persist/etc/sops/key.txt";
 
     # ── Define Secrets ────────────────────────────────────────────────────
     secrets."ssh/private".path = "/home/elias/.ssh/id_rsa";
