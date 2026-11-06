@@ -5,7 +5,7 @@
     ./disko.nix
     ./../impermanence.nix
     ./../home-mounts.nix
-    ./hardware-configuration.nix
+    ./hardware.nix
     ./../../configuration.nix
   ];
 
