@@ -1,0 +1,41 @@
+{ ... }:
+
+{
+  flake.nixosModules.printer =
+    { pkgs, ... }:
+
+    {
+      environment.systemPackages = with pkgs; [
+        cups
+        gutenprint
+      ];
+
+      services.printing = {
+        enable = true;
+        listenAddresses = [ "*:631" ];
+        allowFrom = [ "all" ];
+        browsing = true;
+        defaultShared = true;
+        openFirewall = true;
+        drivers = [ pkgs.epson-escpr ];
+      };
+
+      hardware.printers = {
+        ensurePrinters = [
+          {
+            name = "Epson-XP-520";
+            location = "Home";
+            deviceUri = "usb://EPSON/XP-520%20Series?serial=554656593133323698&interface=1";
+            model = "epson-inkjet-printer-escpr/Epson-XP-520_Series-epson-escpr-en.ppd";
+
+            ppdOptions = {
+              PageSize = "A4";
+              # Ink = "Color";
+            };
+          }
+        ];
+
+        ensureDefaultPrinter = "Epson-XP-520";
+      };
+    };
+}

@@ -1,153 +1,49 @@
 {
-  description = "My NixOS Flake";
-
-  inputs = {
-    catppuccin.url = "github:catppuccin/nix";
-
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    impermanence.url = "github:nix-community/impermanence";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    mangowm = {
-      url = "github:mangowm/mango";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nur.url = "github:nix-community/NUR";
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    yazi.url = "github:sxyazi/yazi";
-
-    yazi-bunny = {
-      url = "github:stelcodes/bunny.yazi";
-      flake = false;
-    };
-
-    yazi-exifaudio = {
-      url = "github:Sonico98/exifaudio.yazi";
-      flake = false;
-    };
-
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
+  inputs = import ./inputs.nix;
 
   outputs =
-    {
-      catppuccin,
-      disko,
-      impermanence,
-      home-manager,
-      mangowm,
-      nix-vscode-extensions,
-      nixpkgs,
-      nixvim,
-      nur,
-      sops-nix,
-      yazi,
-      yazi-bunny,
-      yazi-exifaudio,
-      zen-browser,
-      ...
-    }@inputs:
-    {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
-      nixosConfigurations = {
-        eliasLaptop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./machines/laptop
-            catppuccin.nixosModules.catppuccin
-            disko.nixosModules.default
-            impermanence.nixosModules.impermanence
-            home-manager.nixosModules.home-manager
-            mangowm.nixosModules.mango
-            nur.modules.nixos.default
-            sops-nix.nixosModules.sops
-
-            {
-              home-manager = {
-                useUserPackages = true;
-
-                extraSpecialArgs = { inherit inputs; };
-
-                users.elias.imports = [
-                  ./home/default-laptop.nix
-                  catppuccin.homeModules.catppuccin
-                  sops-nix.homeManagerModules.sops
-                ];
-              };
-
-              nixpkgs.overlays = [
-                inputs.nur.overlays.default
-                inputs.nix-vscode-extensions.overlays.default
-              ];
-            }
-          ];
-        };
-
-        eliasDesktop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./machines/desktop
-            catppuccin.nixosModules.catppuccin
-            disko.nixosModules.default
-            impermanence.nixosModules.impermanence
-            home-manager.nixosModules.home-manager
-            mangowm.nixosModules.mango
-            nur.modules.nixos.default
-            sops-nix.nixosModules.sops
-
-            {
-              home-manager = {
-                useUserPackages = true;
-
-                extraSpecialArgs = { inherit inputs; };
-
-                users.elias.imports = [
-                  ./home/default-desktop.nix
-                  catppuccin.homeModules.catppuccin
-                  sops-nix.homeManagerModules.sops
-                ];
-              };
-
-              nixpkgs.overlays = [
-                inputs.nur.overlays.default
-                inputs.nix-vscode-extensions.overlays.default
-              ];
-            }
-          ];
-        };
-      };
-    };
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
+#   };
+#
+#   outputs =
+#     {
+#       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
+#       nixosConfigurations = {
+#         eliasLaptop = nixpkgs.lib.nixosSystem {
+#         };
+#
+#         eliasDesktop = nixpkgs.lib.nixosSystem {
+#           system = "x86_64-linux";
+#           specialArgs = { inherit inputs; };
+#           modules = [
+#             ./machines/desktop
+#             catppuccin.nixosModules.catppuccin
+#             home-manager.nixosModules.home-manager
+#             mangowm.nixosModules.mango
+#             nur.modules.nixos.default
+#
+#             {
+#               home-manager = {
+#                 useUserPackages = true;
+#
+#                 extraSpecialArgs = { inherit inputs; };
+#
+#                 users.elias.imports = [
+#                   ./home/default-desktop.nix
+#                   catppuccin.homeModules.catppuccin
+#                   sops-nix.homeManagerModules.sops
+#                 ];
+#               };
+#
+#               nixpkgs.overlays = [
+#                 inputs.nur.overlays.default
+#                 inputs.nix-vscode-extensions.overlays.default
+#               ];
+#             }
+#           ];
+#         };
+#       };
+#     };
+# }

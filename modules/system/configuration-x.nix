@@ -8,15 +8,6 @@ let
   images = pkgs.callPackage ./home/themes/images.nix { };
 in
 {
-  # ── Steam & Printer ───────────────────────────────────────────────────
-  imports = [
-    ./system/printer.nix
-    ./system/sops.nix
-    ./system/steam.nix
-
-    ./home/services/pipewire.nix
-  ];
-
   # ── Use the systemd-boot EFI boot loader. ─────────────────────────────
   boot.loader = {
     systemd-boot = {
@@ -33,6 +24,7 @@ in
   services.xserver.xkb = {
     layout = "de";
   };
+
   console = {
     earlySetup = true;
     font = "Lat2-Terminus16";
@@ -111,6 +103,14 @@ in
     };
   };
 
+  security.pam.services.hyprlock = { };
+
+  services.blueman.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
+
   environment.systemPackages = with pkgs; [
     (catppuccin-sddm.override {
       flavor = "mocha";
@@ -121,6 +121,7 @@ in
       loginBackground = true;
       userIcon = true;
     })
+    networkmanagerapplet
     exiftool
 
     git
