@@ -1,6 +1,11 @@
 { config, pkgs, ... }: {
   home.packages = with pkgs; [ stc-cli ];
 
+  sops.secrets = {
+    "syncthing/desktop/key" = { };
+    "syncthing/desktop/cert" = { };
+  };
+
   services.syncthing = {
     enable = true;
 
