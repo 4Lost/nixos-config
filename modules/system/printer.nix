@@ -1,8 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
-  flake.nixosModules.printer =
-    { pkgs, ... }:
+  flake.modules.nixos.printer =
+    { ... }:
 
     {
       environment.systemPackages = with pkgs; [
@@ -37,5 +37,12 @@
 
         ensureDefaultPrinter = "Epson-XP-520";
       };
+
+      services.avahi = {
+        enable = true;
+        nssmdns4 = true;
+      };
+
+      services.udev.packages = [ pkgs.sane-airscan ];
     };
 }

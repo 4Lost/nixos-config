@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.nixosModules.mounts =
+  flake.modules.nixos.mounts =
     { ... }:
 
     {

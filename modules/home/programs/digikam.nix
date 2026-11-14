@@ -1,5 +1,13 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ digikam sqlite ];
+  flake.modules.homeManager.digikam =
+    { ... }:
+
+    {
+      home.packages = with pkgs; [
+        digikam
+        sqlite
+      ];
+    };
 }

@@ -1,8 +1,8 @@
-{ ... }:
+{ inputs, pkgs, ... }:
 
 {
-  flake.nixosModules.sops =
-    { inputs, pkgs, ... }:
+  flake.modules.nixos.sops =
+    { ... }:
 
     {
       imports = [ inputs.sops-nix.nixosModules.sops ];

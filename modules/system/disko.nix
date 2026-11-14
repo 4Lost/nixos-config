@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  flake.nixosModules.disko-desktop =
+  flake.modules.nixos.disko-desktop =
     { ... }:
 
     {
@@ -113,7 +113,7 @@
       };
     };
 
-  flake.nixosModules.disko-laptop =
+  flake.modules.nixos.disko-laptop =
     { ... }:
 
     {

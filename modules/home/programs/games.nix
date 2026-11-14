@@ -1,5 +1,14 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ kdePackages.kbreakout ];
+  flake.modules.homeManager.games =
+    { ... }:
+
+    {
+      home.packages = with pkgs; [
+        kdePackages.kbreakout
+        prismnlauncher
+        jdk21
+      ];
+    };
 }

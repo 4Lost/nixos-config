@@ -1,18 +1,19 @@
-{ ... }:
+{ self, ... }:
 
 {
-  flake.nixosModules.system =
-    { self, ... }:
+  flake.modules.nixos.system =
+    { ... }:
 
     {
-      modules = [
-        self.nixosModules.audio
-        self.nixosModules.configuration
-        self.nixosModules.home-manager
-        self.nixosModules.impermanence
-        self.nixosModules.mounts
-        self.nixosModules.printer
-        self.nixosModules.sops
+      imports = with self.modules.nixos; [
+        audio
+        boot
+        configuration
+        home-manager
+        impermanence
+        mounts
+        printer
+        sops
       ];
     };
 }

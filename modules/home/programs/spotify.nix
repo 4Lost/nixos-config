@@ -1,5 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ spotify ];
+  flake.modules.homeManager.spotify =
+    { ... }:
+
+    {
+      home.packages = with pkgs; [ spotify ];
+    };
 }

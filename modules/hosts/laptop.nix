@@ -1,22 +1,30 @@
-{ inputs, self, ... }:
+{
+  config,
+  inputs,
+  lib,
+  self,
+  ...
+}:
+
+let
+  modulesPath = "${inputs.nixpkgs}/nixos/modules";
+in
 
 {
-  flake.nixosConfiguration.eliasLaptop = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      self.nixosModules.disko-laptop
-      self.nixosModules.setup-laptop
-      self.nixosModules.system
+  flake.nixosConfigurations.eliasLaptop = inputs.nixpkgs.lib.nixosSystem {
+
+    system = "x86_64-linux";
+
+    modules = with self.modules.nixos; [
+      home-manager-laptop
+      disko-laptop
+      setup-laptop
+      system
     ];
   };
 
-  flake.nixosModules.setup-laptop =
-    {
-      config,
-      lib,
-      modulesPath,
-      pkgs,
-      ...
-    }:
+  flake.modules.nios.setup-laptop =
+    { ... }:
 
     {
       imports = [
@@ -52,7 +60,6 @@
 
       networking.useDHCP = lib.mkDefault true;
 
-      nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
       hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
       fileSystems = {

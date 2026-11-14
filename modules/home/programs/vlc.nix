@@ -1,5 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ vlc ];
+  flake.modules.homeManager.vlc =
+    { ... }:
+
+    {
+      home.packages = with pkgs; [ vlc ];
+    };
 }

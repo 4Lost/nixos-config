@@ -1,5 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ kdePackages.skanlite ];
+  flake.modules.homeManager.skanlite =
+    { ... }:
+
+    {
+      home.packages = with pkgs; [ kdePackages.skanlite ];
+    };
 }

@@ -1,13 +1,18 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    eww
-    jq
-  ];
+  flake.modules.homeManager.eww =
+    { ... }:
 
-  xdg.configFile."eww" = {
-    recursive = true;
-    source = ./src;
-  };
+    {
+      home.packages = with pkgs; [
+        eww
+        jq
+      ];
+
+      xdg.configFile."eww" = {
+        recursive = true;
+        source = ./src;
+      };
+    };
 }

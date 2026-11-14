@@ -1,5 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ calibre ];
+  flake.modules.homeManager.calibre =
+    { ... }:
+
+    {
+      home.packages = with pkgs; [ calibre ];
+    };
 }

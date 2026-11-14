@@ -1,22 +1,28 @@
-{ inputs, self, ... }:
-
 {
-  flake.nixosConfiguration.eliasDesktop = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      self.nixosModules.disko-desktop
-      self.nixosModules.setup-desktop
-      self.nixosModules.system
+  config,
+  inputs,
+  lib,
+  self,
+  ...
+}:
+
+let
+  modulesPath = "${inputs.nixpkgs}/nixos/modules";
+in
+{
+  flake.nixosConfigurations.eliasDesktop = inputs.nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+
+    modules = with self.modules.nixos; [
+      home-manager-desktop
+      disko-desktop
+      setup-desktop
+      system
     ];
   };
 
-  flake.nixosModules.setup-desktop =
-    {
-      config,
-      lib,
-      modulesPath,
-      pkgs,
-      ...
-    }:
+  flake.modules.nixos.setup-desktop =
+    { ... }:
 
     {
       imports = [
@@ -43,7 +49,6 @@
         extraModulePackages = [ ];
       };
 
-      nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
       hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
       fileSystems = {

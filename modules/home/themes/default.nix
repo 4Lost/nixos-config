@@ -1,6 +1,0 @@
-{
-  imports = [
-    ./catppuccin
-    ./wallpaper.nix
-  ];
-}

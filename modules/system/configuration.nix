@@ -1,0 +1,206 @@
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
+
+{
+  flake.modules.nixos.configuration =
+    {
+      ...
+    }:
+
+    {
+      imports = [
+        inputs.catppuccin.nixosModules.catppuccin
+        inputs.mangowm.nixosModules.mango
+        inputs.nur.modules.nixos.default
+      ];
+
+      nixpkgs.overlays = [
+        inputs.nur.overlays.default
+        inputs.nix-vscode-extensions.overlays.default
+      ];
+
+      # ── NetworkManager, timezone, internationalisation properties and ... ──
+      networking.networkmanager.enable = true;
+      time.timeZone = "Europe/Berlin";
+      i18n.defaultLocale = "en_US.UTF-8";
+      services.xserver.xkb = {
+        layout = "de";
+      };
+
+      console = {
+        earlySetup = true;
+        font = "Lat2-Terminus16";
+        useXkbConfig = true;
+      };
+
+      # ── Enable Asterisks for Password prompt. ─────────────────────────────
+      security.sudo = {
+        enable = true;
+        extraConfig = ''
+          Defaults pwfeedback
+        '';
+      };
+
+      nix = {
+        # ── Flakes ───────────────────────────────────────────────────────────
+        settings = {
+          download-buffer-size = 524288000;
+          experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
+        };
+
+        # ── Garbage collect ───────────────────────────────────────────────────
+        gc = {
+          automatic = true;
+          dates = "12:00";
+          options = "--delete-older-than 7d";
+        };
+      };
+
+      services = {
+        displayManager = {
+          sddm = {
+            enable = true;
+            theme = "catppuccin-mocha-pink";
+            wayland.enable = true;
+          };
+          autoLogin = {
+            enable = true;
+            user = "elias";
+          };
+          defaultSession = "mango";
+        };
+        libinput.enable = true; # Enable touchpad.
+      };
+
+      programs = {
+        mango.enable = true;
+        ssh.startAgent = true;
+        zsh.enable = true;
+        fuse = {
+          enable = true;
+          userAllowOther = true;
+        };
+      };
+
+      # ── User account ──────────────────────────────────────────────────────
+      users = {
+        mutableUsers = false;
+        users.elias = {
+          isNormalUser = true;
+          home = "/home/elias";
+          shell = pkgs.zsh;
+          extraGroups = [
+            "wheel"
+            "networkmanager"
+            "audio"
+            "video"
+            "render"
+            "adbusers"
+            "flatpak"
+          ];
+          hashedPasswordFile = config.sops.secrets."user_password".path;
+        };
+      };
+
+      security.pam.services.hyprlock = { };
+
+      services.blueman.enable = true;
+      hardware.bluetooth = {
+        enable = true;
+        powerOnBoot = false;
+      };
+
+      environment.systemPackages = with pkgs; [
+        (catppuccin-sddm.override {
+          flavor = "mocha";
+          accent = "pink";
+          font = "Fira Code";
+          fontSize = "9";
+          background = "${inputs.images.lock}";
+          loginBackground = true;
+          userIcon = true;
+        })
+        networkmanagerapplet
+        exiftool
+
+        git
+        wget
+        curl
+        alacritty
+        dmenu
+        cmake
+        cups
+        exfatprogs
+        exfat
+        ntfs3g
+        parted
+        vpnc
+        rcon-cli
+        imv
+        sshfs
+
+        acpilight # For setting Backlight.
+        dbus
+
+        libnotify
+
+        # For Saving the Auth of Nextcloud.
+        seahorse
+        libgnome-keyring
+
+        # For setting the necessary permissions for gnome.nautilus.
+        lxqt.lxqt-policykit # provides a default authentication client for policykit
+      ];
+
+      environment.sessionVariables = {
+        XDG_CACHE_HOME = "$HOME/.cache";
+        XDG_CONFIG_HOME = "$HOME/.config";
+        XDG_DATA_HOME = "$HOME/.local/share";
+        XDG_STATE_HOME = "$HOME/.local/state";
+      };
+
+      services.flatpak.enable = true;
+
+      # ── Keyring ───────────────────────────────────────────────────────────
+      security.pam.services = {
+        login.enableGnomeKeyring = true;
+        sddm.enableGnomeKeyring = true;
+      };
+
+      services = {
+        gnome = {
+          gnome-keyring.enable = true;
+          gcr-ssh-agent.enable = false;
+        };
+
+        # Disable powerbutton => for use with eww
+        logind.settings.Login.HandlePowerKey = "ignore";
+        # ── Permissions for acpilight ─────────────────────────────────────────
+        udev = {
+          enable = true;
+          extraRules = ''
+            SUBSYSTEM=="backlight", ACTION=="add", \
+              RUN+="${pkgs.coreutils-full}/bin/chgrp video /sys/class/backlight/%k/brightness", \
+              RUN+="${pkgs.coreutils-full}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+          '';
+        };
+        # Adding Features to Dolphin.
+        gvfs.enable = true;
+        udisks2.enable = true;
+      };
+
+      nixpkgs.config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [ "electron-39.8.10" ];
+      };
+
+      system.stateVersion = "26.05";
+    };
+}

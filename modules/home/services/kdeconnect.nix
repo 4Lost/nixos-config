@@ -1,5 +1,10 @@
 { ... }:
 
 {
-  services.kdeconnect.enable = true;
+  flake.modules.homeManager.kdeconnect =
+    { ... }:
+
+    {
+      services.kdeconnect.enable = true;
+    };
 }

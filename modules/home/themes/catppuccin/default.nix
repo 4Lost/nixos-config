@@ -1,44 +1,43 @@
+{ inputs, self, ... }:
+
 {
-  pkgs,
-  ...
-}:
+  flake.modules.homeManager.catppuccin =
+    { ... }:
 
-let
-  images = pkgs.callPackage ../images.nix { };
-in
-{
-  imports = [
-    ./cursor.nix
-    ./fnott.nix
-    ./gtk.nix
-    ./hyprlock.nix
-    ./nvim.nix
-    ./taskwarrior
-  ];
+    {
+      imports = with self.modules.homeManager; [
+        inputs.catppuccin.homeModules.catppuccin
+        catppuccin-cursor
+        catppuccin-fnott
+        catppuccin-gtk
+        catppuccin-hyprlock
+        catppuccin-taskwarrior
+      ];
 
-  catppuccin = {
-    enable = true;
-    autoEnable = false;
-    flavor = "mocha";
-    accent = "pink";
+      catppuccin = {
+        enable = true;
+        autoEnable = false;
+        flavor = "mocha";
+        accent = "pink";
 
-    anki.enable = true;
-    element-desktop.enable = true;
-    firefox.enable = true;
-    fzf.enable = true;
-    imv.enable = true;
-    kitty.enable = true;
-    lazygit.enable = true;
-    qt5ct.enable = true;
-    rofi.enable = true;
-    spotify-player.enable = true;
-    thunderbird.enable = true;
-    vscodium.profiles.default.enable = true;
-    yazi.enable = true;
-    zathura.enable = true;
-    zsh-syntax-highlighting.enable = true;
-  };
+        anki.enable = true;
+        element-desktop.enable = true;
+        firefox.enable = true;
+        fzf.enable = true;
+        imv.enable = true;
+        kitty.enable = true;
+        lazygit.enable = true;
+        qt5ct.enable = true;
+        rofi.enable = true;
+        spotify-player.enable = true;
+        thunderbird.enable = true;
+        vscodium.profiles.default.enable = true;
+        yazi.enable = true;
+        zathura.enable = true;
+        zsh-syntax-highlighting.enable = true;
+      };
 
-  # ── Icon for Lock & Loginscreen ───────────────────────────────────────
-  xdg.configFile.".face.icon".source = "${images.face}";
+      # ── Icon for Lock & Loginscreen ───────────────────────────────────────
+      xdg.configFile.".face.icon".source = "${inputs.images.face}";
+    };
 }

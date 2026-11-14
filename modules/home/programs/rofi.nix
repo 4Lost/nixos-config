@@ -1,37 +1,34 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    oranchelo-icon-theme
-    nerd-fonts.jetbrains-mono
-  ];
+  flake.modules.homeManager.rofi =
+    { ... }:
 
-  xsession.initExtra = "setxkbmap de"; # rofi pass needs this to be set
+    {
+      home.packages = with pkgs; [
+        oranchelo-icon-theme
+        nerd-fonts.jetbrains-mono
+      ];
 
-  programs.rofi = {
-    enable = true;
-    settings = {
-      terminal = "${pkgs.alacritty}/bin/alacritty";
-      mode = "run,drun,window,ssh,network";
-      con-theme = "Oranchelo";
-      show-icons = true;
-      drun-display-format = "{icon} {name}";
-      location = 0;
-      disable-history = false;
-      hide-scrollbar = true;
-      display-drun = "   Apps ";
-      display-run = "   Run ";
-      display-window = "   Window";
-      display-ssh = "  SSH";
-      sidebar-mode = true;
+      xsession.initExtra = "setxkbmap de"; # rofi pass needs this to be set
+
+      programs.rofi = {
+        enable = true;
+        settings = {
+          terminal = "${pkgs.alacritty}/bin/alacritty";
+          mode = "run,drun,window,ssh,network";
+          con-theme = "Oranchelo";
+          show-icons = true;
+          drun-display-format = "{icon} {name}";
+          location = 0;
+          disable-history = false;
+          hide-scrollbar = true;
+          display-drun = "   Apps ";
+          display-run = "   Run ";
+          display-window = "   Window";
+          display-ssh = "  SSH";
+          sidebar-mode = true;
+        };
+      };
     };
-    # pass = {
-    #   enable = true;
-    #   extraConfig = ''
-    #     EDITOR='rofi-sensible-terminal -e vim'
-    #     clibpoard_backend=wl-copy
-    #     clip=clipboard
-    #   '';
-    # };
-  };
 }

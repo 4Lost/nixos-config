@@ -1,12 +1,13 @@
-{ pkgs, ... }:
+{ inputs, ... }:
 
-let
-  images = pkgs.callPackage ./images.nix { };
-in
 {
-  services.wpaperd = {
-    enable = true;
+  flake.modules.homeManager.wallpaper =
+    { ... }:
 
-    settings.any.path = "${images.background}";
-  };
+    {
+      services.wpaperd = {
+        enable = true;
+        settings.any.path = "${inputs.images.background}";
+      };
+    };
 }

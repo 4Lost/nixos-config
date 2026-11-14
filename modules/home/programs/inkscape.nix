@@ -1,5 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ inkscape ];
+  flake.modules.homeManager.inkscape =
+    { ... }:
+
+    {
+      home.packages = with pkgs; [ inkscape ];
+    };
 }

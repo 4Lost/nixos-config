@@ -1,5 +1,10 @@
 { ... }:
 
 {
-  programs.imv.enable = true;
+  flake.modules.homeManager.imv =
+    { ... }:
+
+    {
+      programs.imv.enable = true;
+    };
 }

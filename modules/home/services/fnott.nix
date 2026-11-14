@@ -1,5 +1,10 @@
 { ... }:
 
 {
-  services.fnott.enable = true;
+  flake.modules.homeManager.fnott =
+    { ... }:
+
+    {
+      services.fnott.enable = true;
+    };
 }

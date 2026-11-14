@@ -1,5 +1,15 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ libreoffice-qt hunspell hunspellDicts.de_DE ];
+  flake.modules.homeManager.libreoffice =
+    { ... }:
+
+    {
+      home.packages = with pkgs; [
+        libreoffice-qt
+        hunspel
+        hunspellDicts.de_DE
+        hunspellDicts.en_EN
+      ];
+    };
 }

@@ -1,8 +1,8 @@
-{ ... }:
+{ inputs, utils, ... }:
 
 {
-  flake.nixosModules.impermanence =
-    { inputs, utils, ... }:
+  flake.modules.nixos.impermanence =
+    { ... }:
 
     {
       imports = [ inputs.impermanence.nixosModules.impermanence ];

@@ -1,31 +1,35 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ dconf ];
+  flake.modules.homeManager.catppuccin-gtk =
+    { ... }:
 
-  gtk = {
-    enable = true;
+    {
+      home.packages = with pkgs; [ dconf ];
 
-    theme = {
-      name = "Catppuccin-Mocha-Compact-Pink-Dark";
+      gtk = {
+        enable = true;
 
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "pink" ];
-        size = "compact";
-        tweaks = [ "rimless" ];
-        variant = "mocha";
+        theme = {
+          name = "Catppuccin-Mocha-Compact-Pink-Dark";
+
+          package = pkgs.catppuccin-gtk.override {
+            accents = [ "pink" ];
+            size = "compact";
+            tweaks = [ "rimless" ];
+            variant = "mocha";
+          };
+        };
+
+        font = {
+          package = pkgs.fira-code;
+          name = "Fira Code";
+        };
+
+        iconTheme = {
+          package = pkgs.oranchelo-icon-theme;
+          name = "Oranchelo";
+        };
       };
     };
-
-    font = {
-      package = pkgs.fira-code;
-      name = "Fira Code";
-    };
-
-    iconTheme = {
-      package = pkgs.oranchelo-icon-theme;
-      name = "Oranchelo";
-    };
-  };
-
 }
