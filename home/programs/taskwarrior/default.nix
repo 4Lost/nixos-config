@@ -54,17 +54,8 @@
     source = "${pkgs.timewarrior}/share/doc/timew/ext/on-modify.timewarrior";
   };
 
-  home.file."Nextcloud/tasks/hooks/on-add.sh" = {
+  home.file."Nextcloud/.tasks/hooks/on-add.sh" = {
     executable = true;
     source = ./hooks/on-add.sh;
   };
-
-  # TODO: This need the python package timew-report, pyfzf and plumbum
-  # home.file.".config/timewarrior/extensions/twfzf.py" = {
-  #   source = builtins.fetchurl {
-  #     url = "https://raw.githubusercontent.com/oivvio/timew-fzf/refs/heads/main/twfzf.py";
-  #     sha256 = "0hrxz8bkvw3i6r4li829f60wzvgj8fqzv706gvlj66lad5fa5gdb";
-  #   };
-  #   executable = true;
-  # };
 }
