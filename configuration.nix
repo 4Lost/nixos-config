@@ -31,6 +31,11 @@ in
     kernelParams = [ "resume_offset=533760" ];
   };
 
+  boot = {
+    resumeDevice = "/dev/mapper/cryptsystem";
+    kernelParams = [ "resume_offset=533760" ];
+  };
+
   # ── NetworkManager, timezone, internationalisation properties and ... ──
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Berlin";
