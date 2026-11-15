@@ -31,10 +31,10 @@ in
     kernelParams = [ "resume_offset=533760" ];
   };
 
-  systemd.sleep.extraConfig = ''
-    AllowHibernation=no
-    AllowSuspendThenHibernate=no
-  '';
+  systemd.sleep.settings.Sleep = {
+    AllowHibernation = "no";
+    AllowSuspendThenHibernate = "no";
+  };
 
   # ── NetworkManager, timezone, internationalisation properties and ... ──
   networking.networkmanager.enable = true;
