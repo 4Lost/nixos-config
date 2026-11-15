@@ -31,6 +31,11 @@ in
     kernelParams = [ "resume_offset=533760" ];
   };
 
+  systemd.sleep.extraConfig = ''
+    AllowHibernation=no
+    AllowSuspendThenHibernate=no
+  '';
+
   # ── NetworkManager, timezone, internationalisation properties and ... ──
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Berlin";
