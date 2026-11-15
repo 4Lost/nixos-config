@@ -14,6 +14,7 @@ in
     ./hyprlock.nix
     ./nvim.nix
     ./taskwarrior
+    ./zathura.nix
   ];
 
   catppuccin = {
@@ -35,7 +36,6 @@ in
     thunderbird.enable = true;
     vscodium.profiles.default.enable = true;
     yazi.enable = true;
-    zathura.enable = true;
     zsh-syntax-highlighting.enable = true;
   };
 

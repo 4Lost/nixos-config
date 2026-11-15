@@ -216,11 +216,11 @@
     },
     "images": {
       "locked": {
-        "lastModified": 1794733279,
-        "narHash": "sha256-SoUjL0hiYSwXeICNkQEp31DzD8eabO14a4kLD3pU/nU=",
+        "lastModified": 1794739894,
+        "narHash": "sha256-ES3EFsyAyFM9N3euKxUmLLnVL/Aa+kr6GhPmwG9edOw=",
         "owner": "4Lost",
         "repo": "nixos-images",
-        "rev": "ad3a45a6d615d6efca9cf076d200f3f35f5c60ac",
+        "rev": "b1bc4d7f5826ac1475dee9ed538f06df0355ec96",
         "type": "github"
       },
       "original": {

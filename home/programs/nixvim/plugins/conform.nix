@@ -92,7 +92,10 @@
               "2"
             ];
           };
-          tex-fmt.command = "tex-fmt";
+          tex-fmt = {
+            command = "tex-fmt";
+            args = [ "--nowrap" ];
+          };
         };
       };
     };
