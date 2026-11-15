@@ -45,20 +45,20 @@
         ];
         profile.outputs = [
           {
-            criteria = "HDMI-A-2";
-            mode = "3840x2160@30Hz";
+            criteria = "DP-2";
+            mode = "3840x2160@60Hz";
             position = "0,0";
             scale = 1.2;
           }
           {
-            criteria = "HDMI-A-1";
+            criteria = "HDMI-A-2";
             mode = "3840x2160@30Hz";
             position = "3200,0";
             scale = 1.2;
           }
           {
-            criteria = "DP-2";
-            mode = "3840x2160@60Hz";
+            criteria = "HDMI-A-1";
+            mode = "3840x2160@30Hz";
             position = "6400,0";
             scale = 1.2;
           }

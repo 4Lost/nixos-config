@@ -52,16 +52,19 @@
 
 ;; ── Idle Inhibitor ──────────────────────────────────────────────────
 
-(deflisten idle_inhibitor "journalctl --output=cat --output-fields=JOB_TYPE --user --follow --unit=hypridle.service")
+(defpoll idle_inhibitor
+  :interval "1s"
+  :initial "active"
+  "systemctl --user is-active hypridle.service || true")
 
 (defwidget idle_inhibitor []
   (box
     :space-evenly false
   (button
-    :class "${idle_inhibitor == 'stop' ? 'idleOff' :  'idleOn' }"
+    :class "${idle_inhibitor == 'inactive' ? 'idleOff' :  'idleOn' }"
     :onclick "systemctl --user is-active hypridle.service && systemctl --user stop hypridle.service || systemctl --user start hypridle.service"
     (label
-      :text "${idle_inhibitor == 'stop' ? '󰛐' : '󰈈' }"))))
+      :text "${idle_inhibitor == 'inactive' ? '󰛐' : '󰈈' }"))))
 
 ;; ── Audio ───────────────────────────────────────────────────────────
 

@@ -4,12 +4,17 @@
   inputs = {
     catppuccin.url = "github:catppuccin/nix";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence.url = "github:nix-community/impermanence";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # impermanence.url = "github:nix-community/impermanence";
 
     mangowm = {
       url = "github:mangowm/mango";
@@ -39,6 +44,16 @@
 
     yazi.url = "github:sxyazi/yazi";
 
+    yazi-bunny = {
+      url = "github:stelcodes/bunny.yazi";
+      flake = false;
+    };
+
+    yazi-exifaudio = {
+      url = "github:Sonico98/exifaudio.yazi";
+      flake = false;
+    };
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,8 +63,9 @@
   outputs =
     {
       catppuccin,
+      disko,
+      impermanence,
       home-manager,
-      # impermanence,
       mangowm,
       nix-vscode-extensions,
       nixpkgs,
@@ -57,6 +73,8 @@
       nur,
       sops-nix,
       yazi,
+      yazi-bunny,
+      yazi-exifaudio,
       zen-browser,
       ...
     }@inputs:
@@ -67,11 +85,11 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./machines/configuration-laptop.nix
-            ./home/services/pipewire.nix
+            ./machines/laptop
             catppuccin.nixosModules.catppuccin
+            disko.nixosModules.default
+            impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
-            # impermanence.nixosModules.impermanence
             mangowm.nixosModules.mango
             nur.modules.nixos.default
             sops-nix.nixosModules.sops
@@ -99,12 +117,13 @@
 
         eliasDesktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
-            ./machines/configuration-desktop.nix
-            ./home/services/pipewire.nix
+            ./machines/desktop
             catppuccin.nixosModules.catppuccin
+            disko.nixosModules.default
+            impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
-            # impermanence.nixosModules.impermanence
             mangowm.nixosModules.mango
             nur.modules.nixos.default
             sops-nix.nixosModules.sops
@@ -126,28 +145,6 @@
                 inputs.nur.overlays.default
                 inputs.nix-vscode-extensions.overlays.default
               ];
-            }
-          ];
-        };
-
-        newDevice = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./machines/configuration-newDevice.nix
-            sops-nix.nixosModules.sops
-
-            {
-              home-manager = {
-                useUserPackages = true;
-
-                extraSpecialArgs = { inherit inputs; };
-
-                users.elias.imports = [
-                  sops-nix.homeManagerModules.sops
-                ];
-              };
-
-              nixpkgs.overlays = [ ];
             }
           ];
         };

@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     timewarrior
     tasksh
-    taskopen
+    # taskopen
     # syncall
     taskwarrior-tui
   ];

@@ -6,10 +6,6 @@
 }:
 
 {
-  imports = [
-    inputs.mangowm.hmModules.mango
-  ];
-
   home.packages = with pkgs; [
     # XDG Portals
     xdg-desktop-portal-wlr
@@ -38,12 +34,6 @@
       touch_enable = 0;
 
       # /-- Theming --/
-      border_px = 3;
-      gap_inner_horizontal = 5;
-      gap_inner_vertical = 5;
-      gap_outer_horizontal = 0;
-      gap_outer_vertical = 0;
-
       root_color = "0x323232ff";
       border_color = "0x444444ff";
       drop_color = "0x8FBA7C55";
@@ -55,6 +45,13 @@
       circle_layout = "tile,fair,center_tile,scroller";
 
       # Keys
+      mousebind = [
+        # Pointer
+        "Super,btn_left,moveresize,curmove"
+        "Super,btn_right,moveresize,curresize"
+        "Super,btn_middle,togglefloating"
+      ];
+
       bind = [
         # Scratchpad
         "Super,S,minimized"

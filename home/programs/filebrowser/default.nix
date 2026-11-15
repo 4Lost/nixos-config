@@ -1,29 +1,21 @@
 { inputs, pkgs, ... }:
 
-let
-  exifaudio = pkgs.fetchFromGitHub {
-    owner = "Sonico98";
-    repo = "exifaudio.yazi";
-    rev = "4506f9d";
-    sha256 = "sha256-RWCqWBpbmU3sh/A+LBJPXL/AY292blKb/zZXGvIA5/o=";
-  };
-
-  bunny = pkgs.fetchFromGitHub {
-    owner = "stelcodes";
-    repo = "bunny.yazi";
-    rev = "71b14a3";
-    sha256 = "sha256-uQO0C00yOFPWq8KEO/kEZM6tFZRc9SiXfgN7kzlwDeA=";
-  };
-in
 {
   home.packages = with pkgs; [
     kdePackages.baloo-widgets
     kdePackages.baloo
     exiftool
-    nautilus
+    # nautilus
+    dux-files
     ouch
     udisks
   ];
+
+  xdg.configFile."dfiles/ui-settings.json".text = builtins.toJSON {
+    themeMode = "dark";
+    defaultView = "list";
+    vimKeys = true;
+  };
 
   xdg.configFile."menus/applications.menu".source =
     "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
@@ -238,9 +230,9 @@ in
     };
 
     plugins = {
-      bunny = bunny;
+      bunny = inputs.yazi-bunny;
       chmod = pkgs.yaziPlugins.chmod;
-      exifaudio = exifaudio;
+      exifaudio = inputs.yazi-exifaudio;
       git = pkgs.yaziPlugins.git;
       mount = pkgs.yaziPlugins.mount;
       ouch = pkgs.yaziPlugins.ouch;

@@ -3,30 +3,9 @@
 {
   imports = [
     ./extras
-    ./services
     ./themes
   ];
 
-  # home.persistence."/persistent" = {
-  #   directories = [
-  #     "Downloads"
-  #     "Pictures"
-  #     "Documents"
-  #     {
-  #       directory = ".gnupg";
-  #       mode = "0700";
-  #     }
-  #     {
-  #       directory = ".ssh";
-  #       mode = "0700";
-  #     }
-  #     {
-  #       directory = ".local/share/keyrings";
-  #       mode = "0700";
-  #     }
-  #   ];
-  # };
-  #
   home = {
     username = "elias";
     homeDirectory = "/home/elias";

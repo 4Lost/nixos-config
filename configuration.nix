@@ -10,9 +10,11 @@ in
 {
   # ── Steam & Printer ───────────────────────────────────────────────────
   imports = [
-    ./system/steam.nix
     ./system/printer.nix
     ./system/sops.nix
+    ./system/steam.nix
+
+    ./home/services/pipewire.nix
   ];
 
   # ── Use the systemd-boot EFI boot loader. ─────────────────────────────
@@ -24,11 +26,25 @@ in
     efi.canTouchEfiVariables = true;
   };
 
+  boot = {
+    resumeDevice = "/dev/mapper/cryptsystem";
+    kernelParams = [ "resume_offset=533760" ];
+  };
+
+  boot = {
+    resumeDevice = "/dev/mapper/cryptsystem";
+    kernelParams = [ "resume_offset=533760" ];
+  };
+
   # ── NetworkManager, timezone, internationalisation properties and ... ──
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
+  services.xserver.xkb = {
+    layout = "de";
+  };
   console = {
+    earlySetup = true;
     font = "Lat2-Terminus16";
     useXkbConfig = true;
   };
@@ -66,10 +82,10 @@ in
         theme = "catppuccin-mocha-pink";
         wayland.enable = true;
       };
-      #autoLogin = {
-      #  enable = true;
-      #  user = "elias";
-      #};
+      autoLogin = {
+        enable = true;
+        user = "elias";
+      };
       defaultSession = "mango";
     };
     libinput.enable = true; # Enable touchpad.

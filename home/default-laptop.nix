@@ -1,6 +1,10 @@
 { ... }:
 
 {
-  imports = [ ./programs/default-laptop.nix ./default.nix ];
+  imports = [
+    ./programs/default-laptop.nix
+    ./services/default-laptop.nix
+    ./default.nix
+  ];
 
 }
