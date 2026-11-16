@@ -25,13 +25,8 @@
   };
 
   boot = {
-    resumeDevice = "/dev/mapper/cryptsystem";
+    resumeDevice = "/.swapvol/swapfile";
     kernelParams = [ "resume_offset=533760" ];
-  };
-
-  systemd.sleep.settings.Sleep = {
-    AllowHibernation = "no";
-    AllowSuspendThenHibernate = "no";
   };
 
   # ── NetworkManager, timezone, internationalisation properties and ... ──
