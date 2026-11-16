@@ -1,12 +1,9 @@
-{ pkgs, ... }:
+{ inputs, ... }:
 
-let
-  images = pkgs.callPackage ./images.nix { };
-in
 {
   services.wpaperd = {
     enable = true;
 
-    settings.any.path = "${images.background}";
+    settings.any.path = "${inputs.images.background}";
   };
 }

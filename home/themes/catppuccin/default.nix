@@ -1,11 +1,8 @@
 {
-  pkgs,
+  inputs,
   ...
 }:
 
-let
-  images = pkgs.callPackage ../images.nix { };
-in
 {
   imports = [
     ./cursor.nix
@@ -14,6 +11,7 @@ in
     ./hyprlock.nix
     ./nvim.nix
     ./taskwarrior
+    ./zathura.nix
   ];
 
   catppuccin = {
@@ -35,10 +33,9 @@ in
     thunderbird.enable = true;
     vscodium.profiles.default.enable = true;
     yazi.enable = true;
-    zathura.enable = true;
     zsh-syntax-highlighting.enable = true;
   };
 
   # ── Icon for Lock & Loginscreen ───────────────────────────────────────
-  xdg.configFile.".face.icon".source = "${images.face}";
+  xdg.configFile.".face.icon".source = "${inputs.images.face}";
 }

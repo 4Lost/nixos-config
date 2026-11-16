@@ -1,12 +1,10 @@
 {
   config,
+  inputs,
   pkgs,
   ...
 }:
 
-let
-  images = pkgs.callPackage ./home/themes/images.nix { };
-in
 {
   # ── Steam & Printer ───────────────────────────────────────────────────
   imports = [
@@ -127,7 +125,7 @@ in
       accent = "pink";
       font = "Fira Code";
       fontSize = "9";
-      background = "${images.lock}";
+      background = "${inputs.images.lock}";
       loginBackground = true;
       userIcon = true;
     })
