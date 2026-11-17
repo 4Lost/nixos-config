@@ -3,7 +3,5 @@
 {
   catppuccin.zathura.enable = true;
 
-  programs.zathura.extraConfig = ''
-    set recolor                   "false"
-  '';
+  programs.zathura.options.recolor = "false";
 }
