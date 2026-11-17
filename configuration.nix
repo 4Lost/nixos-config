@@ -25,7 +25,7 @@
   };
 
   boot = {
-    resumeDevice = "/.swapvol/swapfile";
+    resumeDevice = "/dev/mapper/cryptsystem";
     kernelParams = [ "resume_offset=533760" ];
   };
 
