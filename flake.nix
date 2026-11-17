@@ -4,27 +4,45 @@
   inputs = {
     catppuccin.url = "github:catppuccin/nix";
 
-    disko.url = "github:nix-community/disko";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     images.url = "github:4Lost/nixos-images";
 
     impermanence.url = "github:nix-community/impermanence";
 
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    mangowm.url = "github:mangowm/mango";
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      #     inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nur.url = "github:nix-community/NUR";
 
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     yazi.url = "github:sxyazi/yazi";
 
@@ -38,7 +56,10 @@
       flake = false;
     };
 
-    zen-browser.url = "github:youwen5/zen-browser-flake";
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
