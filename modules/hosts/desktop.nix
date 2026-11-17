@@ -1,18 +1,16 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 
 {
   flake.nixosConfigurations.eliasDesktop = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    specialArgs = { inherit inputs; };
-    modules = [
-      ../../machines/desktop
-      inputs.catppuccin.nixosModules.catppuccin
-      inputs.disko.nixosModules.default
-      inputs.impermanence.nixosModules.impermanence
+
+    modules = with self.modules.nixos; [
+      disko-desktop
+      setup-desktop
+      system
+
+      # old
       inputs.home-manager.nixosModules.home-manager
-      inputs.mangowm.nixosModules.mango
-      inputs.nur.modules.nixos.default
-      inputs.sops-nix.nixosModules.sops
 
       {
         home-manager = {
@@ -33,5 +31,47 @@
         ];
       }
     ];
+    specialArgs = { inherit inputs; };
   };
+
+  flake.modules.nixos.setup-desktop =
+    { config, lib, ... }:
+
+    let
+      modulesPath = "${inputs.nixpkgs}/nixos/modules";
+    in
+    {
+      imports = [
+        (modulesPath + "/installer/scan/not-detected.nix")
+      ];
+
+      networking.hostName = "eliasDesktop";
+
+      boot = {
+        initrd = {
+          availableKernelModules = [
+            "nvme"
+            "xhci_pci"
+            "ahci"
+            "usb_storage"
+            "usbhid"
+            "sd_mod"
+            "sr_mod"
+          ];
+          kernelModules = [ ];
+        };
+
+        kernelModules = [ "kvm-amd" ];
+        extraModulePackages = [ ];
+      };
+
+      hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+      fileSystems = {
+        "/".neededForBoot = true;
+        "/persist".neededForBoot = true;
+        "/nix".neededForBoot = true;
+        "/home".neededForBoot = true;
+      };
+    };
 }

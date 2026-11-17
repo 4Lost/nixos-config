@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, ... }:
 
 let
   variables = {
@@ -12,7 +12,6 @@ let
     yellow = "rgb(f9e2af)";
     font = "Fira Code";
   };
-  images = pkgs.callPackage ../images.nix { };
 in
 {
   # ── Hyprlock ──────────────────────────────────────────────────────────
@@ -27,7 +26,7 @@ in
 
     background = {
       monitor = "";
-      path = "${images.lock}";
+      path = "${inputs.images.lock}";
       blur_passes = 0;
       color = variables.base;
     };
@@ -72,7 +71,7 @@ in
 
     image = {
       monitor = "";
-      path = "${images.face}";
+      path = "${inputs.images.face}";
       size = 100;
       border_color = variables.accent;
       position = "0, 75";
