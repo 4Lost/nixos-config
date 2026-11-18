@@ -15,6 +15,11 @@
         inputs.nur.modules.nixos.default
       ];
 
+      nixpkgs.overlays = [
+        inputs.nur.overlays.default
+        inputs.nix-vscode-extensions.overlays.default
+      ];
+
       # ── NetworkManager, timezone, internationalisation properties and ... ──
       networking.networkmanager.enable = true;
       time.timeZone = "Europe/Berlin";

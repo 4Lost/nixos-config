@@ -1,0 +1,22 @@
+{ inputs, ... }:
+
+{
+  flake.modules.homeManager.sops =
+    { ... }:
+
+    {
+      imports = [
+        inputs.sops-nix.homeManagerModules.sops
+      ];
+
+      sops = {
+        defaultSopsFile = ../../../secrets/secrets.yaml;
+        defaultSopsFormat = "yaml";
+        age.keyFile = "/persist/etc/sops/key.txt";
+
+        # ── Define Secrets ────────────────────────────────────────────────────
+        secrets."ssh/private".path = "/home/elias/.ssh/id_rsa";
+        secrets."ssh/public".path = "/home/elias/.ssh/id_rsa.pub";
+      };
+    };
+}

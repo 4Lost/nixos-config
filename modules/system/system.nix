@@ -9,7 +9,7 @@
         audio
         boot
         configuration
-        # home-manager
+        home-manager
         impermanence
         mounts
         printer

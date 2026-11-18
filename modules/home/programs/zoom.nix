@@ -1,0 +1,12 @@
+{ ... }:
+
+{
+  flake.modules.homeManager.zoom =
+    { pkgs, ... }:
+
+    {
+      nixpkgs.config.allowUnfree = true;
+
+      home.packages = with pkgs; [ zoom-us ];
+    };
+}

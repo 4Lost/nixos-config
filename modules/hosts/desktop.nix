@@ -5,33 +5,11 @@
     system = "x86_64-linux";
 
     modules = with self.modules.nixos; [
+      home-manager-desktop
       disko-desktop
       setup-desktop
       system
-
-      # old
-      inputs.home-manager.nixosModules.home-manager
-
-      {
-        home-manager = {
-          useUserPackages = true;
-
-          extraSpecialArgs = { inherit inputs; };
-
-          users.elias.imports = [
-            ../../home/default-desktop.nix
-            inputs.catppuccin.homeModules.catppuccin
-            inputs.sops-nix.homeManagerModules.sops
-          ];
-        };
-
-        nixpkgs.overlays = [
-          inputs.nur.overlays.default
-          inputs.nix-vscode-extensions.overlays.default
-        ];
-      }
     ];
-    specialArgs = { inherit inputs; };
   };
 
   flake.modules.nixos.setup-desktop =

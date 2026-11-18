@@ -1,0 +1,34 @@
+{ ... }:
+
+{
+  flake.modules.homeManager.rofi =
+    { pkgs, ... }:
+
+    {
+      home.packages = with pkgs; [
+        oranchelo-icon-theme
+        nerd-fonts.jetbrains-mono
+      ];
+
+      xsession.initExtra = "setxkbmap de"; # rofi pass needs this to be set
+
+      programs.rofi = {
+        enable = true;
+        settings = {
+          terminal = "${pkgs.alacritty}/bin/alacritty";
+          mode = "run,drun,window,ssh,network";
+          con-theme = "Oranchelo";
+          show-icons = true;
+          drun-display-format = "{icon} {name}";
+          location = 0;
+          disable-history = false;
+          hide-scrollbar = true;
+          display-drun = "   Apps ";
+          display-run = "   Run ";
+          display-window = "   Window";
+          display-ssh = "  SSH";
+          sidebar-mode = true;
+        };
+      };
+    };
+}
