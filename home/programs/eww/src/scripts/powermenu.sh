@@ -11,7 +11,7 @@ fi
 if [[ "$(hostname)" == "eliasLaptop" ]]; then
   DISPLAY="eDP-1"
 elif [[ "$(hostname)" == "eliasDesktop" ]]; then
-  DISPLAY="DVI-D-1"
+  DISPLAY="HDMI-A-2"
 fi
 
 echo "$DISPLAY"
