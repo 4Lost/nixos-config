@@ -20,6 +20,7 @@
         libreoffice
         mango
         messenger
+        nixvim
         picard
         printer
         pulseaudio
