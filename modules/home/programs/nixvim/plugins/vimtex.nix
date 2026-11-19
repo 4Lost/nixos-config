@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   flake.modules.homeManager.vimtex =
-    { ... }:
+    { pkgs, ... }:
 
     {
       programs.nixvim = {

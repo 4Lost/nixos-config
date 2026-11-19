@@ -1,13 +1,13 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.homeModules.nixvim =
+  flake.modules.homeManager.nixvim =
     { ... }:
 
     {
       imports = [
         inputs.nixvim.homeModules.nixvim
-        self.modules.homeModules.nixvim-plugins
+        self.modules.homeManager.nixvim-plugins
       ];
 
       home.sessionVariables.EDITOR = "nvim";

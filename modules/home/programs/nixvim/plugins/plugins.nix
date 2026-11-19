@@ -50,7 +50,7 @@
         typst-vim
         undotree
         unified
-        vimtex
+        # vimtex TODO enable once error is fixed
         web-devicons
         which-key
         wilder

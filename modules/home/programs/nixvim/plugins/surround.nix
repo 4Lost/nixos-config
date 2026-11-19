@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.modules.homeManager.surrounds =
+  flake.modules.homeManager.surround =
     { ... }:
 
     {

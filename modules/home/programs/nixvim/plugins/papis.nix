@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   flake.modules.homeManager.papis =
-    { ... }:
+    { pkgs, ... }:
 
     {
       programs.nixvim = {

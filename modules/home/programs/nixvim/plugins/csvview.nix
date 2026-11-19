@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.modules.homeManager.nixvim =
+  flake.modules.homeManager.csvview =
     { ... }:
 
     {

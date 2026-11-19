@@ -28,7 +28,7 @@
     {
       home-manager.users.elias.imports = with self.modules.homeManager; [
         programs-desktop
-        services-desktop
+        # services-desktop
       ];
     };
 
@@ -38,7 +38,7 @@
     {
       home-manager.users.elias.imports = with self.modules.homeManager; [
         programs-laptop
-        services-laptop
+        # services-laptop
       ];
     };
 
@@ -71,6 +71,8 @@
           # Sops
           age
           sops
+
+          colmena
         ];
 
         stateVersion = "26.05";

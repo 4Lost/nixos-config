@@ -34,9 +34,11 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
+
     nixvim = {
       url = "github:nix-community/nixvim";
-      #     inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur.url = "github:nix-community/NUR";

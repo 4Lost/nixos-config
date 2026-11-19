@@ -1,14 +1,10 @@
-{ inputs, ... }:
+{ ... }:
 
 {
   flake.modules.homeManager.catppuccin-nixvim =
     { ... }:
 
     {
-      imports = [
-        inputs.nixvim.homeModules.nixvim
-      ];
-
       programs.nixvim = {
         colorscheme = "catppuccin";
 
