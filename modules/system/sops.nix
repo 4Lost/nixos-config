@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 
 {
   flake.modules.nixos.sops =
@@ -13,7 +13,7 @@
       ];
 
       sops = {
-        defaultSopsFile = ../../secrets/secrets.yaml;
+        defaultSopsFile = (self + /secrets/secrets.yaml);
         defaultSopsFormat = "yaml";
         age.keyFile = "/persist/etc/sops/key.txt";
         secrets."user_password".neededForUsers = true;

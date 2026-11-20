@@ -73,6 +73,7 @@
           sops
 
           colmena
+          opentofu
         ];
 
         stateVersion = "26.05";

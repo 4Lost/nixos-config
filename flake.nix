@@ -68,6 +68,7 @@
 
   outputs =
     inputs@{ flake-parts, ... }:
+
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.flake-parts.flakeModules.modules

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 
 {
   flake.modules.homeManager.sops =
@@ -10,7 +10,7 @@
       ];
 
       sops = {
-        defaultSopsFile = ../../../secrets/secrets.yaml;
+        defaultSopsFile = (self + /secrets/secrets.yaml);
         defaultSopsFormat = "yaml";
         age.keyFile = "/persist/etc/sops/key.txt";
 
