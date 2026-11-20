@@ -1,5 +1,0 @@
-{ ... }:
-
-{
-  services.fnott.enable = true;
-}

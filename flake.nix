@@ -1,6 +1,4 @@
 {
-  description = "My NixOS Flake";
-
   inputs = {
     catppuccin.url = "github:catppuccin/nix";
 
@@ -9,9 +7,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     images.url = "github:4Lost/nixos-images";
 
     impermanence.url = "github:nix-community/impermanence";
+
+    import-tree.url = "github:vic/import-tree";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -31,6 +33,8 @@
     };
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -63,93 +67,11 @@
   };
 
   outputs =
-    {
-      catppuccin,
-      disko,
-      impermanence,
-      home-manager,
-      mangowm,
-      nix-vscode-extensions,
-      nixpkgs,
-      nixvim,
-      nur,
-      sops-nix,
-      yazi,
-      yazi-bunny,
-      yazi-exifaudio,
-      zen-browser,
-      ...
-    }@inputs:
-    {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
-      nixosConfigurations = {
-        eliasLaptop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./machines/laptop
-            catppuccin.nixosModules.catppuccin
-            disko.nixosModules.default
-            impermanence.nixosModules.impermanence
-            home-manager.nixosModules.home-manager
-            mangowm.nixosModules.mango
-            nur.modules.nixos.default
-            sops-nix.nixosModules.sops
-
-            {
-              home-manager = {
-                useUserPackages = true;
-
-                extraSpecialArgs = { inherit inputs; };
-
-                users.elias.imports = [
-                  ./home/default-laptop.nix
-                  catppuccin.homeModules.catppuccin
-                  sops-nix.homeManagerModules.sops
-                ];
-              };
-
-              nixpkgs.overlays = [
-                inputs.nur.overlays.default
-                inputs.nix-vscode-extensions.overlays.default
-              ];
-            }
-          ];
-        };
-
-        eliasDesktop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./machines/desktop
-            catppuccin.nixosModules.catppuccin
-            disko.nixosModules.default
-            impermanence.nixosModules.impermanence
-            home-manager.nixosModules.home-manager
-            mangowm.nixosModules.mango
-            nur.modules.nixos.default
-            sops-nix.nixosModules.sops
-
-            {
-              home-manager = {
-                useUserPackages = true;
-
-                extraSpecialArgs = { inherit inputs; };
-
-                users.elias.imports = [
-                  ./home/default-desktop.nix
-                  catppuccin.homeModules.catppuccin
-                  sops-nix.homeManagerModules.sops
-                ];
-              };
-
-              nixpkgs.overlays = [
-                inputs.nur.overlays.default
-                inputs.nix-vscode-extensions.overlays.default
-              ];
-            }
-          ];
-        };
-      };
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        inputs.flake-parts.flakeModules.modules
+        (inputs.import-tree ./modules)
+      ];
     };
 }
