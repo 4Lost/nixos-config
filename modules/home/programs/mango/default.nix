@@ -66,12 +66,12 @@
             "Alt,S,toggle_scratchpad"
             "Super+Shift,S,restore_minimized"
             # Screenshots
-            "NONE,Print,spawn,/home/$USER/.config/eww/scripts/screenshot-window-to-file.sh"
-            "Super,Print,spawn,/home/$USER/.config/eww/scripts/screenshot-window-to-clipboard.sh"
-            "Ctrl,Print,spawn,/home/$USER/.config/eww/scripts/screenshot-screen-to-file.sh"
-            "Ctrl+Super,Print,spawn,/home/$USER/.config/eww/scripts/screenshot-screen-to-clipboard.sh"
-            "Shift,Print,spawn,/home/$USER/.config/eww/scripts/screenshot-selection-to-file.sh"
-            "Super+Shift,Print,spawn,/home/$USER/.config/eww/scripts/screenshot-selection-to-clipboard.sh"
+            "NONE,Print,spawn,/home/$USER/.config/helperscripts/screenshot-window-to-file.sh"
+            "Super,Print,spawn,/home/$USER/.config/helperscripts/screenshot-window-to-clipboard.sh"
+            "Ctrl,Print,spawn,/home/$USER/.config/helperscripts/screenshot-screen-to-file.sh"
+            "Ctrl+Super,Print,spawn,/home/$USER/.config/helperscripts/screenshot-screen-to-clipboard.sh"
+            "Shift,Print,spawn,/home/$USER/.config/helperscripts/screenshot-selection-to-file.sh"
+            "Super+Shift,Print,spawn,/home/$USER/.config/helperscripts/screenshot-selection-to-clipboard.sh"
             # Window Ctrl
             "Super+Shift,C,killclient"
             "Super,N,switch_layout"
