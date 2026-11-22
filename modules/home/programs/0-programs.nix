@@ -10,6 +10,7 @@
         audacity
         calibre
         digikam
+        direnv
         eww
         filebrowser
         git

@@ -68,6 +68,7 @@
           firefox
           bitwarden-desktop
 
+          astroterm
           # Sops
           age
           sops

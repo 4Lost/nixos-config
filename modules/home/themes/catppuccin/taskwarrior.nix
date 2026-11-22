@@ -5,7 +5,7 @@
     { ... }:
 
     {
-      programs.taskwarrior.colorTheme = ''
+      programs.taskwarrior.extraConfig = ''
         # Theme colors for catppuccin
 
         # General decoration
